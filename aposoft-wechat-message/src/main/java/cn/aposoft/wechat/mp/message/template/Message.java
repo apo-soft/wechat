@@ -5,6 +5,8 @@ package cn.aposoft.wechat.mp.message.template;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlElement;
+
 import cn.aposoft.wechat.mp.message.MsgType;
 
 /**
@@ -32,19 +34,20 @@ public class Message implements Serializable {
      * MsgType 是{@link MsgType#getCode()}
      */
     private String msgType;
-
+    @XmlElement(name = "ToUserName")
     public void setToUser(String toUser) {
         this.toUser = toUser;
     }
-
+    @XmlElement(name = "FromUserName")
     public void setFromUser(String fromUser) {
         this.fromUser = fromUser;
     }
-
+    @XmlElement(name = "CreateTime")
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
+    @XmlElement(name = "MsgType")
     public void setMsgType(String msgType) {
         this.msgType = msgType;
     }
