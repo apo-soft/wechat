@@ -1,0 +1,44 @@
+/**
+ *   Copyright  :  www.aposoft.cn
+ */
+package cn.aposoft.wechat.mp.access.remote;
+
+import cn.aposoft.wechat.mp.remote.WechatBaseResp;
+
+/**
+ * 
+ * 请求微信接口的响应参数集合
+ * 
+ * 参数集合声明：
+ * 
+ * <pre>
+ * <a href=
+ *   "https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183&token=&lang=zh_CN"> 获取access_token </a>
+ * </pre>
+ * 
+ * @author LiuJian
+ * @date 2016年10月13日
+ * 
+ */
+public class AccessTokenResp extends WechatBaseResp {
+
+    private String access_token;
+    private Integer expires_in;
+
+    public String getAccess_token() {
+        return access_token;
+    }
+
+    public Integer getExpires_in() {
+        return expires_in;
+    }
+
+    public void setAccess_token(String access_token) {
+        this.access_token = access_token;
+    }
+
+    public void setExpires_in(Integer expires_in) {
+        this.expires_in = expires_in;
+    }
+
+}
