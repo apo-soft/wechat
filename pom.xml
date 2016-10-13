@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>cn.aposoft.wechat</groupId>
@@ -68,29 +69,11 @@
 	</build>
 	<packaging>pom</packaging>
 	<modules>
-		<module>spitter-web</module>
-		<module>spitter-service-common</module>
-		<module>spitter-domain-plain</module>
-		<module>spitter-service-declarative-tx</module>
-		<module>spitter-persistence-common</module>
-		<module>spitter-persistence-jdbc-dao-support</module>
-		<module>spitter-persistence-demo</module>
-		<module>spitter-controller</module>
-		<module>spitter-httl-web</module>
-		<module>spring-dubbo-demo-intf</module>
-		<module>spring-dubbo-demo-service</module>
-		<module>spring-dubbo-demo-client</module>
-		<module>dubbo-controller</module>
-		<module>spitter-web-service-1</module>
-		<module>spitter-httl-web-client</module>
-		<module>spring-mvc-hello</module>
-		<module>spitter-persistence-mybatis</module>
-		<module>spring-security-study</module>
 		<module>aposoft-wechat-core</module>
-    <module>aposoft-wechat-common</module>
-    <module>aposoft-wechat-message</module>
-    <module>aposoft-wechat-simple-site</module>
-  </modules>
+		<module>aposoft-wechat-common</module>
+		<module>aposoft-wechat-message</module>
+		<module>aposoft-wechat-simple-site</module>
+	</modules>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

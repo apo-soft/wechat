@@ -12,14 +12,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.JAXBException;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.RandomStringUtils;
 import org.slf4j.LoggerFactory;
 
 import cn.aposoft.wechat.mp.codec.aes.AesException;
 import cn.aposoft.wechat.mp.codec.aes.WXBizMsgCrypt;
 import cn.aposoft.wechat.mp.config.WechatMpConfig;
 import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
+import cn.aposoft.wechat.mp.constant.Lexical;
+import cn.aposoft.wechat.mp.message.MessageReplyService;
+import cn.aposoft.wechat.mp.message.impl.NewsReplyService;
+import cn.aposoft.wechat.mp.message.template.received.ReceivedMessage;
+import cn.aposoft.wechat.mp.message.template.received.Text;
+import cn.aposoft.wechat.mp.util.XmlUtils;
 
 /**
  * 接收消息的Servlet
@@ -31,9 +39,11 @@ import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 @SuppressWarnings("serial")
 @WebServlet("/")
 public class MessageServlet extends HttpServlet {
+    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(MessageServlet.class);
     private static final org.slf4j.Logger messageLogger = LoggerFactory.getLogger("wx.message");
 
     private WXBizMsgCrypt crypt;
+    private MessageReplyService messageService;
 
     @Override
     public void init(ServletConfig config) {
@@ -44,6 +54,8 @@ public class MessageServlet extends HttpServlet {
             // this must not happen
             throw new Error("aes key initialize error", e);
         }
+        messageService = new NewsReplyService();
+
     }
 
     /**
@@ -59,11 +71,27 @@ public class MessageServlet extends HttpServlet {
      *      response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+        try {
+            response.setCharacterEncoding(Lexical.UTF8);
+            response.setContentType("text/xml");
+            ReceivedMessage receivedMessage = readMessage(request);
+            String replyMsg = getRespMessage(receivedMessage);
+            String timeStamp = String.valueOf(System.currentTimeMillis());
+            String nonce = RandomStringUtils.randomNumeric(16);
+            String encryptMsg = crypt.encryptMsg(replyMsg, timeStamp, nonce);
+            response.getWriter().write(encryptMsg);
+        } catch (AesException | JAXBException e) {
+            logger.error("read message error.", e);
+        }
+    }
+
+    // 读取默认的返回值消息
+    private String getRespMessage(ReceivedMessage receivedMessage) {
+        return messageService.getDefaultReplyMessage(receivedMessage.getFromUser()).toString();
     }
 
     // 读取用户发送的消息
-    private void readMessage(HttpServletRequest request, HttpServletResponse response) throws IOException, AesException {
+    private ReceivedMessage readMessage(HttpServletRequest request) throws IOException, AesException, JAXBException {
 
         if ("text/xml".equals(request.getContentType())) {
             // msg_signature
@@ -76,7 +104,9 @@ public class MessageServlet extends HttpServlet {
             messageLogger.info(requestXml);
             String origin = crypt.decryptMsg(msgSignature, timeStamp, nonce, requestXml);
             messageLogger.info(origin);
-
+            ReceivedMessage receivedMessage = XmlUtils.xml2Object(origin, Text.class);
+            return receivedMessage;
         }
+        return null;
     }
 }

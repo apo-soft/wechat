@@ -23,6 +23,13 @@ import cn.aposoft.wechat.mp.util.HttpClientFactory;
 import cn.aposoft.wechat.mp.util.RemoteException;
 
 public class Oauth2AccessTokenClient implements Closeable {
+
+    private static final Oauth2AccessTokenClient client = new Oauth2AccessTokenClient();
+
+    public static Oauth2AccessTokenClient getInstance() {
+        return client;
+    }
+
     final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
 
     public Oauth2AccessTokenResp getOauth2Token(String code, WechatMpConfig config) throws RemoteException {
@@ -50,7 +57,7 @@ public class Oauth2AccessTokenClient implements Closeable {
     }
 
     @Override
-    public void close() throws IOException {
+    public void close() {
         HttpClientUtils.closeQuietly(httpClient);
     }
 

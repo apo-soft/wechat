@@ -33,5 +33,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
+	<build>
+		<finalName>wx</finalName>
+	</build>
 </project>

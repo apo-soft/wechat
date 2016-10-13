@@ -37,6 +37,16 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
     // Oauth2 客户端
     private Oauth2AccessTokenClient client;
 
+    /**
+     * 初始化BasicWechatAuthorizeService
+     * 
+     * @param client
+     *            微信OAuth2 Access Token client
+     */
+    public BasicWechatAuthorizeService(Oauth2AccessTokenClient client) {
+        this.client = client;
+    }
+
     public String getRandomState() {
         boolean isSet = true;
         do {
