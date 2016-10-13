@@ -37,7 +37,7 @@ public class NewsReplyService implements MessageReplyService {
         article.setTitle("登录授权测试");
         article.setDescription("进入页面验证登录授权");
         // 样例,生产需要转换URL
-        article.setUrl("https://www.aposoft.cn/wx/oauth2/access_token");
+        article.setUrl("https://www.aposoft.cn/wx/oauth2/authorize");
         article.setPicurl("http://d.hiphotos.baidu.com/image/pic/item/42a98226cffc1e1771a5bbf94e90f603728de9e4.jpg");
         return news;
     }

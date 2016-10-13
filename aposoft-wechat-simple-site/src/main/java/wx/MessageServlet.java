@@ -4,6 +4,7 @@
 package wx;
 
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 
 /**
  * 接收消息的Servlet
@@ -12,7 +13,8 @@ import javax.servlet.annotation.WebServlet;
  * @date 2016年10月14日
  * 
  */
-@WebServlet("/AccessTokenServlet")
-public class MessageServlet {
+@SuppressWarnings("serial")
+@WebServlet("/")
+public class MessageServlet extends HttpServlet {
 
 }
