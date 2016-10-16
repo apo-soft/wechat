@@ -25,12 +25,35 @@ public interface WechatAuthorizeService {
     String getRedirectUrl(String redirectUri, String scope);
 
     /**
+     * 读取授权TOKEN
      * 
      * @param code
+     *            微信返回的授权code
      * @param state
-     * @return
+     *            请求授权时发出的随机码
+     * @return 用户OPENID 及对应的访问授权信息
      */
     Oauth2Token getOauth2Token(String code, String state);
 
-    
+    /**
+     * 读取用户信息
+     * 
+     * @param accessToken
+     *            访问token
+     * @param openId
+     *            用户id
+     * @return 用户信息
+     */
+    WechatUserInfo getUserInfo(String accessToken, String openId);
+
+    /**
+     * 验证授权是否有效
+     * 
+     * @param accessToken
+     *            授权访问id
+     * @param openId
+     *            用户id
+     * @return 验证结果
+     */
+    Oauth2Auth auth(String accessToken, String openId);
 }

@@ -7,7 +7,7 @@
 	<artifactId>aposoft-wechat-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>spring-mvc-spitter Parent</name>
+	<name>aposoft-wechat-parent</name>
 	<url>http://maven.apache.org/</url>
 	<inceptionYear>2001</inceptionYear>
 

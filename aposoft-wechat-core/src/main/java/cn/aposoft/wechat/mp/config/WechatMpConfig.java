@@ -33,8 +33,13 @@ public interface WechatMpConfig {
     String getToken();
 
     /**
+     * EncodingAESKey (消息加解密密钥) 43位
+     */
+    String getEncodingAESKey();
+
+    /**
      * 
-     * @return
+     * @return 会话过期时间保护
      */
     int getExpiredThreshold();
 
