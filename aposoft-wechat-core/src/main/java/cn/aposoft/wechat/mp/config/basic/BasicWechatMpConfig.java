@@ -32,7 +32,7 @@ public class BasicWechatMpConfig implements WechatMpConfig {
 
     @Override
     public String getEncodingAESKey() {
-        return null;
+        return "rqWzZv5rjyBwIRmociz7978G2O1D8sjxlsypVIU4SmY";
     }
 
 }
