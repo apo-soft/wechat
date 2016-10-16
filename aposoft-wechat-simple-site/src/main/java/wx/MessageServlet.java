@@ -19,12 +19,11 @@ import org.slf4j.LoggerFactory;
 
 import cn.aposoft.wechat.mp.codec.EncryptType;
 import cn.aposoft.wechat.mp.codec.aes.AesException;
-import cn.aposoft.wechat.mp.codec.aes.WXBizMsgCrypt;
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
-import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 //import cn.aposoft.wechat.mp.config.WechatMpConfig;
 //import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.constant.Lexical;
+import cn.aposoft.wechat.mp.crypt.CryptService;
+import cn.aposoft.wechat.mp.crypt.impl.BasicCryptService;
 import cn.aposoft.wechat.mp.message.MessageParams;
 import cn.aposoft.wechat.mp.message.MessageReplyService;
 import cn.aposoft.wechat.mp.message.impl.NewsReplyService;
@@ -47,18 +46,17 @@ public class MessageServlet extends HttpServlet {
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(MessageServlet.class);
     private static final org.slf4j.Logger messageLogger = LoggerFactory.getLogger("wx.message");
 
-    private WXBizMsgCrypt crypt;
+    private CryptService crypt;
     private MessageReplyService messageService;
     private ServerValidateService serverValidateService;
 
     @Override
     public void init(ServletConfig config) {
-        final WechatMpConfig wxConfig = WechatMpConfigFactory.getConfig();
         try {
-            crypt = new WXBizMsgCrypt(wxConfig.getToken(), wxConfig.getEncodingAESKey(), wxConfig.getAppId());
+            crypt = new BasicCryptService();
         } catch (AesException e) {
             // this must not happen
-            logger.error("meets error while init crypt");
+            logger.error("meets error while init crypt", e);
             throw new Error("aes key initialize error", e);
         }
         messageService = new NewsReplyService();
