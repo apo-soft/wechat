@@ -3,7 +3,6 @@
  */
 package cn.aposoft.wechat.mp.validate;
 
-import cn.aposoft.wechat.mp.codec.digest.DigestUtils;
 import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 
 /**
