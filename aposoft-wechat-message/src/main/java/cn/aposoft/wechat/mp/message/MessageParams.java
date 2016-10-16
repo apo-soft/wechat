@@ -40,6 +40,10 @@ public class MessageParams implements Serializable {
      * 加密消息签名
      */
     private String msg_signature;
+    /**
+     * opendid from user
+     */
+    private String openid;
 
     public String getSignature() {
         return signature;
@@ -101,6 +105,20 @@ public class MessageParams implements Serializable {
      */
     public void setMsg_signature(String msg_signature) {
         this.msg_signature = msg_signature;
+    }
+
+    /**
+     * @return the openid
+     */
+    public String getOpenid() {
+        return openid;
+    }
+
+    /**
+     * @param openid the openid to set
+     */
+    public void setOpenid(String openid) {
+        this.openid = openid;
     }
 
 }
