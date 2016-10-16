@@ -4,7 +4,6 @@
 package wx;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -26,11 +25,14 @@ import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 //import cn.aposoft.wechat.mp.config.WechatMpConfig;
 //import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.constant.Lexical;
+import cn.aposoft.wechat.mp.message.MessageParams;
 import cn.aposoft.wechat.mp.message.MessageReplyService;
 import cn.aposoft.wechat.mp.message.impl.NewsReplyService;
 import cn.aposoft.wechat.mp.message.template.received.ReceivedMessage;
 import cn.aposoft.wechat.mp.message.template.received.Text;
 import cn.aposoft.wechat.mp.util.XmlUtils;
+import cn.aposoft.wechat.mp.validate.ServerValidateService;
+import cn.aposoft.wechat.mp.validate.impl.BasicServerValidateService;
 
 /**
  * 接收消息的Servlet
@@ -47,18 +49,20 @@ public class MessageServlet extends HttpServlet {
 
     private WXBizMsgCrypt crypt;
     private MessageReplyService messageService;
+    private ServerValidateService serverValidateService;
 
     @Override
     public void init(ServletConfig config) {
         final WechatMpConfig wxConfig = WechatMpConfigFactory.getConfig();
         try {
-            crypt = new WXBizMsgCrypt(wxConfig.getToken(), wxConfig.getAppId(), wxConfig.getAppSecret());
+            crypt = new WXBizMsgCrypt(wxConfig.getToken(), wxConfig.getEncodingAESKey(), wxConfig.getAppId());
         } catch (AesException e) {
             // this must not happen
             logger.error("meets error while init crypt");
             throw new Error("aes key initialize error", e);
         }
         messageService = new NewsReplyService();
+        serverValidateService = new BasicServerValidateService();
     }
 
     /**
@@ -77,29 +81,33 @@ public class MessageServlet extends HttpServlet {
         HttpUtils.printHeaders(request);
         HttpUtils.printParams(request);
 
-        final String encrypt_type = request.getParameter("encrypt_type");
+        MessageParams messageParams = getMessageParams(request);
 
         try {
             // 判定是否是服务器验证逻辑
-            if (isVerifyRequest(request)) {
-                String echostr = verifyWechantServer(request);
+            if (isVerifyRequest(messageParams)) {
+                String echostr = serverValidateService.echostr(messageParams.getSignature(), messageParams.getTimestamp(), messageParams.getNonce(),
+                        messageParams.getEchostr());
                 if (echostr != null) {
                     response.getWriter().print(echostr);
                     return;
                 }
             }
+            String origin = null;
+            // 读取传入消息
+            if ("POST".equalsIgnoreCase(request.getMethod())) {
+                String postData = IOUtils.toString(request.getInputStream(), Lexical.UTF8_CHARSET);
+                // 解密
+                origin = getPostText(messageParams, postData);
 
-            ReceivedMessage receivedMessage = readMessage(request);
-
-            String timeStamp = String.valueOf(System.currentTimeMillis());
-            String nonce = RandomStringUtils.randomNumeric(16);
-
-            String replyMsg = getRespMessage(receivedMessage);
-            if (EncryptType.AES.getType().equals(encrypt_type)) {
-                logger.debug("encrypt");
-                replyMsg = crypt.encryptMsg(replyMsg, timeStamp, nonce);
             }
-            messageLogger.info(replyMsg);
+            // Mapping
+            ReceivedMessage receivedMessage = XmlUtils.xml2Object(origin, Text.class);
+            // 读取返回消息
+            String replyMsg = getRespMessage(receivedMessage);
+            // 条件性加密
+            replyMsg = getResponseText(messageParams, replyMsg);
+            // 输出返回值
             response.setCharacterEncoding(Lexical.UTF8);
             response.setContentType("text/xml");
             response.getWriter().print(replyMsg);
@@ -111,37 +119,48 @@ public class MessageServlet extends HttpServlet {
         }
     }
 
-    private String verifyWechantServer(HttpServletRequest request) {
-        // signature = data.signature
-        String signature = request.getParameter("signature");
-        // timestamp = data.timestamp
-        String timestamp = request.getParameter("timestamp");
-        // nonce = data.nonce
-        String nonce = request.getParameter("nonce");
-        // echostr = data.echostr
-        String echostr = request.getParameter("echostr");
-        // 官方标准的 服务器认证返回码
-        String hashCode = cn.aposoft.wechat.mp.codec.digest.DigestUtils.sha1Hex(nonce, timestamp, WechatMpConfigFactory.getConfig().getToken());
-        if (hashCode.equals(signature)) {
-            return echostr;
+    private String getResponseText(final MessageParams messageParams, final String plainResponseText) throws AesException {
+        String replyMsg = plainResponseText;
+        messageLogger.info(replyMsg);
+        // 条件加密
+        if (EncryptType.AES.getType().equals(messageParams.getEncrypt_type())) {
+            // 返回的约束
+            String timeStamp = String.valueOf(System.currentTimeMillis());
+            String nonce = RandomStringUtils.randomNumeric(16);
+            replyMsg = crypt.encryptMsg(replyMsg, timeStamp, nonce);
+            messageLogger.info(replyMsg);
         }
-        return null;
+        return replyMsg;
     }
 
-    private boolean isVerifyRequest(HttpServletRequest request) {
-        // signature = data.signature
-        String signature = request.getParameter("signature");
-        // timestamp = data.timestamp
-        String timestamp = request.getParameter("timestamp");
-        // nonce = data.nonce
-        String nonce = request.getParameter("nonce");
-        // echostr = data.echostr
-        String echostr = request.getParameter("echostr");
+    // optional decrypt the request text
+    private String getPostText(MessageParams messageParams, String postData) throws AesException {
+        String origin = postData;
+        messageLogger.info(origin);
+        if (EncryptType.AES.getType().equals(messageParams.getEncrypt_type())) {
+            origin = crypt.decryptMsg(messageParams.getMsg_signature(), messageParams.getTimestamp(), messageParams.getNonce(), postData);
+            messageLogger.info(origin);
+        }
+        return origin;
+    }
 
-        if (signature != null && timestamp != null && nonce != null && echostr != null) {
+    private MessageParams getMessageParams(HttpServletRequest request) {
+        MessageParams params = new MessageParams();
+        params.setEchostr(request.getParameter("echostr"));
+        params.setEncrypt_type(request.getParameter("encrypt_type"));
+        params.setMsg_signature(request.getParameter("msg_signature"));
+        params.setNonce(request.getParameter("nonce"));
+        params.setOpenid(request.getParameter("openid"));
+        params.setSignature(request.getParameter("signature"));
+        params.setTimestamp(request.getParameter("timestamp"));
+        return params;
+    }
+
+    private boolean isVerifyRequest(MessageParams messageParams) {
+        if (messageParams.getSignature() != null && messageParams.getTimestamp() != null && messageParams.getNonce() != null
+                && messageParams.getEchostr() != null) {
             return true;
         }
-
         return false;
     }
 
@@ -152,37 +171,5 @@ public class MessageServlet extends HttpServlet {
         }
         String respMessage = messageService.getReplyMessage(receivedMessage).toString();
         return respMessage;
-    }
-
-    // 读取用户发送的消息
-    private ReceivedMessage readMessage(HttpServletRequest request) throws IOException, AesException, JAXBException {
-        logger.debug(request.getContentType());
-        String signature = request.getParameter("signature");
-        // msg_signature
-        String msgSignature = request.getParameter("msg_signature");
-        // timestamp = data.timestamp
-        String timeStamp = request.getParameter("timestamp");
-        // nonce = data.nonce
-        String nonce = request.getParameter("nonce");
-        // encrypt_type
-        final String encrypt_type = request.getParameter("encrypt_type");
-        // echostr = data.echostr
-        String echostr = request.getParameter("echostr");
-        logger.info("params:" + signature + "," + msgSignature + "," + timeStamp + "," + nonce + "," + echostr);
-
-        if ("POST".equalsIgnoreCase(request.getMethod())) {
-            String requestXml = IOUtils.toString(request.getInputStream(), Charset.forName("UTF-8"));
-            messageLogger.info(requestXml);
-            String origin = requestXml;
-            if (EncryptType.AES.getType().equals(encrypt_type)) {
-                origin = crypt.decryptMsg(signature, timeStamp, nonce, requestXml);
-            }
-
-            messageLogger.info(origin);
-            ReceivedMessage receivedMessage = XmlUtils.xml2Object(origin, Text.class);
-            return receivedMessage;
-        }
-
-        return null;
     }
 }

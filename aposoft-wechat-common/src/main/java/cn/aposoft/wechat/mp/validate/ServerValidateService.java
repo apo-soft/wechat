@@ -29,4 +29,8 @@ public interface ServerValidateService {
      */
     public String echostr(String signature, String timestamp, String nonce, String echostr);
 
+    
+    
+    
+    
 }
