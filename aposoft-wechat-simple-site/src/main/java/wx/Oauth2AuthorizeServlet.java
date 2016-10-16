@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.LoggerFactory;
+
 import cn.aposoft.wechat.mp.auth.WechatAuthorizeService;
 import cn.aposoft.wechat.mp.auth.impl.WechatAuthorizeServiceFactory;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
@@ -26,6 +28,7 @@ import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
 @SuppressWarnings("serial")
 @WebServlet("/oauth2/authorize")
 public class Oauth2AuthorizeServlet extends HttpServlet {
+    private static final org.slf4j.Logger messageLogger = LoggerFactory.getLogger("wx.message");
 
     private WechatAuthorizeService service;
 
@@ -55,7 +58,11 @@ public class Oauth2AuthorizeServlet extends HttpServlet {
      *      response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String redirectUrl = service.getRedirectUrl("https://www.aposoft.cn/wx/oauth2/access_token", "snsapi_userinfo");
+
+        String type = request.getParameter("type");
+        String scope = request.getParameter("scope");
+        String redirectUrl = service.getRedirectUrl("https://www.aposoft.cn/wx/oauth2/access_token?type=" + type, scope);
+        messageLogger.info("redirect to:" + redirectUrl);
         response.sendRedirect(redirectUrl);
     }
 }

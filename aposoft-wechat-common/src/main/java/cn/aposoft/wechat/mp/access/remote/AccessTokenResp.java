@@ -21,7 +21,7 @@ import cn.aposoft.wechat.mp.remote.WechatBaseResp;
  * 
  */
 public class AccessTokenResp extends WechatBaseResp {
-
+    private static final long serialVersionUID = 726644249402378769L;
     private String access_token;
     private Integer expires_in;
 

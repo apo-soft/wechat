@@ -3,16 +3,21 @@
  */
 package cn.aposoft.wechat.mp.remote;
 
+import java.io.Serializable;
+
 /**
+ * 微信用户验证基础响应消息
+ * 
  * @author LiuJian
  * @date 2016年10月14日
  * 
  */
-public class WechatBaseResp {
-    private String errcode;
+public class WechatBaseResp implements Serializable {
+    private static final long serialVersionUID = -5375917048488103386L;
+    private Integer errcode;
     private String errmsg;
 
-    public void setErrcode(String errcode) {
+    public void setErrcode(Integer errcode) {
         this.errcode = errcode;
     }
 
@@ -20,7 +25,7 @@ public class WechatBaseResp {
         this.errmsg = errmsg;
     }
 
-    public String getErrcode() {
+    public Integer getErrcode() {
         return errcode;
     }
 

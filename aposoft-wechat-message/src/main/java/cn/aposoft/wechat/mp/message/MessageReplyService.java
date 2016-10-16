@@ -14,5 +14,8 @@ import cn.aposoft.wechat.mp.message.template.Message;
  */
 public interface MessageReplyService {
 
-    public Message getDefaultReplyMessage(String toUser);
+    /**
+     * 根据用户输入消息，返回指定的消息，默认返回{@link cn.aposoft.wechat.mp.message.template.Success}
+     */
+    public Message getReplyMessage(Message message);
 }

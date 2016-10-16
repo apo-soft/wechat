@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * <pre>
  * 参数   是否必须    说明
-
+ * 
  * </pre>
  * 
  * <pre>
@@ -73,14 +73,16 @@ public class News extends Message {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("<xml>")//
-                .append("<ToUserName><![CDATA").append(getToUser()).append("]]></ToUserName>")//
+                .append("<ToUserName><![CDATA[").append(getToUser()).append("]]></ToUserName>")//
                 .append("<FromUserName><![CDATA[").append(getFromUser()).append("]]></FromUserName>")//
                 .append("<CreateTime>").append(getCreateTime()).append("</CreateTime>")//
                 .append("<MsgType><![CDATA[").append(getMsgType()).append("]]></MsgType>")//
                 .append("<ArticleCount>").append(getArticleCount()).append("</ArticleCount>")//
                 .append("<Articles>");
-        for (Article article : articles) {
-            builder.append(article);
+        if (articles != null) {
+            for (Article article : articles) {
+                builder.append(article);
+            }
         }
         builder.append("</Articles>")//
                 .append("</xml>");

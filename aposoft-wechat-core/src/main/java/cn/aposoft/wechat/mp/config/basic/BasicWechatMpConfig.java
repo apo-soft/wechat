@@ -26,7 +26,13 @@ public class BasicWechatMpConfig implements WechatMpConfig {
 
     @Override
     public int getExpiredThreshold() {
-        return 300;// Token 超时时间，5分钟
+        // Token 超时时间，5分钟
+        return 300;
+    }
+
+    @Override
+    public String getEncodingAESKey() {
+        return null;
     }
 
 }

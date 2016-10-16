@@ -7,16 +7,18 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import org.apache.commons.lang.RandomStringUtils;
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 
+import cn.aposoft.wechat.mp.auth.Oauth2Auth;
 import cn.aposoft.wechat.mp.auth.Oauth2Token;
 import cn.aposoft.wechat.mp.auth.WechatAuthorizeService;
+import cn.aposoft.wechat.mp.auth.WechatUserInfo;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenResp;
+import cn.aposoft.wechat.mp.auth.remote.Oauth2AuthResp;
 import cn.aposoft.wechat.mp.config.UrlConstant;
 import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.util.RemoteException;
@@ -86,10 +88,10 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
                         , UrlConstant.AUTHORIZE_URL // 授权URL地址
                         , appId // 公众号ID
                         , encodedUrl // 重定向地址
+                        , resonseType// 固定为code
                         , scope // 应用授权作用域，snsapi_base
                                 // （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo
                                 // （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）
-                        , resonseType// 固定为code
                         , state); // nonce 无意义随机字符串
 
         return wechatRedirectUrl;
@@ -109,8 +111,10 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
     public Oauth2Token getOauth2Token(String code, String state) {
         // 校验state有效性 当前不做校验
         if (stateSet.containsKey(state)) {
+            logger.debug("contains state:" + state);
             stateSet.remove(state);
         } else {
+            logger.error("don't contains state:" + state);
             return null;
         }
 
@@ -133,7 +137,7 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
             logger.error("acquire OAuth2 Access Token error.", e);
             return null;
         }
-        if (oauth2Token != null && StringUtils.isNotBlank(oauth2Token.getErrcode())) {
+        if (oauth2Token != null && oauth2Token.getErrcode() != null) {
             logger.error("acquire OAuth2 Access Token error," + JSON.toJSONString(oauth2Token));
             return null;
         } else if (oauth2Token == null) {
@@ -141,6 +145,37 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
         }
 
         return oauth2Token;
+    }
+
+    @Override
+    public WechatUserInfo getUserInfo(String accessToken, String openId) {
+        try {
+            return client.getUserInfo(accessToken, openId);
+        } catch (RemoteException e) {
+            logger.error("acquire User Info error.", e);
+            return null;
+        }
+    }
+
+    /**
+     * 验证ACCESS_TOKEN是否有效
+     */
+    @Override
+    public Oauth2Auth auth(String accessToken, String openId) {
+        Oauth2AuthResp oauth2Auth = null;
+        try {
+            oauth2Auth = client.auth(accessToken, openId);
+        } catch (RemoteException e) {
+            logger.error("acquire OAuth2 Access Token error.", e);
+            return null;
+        }
+
+        if (oauth2Auth == null) {
+            logger.error("acquire OAuth2 Access Token error return null.");
+            return null;
+        } else {
+            return oauth2Auth;
+        }
     }
 
 }
