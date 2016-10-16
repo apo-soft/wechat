@@ -41,7 +41,7 @@ public class NewsReplyService implements MessageReplyService {
         // 样例,生产需要转换URL
         article.setUrl("https://www.aposoft.cn/wx/oauth2/authorize?type=" + Oauth2MsgType.ACCESS_TOKEN.getType() + "&scope="
                 + Oauth2Scope.snsapi_userinfo.getScope());
-        article.setPicurl("http://d.hiphotos.baidu.com/image/pic/item/42a98226cffc1e1771a5bbf94e90f603728de9e4.jpg");
+        article.setPicurl("http://d.hiphotos.baidu.com/image/pic/item/7a899e510fb30f24a9a92e37cd95d143ad4b03d7.jpg");
 
         articles.add(article);
 
@@ -61,7 +61,7 @@ public class NewsReplyService implements MessageReplyService {
         // 样例,生产需要转换URL
         article3.setUrl("https://www.aposoft.cn/wx/oauth2/authorize?type=" + Oauth2MsgType.AUTH.getType() + "&scope="
                 + Oauth2Scope.snsapi_userinfo.getScope());
-        article3.setPicurl("http://d.hiphotos.baidu.com/image/pic/item/7a899e510fb30f24a9a92e37cd95d143ad4b03d7.jpg");
+        article3.setPicurl("http://d.hiphotos.baidu.com/image/pic/item/42a98226cffc1e1771a5bbf94e90f603728de9e4.jpg");
 
         articles.add(article3);
 

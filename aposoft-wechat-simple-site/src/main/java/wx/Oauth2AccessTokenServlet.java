@@ -20,6 +20,7 @@ import cn.aposoft.wechat.mp.auth.WechatAuthorizeService;
 import cn.aposoft.wechat.mp.auth.WechatUserInfo;
 import cn.aposoft.wechat.mp.auth.impl.WechatAuthorizeServiceFactory;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
+import cn.aposoft.wechat.mp.constant.Lexical;
 
 /**
  * 获取用户OPENID和授权AccessToken的Servlet
@@ -63,6 +64,8 @@ public class Oauth2AccessTokenServlet extends HttpServlet {
         String code = request.getParameter("code");
         String state = request.getParameter("state");
         String type = request.getParameter("type");
+        response.setCharacterEncoding(Lexical.UTF8);
+        response.setContentType("text/plain");
         Oauth2Token oauth2Token = service.getOauth2Token(code, state);
         if ("access_token".equals(type)) {
             response.getWriter().write(JSON.toJSONString(oauth2Token));
