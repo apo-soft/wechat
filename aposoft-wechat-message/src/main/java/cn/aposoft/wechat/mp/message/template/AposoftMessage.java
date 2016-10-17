@@ -16,7 +16,7 @@ import cn.aposoft.wechat.mp.message.MsgType;
  * @date 2016年10月14日
  * 
  */
-public class AposoftMessage implements WechatMessage, Serializable {
+public class AposoftMessage implements Message, Serializable {
     private static final long serialVersionUID = -9068509663236949433L;
     /**
      * ToUserName 是 接收方帐号（收到的OpenID）

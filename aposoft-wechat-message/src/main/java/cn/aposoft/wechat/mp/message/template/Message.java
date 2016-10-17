@@ -10,7 +10,7 @@ import cn.aposoft.wechat.mp.message.MsgType;
  * @date 2016年10月17日
  * 
  */
-public interface WechatMessage {
+public interface Message {
 
     /**
      * ToUserName 是 接收方帐号（收到的OpenID）

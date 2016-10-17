@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * 
  */
 @XmlRootElement(namespace = "", name = "xml")
-public class AposoftIntegratedMessage extends ReceivedMessage implements Text {
+public class AposoftIntegratedMessage extends AposoftReceivedMessage implements Text {
     private static final long serialVersionUID = 8816478589951659637L;
 
     private String content;

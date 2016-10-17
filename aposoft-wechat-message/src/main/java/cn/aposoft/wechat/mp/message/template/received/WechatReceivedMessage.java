@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.mp.message.template.received;
 
-import cn.aposoft.wechat.mp.message.template.WechatMessage;
+import cn.aposoft.wechat.mp.message.template.Message;
 
 /**
  * 接受类消息
@@ -12,7 +12,7 @@ import cn.aposoft.wechat.mp.message.template.WechatMessage;
  * @date 2016年10月17日
  * 
  */
-public interface WechatReceivedMessage extends WechatMessage {
+public interface WechatReceivedMessage extends Message {
     /**
      * 消息id，64位整型
      * 

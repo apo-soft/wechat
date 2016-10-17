@@ -27,8 +27,8 @@ import cn.aposoft.wechat.mp.crypt.impl.BasicCryptService;
 import cn.aposoft.wechat.mp.message.MessageParams;
 import cn.aposoft.wechat.mp.message.MessageReplyService;
 import cn.aposoft.wechat.mp.message.impl.NewsReplyService;
-import cn.aposoft.wechat.mp.message.template.received.ReceivedMessage;
-import cn.aposoft.wechat.mp.message.template.received.Text;
+import cn.aposoft.wechat.mp.message.template.received.AposoftIntegratedMessage;
+import cn.aposoft.wechat.mp.message.template.received.AposoftReceivedMessage;
 import cn.aposoft.wechat.mp.util.XmlUtils;
 import cn.aposoft.wechat.mp.validate.ServerValidateService;
 import cn.aposoft.wechat.mp.validate.impl.BasicServerValidateService;
@@ -100,7 +100,7 @@ public class MessageServlet extends HttpServlet {
 
             }
             // Mapping
-            ReceivedMessage receivedMessage = XmlUtils.xml2Object(origin, Text.class);
+            AposoftReceivedMessage receivedMessage = XmlUtils.xml2Object(origin, AposoftIntegratedMessage.class);
             // 读取返回消息
             String replyMsg = getRespMessage(receivedMessage);
             // 条件性加密
@@ -163,7 +163,7 @@ public class MessageServlet extends HttpServlet {
     }
 
     // 读取默认的返回值消息
-    private String getRespMessage(ReceivedMessage receivedMessage) {
+    private String getRespMessage(AposoftReceivedMessage receivedMessage) {
         if (receivedMessage == null) {
             return null;
         }
