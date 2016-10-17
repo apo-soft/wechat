@@ -1,11 +1,11 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.message.template.received;
+package cn.aposoft.wechat.mp.message.impl;
 
 import javax.xml.bind.annotation.XmlElement;
 
-import cn.aposoft.wechat.mp.message.template.AposoftMessage;
+import cn.aposoft.wechat.mp.message.template.received.ReceivedMessage;
 
 /**
  * 接收到的消息基类

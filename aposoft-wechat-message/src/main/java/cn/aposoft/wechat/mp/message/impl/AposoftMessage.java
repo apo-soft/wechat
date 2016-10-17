@@ -1,13 +1,14 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.message.template;
+package cn.aposoft.wechat.mp.message.impl;
 
 import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlElement;
 
 import cn.aposoft.wechat.mp.message.MsgType;
+import cn.aposoft.wechat.mp.message.template.Message;
 
 /**
  * 微信响应的消息基类

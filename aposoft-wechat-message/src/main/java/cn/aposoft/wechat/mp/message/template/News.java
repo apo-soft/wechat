@@ -5,6 +5,8 @@ package cn.aposoft.wechat.mp.message.template;
 
 import java.util.List;
 
+import cn.aposoft.wechat.mp.message.impl.AposoftMessage;
+
 /**
  * <pre>
  * 参数   是否必须    说明
