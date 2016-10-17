@@ -9,7 +9,7 @@ package cn.aposoft.wechat.mp.message.template.received;
  * @date 2016年10月14日
  * 
  */
-public interface Text extends WechatReceivedMessage {
+public interface Text extends ReceivedMessage {
 
     /**
      * @return 文本类型消息内容

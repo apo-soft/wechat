@@ -10,7 +10,7 @@ package cn.aposoft.wechat.mp.message.template.received;
  * @date 2016年10月17日
  * 
  */
-public interface Media extends WechatReceivedMessage {
+public interface Media extends ReceivedMessage {
 
     /**
      * 素材了资源ID

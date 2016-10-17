@@ -3,7 +3,8 @@
  */
 package cn.aposoft.wechat.mp.message;
 
-import cn.aposoft.wechat.mp.message.template.AposoftMessage;
+import cn.aposoft.wechat.mp.message.template.Message;
+import cn.aposoft.wechat.mp.message.template.received.ReceivedMessage;
 
 /**
  * 默认应答消息服务
@@ -17,5 +18,5 @@ public interface MessageReplyService {
     /**
      * 根据用户输入消息，返回指定的消息，默认返回{@link cn.aposoft.wechat.mp.message.template.Success}
      */
-    public AposoftMessage getReplyMessage(AposoftMessage message);
+    public Message getReplyMessage(ReceivedMessage message);
 }

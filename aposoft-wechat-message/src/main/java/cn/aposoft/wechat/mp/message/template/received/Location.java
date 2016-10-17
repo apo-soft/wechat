@@ -8,7 +8,7 @@ package cn.aposoft.wechat.mp.message.template.received;
  * @date 2016年10月17日
  * 
  */
-public interface Location extends WechatReceivedMessage {
+public interface Location extends ReceivedMessage {
 
     /**
      * 位置信息

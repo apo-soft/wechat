@@ -11,10 +11,12 @@ import cn.aposoft.wechat.mp.auth.Oauth2Scope;
 import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.message.MessageReplyService;
 import cn.aposoft.wechat.mp.message.MsgType;
-import cn.aposoft.wechat.mp.message.template.Article;
 import cn.aposoft.wechat.mp.message.template.AposoftMessage;
+import cn.aposoft.wechat.mp.message.template.Article;
+import cn.aposoft.wechat.mp.message.template.Message;
 import cn.aposoft.wechat.mp.message.template.News;
 import cn.aposoft.wechat.mp.message.template.Success;
+import cn.aposoft.wechat.mp.message.template.received.ReceivedMessage;
 
 /**
  * @author LiuJian
@@ -74,7 +76,7 @@ public class NewsReplyService implements MessageReplyService {
      * 当用户输入的是Text文本时,返回News，其他条件下仅返回success
      */
     @Override
-    public AposoftMessage getReplyMessage(AposoftMessage message) {
+    public Message getReplyMessage(ReceivedMessage message) {
 
         if (MsgType.Text.getCode().equals(message.getMsgType())) {
             return getReplyMessage(message.getFromUser());

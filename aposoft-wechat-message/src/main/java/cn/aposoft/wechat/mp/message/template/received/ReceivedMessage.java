@@ -12,7 +12,7 @@ import cn.aposoft.wechat.mp.message.template.Message;
  * @date 2016年10月17日
  * 
  */
-public interface WechatReceivedMessage extends Message {
+public interface ReceivedMessage extends Message {
     /**
      * 消息id，64位整型
      * 

@@ -14,7 +14,7 @@ import cn.aposoft.wechat.mp.message.template.AposoftMessage;
  * @date 2016年10月14日
  * 
  */
-public class AposoftReceivedMessage extends AposoftMessage implements WechatReceivedMessage {
+public class AposoftReceivedMessage extends AposoftMessage implements ReceivedMessage {
     private static final long serialVersionUID = 7413596353714301357L;
     /**
      * 消息id，64位整型

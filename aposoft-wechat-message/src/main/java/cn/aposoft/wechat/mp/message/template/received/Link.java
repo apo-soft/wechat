@@ -1,6 +1,6 @@
 package cn.aposoft.wechat.mp.message.template.received;
 
-public interface Link extends WechatReceivedMessage {
+public interface Link extends ReceivedMessage {
 
     /**
      * 标题
