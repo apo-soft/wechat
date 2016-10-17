@@ -39,7 +39,7 @@ import java.util.List;
  * @date 2016年10月14日
  * 
  */
-public class News extends Message {
+public class News extends AposoftMessage {
     private static final long serialVersionUID = 7331378356472047103L;
     /**
      * ArticleCount 是 图文消息个数，限制为10条以内

@@ -4,15 +4,16 @@
 package cn.aposoft.wechat.mp.message.template.received;
 
 /**
- * 
  * @author LiuJian
- * @date 2016年10月14日
+ * @date 2016年10月17日
  * 
  */
-public interface Text extends WechatReceivedMessage {
+public interface Picture extends Media {
 
     /**
-     * @return 文本类型消息内容
+     * 图片消息
+     * 
+     * @return 图片地址
      */
-    public String getContent();
+    public String getPicUrl();
 }

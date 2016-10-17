@@ -16,7 +16,7 @@ import cn.aposoft.wechat.mp.message.MsgType;
  * @date 2016年10月14日
  * 
  */
-public class Message implements Serializable {
+public class AposoftMessage implements WechatMessage, Serializable {
     private static final long serialVersionUID = -9068509663236949433L;
     /**
      * ToUserName 是 接收方帐号（收到的OpenID）
@@ -34,14 +34,17 @@ public class Message implements Serializable {
      * MsgType 是{@link MsgType#getCode()}
      */
     private String msgType;
+
     @XmlElement(name = "ToUserName")
     public void setToUser(String toUser) {
         this.toUser = toUser;
     }
+
     @XmlElement(name = "FromUserName")
     public void setFromUser(String fromUser) {
         this.fromUser = fromUser;
     }
+
     @XmlElement(name = "CreateTime")
     public void setCreateTime(String createTime) {
         this.createTime = createTime;

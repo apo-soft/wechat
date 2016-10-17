@@ -12,7 +12,7 @@ import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.message.MessageReplyService;
 import cn.aposoft.wechat.mp.message.MsgType;
 import cn.aposoft.wechat.mp.message.template.Article;
-import cn.aposoft.wechat.mp.message.template.Message;
+import cn.aposoft.wechat.mp.message.template.AposoftMessage;
 import cn.aposoft.wechat.mp.message.template.News;
 import cn.aposoft.wechat.mp.message.template.Success;
 
@@ -26,7 +26,7 @@ public class NewsReplyService implements MessageReplyService {
     /**
      * 根据toUser, 返回默认的联排消息
      */
-    public Message getReplyMessage(String toUser) {
+    public AposoftMessage getReplyMessage(String toUser) {
         News news = new News();
         news.setFromUser(WechatMpConfigFactory.getConfig().getUserId());
         news.setToUser(toUser);
@@ -74,7 +74,7 @@ public class NewsReplyService implements MessageReplyService {
      * 当用户输入的是Text文本时,返回News，其他条件下仅返回success
      */
     @Override
-    public Message getReplyMessage(Message message) {
+    public AposoftMessage getReplyMessage(AposoftMessage message) {
 
         if (MsgType.Text.getCode().equals(message.getMsgType())) {
             return getReplyMessage(message.getFromUser());

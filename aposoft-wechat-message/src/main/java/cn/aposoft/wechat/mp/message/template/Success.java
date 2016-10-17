@@ -10,7 +10,7 @@ package cn.aposoft.wechat.mp.message.template;
  * @date 2016年10月16日
  * 
  */
-public class Success extends Message {
+public class Success extends AposoftMessage {
     private static final long serialVersionUID = -3539209971606525121L;
     private static final Success success = new Success();
 

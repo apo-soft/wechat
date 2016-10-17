@@ -5,7 +5,7 @@ package cn.aposoft.wechat.mp.message.template.received;
 
 import javax.xml.bind.annotation.XmlElement;
 
-import cn.aposoft.wechat.mp.message.template.Message;
+import cn.aposoft.wechat.mp.message.template.AposoftMessage;
 
 /**
  * 接收到的消息基类
@@ -14,7 +14,7 @@ import cn.aposoft.wechat.mp.message.template.Message;
  * @date 2016年10月14日
  * 
  */
-public class ReceivedMessage extends Message {
+public class ReceivedMessage extends AposoftMessage implements WechatReceivedMessage {
     private static final long serialVersionUID = 7413596353714301357L;
     /**
      * 消息id，64位整型
