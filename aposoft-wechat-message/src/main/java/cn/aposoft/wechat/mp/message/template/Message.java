@@ -3,6 +3,8 @@
  */
 package cn.aposoft.wechat.mp.message.template;
 
+import java.io.Serializable;
+
 import cn.aposoft.wechat.mp.message.MsgType;
 
 /**
@@ -10,7 +12,7 @@ import cn.aposoft.wechat.mp.message.MsgType;
  * @date 2016年10月17日
  * 
  */
-public interface Message {
+public interface Message extends Serializable {
 
     /**
      * ToUserName 是 接收方帐号（收到的OpenID）

@@ -4,6 +4,8 @@
 package cn.aposoft.wechat.mp.message.template.received;
 
 /**
+ * 语音消息
+ * 
  * @author LiuJian
  * @date 2016年10月17日
  * 
@@ -21,5 +23,5 @@ public interface Voice extends Media {
      * 
      * @return 识别结果
      */
-    public String getRecongnition();
+    public String getRecognition();
 }
