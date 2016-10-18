@@ -26,7 +26,7 @@ import cn.aposoft.wechat.mp.codec.aes.AesException;
 import cn.aposoft.wechat.mp.constant.Lexical;
 import cn.aposoft.wechat.mp.crypt.CryptService;
 import cn.aposoft.wechat.mp.crypt.impl.BasicCryptService;
-import cn.aposoft.wechat.mp.message.MessageParams;
+import cn.aposoft.wechat.mp.message.MessageRequestParams;
 import cn.aposoft.wechat.mp.message.MessageReplyService;
 import cn.aposoft.wechat.mp.message.impl.AposoftIntegratedMessage;
 import cn.aposoft.wechat.mp.message.impl.NewsReplyService;
@@ -79,9 +79,10 @@ public class MessageServlet extends HttpServlet {
         HttpUtils.printHeaders(request);
         HttpUtils.printParams(request);
 
-        MessageParams messageParams = getMessageParams(request);
-        // 通用验签
+        // 入参解析
+        MessageRequestParams messageParams = parseRequestParams(request);
 
+        // 通用验签
         boolean isSignatureValid = SignatureValidator.validate(messageParams);
 
         if (!isSignatureValid) {
@@ -98,30 +99,28 @@ public class MessageServlet extends HttpServlet {
 
         try {
             // 判定是否是服务器验证逻辑
-            if (isVerifyRequest(messageParams)) {
+            if (SignatureValidator.hasEchostr(messageParams)) {
                 if (isSignatureValid) {
                     response.getWriter().print(messageParams.getEchostr());
                 }
-
             }
-            String origin = null;
+            // 明文
+            String plainPostData = null;
             // 读取传入消息
             if ("POST".equalsIgnoreCase(request.getMethod())) {
                 String postData = IOUtils.toString(request.getInputStream(), Lexical.UTF8_CHARSET);
                 // 解密
-                origin = getPostText(messageParams, postData);
-
+                plainPostData = decode(messageParams, postData);
             }
             // Mapping
-            Message receivedMessage = XmlUtils.xml2Object(origin, AposoftIntegratedMessage.class);
+            AposoftIntegratedMessage requestMessage = XmlUtils.xml2Object(plainPostData, AposoftIntegratedMessage.class);
             // 读取返回消息
-            String replyMsg = getRespMessage(receivedMessage);
-            // 条件性加密
-            replyMsg = getResponseText(messageParams, replyMsg);
+            String replyMsg = getRespMessage(requestMessage);
+
             // 输出返回值
             response.setCharacterEncoding(Lexical.UTF8);
             response.setContentType("text/xml");
-            response.getWriter().print(replyMsg);
+            response.getWriter().print(encode(messageParams, replyMsg));
         } catch (AesException | JAXBException e) {
             logger.error("read message error.", e);
         } catch (Exception e) {
@@ -130,7 +129,18 @@ public class MessageServlet extends HttpServlet {
         }
     }
 
-    private String getResponseText(final MessageParams messageParams, final String plainResponseText) throws AesException {
+    /**
+     * 当入参使用加密时，返回值也需要加密
+     * 
+     * @param messageParams
+     *            消息参数
+     * @param plainResponseText
+     *            应答报文内容
+     * @return 编码后应答报文
+     * @throws AesException
+     *             加密失败抛出此异常
+     */
+    private String encode(final MessageRequestParams messageParams, final String plainResponseText) throws AesException {
         String replyMsg = plainResponseText;
         messageLogger.info(replyMsg);
         // 条件加密
@@ -145,7 +155,7 @@ public class MessageServlet extends HttpServlet {
     }
 
     // optional decrypt the request text
-    private String getPostText(MessageParams messageParams, String postData) throws AesException {
+    private String decode(MessageRequestParams messageParams, String postData) throws AesException {
         String origin = postData;
         messageLogger.info(origin);
         if (EncryptType.AES.getType().equals(messageParams.getEncrypt_type())) {
@@ -155,8 +165,8 @@ public class MessageServlet extends HttpServlet {
         return origin;
     }
 
-    private MessageParams getMessageParams(HttpServletRequest request) {
-        MessageParams params = new MessageParams();
+    private MessageRequestParams parseRequestParams(HttpServletRequest request) {
+        MessageRequestParams params = new MessageRequestParams();
         params.setEchostr(request.getParameter("echostr"));
         params.setEncrypt_type(request.getParameter("encrypt_type"));
         params.setMsg_signature(request.getParameter("msg_signature"));
@@ -165,15 +175,6 @@ public class MessageServlet extends HttpServlet {
         params.setSignature(request.getParameter("signature"));
         params.setTimestamp(request.getParameter("timestamp"));
         return params;
-    }
-
-    // TODO 应当转移到服务层
-    private boolean isVerifyRequest(MessageParams messageParams) {
-        if (messageParams.getSignature() != null && messageParams.getTimestamp() != null && messageParams.getNonce() != null
-                && messageParams.getEchostr() != null) {
-            return true;
-        }
-        return false;
     }
 
     // 读取默认的返回值消息

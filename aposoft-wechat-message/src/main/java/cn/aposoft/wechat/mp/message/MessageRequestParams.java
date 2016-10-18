@@ -6,6 +6,7 @@ package cn.aposoft.wechat.mp.message;
 import java.io.Serializable;
 
 import cn.aposoft.wechat.mp.validate.SignatureParams;
+import cn.aposoft.wechat.mp.validate.ValidateParams;
 
 /**
  * 微信服务器转发消息参数集合
@@ -14,7 +15,7 @@ import cn.aposoft.wechat.mp.validate.SignatureParams;
  * @date 2016年10月16日
  * 
  */
-public class MessageParams implements SignatureParams, Serializable {
+public class MessageRequestParams implements ValidateParams, SignatureParams, Serializable {
     private static final long serialVersionUID = 3076379283072980675L;
     /**
      * 微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数。
