@@ -6,6 +6,10 @@ package cn.aposoft.wechat.mp.message.impl;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import cn.aposoft.wechat.mp.message.template.event.Event;
+import cn.aposoft.wechat.mp.message.template.event.LocationEvent;
+import cn.aposoft.wechat.mp.message.template.event.MenuEvent;
+import cn.aposoft.wechat.mp.message.template.event.QrScanEvent;
 import cn.aposoft.wechat.mp.message.template.received.Link;
 import cn.aposoft.wechat.mp.message.template.received.Location;
 import cn.aposoft.wechat.mp.message.template.received.Media;
@@ -22,7 +26,10 @@ import cn.aposoft.wechat.mp.message.template.received.Voice;
  */
 @XmlRootElement(namespace = "", name = "xml")
 public class AposoftIntegratedMessage extends AposoftReceivedMessage //
-        implements Text, Media, Picture, Voice, Video, Location, Link {
+        implements Text, Media, Picture, Voice, Video, Location, Link, //
+        Event, LocationEvent, MenuEvent, QrScanEvent
+
+{
     private static final long serialVersionUID = 8816478589951659637L;
     // 文本
     private String content;
@@ -36,7 +43,7 @@ public class AposoftIntegratedMessage extends AposoftReceivedMessage //
     private String recognition;
     // 视频消息缩略图的媒体id，可以调用多媒体文件下载接口拉取数据。
     private String thumbMediaId;
-    
+
     // 地理位置信息
     private String label;
     // 地理位置维度
@@ -52,6 +59,14 @@ public class AposoftIntegratedMessage extends AposoftReceivedMessage //
     private String description;
     // 消息链接
     private String url;
+    private String eventKey;
+    private String ticket;
+    private String latitude;
+    private String longitude;
+    private String precision;
+    private String event;
+
+    // 事件消息
 
     /**
      * 消息标题
@@ -62,6 +77,60 @@ public class AposoftIntegratedMessage extends AposoftReceivedMessage //
     @XmlElement(name = "Title")
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    /**
+     * @param eventKey
+     *            the eventKey to set
+     */
+    @XmlElement(name = "EventKey")
+    public void setEventKey(String eventKey) {
+        this.eventKey = eventKey;
+    }
+
+    /**
+     * @param ticket
+     *            the ticket to set
+     */
+    @XmlElement(name = "Ticket")
+    public void setTicket(String ticket) {
+        this.ticket = ticket;
+    }
+
+    /**
+     * @param latitude
+     *            the latitude to set
+     */
+    @XmlElement(name = "Latitude")
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    /**
+     * @param longitude
+     *            the longitude to set
+     */
+    @XmlElement(name = "Longitude")
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    /**
+     * @param precision
+     *            the precision to set
+     */
+    @XmlElement(name = "Precision")
+    public void setPrecision(String precision) {
+        this.precision = precision;
+    }
+
+    /**
+     * @param event
+     *            the event to set
+     */
+    @XmlElement(name = "Event")
+    public void setEvent(String event) {
+        this.event = event;
     }
 
     /**
@@ -275,6 +344,36 @@ public class AposoftIntegratedMessage extends AposoftReceivedMessage //
     @Override
     public String getUrl() {
         return url;
+    }
+
+    @Override
+    public String getEventKey() {
+        return eventKey;
+    }
+
+    @Override
+    public String getTicket() {
+        return ticket;
+    }
+
+    @Override
+    public String getLatitude() {
+        return latitude;
+    }
+
+    @Override
+    public String getLongitude() {
+        return longitude;
+    }
+
+    @Override
+    public String getPrecision() {
+        return precision;
+    }
+
+    @Override
+    public String getEvent() {
+        return event;
     }
 
 }
