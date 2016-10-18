@@ -17,6 +17,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
+
 import cn.aposoft.wechat.mp.codec.EncryptType;
 import cn.aposoft.wechat.mp.codec.aes.AesException;
 //import cn.aposoft.wechat.mp.config.WechatMpConfig;
@@ -27,11 +29,10 @@ import cn.aposoft.wechat.mp.crypt.impl.BasicCryptService;
 import cn.aposoft.wechat.mp.message.MessageParams;
 import cn.aposoft.wechat.mp.message.MessageReplyService;
 import cn.aposoft.wechat.mp.message.impl.AposoftIntegratedMessage;
-import cn.aposoft.wechat.mp.message.impl.AposoftReceivedMessage;
 import cn.aposoft.wechat.mp.message.impl.NewsReplyService;
+import cn.aposoft.wechat.mp.message.template.Message;
 import cn.aposoft.wechat.mp.util.XmlUtils;
-import cn.aposoft.wechat.mp.validate.ServerValidateService;
-import cn.aposoft.wechat.mp.validate.impl.BasicServerValidateService;
+import cn.aposoft.wechat.mp.validate.SignatureValidator;
 
 /**
  * 接收消息的Servlet
@@ -48,7 +49,7 @@ public class MessageServlet extends HttpServlet {
 
     private CryptService crypt;
     private MessageReplyService messageService;
-    private ServerValidateService serverValidateService;
+    boolean forceValidate = false;
 
     @Override
     public void init(ServletConfig config) {
@@ -60,7 +61,6 @@ public class MessageServlet extends HttpServlet {
             throw new Error("aes key initialize error", e);
         }
         messageService = new NewsReplyService();
-        serverValidateService = new BasicServerValidateService();
     }
 
     /**
@@ -80,16 +80,29 @@ public class MessageServlet extends HttpServlet {
         HttpUtils.printParams(request);
 
         MessageParams messageParams = getMessageParams(request);
+        // 通用验签
+
+        boolean isSignatureValid = SignatureValidator.validate(messageParams);
+
+        if (!isSignatureValid) {
+            if (forceValidate) {
+                logger.error("signature is not valid" + JSON.toJSONString(messageParams));
+                return;
+            } else {
+                if (SignatureValidator.isSignatureValid(messageParams)) {
+                    logger.warn("signature is empty" + JSON.toJSONString(messageParams));
+                }
+                logger.warn("signature is not valid" + JSON.toJSONString(messageParams));
+            }
+        }
 
         try {
             // 判定是否是服务器验证逻辑
             if (isVerifyRequest(messageParams)) {
-                String echostr = serverValidateService.echostr(messageParams.getSignature(), messageParams.getTimestamp(), messageParams.getNonce(),
-                        messageParams.getEchostr());
-                if (echostr != null) {
-                    response.getWriter().print(echostr);
-                    return;
+                if (isSignatureValid) {
+                    response.getWriter().print(messageParams.getEchostr());
                 }
+
             }
             String origin = null;
             // 读取传入消息
@@ -100,7 +113,7 @@ public class MessageServlet extends HttpServlet {
 
             }
             // Mapping
-            AposoftReceivedMessage receivedMessage = XmlUtils.xml2Object(origin, AposoftIntegratedMessage.class);
+            Message receivedMessage = XmlUtils.xml2Object(origin, AposoftIntegratedMessage.class);
             // 读取返回消息
             String replyMsg = getRespMessage(receivedMessage);
             // 条件性加密
@@ -154,6 +167,7 @@ public class MessageServlet extends HttpServlet {
         return params;
     }
 
+    // TODO 应当转移到服务层
     private boolean isVerifyRequest(MessageParams messageParams) {
         if (messageParams.getSignature() != null && messageParams.getTimestamp() != null && messageParams.getNonce() != null
                 && messageParams.getEchostr() != null) {
@@ -163,11 +177,11 @@ public class MessageServlet extends HttpServlet {
     }
 
     // 读取默认的返回值消息
-    private String getRespMessage(AposoftReceivedMessage receivedMessage) {
-        if (receivedMessage == null) {
+    private String getRespMessage(Message requestMessage) {
+        if (requestMessage == null) {
             return null;
         }
-        String respMessage = messageService.getReplyMessage(receivedMessage).toString();
+        String respMessage = messageService.getReplyMessage(requestMessage).toString();
         return respMessage;
     }
 }

@@ -15,7 +15,6 @@ import cn.aposoft.wechat.mp.message.template.Article;
 import cn.aposoft.wechat.mp.message.template.Message;
 import cn.aposoft.wechat.mp.message.template.News;
 import cn.aposoft.wechat.mp.message.template.Success;
-import cn.aposoft.wechat.mp.message.template.received.ReceivedMessage;
 
 /**
  * @author LiuJian
@@ -75,7 +74,7 @@ public class NewsReplyService implements MessageReplyService {
      * 当用户输入的是Text文本时,返回News，其他条件下仅返回success
      */
     @Override
-    public Message getReplyMessage(ReceivedMessage message) {
+    public Message getReplyMessage(Message message) {
 
         if (MsgType.Text.getCode().equals(message.getMsgType())) {
             return getReplyMessage(message.getFromUser());
