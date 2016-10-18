@@ -11,10 +11,10 @@ import cn.aposoft.wechat.mp.auth.Oauth2Scope;
 import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.message.MessageReplyService;
 import cn.aposoft.wechat.mp.message.MsgType;
-import cn.aposoft.wechat.mp.message.template.Article;
 import cn.aposoft.wechat.mp.message.template.Message;
-import cn.aposoft.wechat.mp.message.template.News;
 import cn.aposoft.wechat.mp.message.template.Success;
+import cn.aposoft.wechat.mp.message.template.reply.Article;
+import cn.aposoft.wechat.mp.message.template.reply.News;
 
 /**
  * @author LiuJian

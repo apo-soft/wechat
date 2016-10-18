@@ -1,7 +1,7 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.message.template;
+package cn.aposoft.wechat.mp.message.template.reply;
 
 import java.util.List;
 
