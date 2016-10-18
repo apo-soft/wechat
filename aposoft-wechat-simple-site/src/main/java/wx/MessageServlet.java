@@ -27,9 +27,9 @@ import cn.aposoft.wechat.mp.constant.Lexical;
 import cn.aposoft.wechat.mp.crypt.CryptService;
 import cn.aposoft.wechat.mp.crypt.impl.BasicCryptService;
 import cn.aposoft.wechat.mp.message.MessageRequestParams;
-import cn.aposoft.wechat.mp.message.MessageReplyService;
+import cn.aposoft.wechat.mp.message.MessageService;
 import cn.aposoft.wechat.mp.message.impl.AposoftIntegratedMessage;
-import cn.aposoft.wechat.mp.message.impl.NewsReplyService;
+import cn.aposoft.wechat.mp.message.impl.NewsService;
 import cn.aposoft.wechat.mp.message.template.Message;
 import cn.aposoft.wechat.mp.util.XmlUtils;
 import cn.aposoft.wechat.mp.validate.SignatureValidator;
@@ -48,7 +48,7 @@ public class MessageServlet extends HttpServlet {
     private static final org.slf4j.Logger messageLogger = LoggerFactory.getLogger("wx.message");
 
     private CryptService crypt;
-    private MessageReplyService messageService;
+    private MessageService messageService;
     boolean forceValidate = false;
 
     @Override
@@ -60,7 +60,7 @@ public class MessageServlet extends HttpServlet {
             logger.error("meets error while init crypt", e);
             throw new Error("aes key initialize error", e);
         }
-        messageService = new NewsReplyService();
+        messageService = new NewsService();
     }
 
     /**

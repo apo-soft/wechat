@@ -9,7 +9,7 @@ import java.util.List;
 import cn.aposoft.wechat.mp.auth.Oauth2MsgType;
 import cn.aposoft.wechat.mp.auth.Oauth2Scope;
 import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
-import cn.aposoft.wechat.mp.message.MessageReplyService;
+import cn.aposoft.wechat.mp.message.MessageService;
 import cn.aposoft.wechat.mp.message.MsgType;
 import cn.aposoft.wechat.mp.message.template.Message;
 import cn.aposoft.wechat.mp.message.template.Success;
@@ -21,7 +21,7 @@ import cn.aposoft.wechat.mp.message.template.reply.News;
  * @date 2016年10月14日
  * 
  */
-public class NewsReplyService implements MessageReplyService {
+public class NewsService implements MessageService {
 
     /**
      * 根据toUser, 返回默认的联排消息
