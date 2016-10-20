@@ -13,10 +13,10 @@ import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import cn.aposoft.wechat.mp.constant.Lexical;
-import cn.aposoft.wechat.mp.util.HttpClient;
-import cn.aposoft.wechat.mp.util.HttpClientFactory;
-import cn.aposoft.wechat.mp.util.RemoteException;
+import cn.aposoft.constant.Lexical;
+import cn.aposoft.util.HttpClient;
+import cn.aposoft.util.HttpClientFactory;
+import cn.aposoft.util.RemoteException;
 
 /**
  * @author LiuJian

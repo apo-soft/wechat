@@ -1,7 +1,7 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.util;
+package cn.aposoft.util;
 
 /**
  * 远程访问异常基类

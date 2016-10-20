@@ -19,11 +19,10 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 
+import cn.aposoft.constant.Lexical;
+import cn.aposoft.util.XmlUtils;
 import cn.aposoft.wechat.mp.codec.EncryptType;
 import cn.aposoft.wechat.mp.codec.aes.AesException;
-//import cn.aposoft.wechat.mp.config.WechatMpConfig;
-//import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
-import cn.aposoft.wechat.mp.constant.Lexical;
 import cn.aposoft.wechat.mp.crypt.CryptService;
 import cn.aposoft.wechat.mp.crypt.impl.BasicCryptService;
 import cn.aposoft.wechat.mp.message.MessageRequestParams;
@@ -31,7 +30,6 @@ import cn.aposoft.wechat.mp.message.MessageService;
 import cn.aposoft.wechat.mp.message.impl.AposoftIntegratedMessage;
 import cn.aposoft.wechat.mp.message.impl.NewsService;
 import cn.aposoft.wechat.mp.message.template.Message;
-import cn.aposoft.wechat.mp.util.XmlUtils;
 import cn.aposoft.wechat.mp.validate.SignatureValidator;
 
 /**

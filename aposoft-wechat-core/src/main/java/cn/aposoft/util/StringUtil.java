@@ -1,4 +1,4 @@
-package cn.aposoft.wechat.mp.util;
+package cn.aposoft.util;
 
 public class StringUtil {
 	private StringUtil() {

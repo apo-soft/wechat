@@ -11,8 +11,8 @@ import org.xml.sax.SAXException;
 
 import com.alibaba.fastjson.JSON;
 
+import cn.aposoft.util.XmlUtils;
 import cn.aposoft.wechat.mp.message.template.received.Text;
-import cn.aposoft.wechat.mp.util.XmlUtils;
 
 /**
  * @author LiuJian

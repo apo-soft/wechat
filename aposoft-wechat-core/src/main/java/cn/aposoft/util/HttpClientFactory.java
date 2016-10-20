@@ -1,7 +1,7 @@
 /**
  * Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.util;
+package cn.aposoft.util;
 
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;

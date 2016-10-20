@@ -22,8 +22,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 
+import cn.aposoft.constant.Lexical;
 import cn.aposoft.wechat.mp.codec.digest.DigestUtils;
-import cn.aposoft.wechat.mp.constant.Lexical;
 
 /**
  * 提供接收和推送给公众平台消息的加解密接口(UTF8编码的字符串).

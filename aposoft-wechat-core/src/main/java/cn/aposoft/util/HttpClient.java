@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.util;
+package cn.aposoft.util;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;

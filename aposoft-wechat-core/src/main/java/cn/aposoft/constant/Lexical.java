@@ -1,7 +1,7 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.constant;
+package cn.aposoft.constant;
 
 import java.nio.charset.Charset;
 

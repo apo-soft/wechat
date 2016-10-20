@@ -1,12 +1,12 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.util;
+package cn.aposoft.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import cn.aposoft.wechat.mp.constant.Lexical;
+import cn.aposoft.constant.Lexical;
 
 /**
  * 
