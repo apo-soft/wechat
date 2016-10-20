@@ -21,4 +21,8 @@ public class Lexical {
      * UTF-8 Character encoding
      */
     public static final Charset UTF8_CHARSET = Charset.forName(UTF8);
+    /**
+     * JSON : "json"
+     */
+    public static final String JSON = "json";
 }
