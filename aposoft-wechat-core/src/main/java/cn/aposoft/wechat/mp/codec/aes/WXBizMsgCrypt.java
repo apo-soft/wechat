@@ -211,7 +211,7 @@ public class WXBizMsgCrypt {
      * 
      * @param replyMsg
      *            公众平台待回复用户的消息，xml格式的字符串
-     * @param timeStamp
+     * @param timestamp
      *            时间戳，可以自己生成，也可以用URL参数的timestamp
      * @param nonce
      *            随机串，可以自己生成，也可以用URL参数的nonce
@@ -221,19 +221,19 @@ public class WXBizMsgCrypt {
      * @throws AesException
      *             执行失败，请查看该异常的错误码和具体的错误信息
      */
-    public String encryptMsg(String replyMsg, String timeStamp, String nonce) throws AesException {
+    public String encryptMsg(String replyMsg, String timestamp, String nonce) throws AesException {
         // 加密
         String encrypt = encrypt(getRandomStr(), replyMsg);
 
         // 生成安全签名
-        if (timeStamp == "") {
-            timeStamp = Long.toString(System.currentTimeMillis());
+        if (timestamp == "") {
+            timestamp = Long.toString(System.currentTimeMillis());
         }
 
-        String signature = DigestUtils.sha1Hex(token, timeStamp, nonce, encrypt);
+        String signature = DigestUtils.sha1Hex(token, timestamp, nonce, encrypt);
         // System.out.println("发送给平台的签名是: " + signature[1].toString());
         // 生成发送的xml
-        String result = XMLParse.generate(encrypt, signature, timeStamp, nonce);
+        String result = XMLParse.generate(encrypt, signature, timestamp, nonce);
         return result;
     }
 
@@ -247,7 +247,7 @@ public class WXBizMsgCrypt {
      * 
      * @param msgSignature
      *            签名串，对应URL参数的msg_signature
-     * @param timeStamp
+     * @param timestamp
      *            时间戳，对应URL参数的timestamp
      * @param nonce
      *            随机串，对应URL参数的nonce
@@ -258,14 +258,14 @@ public class WXBizMsgCrypt {
      * @throws AesException
      *             执行失败，请查看该异常的错误码和具体的错误信息
      */
-    public String decryptMsg(String msgSignature, String timeStamp, String nonce, String postData) throws AesException {
+    public String decryptMsg(String msgSignature, String timestamp, String nonce, String postData) throws AesException {
 
         // 密钥，公众账号的app secret
         // 提取密文
         Object[] encrypt = XMLParse.extract(postData);
 
         // 验证安全签名
-        String signature = DigestUtils.sha1Hex(token, timeStamp, nonce, encrypt[1].toString());
+        String signature = DigestUtils.sha1Hex(token, timestamp, nonce, encrypt[1].toString());
 
         // 和URL中的签名比较是否相等
         // System.out.println("第三方收到URL中的签名：" + msg_sign);
@@ -284,7 +284,7 @@ public class WXBizMsgCrypt {
      * 
      * @param msgSignature
      *            签名串，对应URL参数的msg_signature
-     * @param timeStamp
+     * @param timestamp
      *            时间戳，对应URL参数的timestamp
      * @param nonce
      *            随机串，对应URL参数的nonce
@@ -295,8 +295,8 @@ public class WXBizMsgCrypt {
      * @throws AesException
      *             执行失败，请查看该异常的错误码和具体的错误信息
      */
-    public String verifyUrl(String msgSignature, String timeStamp, String nonce, String echoStr) throws AesException {
-        String signature = DigestUtils.sha1Hex(token, timeStamp, nonce, echoStr);
+    public String verifyUrl(String msgSignature, String timestamp, String nonce, String echoStr) throws AesException {
+        String signature = DigestUtils.sha1Hex(token, timestamp, nonce, echoStr);
 
         if (!signature.equals(msgSignature)) {
             throw new AesException(AesException.ValidateSignatureError);

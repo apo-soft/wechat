@@ -13,7 +13,7 @@ public interface CryptService {
      * 
      * @param replyMsg
      *            公众平台待回复用户的消息，xml格式的字符串
-     * @param timeStamp
+     * @param timestamp
      *            时间戳，可以自己生成，也可以用URL参数的timestamp
      * @param nonce
      *            随机串，可以自己生成，也可以用URL参数的nonce
@@ -23,7 +23,7 @@ public interface CryptService {
      * @throws AesException
      *             执行失败，请查看该异常的错误码和具体的错误信息
      */
-    public String encryptMsg(String replyMsg, String timeStamp, String nonce) throws AesException;
+    public String encryptMsg(String replyMsg, String timestamp, String nonce) throws AesException;
 
     /**
      * 检验消息的真实性，并且获取解密后的明文.
@@ -35,7 +35,7 @@ public interface CryptService {
      * 
      * @param msgSignature
      *            签名串，对应URL参数的msg_signature
-     * @param timeStamp
+     * @param timestamp
      *            时间戳，对应URL参数的timestamp
      * @param nonce
      *            随机串，对应URL参数的nonce
@@ -46,5 +46,5 @@ public interface CryptService {
      * @throws AesException
      *             执行失败，请查看该异常的错误码和具体的错误信息
      */
-    public String decryptMsg(String msgSignature, String timeStamp, String nonce, String postData) throws AesException;
+    public String decryptMsg(String msgSignature, String timestamp, String nonce, String postData) throws AesException;
 }

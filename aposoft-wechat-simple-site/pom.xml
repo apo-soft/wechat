@@ -21,7 +21,6 @@
 			<artifactId>aposoft-wechat-message</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!--</dependency> -->
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-servlet-api</artifactId>
