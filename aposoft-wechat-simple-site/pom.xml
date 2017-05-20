@@ -23,6 +23,11 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>cn.aposoft.wechat</groupId>
+			<artifactId>aposoft-wechat-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-servlet-api</artifactId>
 			<scope>provided</scope>

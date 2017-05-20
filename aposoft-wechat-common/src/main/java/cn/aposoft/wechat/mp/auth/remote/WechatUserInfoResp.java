@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp.auth.remote;
 import java.util.List;
 
 import cn.aposoft.wechat.mp.auth.WechatUserInfo;
-import cn.aposoft.wechat.mp.remote.WechatBaseResp;
+import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * 
@@ -31,7 +31,7 @@ import cn.aposoft.wechat.mp.remote.WechatBaseResp;
  * @date 2016年10月15日
  * 
  */
-public class WechatUserInfoResp extends WechatBaseResp implements WechatUserInfo {
+public class WechatUserInfoResp extends WechatResp implements WechatUserInfo {
     private static final long serialVersionUID = -259531452583431756L;
     private String openid;
     private String nickname;

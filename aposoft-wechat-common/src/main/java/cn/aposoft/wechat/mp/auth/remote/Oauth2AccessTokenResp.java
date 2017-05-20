@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp.auth.remote;
 import java.util.Date;
 
 import cn.aposoft.wechat.mp.auth.Oauth2Token;
-import cn.aposoft.wechat.mp.remote.WechatBaseResp;
+import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * 第二步：通过code换取网页授权access_token
@@ -29,7 +29,7 @@ import cn.aposoft.wechat.mp.remote.WechatBaseResp;
  * @date 2016年10月14日
  * 
  */
-public class Oauth2AccessTokenResp extends WechatBaseResp implements Oauth2Token {
+public class Oauth2AccessTokenResp extends WechatResp implements Oauth2Token {
     private static final long serialVersionUID = 6050279488862268646L;
 
     private String access_token;

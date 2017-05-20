@@ -18,7 +18,7 @@ import cn.aposoft.constant.Lexical;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.util.RemoteException;
-import cn.aposoft.wechat.mp.config.UrlConstant;
+import cn.aposoft.wechat.mp.UrlConstant;
 import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 public class Oauth2AccessTokenClient implements Closeable {

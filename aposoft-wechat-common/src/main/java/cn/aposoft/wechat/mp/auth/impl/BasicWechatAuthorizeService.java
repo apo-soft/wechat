@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.URLEncoder;
+import cn.aposoft.wechat.mp.UrlConstant;
 import cn.aposoft.wechat.mp.auth.Oauth2Auth;
 import cn.aposoft.wechat.mp.auth.Oauth2Token;
 import cn.aposoft.wechat.mp.auth.WechatAuthorizeService;
@@ -21,7 +22,6 @@ import cn.aposoft.wechat.mp.auth.WechatUserInfo;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenResp;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AuthResp;
-import cn.aposoft.wechat.mp.config.UrlConstant;
 import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 
 /**

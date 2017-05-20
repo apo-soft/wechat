@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.mp.access.remote;
 
-import cn.aposoft.wechat.mp.remote.WechatBaseResp;
+import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * 
@@ -20,7 +20,7 @@ import cn.aposoft.wechat.mp.remote.WechatBaseResp;
  * @date 2016年10月13日
  * 
  */
-public class AccessTokenResp extends WechatBaseResp {
+public class AccessTokenResp extends WechatResp {
     private static final long serialVersionUID = 726644249402378769L;
     private String access_token;
     private Integer expires_in;

@@ -21,7 +21,6 @@ import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
-import cn.aposoft.wechat.mp.config.UrlConstant;
 
 /**
  * @author Jian Liu
@@ -29,6 +28,10 @@ import cn.aposoft.wechat.mp.config.UrlConstant;
  */
 public class IndustryConfigClient implements Closeable {
 	final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
+	//
+	static final String TEMPLATE_INDUSTRY_CONFIG = "https://api.weixin.qq.com/cgi-bin/template/api_set_industry?access_token=";
+	//
+	static final String TEMPLATE_INDUSTRY_CONFIG_QUERY = "https://api.weixin.qq.com/cgi-bin/template/get_industry?access_token=";
 
 	/**
 	 * 
@@ -82,7 +85,7 @@ public class IndustryConfigClient implements Closeable {
 	 * @return 合并后URL地址
 	 */
 	private String getConfigIndustryUrl(String accessToken) {
-		return UrlConstant.TEMPLATE_INDUSTRY_CONFIG + accessToken;
+		return TEMPLATE_INDUSTRY_CONFIG + accessToken;
 	}
 
 	/**
@@ -93,7 +96,7 @@ public class IndustryConfigClient implements Closeable {
 	 * @return 合并后URL地址
 	 */
 	private String getQueryConfigIndustryUrl(String accessToken) {
-		return UrlConstant.TEMPLATE_INDUSTRY_CONFIG_QUERY + accessToken;
+		return TEMPLATE_INDUSTRY_CONFIG_QUERY + accessToken;
 	}
 
 	@Override

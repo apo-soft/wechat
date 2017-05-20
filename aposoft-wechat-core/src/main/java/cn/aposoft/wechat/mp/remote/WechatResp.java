@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @date 2016年10月14日
  * 
  */
-public class WechatBaseResp implements Serializable {
+public class WechatResp implements Serializable {
     private static final long serialVersionUID = -5375917048488103386L;
     private Integer errcode;
     private String errmsg;
