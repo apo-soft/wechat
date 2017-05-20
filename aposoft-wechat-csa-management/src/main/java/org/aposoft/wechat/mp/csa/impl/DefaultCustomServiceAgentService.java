@@ -21,7 +21,7 @@ import cn.aposoft.wechat.mp.remote.WechatResp;
  *
  */
 public class DefaultCustomServiceAgentService implements CustomServiceAgentService {
-	final CustomServiceAgentClient client = new CustomServiceAgentClient();
+	private final CustomServiceAgentClient client = new CustomServiceAgentClient();
 
 	/**
 	 * 新增客服

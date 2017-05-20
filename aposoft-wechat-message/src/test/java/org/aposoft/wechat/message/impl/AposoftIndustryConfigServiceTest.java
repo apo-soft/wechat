@@ -21,7 +21,7 @@ import cn.aposoft.wechat.mp.message.remote.IndustryConfigClient;
  * @author LiuJian
  *
  */
-public class AposoftIndustryConfigClientTest {
+public class AposoftIndustryConfigServiceTest {
 	static IndustryConfigClient client;
 	static AccessToken accessToken;
 	static AccessTokenClient accessTokenClient;
