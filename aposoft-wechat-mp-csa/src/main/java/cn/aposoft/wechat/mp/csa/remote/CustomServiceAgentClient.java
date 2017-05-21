@@ -137,7 +137,6 @@ public class CustomServiceAgentClient implements Closeable {
 	}
 
 	private String getListUrl(String accessToken) {
-
 		return KFACCOUNT_LIST_URL + accessToken;
 	}
 
@@ -172,6 +171,7 @@ public class CustomServiceAgentClient implements Closeable {
 		if (StringUtils.isBlank(respMsg)) {
 			throw new RemoteException("Empty response message.");
 		}
+		System.out.println(respMsg);
 		return JSON.parseObject(respMsg, clazz);
 	}
 

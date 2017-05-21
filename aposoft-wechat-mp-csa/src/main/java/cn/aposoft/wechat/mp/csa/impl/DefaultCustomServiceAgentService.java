@@ -72,6 +72,9 @@ public class DefaultCustomServiceAgentService implements CustomServiceAgentServi
 	 * @param accessToken
 	 *            访问授权码
 	 * @return 客服列表
+	 *         <p>
+	 *         {"errcode":65400,"errmsg":"please enable new custom service, or
+	 *         wait for a while if you have enabled hint: [XAcaoa0282e567]"}
 	 */
 	public List<AgentAccount> getAgentList(String accessToken) throws RemoteException {
 		KfListAccountResp resp = client.list(accessToken);
