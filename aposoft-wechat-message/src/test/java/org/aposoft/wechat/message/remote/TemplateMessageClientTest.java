@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
@@ -48,11 +49,51 @@ public class TemplateMessageClientTest {
 		client.close();
 	}
 
+	/**
+	 * <pre>
+	 * {
+	"template_list":[
+	    {
+	        "template_id":"zw9lgptQReQQpJoofaPucstJSFi7bUmJ_26I1rBAgkk",
+	        "title":"系统故障通知",
+	        "primary_industry":"",
+	        "deputy_industry":"",
+	        "content":"{{first.DATA}} 业务： {{business.DATA}} 系统：{{system.DATA}} IP : {{ip.DATA}} 故障现象：{{performance.DATA}} 故障时间：{{time.DATA}} {{remark.DATA}}",
+	        "example":""
+	    },
+	    {
+	        "template_id":"GVNDCaelOcnviNrP5NNA9uc4sBMnCC4eRSiDHNotCIM",
+	        "title":"摘要模板",
+	        "primary_industry":"",
+	        "deputy_industry":"",
+	        "content":"摘要：{{digest.DATA}}",
+	        "example":""
+	    }
+	]
+	}
+	 * </pre>
+	 * 
+	 * @throws RemoteException
+	 */
 	@Test
 	public void testgetTemplateList() throws RemoteException {
 		System.out.println(client.getTemplateList(accessToken.getAccess_token()));
 	}
 
+	/**
+	 * {"errcode":0,"errmsg":"ok"}
+	 * 
+	 * @throws RemoteException
+	 */
+	@Ignore
+	@Test
+	public void testDeleteTemplate() throws RemoteException {
+		System.out.println(JSON.toJSONString(
+				client.deleteTemplate(accessToken.getAccess_token(), "GVNDCaelOcnviNrP5NNA9uc4sBMnCC4eRSiDHNotCIM")));
+
+	}
+
+	// BE57iEeATYm4O5qGJcszZxsSSHS7ANkwHkTiFakaVu0
 	@Test
 	public void testSendTemplateMessage() throws RemoteException {
 		TemplateMessage msg = new TemplateMessage();

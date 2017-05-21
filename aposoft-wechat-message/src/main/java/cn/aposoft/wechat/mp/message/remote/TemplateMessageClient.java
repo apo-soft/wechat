@@ -15,6 +15,7 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
@@ -33,6 +34,10 @@ public class TemplateMessageClient implements Closeable {
 	final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
 	// 读取模板列表URL
 	static final String TEMPLATE_LIST_URL = "https://api.weixin.qq.com/cgi-bin/template/get_all_private_template?access_token=";
+
+	static final String TEMPLATE_ADD_URL = "https://api.weixin.qq.com/cgi-bin/template/api_add_template?access_token=";
+
+	static final String TEMPLATE_DELETE_URL = "https://api.weixin.qq.com/cgi-bin/template/del_private_template?access_token=";
 
 	final static String SEND_TEMPLATE_MESSAGE_URL = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=";
 
@@ -58,6 +63,38 @@ public class TemplateMessageClient implements Closeable {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return execute(createHttpGet(getTemplateListUrl(accessToken)), String.class);
+	}
+
+	/**
+	 * 读取模板列表
+	 * 
+	 * @param accessToken
+	 *            访问授权码
+	 * @return 模板列表JSON
+	 * @throws RemoteException
+	 */
+	public TemplateResp addTemplate(final String accessToken, final String template_id_short) throws RemoteException {
+		if (StringUtil.isBlank(accessToken)) {
+			throw new IllegalArgumentException("Some argument(s) is null or empty.");
+		}
+		return execute(createJsonHttpPost(getAddTemplateUrl(accessToken),
+				new JSONObject().fluentPut("template_id_short", template_id_short)), TemplateResp.class);
+	}
+
+	/**
+	 * 读取模板列表
+	 * 
+	 * @param accessToken
+	 *            访问授权码
+	 * @return 模板列表JSON
+	 * @throws RemoteException
+	 */
+	public WechatResp deleteTemplate(final String accessToken, final String template_id) throws RemoteException {
+		if (StringUtil.isBlank(accessToken)) {
+			throw new IllegalArgumentException("Some argument(s) is null or empty.");
+		}
+		return execute(createJsonHttpPost(getDeleteTemplateUrl(accessToken),
+				new JSONObject().fluentPut("template_id", template_id)));
 	}
 
 	/**
@@ -108,6 +145,14 @@ public class TemplateMessageClient implements Closeable {
 			return (T) respMsg;
 		}
 		return JSON.parseObject(respMsg, clazz);
+	}
+
+	private String getDeleteTemplateUrl(String accessToken) {
+		return TEMPLATE_DELETE_URL + accessToken;
+	}
+
+	private String getAddTemplateUrl(String accessToken) {
+		return TEMPLATE_ADD_URL + accessToken;
 	}
 
 	private String getSendTemplateMessageUrl(String accessToken) {

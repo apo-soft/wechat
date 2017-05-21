@@ -14,8 +14,14 @@ import java.util.Map;
  */
 public class TemplateMessage implements Serializable {
 	private static final long serialVersionUID = 5646878439477024869L;
-	// 黑色 默认报警参数颜色
+	/**
+	 * 黑色 默认颜色
+	 */
 	public static final String DEFAULT_COLOR = "#000000";
+	/**
+	 * 红色
+	 */
+	public static final String RED_COLOR = "#FF0000";
 	// "touser":"OPENID",
 	// "template_id":"ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY",
 	// "url":"http://weixin.qq.com/download",

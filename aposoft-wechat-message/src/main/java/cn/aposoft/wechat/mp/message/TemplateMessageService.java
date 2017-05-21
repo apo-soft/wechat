@@ -3,13 +3,15 @@
  */
 package cn.aposoft.wechat.mp.message;
 
+import java.io.Closeable;
+
 import cn.aposoft.util.RemoteException;
 
 /**
  * @author Jann Liu
  *
  */
-public interface TemplateMessageService {
+public interface TemplateMessageService extends Closeable {
 	/**
 	 * 读取模板列表
 	 * 
@@ -19,4 +21,7 @@ public interface TemplateMessageService {
 	 * @throws RemoteException
 	 */
 	public String getTemplateList(String accessToken) throws RemoteException;
+
+	@Override
+	public void close();
 }
