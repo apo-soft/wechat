@@ -103,4 +103,5 @@ public class IndustryConfigClient implements Closeable {
 	public void close() {
 		HttpClientUtils.closeQuietly(httpClient);
 	}
+
 }

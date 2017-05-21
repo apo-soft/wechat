@@ -216,6 +216,9 @@ public interface CsaMessageService extends Closeable {
 	 * @param content
 	 *            发送消息内容
 	 * @return 发送结果
+	 *         <p>
+	 * 		{"errcode":40003,"errmsg":"invalid openid hint:
+	 *         [0qdjPA0465ge21]"}
 	 * @throws RemoteException
 	 */
 	WechatResp sendText(String accessToken, String openId, String content) throws RemoteException;

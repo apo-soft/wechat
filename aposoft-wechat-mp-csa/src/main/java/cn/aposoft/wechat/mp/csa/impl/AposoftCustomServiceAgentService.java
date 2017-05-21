@@ -16,10 +16,10 @@ import cn.aposoft.wechat.mp.remote.WechatResp;
  * 
  * 客服管理模块
  * 
- * @author liuya
+ * @author Jann Liu
  *
  */
-public class DefaultCustomServiceAgentService implements CustomServiceAgentService {
+public class AposoftCustomServiceAgentService implements CustomServiceAgentService {
 	private final CustomServiceAgentClient client = new CustomServiceAgentClient();
 
 	/**

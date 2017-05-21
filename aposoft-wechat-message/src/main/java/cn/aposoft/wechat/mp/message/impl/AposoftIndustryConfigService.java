@@ -45,4 +45,5 @@ public class AposoftIndustryConfigService implements IndustryConfigService {
 		client.close();
 	}
 
+
 }

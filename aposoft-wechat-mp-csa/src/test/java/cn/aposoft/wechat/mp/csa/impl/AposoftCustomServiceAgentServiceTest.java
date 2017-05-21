@@ -17,7 +17,7 @@ import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.csa.AgentAccount;
-import cn.aposoft.wechat.mp.csa.impl.DefaultCustomServiceAgentService;
+import cn.aposoft.wechat.mp.csa.impl.AposoftCustomServiceAgentService;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
@@ -26,7 +26,7 @@ import cn.aposoft.wechat.mp.remote.WechatResp;
  */
 public class AposoftCustomServiceAgentServiceTest {
 
-	static DefaultCustomServiceAgentService csaService;
+	static AposoftCustomServiceAgentService csaService;
 
 	static AccessToken accessToken;
 	static AccessTokenClient accessTokenClient;
@@ -34,7 +34,7 @@ public class AposoftCustomServiceAgentServiceTest {
 
 	@BeforeClass
 	public static void init() throws IOException {
-		csaService = new DefaultCustomServiceAgentService();
+		csaService = new AposoftCustomServiceAgentService();
 		accessTokenClient = new AccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient);
