@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
@@ -84,6 +85,7 @@ public class UserClientTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testSetUserRemark() throws RemoteException {
 
@@ -106,12 +108,32 @@ public class UserClientTest {
 	}
 
 	@Test
+	public void testGetUserBlackListSeq() throws RemoteException {
+		BlackListResp resp = userClient.getUserBlackList(accessTokenService.getAccessToken().getAccess_token(),
+				"ojqOLxHt-0dhb5oAOLMK-zhY9uwQ");
+		System.out.println(JSON.toJSONString(resp));
+	}
+
+	@Ignore
+	@Test
 	public void testSetUserBlackList() throws RemoteException {
 		BatchBlackReq blackReq = new BatchBlackReq();
 		List<String> openid_list = Arrays.asList("ojqOLxHt-0dhb5oAOLMK-zhY9uwQ");
 		blackReq.setOpenid_list(openid_list);
 
 		WechatResp resp = userClient.setUserBlack(accessTokenService.getAccessToken().getAccess_token(), blackReq);
+		System.out.println(JSON.toJSONString(resp));
+	}
+
+	@Ignore
+	@Test
+	public void testRemoveUserBlackList() throws RemoteException {
+		BatchBlackReq blackReq = new BatchBlackReq();
+		List<String> openid_list = Arrays.asList("ojqOLxHt-0dhb5oAOLMK-zhY9uwQ");
+		blackReq.setOpenid_list(openid_list);
+
+		WechatResp resp = userClient.removeUserFromBlacklist(accessTokenService.getAccessToken().getAccess_token(),
+				blackReq);
 		System.out.println(JSON.toJSONString(resp));
 	}
 }

@@ -53,6 +53,7 @@ public class UserClient implements Closeable {
 	static final String USER_BLACKLIST_URL = "https://api.weixin.qq.com/cgi-bin/tags/members/getblacklist?access_token=";
 
 	static final String USER_BATCH_ADDTO_BALCKLIST_URL = "https://api.weixin.qq.com/cgi-bin/tags/members/batchblacklist?access_token=";
+	static final String USER_BATCH_REMOVE_BALCKLIST_URL = "https://api.weixin.qq.com/cgi-bin/tags/members/batchunblacklist?access_token=";
 
 	/**
 	 * 读取默认用户列表
@@ -239,9 +240,9 @@ public class UserClient implements Closeable {
 	 */
 	public WechatResp setUserBlack(final String accessToken, final BatchBlackReq userBlackReq) throws RemoteException {
 		if (StringUtil.isBlank(accessToken, userBlackReq)) {
-			throw new IllegalArgumentException("access_token is empty.");
+			throw new IllegalArgumentException("access_token or userBlacklistReq  is empty.");
 		}
-		final String url = getSetUserRemarkUrl(accessToken);
+		final String url = getSetUserBlackUrl(accessToken);
 		HttpPost httpPost = new HttpPost(url);
 		HttpEntity entity = EntityBuilder.create()//
 				.setContentType(ContentType.APPLICATION_JSON)//
@@ -253,6 +254,56 @@ public class UserClient implements Closeable {
 			throw new RemoteException("Empty response message.");
 		}
 		return JSON.parseObject(respMsg, WechatResp.class);
+	}
+
+	/**
+	 * 移除用户黑名单
+	 * 
+	 * @param accessToken
+	 *            授权访问码
+	 * @param userBlackReq
+	 *            黑名单 openid列表
+	 * @return { "errcode": 0, "errmsg": "ok" }
+	 *         <p>
+	 *         {"errcode":40003,"errmsg":"invalid openid hint:
+	 *         [n0HMJA0558vr19]"}
+	 *         <p>
+	 *         {"errcode":40013,"errmsg":"invalid appid"}
+	 * 
+	 *         <pre>
+	 *         -1		系统繁忙
+				40003	传入非法的openid
+				49003	传入的openid不属于此AppID
+				40032	一次取消拉黑20个用户
+	 *         </pre>
+	 * 
+	 * @throws RemoteException
+	 */
+	public WechatResp removeUserFromBlacklist(final String accessToken, final BatchBlackReq userBlackReq)
+			throws RemoteException {
+		if (StringUtil.isBlank(accessToken, userBlackReq)) {
+			throw new IllegalArgumentException("access_token or userBlacklistReq  is empty.");
+		}
+		final String url = getRemoveUserBlackUrl(accessToken);
+		HttpPost httpPost = new HttpPost(url);
+		HttpEntity entity = EntityBuilder.create()//
+				.setContentType(ContentType.APPLICATION_JSON)//
+				.setText(JSON.toJSONString(userBlackReq)).build();
+		httpPost.setEntity(entity);
+		final String respMsg = HttpClient.execute(httpPost, httpClient);
+
+		if (StringUtils.isBlank(respMsg)) {
+			throw new RemoteException("Empty response message.");
+		}
+		return JSON.parseObject(respMsg, WechatResp.class);
+	}
+
+	private String getRemoveUserBlackUrl(String accessToken) {
+		return USER_BATCH_REMOVE_BALCKLIST_URL + accessToken;
+	}
+
+	private String getSetUserBlackUrl(String accessToken) {
+		return USER_BATCH_ADDTO_BALCKLIST_URL + accessToken;
 	}
 
 	private String getUserBlackListUrl(String accessToken) {
