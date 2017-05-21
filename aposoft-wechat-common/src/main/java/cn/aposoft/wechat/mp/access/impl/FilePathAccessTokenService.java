@@ -21,7 +21,7 @@ import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 /**
  * 从文件路径读取ACCESS_TOKEN的方法，避免测试时反复调用远程AccessToken，导致调用失败
  * 
- * @author LiuJian
+ * @author Jann Liu
  *
  */
 public class FilePathAccessTokenService extends BasicAccessTokenService {

@@ -8,7 +8,7 @@ import cn.aposoft.wechat.mp.message.impl.AposoftMessage;
 /**
  * 默认返回success，表示没有应答
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月16日
  * 
  */

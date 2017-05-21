@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
@@ -16,20 +17,21 @@ import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.mp.user.UserTag;
 
 /**
  * @author liuya
  *
  */
 public class UserTagClientTest {
-	static UserTagClient userLabelClient;
+	static UserTagClient userTagClient;
 	static AccessToken accessToken;
 	static AccessTokenClient accessTokenClient;
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
 	public static void init() throws IOException {
-		userLabelClient = new UserTagClient();
+		userTagClient = new UserTagClient();
 		accessTokenClient = new AccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient);
@@ -40,14 +42,62 @@ public class UserTagClientTest {
 	@AfterClass
 	public static void dispose() {
 		accessTokenClient.close();
-		userLabelClient.close();
+		userTagClient.close();
+	}
+
+	@Ignore
+	@Test
+	public void testAddTag() throws RemoteException {
+		WechatResp resp = userTagClient.create(//
+				accessTokenService.getAccessToken().getAccess_token(), //
+				"老婆");
+		System.out.println(JSON.toJSONString(resp));
 	}
 
 	@Test
-	public void testAddLabel() throws RemoteException {
-		WechatResp resp = userLabelClient.create(//
-				accessTokenService.getAccessToken().getAccess_token(), //
-				"亲属");
+	public void testListTags() throws RemoteException {
+		WechatResp resp = userTagClient.list(//
+				accessTokenService.getAccessToken().getAccess_token());
+		System.out.println(JSON.toJSONString(resp));
+	}
+
+	@Ignore
+	@Test
+	public void testDeleteSysTag() throws RemoteException {
+		WechatResp resp = userTagClient.delete(//
+				accessTokenService.getAccessToken().getAccess_token(), 2);
+		System.out.println(JSON.toJSONString(resp));
+	}
+
+	/**
+	 * first time: {"errcode":0,"errmsg":"ok"}
+	 * <p>
+	 * second time: {"errcode":0,"errmsg":"ok"}
+	 * 
+	 * @throws RemoteException
+	 */
+	@Ignore
+	@Test
+	public void testDeleteTag() throws RemoteException {
+		WechatResp resp = userTagClient.delete(//
+				accessTokenService.getAccessToken().getAccess_token(), 102);
+		System.out.println(JSON.toJSONString(resp));
+	}
+
+	/**
+	 * first time: {"errcode":0,"errmsg":"ok"}
+	 * <p>
+	 * second time: {"errcode":0,"errmsg":"ok"}
+	 * 
+	 * @throws RemoteException
+	 */
+	@Test
+	public void testUpdateTag() throws RemoteException {
+		UserTag tag = new UserTag();
+		tag.setId(101);
+		tag.setName("老师");
+		WechatResp resp = userTagClient.update(//
+				accessTokenService.getAccessToken().getAccess_token(), tag);
 		System.out.println(JSON.toJSONString(resp));
 	}
 }

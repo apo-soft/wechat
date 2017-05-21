@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * 微信用户获取用户授权信息的Oauth2协议的AccessToken
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

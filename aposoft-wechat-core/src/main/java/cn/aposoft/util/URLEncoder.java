@@ -12,7 +12,7 @@ import cn.aposoft.constant.Lexical;
  * 对 java.net.URLEncoder的方法进行封装，重载 encode,decode 方法,固定使用UTF-8编码，而不是系统默认编码
  * 
  * @see java.net.URLEncoder
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * 通用词汇常量
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  */
 public class Lexical {

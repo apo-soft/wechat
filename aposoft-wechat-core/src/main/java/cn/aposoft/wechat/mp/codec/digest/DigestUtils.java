@@ -12,7 +12,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * 微信通用的sha1签名算法实现工具
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

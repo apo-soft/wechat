@@ -35,7 +35,7 @@ import cn.aposoft.wechat.mp.validate.SignatureValidator;
 /**
  * 接收消息的Servlet
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

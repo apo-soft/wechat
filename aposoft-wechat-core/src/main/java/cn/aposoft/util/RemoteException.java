@@ -6,7 +6,7 @@ package cn.aposoft.util;
 /**
  * 远程访问异常基类
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

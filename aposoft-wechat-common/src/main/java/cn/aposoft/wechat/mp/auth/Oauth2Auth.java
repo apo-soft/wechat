@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp.auth;
 import java.io.Serializable;
 
 /**
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月15日
  * 
  */

@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp.message.template.event;
 /**
  * 二维码扫描事件
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月18日
  * 
  */

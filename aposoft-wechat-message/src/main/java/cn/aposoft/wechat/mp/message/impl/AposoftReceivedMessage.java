@@ -10,7 +10,7 @@ import cn.aposoft.wechat.mp.message.template.received.ReceivedMessage;
 /**
  * 接收到的消息基类
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

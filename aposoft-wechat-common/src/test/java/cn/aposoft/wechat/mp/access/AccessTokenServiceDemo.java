@@ -12,7 +12,7 @@ import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 
 /**
  * Access_Token Client 测试用例
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

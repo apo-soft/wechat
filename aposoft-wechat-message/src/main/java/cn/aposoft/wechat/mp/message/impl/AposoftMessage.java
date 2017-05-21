@@ -13,7 +13,7 @@ import cn.aposoft.wechat.mp.message.template.Message;
 /**
  * 微信响应的消息基类
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

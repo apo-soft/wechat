@@ -10,7 +10,7 @@ import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 /**
  * 微信服务器签名有效性验证
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月16日
  * 
  */

@@ -27,7 +27,7 @@ import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 /**
  * 默认的微信授权请求服务类
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

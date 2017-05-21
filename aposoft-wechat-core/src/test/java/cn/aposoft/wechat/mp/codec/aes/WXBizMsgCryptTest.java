@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp.codec.aes;
 /**
  * 加密解密测试
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月18日
  * 
  */

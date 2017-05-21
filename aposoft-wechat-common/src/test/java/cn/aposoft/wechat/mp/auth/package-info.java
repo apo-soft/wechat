@@ -2,7 +2,7 @@
  *   Copyright  :  www.aposoft.cn
  */
 /**
- *  @author LiuJian
+ *  @author Jann Liu
  * @date 2016年10月15日
  * 
  */

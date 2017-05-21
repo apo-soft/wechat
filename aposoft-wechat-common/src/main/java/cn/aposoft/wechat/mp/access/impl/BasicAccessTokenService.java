@@ -19,7 +19,7 @@ import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
 /**
  * AccessToken 默认访问服务
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月12日
  */
 public class BasicAccessTokenService implements AccessTokenService {

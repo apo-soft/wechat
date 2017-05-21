@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 微信返回用户信息
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月15日
  * 
  */

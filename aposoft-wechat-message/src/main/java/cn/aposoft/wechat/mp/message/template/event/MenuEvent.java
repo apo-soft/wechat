@@ -4,7 +4,7 @@
 package cn.aposoft.wechat.mp.message.template.event;
 
 /**
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月18日
  * 
  */

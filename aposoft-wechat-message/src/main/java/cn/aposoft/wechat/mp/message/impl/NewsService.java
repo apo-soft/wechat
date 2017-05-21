@@ -21,7 +21,7 @@ import cn.aposoft.wechat.mp.message.template.reply.News;
  * <p>
  * Demo版本
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

@@ -16,7 +16,7 @@ import cn.aposoft.wechat.mp.remote.WechatResp;
  *   "https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183&token=&lang=zh_CN"> 获取access_token </a>
  * </pre>
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

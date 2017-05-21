@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp;
 /**
  * ACCESS_TOKEN + OAUTH2 的URL访问地址
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

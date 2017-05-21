@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp.config.basic;
 import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 /**
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

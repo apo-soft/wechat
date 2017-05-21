@@ -18,7 +18,7 @@ import java.io.Serializable;
     </item>
  * </pre>
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

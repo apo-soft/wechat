@@ -4,7 +4,7 @@
 package cn.aposoft.wechat.mp.auth;
 
 /**
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

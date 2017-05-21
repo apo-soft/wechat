@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp.message;
 /**
  * 微信消息类型枚举
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

@@ -27,7 +27,7 @@ import cn.aposoft.wechat.mp.config.WechatMpConfig;
 /**
  * Access Token 客户端
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * 微信用户验证基础响应消息
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

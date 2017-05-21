@@ -8,7 +8,7 @@ import java.io.Closeable;
 import cn.aposoft.util.RemoteException;
 
 /**
- * @author LiuJian
+ * @author Jann Liu
  *
  */
 public interface IndustryConfigService extends Closeable {

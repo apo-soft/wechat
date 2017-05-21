@@ -3,7 +3,7 @@ package cn.aposoft.wechat.mp.auth;
 /**
  * 全局返回码说明 http://mp.weixin.qq.com/wiki/17/fa4e1434e57290788bde25603fa2fcbd.html
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月15日
  */
 public enum ErrorCode {

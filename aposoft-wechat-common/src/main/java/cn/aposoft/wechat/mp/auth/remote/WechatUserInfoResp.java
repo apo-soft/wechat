@@ -27,7 +27,7 @@ import cn.aposoft.wechat.mp.remote.WechatResp;
 }
  * </pre>
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月15日
  * 
  */

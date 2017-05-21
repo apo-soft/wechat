@@ -21,7 +21,7 @@ import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
 /**
  * 获取用户授权的Servlet /oauth2/authorize
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

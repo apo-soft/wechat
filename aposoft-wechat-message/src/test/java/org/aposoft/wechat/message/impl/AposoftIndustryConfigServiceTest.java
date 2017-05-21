@@ -18,7 +18,7 @@ import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.message.remote.IndustryConfigClient;
 
 /**
- * @author LiuJian
+ * @author Jann Liu
  *
  */
 public class AposoftIndustryConfigServiceTest {

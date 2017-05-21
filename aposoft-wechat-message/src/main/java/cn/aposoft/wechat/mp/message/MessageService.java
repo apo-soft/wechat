@@ -8,7 +8,7 @@ import cn.aposoft.wechat.mp.message.template.Message;
 /**
  * 默认应答消息服务
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

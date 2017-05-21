@@ -12,7 +12,7 @@ import java.util.Date;
  * {"access_token":"n9mXYfPZ3-LQ3c2mhTs3qYsTg60Yhr203GOoMyfMVF2UtkQD0vM4okY1J7aoy1xB1UfiXD_xEPNvEnJkesHL-1d_niPQIFkpFIADMU2k1Kc9kZxngD6RSeJpwrxZS1GaMYHhACAIUD","expires_in":7200}
  * </pre>
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月12日
  * 
  */

@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 
- * @author LiuJian
+ * @author Jann Liu
  *
  */
 public class HttpClient {

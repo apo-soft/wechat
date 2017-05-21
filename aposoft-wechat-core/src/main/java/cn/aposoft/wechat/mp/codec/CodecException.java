@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp.codec;
 /**
  * Used as the basic Exception of wechat codec
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

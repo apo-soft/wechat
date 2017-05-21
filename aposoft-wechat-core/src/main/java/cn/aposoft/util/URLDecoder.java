@@ -11,7 +11,7 @@ import cn.aposoft.constant.Lexical;
 /**
  * 
  * @see java.net.URLDecoder
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

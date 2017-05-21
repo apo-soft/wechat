@@ -21,7 +21,7 @@ import cn.aposoft.wechat.mp.message.template.received.Voice;
 /**
  * 微信接收消息类型集合类
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月17日
  */
 @XmlRootElement(namespace = "", name = "xml")

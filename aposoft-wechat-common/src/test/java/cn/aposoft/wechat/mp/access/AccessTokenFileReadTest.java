@@ -12,7 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 
 /**
- * @author LiuJian
+ * @author Jann Liu
  *
  */
 public class AccessTokenFileReadTest {

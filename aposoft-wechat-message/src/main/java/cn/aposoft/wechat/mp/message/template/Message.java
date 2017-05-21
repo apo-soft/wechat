@@ -8,7 +8,7 @@ import java.io.Serializable;
 import cn.aposoft.wechat.mp.message.MsgType;
 
 /**
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月17日
  * 
  */

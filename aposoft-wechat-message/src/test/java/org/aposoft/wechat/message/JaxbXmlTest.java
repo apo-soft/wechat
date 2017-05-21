@@ -15,7 +15,7 @@ import cn.aposoft.util.XmlUtils;
 import cn.aposoft.wechat.mp.message.template.received.Text;
 
 /**
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

@@ -25,7 +25,7 @@ import cn.aposoft.wechat.mp.remote.WechatResp;
     {"errcode":40029,"errmsg":"invalid code"}
  * </pre>
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

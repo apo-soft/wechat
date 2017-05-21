@@ -11,7 +11,7 @@ import cn.aposoft.wechat.mp.validate.ValidateParams;
 /**
  * 微信服务器转发消息参数集合
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月16日
  * 
  */

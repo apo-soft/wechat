@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp.auth;
 /**
  * Oauth2验证返回消息类型
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月16日
  * 
  */

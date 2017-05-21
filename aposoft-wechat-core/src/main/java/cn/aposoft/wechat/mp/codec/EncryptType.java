@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp.codec;
 /**
  * 微信加密解密类型： 只有raw和aes两种值
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月16日
  * 
  */

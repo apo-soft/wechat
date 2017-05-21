@@ -5,7 +5,7 @@ import cn.aposoft.wechat.mp.codec.CodecException;
 /**
  * used for aec crypt error
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  *
  */

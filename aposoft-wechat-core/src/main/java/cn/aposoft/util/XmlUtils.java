@@ -16,7 +16,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * Xml to Java Bean 转换
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

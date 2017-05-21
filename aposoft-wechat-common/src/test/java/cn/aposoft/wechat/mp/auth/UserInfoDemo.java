@@ -10,7 +10,7 @@ import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
 import cn.aposoft.wechat.mp.auth.remote.WechatUserInfoResp;
 
 /**
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月15日
  * 
  */

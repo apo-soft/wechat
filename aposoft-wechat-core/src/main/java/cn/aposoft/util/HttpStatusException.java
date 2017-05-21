@@ -8,7 +8,7 @@ import org.apache.http.StatusLine;
 /**
  * HTTP响应状态异常，不为StatusCode!=SC_OK
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月13日
  * 
  */

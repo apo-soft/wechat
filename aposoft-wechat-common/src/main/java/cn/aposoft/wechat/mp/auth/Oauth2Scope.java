@@ -7,7 +7,7 @@ package cn.aposoft.wechat.mp.auth;
  * 授权作用域 枚举
  * 
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月16日
  * 
  */

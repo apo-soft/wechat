@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

@@ -11,7 +11,7 @@ import cn.aposoft.wechat.mp.access.AccessToken;
 /**
  * 简单的AccessToken实现
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月12日
  * 
  */

@@ -25,7 +25,7 @@ import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
 /**
  * 获取用户OPENID和授权AccessToken的Servlet
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */

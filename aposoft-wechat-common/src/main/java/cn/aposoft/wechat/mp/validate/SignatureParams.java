@@ -7,7 +7,7 @@ package cn.aposoft.wechat.mp.validate;
  * 验证消息真实性
  * {@link http://mp.weixin.qq.com/wiki/4/2ccadaef44fe1e4b0322355c2312bfa8.html}
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月18日
  * 
  */

@@ -29,7 +29,7 @@ import org.apache.http.ssl.SSLContextBuilder;
  * 
  * @date 2016年8月28日
  * 
- * @author LiuJian
+ * @author Jann Liu
  *
  */
 public class HttpClientFactory {

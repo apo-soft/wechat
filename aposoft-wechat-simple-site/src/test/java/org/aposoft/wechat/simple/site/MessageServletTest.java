@@ -19,7 +19,7 @@ import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.util.RemoteException;
 
 /**
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月15日
  * 
  */

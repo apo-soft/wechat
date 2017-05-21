@@ -5,7 +5,7 @@ package cn.aposoft.wechat.mp.message.template.received;
 
 /**
  * 
- * @author LiuJian
+ * @author Jann Liu
  * @date 2016年10月14日
  * 
  */
