@@ -1,4 +1,4 @@
-package org.aposoft.wechat.mp.user;
+package cn.aposoft.wechat.mp.user;
 
 /**
  * Hello world!
