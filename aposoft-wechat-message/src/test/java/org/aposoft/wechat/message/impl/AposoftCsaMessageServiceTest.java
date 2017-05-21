@@ -47,7 +47,6 @@ public class AposoftCsaMessageServiceTest {
 
 	@Test
 	public void sendTextMessage() throws RemoteException {
-
 		WechatResp resp = messageService.sendText(accessTokenService.getAccessToken().getAccess_token(),
 				"ojqOLxLh0480oz5gqHqLgzRgCLHM", "测试客服消息.");
 		System.out.println(JSON.toJSONString(resp));
