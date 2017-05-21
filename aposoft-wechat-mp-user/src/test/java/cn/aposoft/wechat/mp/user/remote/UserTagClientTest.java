@@ -17,7 +17,8 @@ import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.remote.WechatResp;
-import cn.aposoft.wechat.mp.user.UserTag;
+import cn.aposoft.wechat.mp.user.tag.UserTag;
+import cn.aposoft.wechat.mp.user.tag.remote.UserTagClient;
 
 /**
  * @author liuya

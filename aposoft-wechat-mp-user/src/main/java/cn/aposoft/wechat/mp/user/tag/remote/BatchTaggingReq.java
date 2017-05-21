@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.user.remote;
+package cn.aposoft.wechat.mp.user.tag.remote;
 
 import java.io.Serializable;
 

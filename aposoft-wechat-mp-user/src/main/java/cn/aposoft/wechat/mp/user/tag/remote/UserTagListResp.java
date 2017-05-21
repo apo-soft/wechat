@@ -1,12 +1,12 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.user.remote;
+package cn.aposoft.wechat.mp.user.tag.remote;
 
 import java.util.List;
 
 import cn.aposoft.wechat.mp.remote.WechatResp;
-import cn.aposoft.wechat.mp.user.UserTag;
+import cn.aposoft.wechat.mp.user.tag.UserTag;
 
 /**
  * @author Jann Liu

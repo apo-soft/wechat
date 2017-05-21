@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.user.remote;
+package cn.aposoft.wechat.mp.user.tag.remote;
 
 import java.io.Closeable;
 
@@ -21,7 +21,7 @@ import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
 import cn.aposoft.wechat.mp.remote.WechatResp;
-import cn.aposoft.wechat.mp.user.UserTag;
+import cn.aposoft.wechat.mp.user.tag.UserTag;
 
 /**
  * 用户标签管理客户端

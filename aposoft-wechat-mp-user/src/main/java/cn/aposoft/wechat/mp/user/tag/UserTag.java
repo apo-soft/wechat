@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.user;
+package cn.aposoft.wechat.mp.user.tag;
 
 import java.io.Serializable;
 
