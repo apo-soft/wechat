@@ -3,6 +3,7 @@
 .classpath
 .project
 *.class
+/config/access_token.txt
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
