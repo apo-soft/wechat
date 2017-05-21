@@ -4,6 +4,8 @@
 package cn.aposoft.wechat.mp.user.remote;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -18,7 +20,9 @@ import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 import cn.aposoft.wechat.mp.user.tag.UserTag;
+import cn.aposoft.wechat.mp.user.tag.remote.BatchTaggingReq;
 import cn.aposoft.wechat.mp.user.tag.remote.UserTagClient;
+import cn.aposoft.wechat.mp.user.tag.remote.UserTagsIdListResp;
 
 /**
  * @author liuya
@@ -99,6 +103,48 @@ public class UserTagClientTest {
 		tag.setName("老师");
 		WechatResp resp = userTagClient.update(//
 				accessTokenService.getAccessToken().getAccess_token(), tag);
+		System.out.println(JSON.toJSONString(resp));
+	}
+
+	@Test
+	public void testBatchTagging() throws RemoteException {
+		List<String> userInfoList = new ArrayList<>();
+		userInfoList.add(new String("ojqOLxEdSITLJbC1kdDbVpKj5UEw"));
+		userInfoList.add(new String("ojqOLxHt-0dhb5oAOLMK-zhY9uwQ"));
+		userInfoList.add(new String("ojqOLxLh0480oz5gqHqLgzRgCLHM"));
+		BatchTaggingReq req = new BatchTaggingReq();
+		req.setOpenid_list(userInfoList);
+		req.setTagid(100);
+		WechatResp resp = userTagClient.batchTagging(accessTokenService.getAccessToken().getAccess_token(), req);
+		System.out.println(JSON.toJSONString(resp));
+	}
+
+	/**
+	 * 
+	 * @throws RemoteException
+	 */
+	@Test
+	public void testBatchRemoveTags() throws RemoteException {
+		List<String> userInfoList = new ArrayList<>();
+		userInfoList.add(new String("ojqOLxEdSITLJbC1kdDbVpKj5UEw"));
+		userInfoList.add(new String("ojqOLxHt-0dhb5oAOLMK-zhY9uwQ"));
+		userInfoList.add(new String("ojqOLxLh0480oz5gqHqLgzRgCLHM"));
+		BatchTaggingReq req = new BatchTaggingReq();
+		req.setOpenid_list(userInfoList);
+		req.setTagid(100);
+		WechatResp resp = userTagClient.batchRemoveTags(accessTokenService.getAccessToken().getAccess_token(), req);
+		System.out.println(JSON.toJSONString(resp));
+	}
+	// listUserTags
+
+	/**
+	 * 
+	 * @throws RemoteException
+	 */
+	@Test
+	public void testListUserTags() throws RemoteException {
+		UserTagsIdListResp resp = userTagClient.listUserTags(accessTokenService.getAccessToken().getAccess_token(),
+				"ojqOLxEdSITLJbC1kdDbVpKj5UEw");
 		System.out.println(JSON.toJSONString(resp));
 	}
 }

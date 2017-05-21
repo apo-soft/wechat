@@ -18,12 +18,14 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
 import cn.aposoft.wechat.mp.config.WechatLang;
+import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * 用户管理
@@ -45,6 +47,12 @@ public class UserClient implements Closeable {
 	static final String USER_INFO_URL_LANG = "&lang=";
 
 	static final String USER_INFO_LIST_URL = "https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token=";
+	//
+	static final String USER_SET_REMARK_URL = "https://api.weixin.qq.com/cgi-bin/user/info/updateremark?access_token=";
+
+	static final String USER_BLACKLIST_URL = "https://api.weixin.qq.com/cgi-bin/tags/members/getblacklist?access_token=";
+
+	static final String USER_BATCH_ADDTO_BALCKLIST_URL = "https://api.weixin.qq.com/cgi-bin/tags/members/batchblacklist?access_token=";
 
 	/**
 	 * 读取默认用户列表
@@ -148,6 +156,111 @@ public class UserClient implements Closeable {
 			throw new RemoteException("Empty response message.");
 		}
 		return JSON.parseObject(respMsg, UserInfoListResp.class);
+	}
+
+	/**
+	 * 读取默认用户列表
+	 * 
+	 * @param accessToken
+	 *            授权访问码
+	 * @param nextOpenId
+	 *            请求起始open_id
+	 * @return 用户列表响应
+	 * @throws RemoteException
+	 */
+	public UserInfoListResp setUserRemark(final String accessToken, final UserRemarkReq userRemarkReq)
+			throws RemoteException {
+		if (StringUtil.isBlank(accessToken, userRemarkReq)) {
+			throw new IllegalArgumentException("access_token is empty.");
+		}
+		final String url = getSetUserRemarkUrl(accessToken);
+		HttpPost httpPost = new HttpPost(url);
+		HttpEntity entity = EntityBuilder.create()//
+				.setContentType(ContentType.APPLICATION_JSON)//
+				.setText(JSON.toJSONString(userRemarkReq)).build();
+		httpPost.setEntity(entity);
+		final String respMsg = HttpClient.execute(httpPost, httpClient);
+
+		if (StringUtils.isBlank(respMsg)) {
+			throw new RemoteException("Empty response message.");
+		}
+		return JSON.parseObject(respMsg, UserInfoListResp.class);
+	}
+
+	/**
+	 * 读取默认用户列表
+	 * 
+	 * @param accessToken
+	 *            授权访问码
+	 * @param nextOpenId
+	 *            请求起始open_id
+	 * @return 用户列表响应
+	 * @throws RemoteException
+	 */
+	public BlackListResp getUserBlackList(final String accessToken, final String beginOpenId) throws RemoteException {
+		if (StringUtil.isBlank(accessToken)) {
+			throw new IllegalArgumentException("access_token is empty.");
+		}
+
+		final String url = getUserBlackListUrl(accessToken);
+		HttpPost httpPost = new HttpPost(url);
+		HttpEntity entity = EntityBuilder.create().setContentType(ContentType.APPLICATION_JSON)//
+				.setText(new JSONObject().fluentPut("begin_openid", beginOpenId).toJSONString()).build();
+		httpPost.setEntity(entity);
+		String respMsg = HttpClient.execute(httpPost, httpClient);
+		if (StringUtils.isBlank(respMsg)) {
+			throw new RemoteException("Empty response message.");
+		}
+		return JSON.parseObject(respMsg, BlackListResp.class);
+	}
+
+	/**
+	 * 设置用户黑名单
+	 * 
+	 * @param accessToken
+	 *            授权访问码
+	 * @param userBlackReq
+	 *            黑名单 openid列表
+	 * @return { "errcode": 0, "errmsg": "ok" }
+	 *         <p>
+	 *         {"errcode":40003,"errmsg":"invalid openid hint:
+	 *         [n0HMJA0558vr19]"}
+	 *         <p>
+	 *         {"errcode":40013,"errmsg":"invalid appid"}
+	 * 
+	 *         <pre>
+	 *         -1		系统繁忙
+				40003	传入非法的openid
+				49003	传入的openid不属于此AppID
+				40032	一次只能拉黑20个用户
+	 *         </pre>
+	 * 
+	 * @throws RemoteException
+	 */
+	public WechatResp setUserBlack(final String accessToken, final BatchBlackReq userBlackReq) throws RemoteException {
+		if (StringUtil.isBlank(accessToken, userBlackReq)) {
+			throw new IllegalArgumentException("access_token is empty.");
+		}
+		final String url = getSetUserRemarkUrl(accessToken);
+		HttpPost httpPost = new HttpPost(url);
+		HttpEntity entity = EntityBuilder.create()//
+				.setContentType(ContentType.APPLICATION_JSON)//
+				.setText(JSON.toJSONString(userBlackReq)).build();
+		httpPost.setEntity(entity);
+		final String respMsg = HttpClient.execute(httpPost, httpClient);
+
+		if (StringUtils.isBlank(respMsg)) {
+			throw new RemoteException("Empty response message.");
+		}
+		return JSON.parseObject(respMsg, WechatResp.class);
+	}
+
+	private String getUserBlackListUrl(String accessToken) {
+		return USER_BLACKLIST_URL + accessToken;
+	}
+
+	private String getSetUserRemarkUrl(String accessToken) {
+		return USER_SET_REMARK_URL + accessToken;
 	}
 
 	private HttpEntity buildEntity(List<UserInfoReq> useInfoList) {

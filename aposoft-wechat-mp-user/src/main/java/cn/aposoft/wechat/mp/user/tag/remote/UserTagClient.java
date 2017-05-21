@@ -42,6 +42,10 @@ public class UserTagClient implements Closeable {
 
 	// 批量为用户打标签
 	static final String USER_TAG_BATCH_TAGGING_URL = "https://api.weixin.qq.com/cgi-bin/tags/members/batchtagging?access_token=";
+	// 批量取消用户标签
+	static final String USER_TAG_BATCH_REMOVE_TAGS_URL = "https://api.weixin.qq.com/cgi-bin/tags/members/batchuntagging?access_token=";
+
+	static final String USER_TAG_TAGLIST_FOR_USER_URL = "https://api.weixin.qq.com/cgi-bin/tags/getidlist?access_token=";
 
 	/**
 	 * 添加标签，重复提交相同标签，返回45157错误
@@ -77,7 +81,7 @@ public class UserTagClient implements Closeable {
 	}
 
 	/**
-	 * 添加标签，重复提交相同标签，返回45157错误
+	 * 读取用户标签列表
 	 * 
 	 * @param accessToken
 	 *            授权访问码
@@ -180,31 +184,116 @@ public class UserTagClient implements Closeable {
 	 * 
 	 * @param accessToken
 	 *            授权访问码
-	 * @param name
-	 *            新标签名称
+	 * @param taggingReq
+	 *            批量添加对象
 	 * @return { "errcode":0, "errmsg":"ok" }
-	 *         <p>
-	 *         {"errcode":-1,"errmsg":"系统繁忙"}
-	 *         {"errcode":45057,"errmsg":"不能修改0/1/2这三个系统默认保留的标签"}
-	 *         {"errcode":45058,"errmsg":"该标签下粉丝数超过10w，不允许直接删除"}
+	 * 
+	 *         <pre>
+	 * 			-1		系统繁忙
+				40032	每次传入的openid列表个数不能超过50个
+				45159	非法的标签
+				45059	有粉丝身上的标签数已经超过限制，即超过20个
+				40003	传入非法的openid
+				49003	传入的openid不属于此AppID
+	 *         </pre>
+	 * 
 	 * @throws RemoteException
 	 */
-	public WechatResp batchTagging(final String accessToken, final int id) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
-			throw new IllegalArgumentException("access_token is empty.");
+	public WechatResp batchTagging(final String accessToken, final BatchTaggingReq taggingReq) throws RemoteException {
+		if (StringUtil.isBlank(accessToken, taggingReq)) {
+			throw new IllegalArgumentException("access_token or taggingReq is empty.");
 		}
-		final String url = getTagDeleteUrl(accessToken);
+		final String url = getBatchTaggingUrl(accessToken);
 		HttpPost httpPost = new HttpPost(url);
-		JSONObject jobj = new JSONObject().fluentPut("tag", //
-				new JSONObject().fluentPut("id", id));
 		httpPost.setEntity(EntityBuilder.create().setContentType(ContentType.APPLICATION_JSON)//
-				.setText(jobj.toJSONString()).build());
+				.setText(JSON.toJSONString(taggingReq)).build());
 
 		final String respMsg = HttpClient.execute(httpPost, httpClient);
 		if (StringUtils.isBlank(respMsg)) {
 			throw new RemoteException("Empty response message.");
 		}
 		return JSON.parseObject(respMsg, WechatResp.class);
+	}
+
+	/**
+	 * 批量给用户删除标签
+	 * 
+	 * @param accessToken
+	 *            授权访问码
+	 * @param taggingReq
+	 *            批量添加对象
+	 * @return { "errcode":0, "errmsg":"ok" }
+	 * 
+	 *         <pre>
+	 * 			-1		系统繁忙
+				40032	每次传入的openid列表个数不能超过50个
+				45159	非法的标签
+				40003	传入非法的openid
+				49003	传入的openid不属于此AppID
+	 *         </pre>
+	 * 
+	 * @throws RemoteException
+	 */
+	public WechatResp batchRemoveTags(final String accessToken, final BatchTaggingReq taggingReq)
+			throws RemoteException {
+		if (StringUtil.isBlank(accessToken, taggingReq)) {
+			throw new IllegalArgumentException("access_token or taggingReq is empty.");
+		}
+		final String url = getBatchRemoveTagsUrl(accessToken);
+		HttpPost httpPost = new HttpPost(url);
+		httpPost.setEntity(EntityBuilder.create().setContentType(ContentType.APPLICATION_JSON)//
+				.setText(JSON.toJSONString(taggingReq)).build());
+
+		final String respMsg = HttpClient.execute(httpPost, httpClient);
+		if (StringUtils.isBlank(respMsg)) {
+			throw new RemoteException("Empty response message.");
+		}
+		return JSON.parseObject(respMsg, WechatResp.class);
+	}
+
+	/**
+	 * 添加标签，重复提交相同标签，返回45157错误
+	 * 
+	 * @param accessToken
+	 *            授权访问码
+	 * @param name
+	 *            新标签名称
+	 * @return {@code {"tagid_list":[]} {"tagid_list":[100]}}
+	 * 
+	 *         <pre>
+				 * -1	系统繁忙
+				40003	传入非法的openid
+				49003	传入的openid不属于此AppID
+	 *         </pre>
+	 * 
+	 * @throws RemoteException
+	 */
+	public UserTagsIdListResp listUserTags(final String accessToken, final String openId) throws RemoteException {
+		if (StringUtil.isBlank(accessToken)) {
+			throw new IllegalArgumentException("access_token is empty.");
+		}
+		final String url = getUserTagListUrl(accessToken);
+		HttpPost httpPost = new HttpPost(url);
+		JSONObject jobj = new JSONObject().fluentPut("openid", openId);
+		httpPost.setEntity(EntityBuilder.create().setContentType(ContentType.APPLICATION_JSON)//
+				.setText(jobj.toJSONString()).build());
+		final String respMsg = HttpClient.execute(httpPost, httpClient);
+		if (StringUtils.isBlank(respMsg)) {
+			throw new RemoteException("Empty response message.");
+		}
+		return JSON.parseObject(respMsg, UserTagsIdListResp.class);
+	}
+
+	private String getUserTagListUrl(String accessToken) {
+		return USER_TAG_TAGLIST_FOR_USER_URL + accessToken;
+	}
+
+	private String getBatchRemoveTagsUrl(String accessToken) {
+		return USER_TAG_BATCH_REMOVE_TAGS_URL + accessToken;
+	}
+
+	private String getBatchTaggingUrl(String accessToken) {
+		return USER_TAG_BATCH_TAGGING_URL + accessToken;
 	}
 
 	private String getTagUpdateUrl(String accessToken) {

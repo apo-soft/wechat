@@ -5,6 +5,7 @@ package cn.aposoft.wechat.mp.user.remote;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.AfterClass;
@@ -17,6 +18,7 @@ import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * @author Jann Liu
@@ -82,4 +84,34 @@ public class UserClientTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Test
+	public void testSetUserRemark() throws RemoteException {
+
+		UserInfoListResp resp = userClient.setUserRemark(accessTokenService.getAccessToken().getAccess_token(),
+				new UserRemarkReq("ojqOLxHt-0dhb5oAOLMK-zhY9uwQ", "pangzi"));
+		System.out.println(JSON.toJSONString(resp));
+	}
+
+	@Test
+	public void testGetUserInfoForRemark() throws RemoteException {
+		UserInfoResp resp = userClient.getUserInfo(accessTokenService.getAccessToken().getAccess_token(),
+				"ojqOLxHt-0dhb5oAOLMK-zhY9uwQ");
+		System.out.println(JSON.toJSONString(resp));
+	}
+
+	@Test
+	public void testGetUserBlackList() throws RemoteException {
+		BlackListResp resp = userClient.getUserBlackList(accessTokenService.getAccessToken().getAccess_token(), "");
+		System.out.println(JSON.toJSONString(resp));
+	}
+
+	@Test
+	public void testSetUserBlackList() throws RemoteException {
+		BatchBlackReq blackReq = new BatchBlackReq();
+		List<String> openid_list = Arrays.asList("ojqOLxHt-0dhb5oAOLMK-zhY9uwQ");
+		blackReq.setOpenid_list(openid_list);
+
+		WechatResp resp = userClient.setUserBlack(accessTokenService.getAccessToken().getAccess_token(), blackReq);
+		System.out.println(JSON.toJSONString(resp));
+	}
 }
