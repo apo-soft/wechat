@@ -39,7 +39,7 @@ public class AposoftCsaMessageService implements CsaMessageService {
 		jobj.put("touser", openId);
 		jobj.put("msgtype", "wxcard");
 		jobj.put("wxcard", new JSONObject().fluentPut("card_id", cardId));
-		if (StringUtil.isBlank(account)) {
+		if (!StringUtil.isBlank(account)) {
 			jobj.put("customservice", new JSONObject().fluentPut("kf_account", account));
 		}
 		return client.send(accessToken, jobj.toJSONString());
@@ -58,7 +58,7 @@ public class AposoftCsaMessageService implements CsaMessageService {
 		jobj.put("touser", openId);
 		jobj.put("msgtype", "mpnews");
 		jobj.put("mpnews", new JSONObject().fluentPut("media_id", mediaId));
-		if (StringUtil.isBlank(account)) {
+		if (!StringUtil.isBlank(account)) {
 			jobj.put("customservice", new JSONObject().fluentPut("kf_account", account));
 		}
 		return client.send(accessToken, jobj.toJSONString());
@@ -78,7 +78,7 @@ public class AposoftCsaMessageService implements CsaMessageService {
 		jobj.put("touser", openId);
 		jobj.put("msgtype", "news");
 		jobj.put("news", new JSONObject().fluentPut("articles", articles));
-		if (StringUtil.isBlank(account)) {
+		if (!StringUtil.isBlank(account)) {
 			jobj.put("customservice", new JSONObject().fluentPut("kf_account", account));
 		}
 		return client.send(accessToken, jobj.toJSONString());
@@ -96,7 +96,7 @@ public class AposoftCsaMessageService implements CsaMessageService {
 		jobj.put("touser", openId);
 		jobj.put("msgtype", "music");
 		jobj.put("music", music);
-		if (StringUtil.isBlank(account)) {
+		if (!StringUtil.isBlank(account)) {
 			jobj.put("customservice", new JSONObject().fluentPut("kf_account", account));
 		}
 		return client.send(accessToken, jobj.toJSONString());
@@ -114,7 +114,7 @@ public class AposoftCsaMessageService implements CsaMessageService {
 		jobj.put("touser", openId);
 		jobj.put("msgtype", "video");
 		jobj.put("video", vedio);
-		if (StringUtil.isBlank(account)) {
+		if (!StringUtil.isBlank(account)) {
 			jobj.put("customservice", new JSONObject().fluentPut("kf_account", account));
 		}
 		return client.send(accessToken, jobj.toJSONString());
@@ -133,7 +133,7 @@ public class AposoftCsaMessageService implements CsaMessageService {
 		jobj.put("touser", openId);
 		jobj.put("msgtype", "voice");
 		jobj.put("voice", new JSONObject().fluentPut("media_id", mediaId));
-		if (StringUtil.isBlank(account)) {
+		if (!StringUtil.isBlank(account)) {
 			jobj.put("customservice", new JSONObject().fluentPut("kf_account", account));
 		}
 		return client.send(accessToken, jobj.toJSONString());
@@ -153,7 +153,7 @@ public class AposoftCsaMessageService implements CsaMessageService {
 		jobj.put("msgtype", "image");
 
 		jobj.put("image", new JSONObject().fluentPut("media_id", mediaId));
-		if (StringUtil.isBlank(account)) {
+		if (!StringUtil.isBlank(account)) {
 			jobj.put("customservice", new JSONObject().fluentPut("kf_account", account));
 		}
 		return client.send(accessToken, jobj.toJSONString());
@@ -173,7 +173,7 @@ public class AposoftCsaMessageService implements CsaMessageService {
 		jobj.put("touser", openId);
 		jobj.put("msgtype", "text");
 		jobj.put("text", new JSONObject().fluentPut("content", content));
-		if (StringUtil.isBlank(account)) {
+		if (!StringUtil.isBlank(account)) {
 			jobj.put("customservice", new JSONObject().fluentPut("kf_account", account));
 		}
 		return client.send(accessToken, jobj.toJSONString());
@@ -216,7 +216,7 @@ public class AposoftCsaMessageService implements CsaMessageService {
 
 	@Override
 	public WechatResp sendText(String accessToken, String openId, String content) throws RemoteException {
-		return sendImage(accessToken, openId, content, null);
+		return sendText(accessToken, openId, content, null);
 	}
 
 	/*
