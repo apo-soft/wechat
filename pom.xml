@@ -74,6 +74,7 @@
 		<module>aposoft-wechat-simple-site</module>
     <module>aposoft-wechat-csa-management</module>
     <module>aposoft-wechat-mp-user</module>
+    <module>aposoft-wechat-mp-media</module>
   </modules>
 	<dependencyManagement>
 		<dependencies>
