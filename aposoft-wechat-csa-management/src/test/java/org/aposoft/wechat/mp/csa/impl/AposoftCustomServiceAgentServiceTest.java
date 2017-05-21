@@ -23,7 +23,7 @@ import cn.aposoft.wechat.mp.remote.WechatResp;
  * @author liuya
  *
  */
-public class DefaultCustomServiceAgentServiceTest {
+public class AposoftCustomServiceAgentServiceTest {
 
 	static DefaultCustomServiceAgentService csaService;
 
