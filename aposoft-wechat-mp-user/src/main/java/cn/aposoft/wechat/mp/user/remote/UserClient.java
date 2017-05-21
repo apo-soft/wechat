@@ -38,7 +38,7 @@ public class UserClient implements Closeable {
 
 	static final String LIST_USER_URL_NEXT_OPENID = "&next_openid=";
 
-	static final String USER_INFO_URL = "https://api.weixin.qq.com/cgi-bin/user/get?access_token=";
+	static final String USER_INFO_URL = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=";
 
 	static final String USER_INFO_URL_OPENID = "&openid=";
 
@@ -116,7 +116,7 @@ public class UserClient implements Closeable {
 		String url = getUserInfoUrl(accessToken, openId, lang);
 		HttpGet httpGet = new HttpGet(url);
 		String respMsg = HttpClient.execute(httpGet, httpClient);
-
+		System.out.println(respMsg);
 		if (StringUtils.isBlank(respMsg)) {
 			throw new RemoteException("Empty response message.");
 		}

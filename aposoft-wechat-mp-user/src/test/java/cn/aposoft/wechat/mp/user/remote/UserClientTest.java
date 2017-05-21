@@ -67,7 +67,7 @@ public class UserClientTest {
 	@Test
 	public void testGetUserInfo() throws RemoteException {
 		UserInfoResp resp = userClient.getUserInfo(accessTokenService.getAccessToken().getAccess_token(),
-				"ojqOLxEdSITLJbC1kdDbVpKj5UEw");
+				"ojqOLxLh0480oz5gqHqLgzRgCLHM");
 		System.out.println(JSON.toJSONString(resp));
 	}
 
