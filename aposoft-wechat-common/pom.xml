@@ -36,4 +36,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<description>common包实现的是全部业务都需要，或是公共的业务技术中间件，包括access_token,加密</description>
 </project>
