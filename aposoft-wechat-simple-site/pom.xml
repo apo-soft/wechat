@@ -19,6 +19,16 @@
 	<dependencies>
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
+			<artifactId>aposoft-wechat-mp-message-news</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.aposoft.wechat</groupId>
+			<artifactId>aposoft-wechat-mp-auth</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.aposoft.wechat</groupId>
 			<artifactId>aposoft-wechat-message</artifactId>
 			<version>${project.version}</version>
 		</dependency>

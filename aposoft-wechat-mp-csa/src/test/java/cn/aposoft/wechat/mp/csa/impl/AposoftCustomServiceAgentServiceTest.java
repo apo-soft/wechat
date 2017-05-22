@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
@@ -17,7 +18,6 @@ import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.csa.AgentAccount;
-import cn.aposoft.wechat.mp.csa.impl.AposoftCustomServiceAgentService;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
@@ -56,6 +56,7 @@ public class AposoftCustomServiceAgentServiceTest {
 		System.out.println(JSON.toJSONString(list));
 	}
 
+	@Ignore
 	@Test
 	public void testAddKf() throws RemoteException {
 		AgentAccount account = new AgentAccount();
@@ -73,6 +74,7 @@ public class AposoftCustomServiceAgentServiceTest {
 
 	}
 
+	@Ignore
 	@Test
 	public void testUpdateKf() throws RemoteException {
 		AgentAccount account = new AgentAccount();
@@ -84,6 +86,7 @@ public class AposoftCustomServiceAgentServiceTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testDeleteKf() throws RemoteException {
 		AgentAccount account = new AgentAccount();

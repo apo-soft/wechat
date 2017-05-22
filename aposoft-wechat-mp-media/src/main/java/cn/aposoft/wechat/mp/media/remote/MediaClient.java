@@ -12,8 +12,10 @@ import org.apache.http.impl.client.CloseableHttpClient;
 
 import com.alibaba.fastjson.JSON;
 
+import cn.aposoft.util.AposoftHttpEntity;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
+import cn.aposoft.util.MediaEntity;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
 
@@ -72,18 +74,18 @@ public class MediaClient implements Closeable {
 	 *         {"errcode":40004,"errmsg":"invalid media type"}
 	 * @throws RemoteException
 	 */
-	public MediaResp uploadMedia(String accessToken, String type, MediaContent media) throws RemoteException {
-		if (media == null || media.getData() == null || media.getData().length == 0) {
+	public MediaResp uploadMedia(String accessToken, String type, MediaEntity media) throws RemoteException {
+		if (media == null || media.getEntity() == null || media.getEntity().length == 0) {
 			throw new IllegalArgumentException("media is null or empty.");
 		}
 
-		if (StringUtil.isBlank(accessToken, media, media.getFileName(), media.getContentType())) {
+		if (StringUtil.isBlank(accessToken, media, media.getFilename(), media.getContentType())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		final String requestUrl = getUploadMediaUrl(accessToken, type);
 		HttpPost httpPost = new HttpPost(requestUrl);
-		httpPost.setEntity(MultipartEntityBuilder.create().addBinaryBody("media", media.getData(),
-				ContentType.create(media.getContentType()), media.getFileName()).build());
+		httpPost.setEntity(MultipartEntityBuilder.create().addBinaryBody("media", media.getEntity(),
+				ContentType.create(media.getContentType()), media.getFilename()).build());
 		String respMsg = HttpClient.execute(httpPost, httpClient);
 
 		if (StringUtils.isBlank(respMsg)) {
@@ -97,28 +99,28 @@ public class MediaClient implements Closeable {
 	 * 
 	 * @param accessToken
 	 *            访问授权码
-	 * @param type
-	 *            素材类型
-	 * @param media
-	 *            素材内容
-	 * @return 处理结果
-	 *         <p>
-	 *         {"created_at":1495420514,"media_id":"w95CmShg2SjGVzKWDT3eA0EZLca1FdkUzG-5nJg3B2mu3QITlTY1VLmFl4q7pK4L","type":"image"}
-	 *         <p>
-	 *         {"created_at":0,"errcode":40004,"errmsg":"invalid media type
-	 *         hint: [e5x5NA0205e541]"}
+	 * 
+	 * @param mediaId
+	 *            素材Id
+	 * @return 素材2进制数组
+	 * 
 	 * @throws RemoteException
 	 */
-	public byte[] getMedia(String accessToken, String mediaId) throws RemoteException {
+	public MediaEntityResp getMedia(String accessToken, String mediaId) throws RemoteException {
 		if (StringUtil.isBlank(accessToken, mediaId)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		final String requestUrl = getMediaUrl(accessToken, mediaId);
 		HttpGet httpPost = new HttpGet(requestUrl);
 
-		byte[] bytes = HttpClient.executeBytes(httpPost, httpClient);
-
-		return bytes;
+		AposoftHttpEntity entity = HttpClient.executeEntity(httpPost, httpClient);
+		if (ContentType.APPLICATION_JSON.getMimeType().equals(entity.getMimeType())) {
+			return JSON.parseObject(entity.getText(), MediaEntityResp.class);
+		} else {
+			MediaEntityResp resp = new MediaEntityResp();
+			resp.setMedia(entity.getMediaEntity());
+			return resp;
+		}
 	}
 
 	private String getMediaUrl(String accessToken, String mediaId) {

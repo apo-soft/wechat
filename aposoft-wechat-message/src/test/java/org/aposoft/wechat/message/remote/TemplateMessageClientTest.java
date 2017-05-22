@@ -93,6 +93,7 @@ public class TemplateMessageClientTest {
 
 	}
 
+	@Ignore
 	// BE57iEeATYm4O5qGJcszZxsSSHS7ANkwHkTiFakaVu0
 	@Test
 	public void testSendTemplateMessage() throws RemoteException {

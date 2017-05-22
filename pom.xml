@@ -73,9 +73,11 @@
 		<module>aposoft-wechat-common</module>
 		<module>aposoft-wechat-message</module>
 		<module>aposoft-wechat-simple-site</module>
-		<module>aposoft-wechat-csa-management</module>
+		<module>aposoft-wechat-mp-csa</module>
 		<module>aposoft-wechat-mp-user</module>
 		<module>aposoft-wechat-mp-media</module>
+		<module>aposoft-wechat-mp-auth</module>
+		<module>aposoft-wechat-mp-examples</module>
 	</modules>
 
 

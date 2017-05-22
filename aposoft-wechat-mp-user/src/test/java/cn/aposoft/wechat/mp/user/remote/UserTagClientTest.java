@@ -96,6 +96,7 @@ public class UserTagClientTest {
 	 * 
 	 * @throws RemoteException
 	 */
+	@Ignore
 	@Test
 	public void testUpdateTag() throws RemoteException {
 		UserTag tag = new UserTag();
@@ -123,6 +124,7 @@ public class UserTagClientTest {
 	 * 
 	 * @throws RemoteException
 	 */
+	@Ignore
 	@Test
 	public void testBatchRemoveTags() throws RemoteException {
 		List<String> userInfoList = new ArrayList<>();

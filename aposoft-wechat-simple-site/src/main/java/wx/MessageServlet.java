@@ -28,7 +28,7 @@ import cn.aposoft.wechat.mp.crypt.impl.BasicCryptService;
 import cn.aposoft.wechat.mp.message.MessageRequestParams;
 import cn.aposoft.wechat.mp.message.MessageService;
 import cn.aposoft.wechat.mp.message.impl.AposoftIntegratedMessage;
-import cn.aposoft.wechat.mp.message.impl.NewsService;
+import cn.aposoft.wechat.mp.message.news.NewsService;
 import cn.aposoft.wechat.mp.message.template.Message;
 import cn.aposoft.wechat.mp.validate.SignatureValidator;
 

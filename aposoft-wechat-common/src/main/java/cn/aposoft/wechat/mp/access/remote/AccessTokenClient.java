@@ -21,7 +21,6 @@ import cn.aposoft.constant.Lexical;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.util.RemoteException;
-import cn.aposoft.wechat.mp.UrlConstant;
 import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 /**
@@ -33,6 +32,13 @@ import cn.aposoft.wechat.mp.config.WechatMpConfig;
  */
 public class AccessTokenClient implements Closeable {
 	final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
+
+	/**
+	 * 微信ACCESS_TOKEN读取URL
+	 * 
+	 * {@link https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183&token=&lang=zh_CN}
+	 */
+	public static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?";
 
 	/**
 	 * 向微信服务器请求，返回的AccessToken响应结果 客户端不区分微信服务器返回的结果内容是否存在错误,对错误的处理需要在服务层实现
@@ -62,7 +68,7 @@ public class AccessTokenClient implements Closeable {
 		params.add(new BasicNameValuePair("appid", accessTokenReq.getAppId()));
 		params.add(new BasicNameValuePair("secret", accessTokenReq.getAppSecret()));
 		String paramsUrl = URLEncodedUtils.format(params, Lexical.UTF8);
-		final String requestUrl = UrlConstant.ACCESS_TOKEN_URL + paramsUrl;
+		final String requestUrl = ACCESS_TOKEN_URL + paramsUrl;
 		return requestUrl;
 	}
 
