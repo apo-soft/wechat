@@ -2,7 +2,6 @@ package cn.aposoft.wechat.mp.media.remote;
 
 import java.io.Closeable;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.HttpClientUtils;
@@ -35,6 +34,8 @@ public class MediaClient implements Closeable {
 	static final String GET_MEIDA_ID_URL = "&media_id=";
 	//
 	static final String MEDIA_COUNT_URL = "https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=";
+	// 批量读取素材
+	static final String MEDIA_BATCH_URL = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=";
 
 	@Override
 	public void close() {
@@ -88,23 +89,18 @@ public class MediaClient implements Closeable {
 		HttpPost httpPost = new HttpPost(requestUrl);
 		httpPost.setEntity(MultipartEntityBuilder.create().addBinaryBody("media", media.getEntity(),
 				ContentType.create(media.getContentType()), media.getFilename()).build());
-		String respMsg = HttpClient.execute(httpPost, httpClient);
-		
-		if (StringUtils.isBlank(respMsg)) {
-			throw new RemoteException("Empty response message.");
-		}
-		return JSON.parseObject(respMsg, MediaResp.class);
+		return HttpClient.execute(httpPost, MediaResp.class, httpClient);
 	}
 
 	/**
-	 * 添加临时素材
+	 * 获取临时素材
 	 * 
 	 * @param accessToken
 	 *            访问授权码
 	 * 
 	 * @param mediaId
 	 *            素材Id
-	 * @return 素材2进制数组
+	 * @return 素材二进制数组
 	 * 
 	 * @throws RemoteException
 	 */
@@ -131,10 +127,33 @@ public class MediaClient implements Closeable {
 	 * @param accessToken
 	 *            授权码
 	 * @return 素材数量
+	 * @throws RemoteException
 	 */
-	public MeidaCountResp getMediaCount(String accessToken) {
-		// https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=
-		return null;
+	public MeidaCountResp getMediaCount(String accessToken) throws RemoteException {
+		if (StringUtil.isBlank(accessToken)) {
+			throw new IllegalArgumentException("Some argument(s) is null or empty.");
+		}
+		return HttpClient.execute(new HttpGet(getMediaCountUrl(accessToken)), MeidaCountResp.class, httpClient);
+	}
+
+	/**
+	 * 读取素材数量
+	 * 
+	 * @param accessToken
+	 *            授权码
+	 * @return 素材数量
+	 * @throws RemoteException
+	 */
+	public MeidaListResp getMediaList(String accessToken, MediaListReq req) throws RemoteException {
+		if (StringUtil.isBlank(accessToken, req)) {
+			throw new IllegalArgumentException("Some argument(s) is null or empty.");
+		}
+		return HttpClient.execute(HttpClient.createJsonHttpPost(getMediaCountUrl(accessToken), req),
+				MeidaListResp.class, httpClient);
+	}
+
+	private String getMediaCountUrl(String accessToken) {
+		return MEDIA_COUNT_URL + accessToken;
 	}
 
 	private String getMediaUrl(String accessToken, String mediaId) {

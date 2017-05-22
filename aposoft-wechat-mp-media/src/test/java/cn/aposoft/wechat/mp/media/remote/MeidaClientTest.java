@@ -108,4 +108,34 @@ public class MeidaClientTest {
 			Assert.assertTrue(data.length == dataResp.getMedia().getLength());
 		}
 	}
+
+	/**
+	 * 
+	 * @throws RemoteException
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
+	@Test
+	public void testGetMeidaCount() throws RemoteException, FileNotFoundException, IOException {
+
+		System.out.println(
+				JSON.toJSONString(client.getMediaCount(accessTokenService.getAccessToken().getAccess_token())));
+	}
+
+	/**
+	 * 
+	 * @throws RemoteException
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
+	@Test
+	public void testGetMeidaList() throws RemoteException, FileNotFoundException, IOException {
+		MediaListReq req = new MediaListReq();
+		req.setCount(100);
+		req.setOffset(0);
+		req.setType(MediaType.image.name());
+
+		System.out.println(
+				JSON.toJSONString(client.getMediaList(accessTokenService.getAccessToken().getAccess_token(), req)));
+	}
 }

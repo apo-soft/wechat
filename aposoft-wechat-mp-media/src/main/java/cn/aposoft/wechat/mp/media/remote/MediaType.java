@@ -5,6 +5,12 @@ package cn.aposoft.wechat.mp.media.remote;
 
 /**
  * 临时素材格式
+ * <p>
+ * image,voice,video,thumb
+ * <p>
+ * 永久素材格式
+ * <p>
+ * image,voice,video,news
  * 
  * @author Jann Liu
  *
@@ -25,5 +31,9 @@ public enum MediaType {
 	/**
 	 * 缩略图（thumb）：64KB，支持JPG格式
 	 */
-	thumb
+	thumb,
+	/**
+	 * 图文
+	 */
+	news
 }

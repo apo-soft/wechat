@@ -141,6 +141,9 @@ public class HttpClient {
 	public static <T> T execute(final HttpUriRequest httpRequest, final Class<T> clazz,
 			final CloseableHttpClient httpClient) throws RemoteException {
 		String respMsg = HttpClient.execute(httpRequest, httpClient);
+		if (logEnabled && logger.isDebugEnabled()) {
+			logger.debug(respMsg);
+		}
 		if (StringUtils.isBlank(respMsg)) {
 			throw new RemoteException("Empty response message.");
 		}
