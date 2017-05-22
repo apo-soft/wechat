@@ -44,7 +44,7 @@ public class HttpClient {
 		if (logEnabled) {
 			logger.info("REQUEST:" + request);
 		}
-		request.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0");
+
 		try (CloseableHttpResponse response = httpClient.execute(request);) {
 			if (logEnabled && response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
 				logger.error("RESPONSE Status:" + response.getStatusLine());
@@ -57,6 +57,34 @@ public class HttpClient {
 				logger.info(jsonStr);
 			}
 			return jsonStr;
+		} catch (Exception e) {
+			throw new RemoteException(e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * 执行未登录请求，或通用请求
+	 * 
+	 * @param request
+	 *            请求信息
+	 * @param httpClient
+	 *            客户端
+	 * @return 响应报文
+	 * @throws Exception
+	 */
+	public static byte[] executeBytes(HttpUriRequest request, CloseableHttpClient httpClient) throws RemoteException {
+		if (logEnabled) {
+			logger.info("REQUEST:" + request);
+		}
+
+		try (CloseableHttpResponse response = httpClient.execute(request);) {
+			if (logEnabled && response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
+				logger.error("RESPONSE Status:" + response.getStatusLine());
+				throw new HttpStatusException(response.getStatusLine());
+			}
+			HttpEntity entity = response.getEntity();
+			return EntityUtils.toByteArray(entity);
+
 		} catch (Exception e) {
 			throw new RemoteException(e.getMessage(), e);
 		}

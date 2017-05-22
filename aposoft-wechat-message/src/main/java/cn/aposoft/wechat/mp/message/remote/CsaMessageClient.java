@@ -40,9 +40,7 @@ public class CsaMessageClient implements Closeable {
 		if (StringUtil.isBlank(accessToken, msg)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		System.out.println(msg);
 		final String requestUrl = getCsaMessageUrl(accessToken);
-		System.out.println(requestUrl);
 		HttpPost httpPost = new HttpPost(requestUrl);
 		httpPost.setEntity(EntityBuilder.create()//
 				.setContentType(ContentType.APPLICATION_JSON)//
