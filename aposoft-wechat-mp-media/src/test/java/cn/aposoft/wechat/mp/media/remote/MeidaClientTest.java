@@ -151,7 +151,7 @@ public class MeidaClientTest {
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
-//	@Ignore
+	@Ignore
 	@Test
 	public void testAddMeterial() throws RemoteException, FileNotFoundException, IOException {
 		MediaEntity media = new MediaEntity();
@@ -162,5 +162,24 @@ public class MeidaClientTest {
 
 		System.out.println(JSON.toJSONString(client.addMaterial(accessTokenService.getAccessToken().getAccess_token(),
 				MediaType.image.name(), media)));
+	}
+
+	/**
+	 * {@code {"created_at":1495420514,"media_id":"w95CmShg2SjGVzKWDT3eA0EZLca1FdkUzG-5nJg3B2mu3QITlTY1VLmFl4q7pK4L","type":"image"}}
+	 * {"created_at":1495429645,"media_id":"KsmAk839SjPBI-yb8jweVB1ypbg0w4M_P1Bxg6OfGLBeW_O5Rcy9OogJvDS2dBDw","type":"image"}
+	 * 
+	 * 
+	 * @throws RemoteException
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
+	@Test
+	public void testGetMeterial() throws RemoteException, FileNotFoundException, IOException {
+		MaterialResp resp = client.getMaterial(accessTokenService.getAccessToken().getAccess_token(),
+				"gbFT6slaM_0w2LBuG_B-WBRmwdhftRGrelZEFW47sZg");
+		System.out.println(resp.getMediaEntity().getFilename());
+		System.out.println(resp.getMediaEntity().getContentType());
+		System.out.println(resp.getMediaEntity().getLength());
+		Assert.assertTrue(resp.getMediaEntity().getLength() > 0);
 	}
 }

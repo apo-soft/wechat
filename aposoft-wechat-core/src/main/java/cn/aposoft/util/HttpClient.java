@@ -98,10 +98,12 @@ public class HttpClient {
 
 			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 				if (logEnabled && logger.isDebugEnabled()) {
-					logger.debug("REQUEST:" + request);
+					logger.debug("RESPONSE:" + response.getStatusLine());
 				}
 				AposoftHttpEntity resp = new AposoftHttpEntity();
-				final String mimeType = response.getFirstHeader("Content-Type").getValue();
+
+				final String mimeType = response.getFirstHeader("Content-Type") == null ? null
+						: response.getFirstHeader("Content-Type").getValue();
 				resp.setMimeType(mimeType);
 				// 读取JSON
 				if (ContentType.APPLICATION_JSON.getMimeType().equals(mimeType)) {

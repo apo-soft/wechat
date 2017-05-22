@@ -5,6 +5,7 @@ package cn.aposoft.wechat.mp.media.remote;
 
 import java.util.List;
 
+import cn.aposoft.util.MediaEntity;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
@@ -45,7 +46,7 @@ public class MaterialResp extends WechatResp {
 	private String title;
 	private String description;
 	private String down_url;
-
+	private MediaEntity mediaEntity;
 	private List<NewsItem> news_item;
 
 	/**
@@ -106,6 +107,21 @@ public class MaterialResp extends WechatResp {
 	 */
 	public void setNews_item(List<NewsItem> news_item) {
 		this.news_item = news_item;
+	}
+
+	/**
+	 * @return the media
+	 */
+	public MediaEntity getMediaEntity() {
+		return mediaEntity;
+	}
+
+	/**
+	 * @param media
+	 *            the media to set
+	 */
+	public void setMediaEntity(MediaEntity mediaEntity) {
+		this.mediaEntity = mediaEntity;
 	}
 
 }

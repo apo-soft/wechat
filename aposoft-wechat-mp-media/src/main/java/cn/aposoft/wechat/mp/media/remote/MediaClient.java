@@ -214,15 +214,25 @@ public class MediaClient implements Closeable {
 	 * @return 素材数量
 	 *         <p>
 	 * 
+	 *         <p>
+	 *         {"errcode":40007,"errmsg":"invalid media_id hint:
+	 *         [OJiIRA0621e604]"}
 	 * @throws RemoteException
 	 */
 	public MaterialResp getMaterial(String accessToken, String media_id) throws RemoteException {
 		if (StringUtil.isBlank(accessToken, media_id)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getMaterialUrl(accessToken),
-				new JSONObject().fluentPut("media_id", media_id)), MaterialResp.class, httpClient);
+		HttpPost post = HttpClient.createJsonHttpPost(getMaterialUrl(accessToken),
+				new JSONObject().fluentPut("media_id", media_id));
+		AposoftHttpEntity entity = HttpClient.executeEntity(post, httpClient);
+		if (ContentType.APPLICATION_JSON.getMimeType().equals(entity.getMimeType())) {
+			return JSON.parseObject(entity.getText(), MaterialResp.class);
+		} else {
+			MaterialResp resp = new MaterialResp();
+			resp.setMediaEntity(entity.getMediaEntity());
+			return resp;
+		}
 	}
 
 	private String getMaterialUrl(String accessToken) {
