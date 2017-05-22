@@ -5,16 +5,8 @@ package cn.aposoft.wechat.mp.csa.remote;
 
 import java.io.Closeable;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.http.client.entity.EntityBuilder;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.utils.HttpClientUtils;
-import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
-
-import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
@@ -57,7 +49,7 @@ public class CustomServiceAgentClient implements Closeable {
 				account.getPassword())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.executeWechat(createJsonHttpPost(getAddUrl(accessToken), account), httpClient);
+		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getAddUrl(accessToken), account), httpClient);
 	}
 
 	/**
@@ -75,7 +67,7 @@ public class CustomServiceAgentClient implements Closeable {
 				account.getPassword())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.executeWechat(createJsonHttpPost(getUpdateUrl(accessToken), account), httpClient);
+		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getUpdateUrl(accessToken), account), httpClient);
 	}
 
 	/**
@@ -92,7 +84,7 @@ public class CustomServiceAgentClient implements Closeable {
 		if (StringUtil.isBlank(accessToken, account, account.getAccount())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.executeWechat(createJsonHttpPost(getDeleteUrl(accessToken), account), httpClient);
+		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getDeleteUrl(accessToken), account), httpClient);
 	}
 
 	/**
@@ -112,7 +104,7 @@ public class CustomServiceAgentClient implements Closeable {
 		if (StringUtil.isBlank(accessToken, account, account.getAccount())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.executeWechat(createJsonHttpPost(getDeleteUrl(accessToken), account), httpClient);
+		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getDeleteUrl(accessToken), account), httpClient);
 	}
 
 	/**
@@ -129,7 +121,8 @@ public class CustomServiceAgentClient implements Closeable {
 		if (StringUtil.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.execute(createHttpGet(getListUrl(accessToken)), KfListAccountResp.class, httpClient);
+		return HttpClient.execute(HttpClient.createHttpGet(getListUrl(accessToken)), KfListAccountResp.class,
+				httpClient);
 	}
 
 	private String getListUrl(String accessToken) {
@@ -146,33 +139,6 @@ public class CustomServiceAgentClient implements Closeable {
 
 	private String getDeleteUrl(String accessToken) {
 		return KFACCOUNT_DELETE_URL + accessToken;
-	}
-
-	private HttpGet createHttpGet(String listUrl) {
-		return new HttpGet(listUrl);
-	}
-
-	private HttpPost createJsonHttpPost(final String requestUrl, final Object entity) {
-		HttpPost httpPost = new HttpPost(requestUrl);
-		httpPost.setEntity(EntityBuilder.create()//
-				.setContentType(ContentType.APPLICATION_JSON)//
-				.setText(JSON.toJSONString(entity))//
-				.build());
-		return httpPost;
-	}
-
-	// 内部请求公共类
-	private WechatResp execute(final HttpUriRequest httpRequest) throws RemoteException {
-		return execute(httpRequest, WechatResp.class);
-	}
-
-	private <T> T execute(HttpUriRequest httpRequest, Class<T> clazz) throws RemoteException {
-		String respMsg = HttpClient.execute(httpRequest, httpClient);
-		if (StringUtils.isBlank(respMsg)) {
-			throw new RemoteException("Empty response message.");
-		}
-		System.out.println(respMsg);
-		return JSON.parseObject(respMsg, clazz);
 	}
 
 	@Override
