@@ -57,7 +57,7 @@ public class CustomServiceAgentClient implements Closeable {
 				account.getPassword())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return execute(createJsonHttpPost(getAddUrl(accessToken), account));
+		return HttpClient.executeWechat(createJsonHttpPost(getAddUrl(accessToken), account), httpClient);
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class CustomServiceAgentClient implements Closeable {
 				account.getPassword())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return execute(createJsonHttpPost(getUpdateUrl(accessToken), account));
+		return HttpClient.executeWechat(createJsonHttpPost(getUpdateUrl(accessToken), account), httpClient);
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class CustomServiceAgentClient implements Closeable {
 		if (StringUtil.isBlank(accessToken, account, account.getAccount())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return execute(createJsonHttpPost(getDeleteUrl(accessToken), account));
+		return HttpClient.executeWechat(createJsonHttpPost(getDeleteUrl(accessToken), account), httpClient);
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class CustomServiceAgentClient implements Closeable {
 		if (StringUtil.isBlank(accessToken, account, account.getAccount())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return execute(createJsonHttpPost(getDeleteUrl(accessToken), account));
+		return HttpClient.executeWechat(createJsonHttpPost(getDeleteUrl(accessToken), account), httpClient);
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class CustomServiceAgentClient implements Closeable {
 		if (StringUtil.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return execute(createHttpGet(getListUrl(accessToken)), KfListAccountResp.class);
+		return HttpClient.execute(createHttpGet(getListUrl(accessToken)), KfListAccountResp.class, httpClient);
 	}
 
 	private String getListUrl(String accessToken) {

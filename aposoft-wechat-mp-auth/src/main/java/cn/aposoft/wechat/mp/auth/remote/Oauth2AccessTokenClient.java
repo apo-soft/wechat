@@ -4,7 +4,6 @@ import java.io.Closeable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.HttpClientUtils;
@@ -12,12 +11,11 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.alibaba.fastjson.JSON;
-
 import cn.aposoft.constant.Lexical;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.mp.config.WechatLang;
 import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 public class Oauth2AccessTokenClient implements Closeable {
@@ -63,15 +61,8 @@ public class Oauth2AccessTokenClient implements Closeable {
 	final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
 
 	public Oauth2AccessTokenResp getOauth2Token(String code, WechatMpConfig config) throws RemoteException {
-		final String requestUrl = getAccessTokenUrl(code, config);
-		HttpGet httpGet = new HttpGet(requestUrl);
-		String respMsg = HttpClient.execute(httpGet, httpClient);
-		if (!StringUtils.isBlank(respMsg)) {
-			Oauth2AccessTokenResp resp = JSON.parseObject(respMsg, Oauth2AccessTokenResp.class);
-			return resp;
-		} else {
-			throw new RemoteException("empty response message: ");
-		}
+		return HttpClient.execute(new HttpGet(getAccessTokenUrl(code, config)), Oauth2AccessTokenResp.class,
+				httpClient);
 	}
 
 	/**
@@ -81,15 +72,9 @@ public class Oauth2AccessTokenClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public Oauth2AccessTokenResp refreshAccessToken(String refreshToken, WechatMpConfig config) throws RemoteException {
-		final String requestUrl = getRefreshAccessTokenUrl(refreshToken, config);
-		HttpGet httpGet = new HttpGet(requestUrl);
-		String respMsg = HttpClient.execute(httpGet, httpClient);
-		if (!StringUtils.isBlank(respMsg)) {
-			Oauth2AccessTokenResp resp = JSON.parseObject(respMsg, Oauth2AccessTokenResp.class);
-			return resp;
-		} else {
-			throw new RemoteException("empty response message: ");
-		}
+		return HttpClient.execute(new HttpGet(getRefreshAccessTokenUrl(refreshToken, config)),
+				Oauth2AccessTokenResp.class, httpClient);
+
 	}
 
 	/**
@@ -105,7 +90,7 @@ public class Oauth2AccessTokenClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatUserInfoResp getUserInfo(String accessToken, String openId) throws RemoteException {
-		return getUserInfo(accessToken, openId, "zh_CN");
+		return getUserInfo(accessToken, openId, WechatLang.zh_CN.name());
 	}
 
 	/**
@@ -121,15 +106,8 @@ public class Oauth2AccessTokenClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatUserInfoResp getUserInfo(String accessToken, String openId, String lang) throws RemoteException {
-		final String requestUrl = getUserInfoUrl(accessToken, openId, lang);
-		HttpGet httpGet = new HttpGet(requestUrl);
-		String respMsg = HttpClient.execute(httpGet, httpClient);
-		if (!StringUtils.isBlank(respMsg)) {
-			WechatUserInfoResp resp = JSON.parseObject(respMsg, WechatUserInfoResp.class);
-			return resp;
-		} else {
-			throw new RemoteException("empty response message: ");
-		}
+		return HttpClient.execute(new HttpGet(getUserInfoUrl(accessToken, openId, lang)), WechatUserInfoResp.class,
+				httpClient);
 	}
 
 	/**
@@ -145,13 +123,8 @@ public class Oauth2AccessTokenClient implements Closeable {
 	public Oauth2AuthResp auth(String accessToken, String openId) throws RemoteException {
 		final String requestUrl = getAuthUrl(accessToken, openId);
 		HttpGet httpGet = new HttpGet(requestUrl);
-		String respMsg = HttpClient.execute(httpGet, httpClient);
-		if (!StringUtils.isBlank(respMsg)) {
-			Oauth2AuthResp resp = JSON.parseObject(respMsg, Oauth2AuthResp.class);
-			return resp;
-		} else {
-			throw new RemoteException("empty response message: ");
-		}
+		return HttpClient.execute(httpGet, Oauth2AuthResp.class, httpClient);
+
 	}
 
 	// 验证ACCESS_TOKEN是否有效的URL

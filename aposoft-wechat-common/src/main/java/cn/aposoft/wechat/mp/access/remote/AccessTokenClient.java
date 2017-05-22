@@ -7,15 +7,12 @@ import java.io.Closeable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.HttpClientUtils;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-
-import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.constant.Lexical;
 import cn.aposoft.util.HttpClient;
@@ -50,14 +47,8 @@ public class AccessTokenClient implements Closeable {
 	public AccessTokenResp getAccessToken(WechatMpConfig accessTokenReq) throws RemoteException {
 		final String requestUrl = getAccessTokenUrl(accessTokenReq);
 		HttpGet httpGet = new HttpGet(requestUrl);
+		return HttpClient.execute(httpGet, AccessTokenResp.class, httpClient);
 
-		String respMsg = HttpClient.execute(httpGet, httpClient);
-		if (!StringUtils.isBlank(respMsg)) {
-			AccessTokenResp resp = JSON.parseObject(respMsg, AccessTokenResp.class);
-			return resp;
-		} else {
-			throw new RemoteException("empty response message.");
-		}
 	}
 
 	// 封装对AccessToken的动态拼接

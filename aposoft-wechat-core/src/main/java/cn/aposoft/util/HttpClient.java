@@ -3,9 +3,13 @@
  */
 package cn.aposoft.util;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
+import org.apache.http.client.entity.EntityBuilder;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MIME;
@@ -13,6 +17,10 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.alibaba.fastjson.JSON;
+
+import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * 
@@ -22,6 +30,8 @@ import org.slf4j.LoggerFactory;
 public class HttpClient {
 	private final static Logger logger = LoggerFactory.getLogger(HttpClient.class);
 	private static boolean logEnabled = true;
+	//
+	private final static String FILENAME_KEY = "filename=";
 
 	public static boolean isLogEnabled() {
 		return logEnabled;
@@ -41,7 +51,8 @@ public class HttpClient {
 	 * @return 响应报文
 	 * @throws Exception
 	 */
-	public static String execute(HttpUriRequest request, CloseableHttpClient httpClient) throws RemoteException {
+	public static String execute(final HttpUriRequest request, final CloseableHttpClient httpClient)
+			throws RemoteException {
 		if (logEnabled) {
 			logger.info("REQUEST:" + request);
 		}
@@ -73,7 +84,7 @@ public class HttpClient {
 	 * @return 响应报文
 	 * @throws Exception
 	 */
-	public static AposoftHttpEntity executeEntity(HttpUriRequest request, CloseableHttpClient httpClient)
+	public static AposoftHttpEntity executeEntity(final HttpUriRequest request, final CloseableHttpClient httpClient)
 			throws RemoteException {
 		if (logEnabled) {
 			logger.info("REQUEST:" + request);
@@ -112,8 +123,42 @@ public class HttpClient {
 		}
 	}
 
-	//
-	private final static String FILENAME_KEY = "filename=";
+	/**
+	 * 内部请求公共类
+	 * 
+	 * @param httpRequest
+	 *            请求内容
+	 * @param httpClient
+	 *            执行客户端
+	 * @return {@link WechatResp}
+	 * @throws RemoteException
+	 */
+	public static WechatResp executeWechat(final HttpUriRequest httpRequest, final CloseableHttpClient httpClient)
+			throws RemoteException {
+		return execute(httpRequest, WechatResp.class, httpClient);
+	}
+
+	public static <T> T execute(final HttpUriRequest httpRequest, final Class<T> clazz,
+			final CloseableHttpClient httpClient) throws RemoteException {
+		String respMsg = HttpClient.execute(httpRequest, httpClient);
+		if (StringUtils.isBlank(respMsg)) {
+			throw new RemoteException("Empty response message.");
+		}
+		return JSON.parseObject(respMsg, clazz);
+	}
+
+	public static HttpGet createHttpGet(final String listUrl) {
+		return new HttpGet(listUrl);
+	}
+
+	public static HttpPost createJsonHttpPost(final String requestUrl, final Object entity) {
+		HttpPost httpPost = new HttpPost(requestUrl);
+		httpPost.setEntity(EntityBuilder.create()//
+				.setContentType(ContentType.APPLICATION_JSON)//
+				.setText(JSON.toJSONString(entity))//
+				.build());
+		return httpPost;
+	}
 
 	private static String getFileName(CloseableHttpResponse response) {
 		if (StringUtil.isBlank(response, response.getFirstHeader("Content-disposition"),
