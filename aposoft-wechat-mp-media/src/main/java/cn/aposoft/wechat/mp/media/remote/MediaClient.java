@@ -10,6 +10,7 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.AposoftHttpEntity;
 import cn.aposoft.util.HttpClient;
@@ -37,9 +38,12 @@ public class MediaClient implements Closeable {
 	// 批量读取素材
 	static final String MEDIA_BATCH_URL = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=";
 
-	//
+	// 新增永久素材
 	static final String ADD_MATERIAL_URL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=";
 	static final String ADD_MATERIAL_TYPE_URL = "&type=";
+
+	//
+	static final String GET_MATERIAL_URL = "https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=";
 
 	@Override
 	public void close() {
@@ -200,6 +204,29 @@ public class MediaClient implements Closeable {
 		httpPost.setEntity(MultipartEntityBuilder.create().addBinaryBody("media", media.getEntity(),
 				ContentType.create(media.getContentType()), media.getFilename()).build());
 		return HttpClient.execute(httpPost, MediaResp.class, httpClient);
+	}
+
+	/**
+	 * 获取永久素材
+	 * 
+	 * @param accessToken
+	 *            授权码
+	 * @return 素材数量
+	 *         <p>
+	 * 
+	 * @throws RemoteException
+	 */
+	public MaterialResp getMaterial(String accessToken, String media_id) throws RemoteException {
+		if (StringUtil.isBlank(accessToken, media_id)) {
+			throw new IllegalArgumentException("Some argument(s) is null or empty.");
+		}
+
+		return HttpClient.execute(HttpClient.createJsonHttpPost(getMaterialUrl(accessToken),
+				new JSONObject().fluentPut("media_id", media_id)), MaterialResp.class, httpClient);
+	}
+
+	private String getMaterialUrl(String accessToken) {
+		return GET_MATERIAL_URL + accessToken;
 	}
 
 	private String getUploadMaterialUrl(String accessToken, String type) {
