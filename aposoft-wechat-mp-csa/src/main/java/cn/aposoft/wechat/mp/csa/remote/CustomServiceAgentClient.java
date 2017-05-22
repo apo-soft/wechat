@@ -132,10 +132,6 @@ public class CustomServiceAgentClient implements Closeable {
 		return execute(createHttpGet(getListUrl(accessToken)), KfListAccountResp.class);
 	}
 
-	private HttpGet createHttpGet(String listUrl) {
-		return new HttpGet(listUrl);
-	}
-
 	private String getListUrl(String accessToken) {
 		return KFACCOUNT_LIST_URL + accessToken;
 	}
@@ -150,6 +146,10 @@ public class CustomServiceAgentClient implements Closeable {
 
 	private String getDeleteUrl(String accessToken) {
 		return KFACCOUNT_DELETE_URL + accessToken;
+	}
+
+	private HttpGet createHttpGet(String listUrl) {
+		return new HttpGet(listUrl);
 	}
 
 	private HttpPost createJsonHttpPost(final String requestUrl, final Object entity) {

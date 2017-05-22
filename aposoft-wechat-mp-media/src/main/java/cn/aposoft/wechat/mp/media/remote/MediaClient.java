@@ -33,6 +33,8 @@ public class MediaClient implements Closeable {
 	// 读取素材URL
 	static final String GET_MEIDA_URL = "https://api.weixin.qq.com/cgi-bin/media/get?access_token=";
 	static final String GET_MEIDA_ID_URL = "&media_id=";
+	//
+	static final String MEDIA_COUNT_URL = "https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=";
 
 	@Override
 	public void close() {
@@ -87,7 +89,7 @@ public class MediaClient implements Closeable {
 		httpPost.setEntity(MultipartEntityBuilder.create().addBinaryBody("media", media.getEntity(),
 				ContentType.create(media.getContentType()), media.getFilename()).build());
 		String respMsg = HttpClient.execute(httpPost, httpClient);
-
+		
 		if (StringUtils.isBlank(respMsg)) {
 			throw new RemoteException("Empty response message.");
 		}
@@ -121,6 +123,18 @@ public class MediaClient implements Closeable {
 			resp.setMedia(entity.getMediaEntity());
 			return resp;
 		}
+	}
+
+	/**
+	 * 读取素材数量
+	 * 
+	 * @param accessToken
+	 *            授权码
+	 * @return 素材数量
+	 */
+	public MeidaCountResp getMediaCount(String accessToken) {
+		// https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=
+		return null;
 	}
 
 	private String getMediaUrl(String accessToken, String mediaId) {
