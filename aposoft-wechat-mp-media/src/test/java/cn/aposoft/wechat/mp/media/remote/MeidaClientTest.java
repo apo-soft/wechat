@@ -142,4 +142,25 @@ public class MeidaClientTest {
 		System.out.println(
 				JSON.toJSONString(client.getMediaList(accessTokenService.getAccessToken().getAccess_token(), req)));
 	}
+
+	/**
+	 * {@code {"created_at":1495420514,"media_id":"w95CmShg2SjGVzKWDT3eA0EZLca1FdkUzG-5nJg3B2mu3QITlTY1VLmFl4q7pK4L","type":"image"}}
+	 * {"created_at":1495429645,"media_id":"KsmAk839SjPBI-yb8jweVB1ypbg0w4M_P1Bxg6OfGLBeW_O5Rcy9OogJvDS2dBDw","type":"image"}
+	 * 
+	 * @throws RemoteException
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
+//	@Ignore
+	@Test
+	public void testAddMeterial() throws RemoteException, FileNotFoundException, IOException {
+		MediaEntity media = new MediaEntity();
+		media.setFilename("diamond-404.jpg");
+		media.setContentType("image/jpg");
+		byte[] data = IOUtils.toByteArray(new FileInputStream("media/diamond-404.jpg"));
+		media.setEntity(data);
+
+		System.out.println(JSON.toJSONString(client.addMaterial(accessTokenService.getAccessToken().getAccess_token(),
+				MediaType.image.name(), media)));
+	}
 }

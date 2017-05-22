@@ -53,7 +53,7 @@ public class HttpClient {
 	 */
 	public static String execute(final HttpUriRequest request, final CloseableHttpClient httpClient)
 			throws RemoteException {
-		if (logEnabled) {
+		if (logEnabled && logger.isInfoEnabled()) {
 			logger.info("REQUEST:" + request);
 		}
 
@@ -65,8 +65,8 @@ public class HttpClient {
 			HttpEntity entity = response.getEntity();
 			String jsonStr = EntityUtils.toString(entity, MIME.UTF8_CHARSET);
 
-			if (logEnabled) {
-				logger.info(jsonStr);
+			if (logEnabled && logger.isInfoEnabled()) {
+				logger.info("RESPONSE:" + jsonStr);
 			}
 			return jsonStr;
 		} catch (Exception e) {
@@ -86,7 +86,7 @@ public class HttpClient {
 	 */
 	public static AposoftHttpEntity executeEntity(final HttpUriRequest request, final CloseableHttpClient httpClient)
 			throws RemoteException {
-		if (logEnabled) {
+		if (logEnabled && logger.isInfoEnabled()) {
 			logger.info("REQUEST:" + request);
 		}
 
@@ -97,6 +97,9 @@ public class HttpClient {
 			}
 
 			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+				if (logEnabled && logger.isDebugEnabled()) {
+					logger.debug("REQUEST:" + request);
+				}
 				AposoftHttpEntity resp = new AposoftHttpEntity();
 				final String mimeType = response.getFirstHeader("Content-Type").getValue();
 				resp.setMimeType(mimeType);
@@ -141,9 +144,7 @@ public class HttpClient {
 	public static <T> T execute(final HttpUriRequest httpRequest, final Class<T> clazz,
 			final CloseableHttpClient httpClient) throws RemoteException {
 		String respMsg = HttpClient.execute(httpRequest, httpClient);
-		if (logEnabled && logger.isDebugEnabled()) {
-			logger.debug(respMsg);
-		}
+
 		if (StringUtils.isBlank(respMsg)) {
 			throw new RemoteException("Empty response message.");
 		}

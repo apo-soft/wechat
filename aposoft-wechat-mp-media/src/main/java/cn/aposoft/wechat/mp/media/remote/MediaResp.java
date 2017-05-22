@@ -16,6 +16,7 @@ public class MediaResp extends WechatResp {
 	private String type;
 	private String media_id;
 	private long created_at;
+	private String url;
 
 	/**
 	 * @return the type
@@ -60,6 +61,21 @@ public class MediaResp extends WechatResp {
 	 */
 	public void setCreated_at(long created_at) {
 		this.created_at = created_at;
+	}
+
+	/**
+	 * @return the url
+	 */
+	public String getUrl() {
+		return url;
+	}
+
+	/**
+	 * @param url
+	 *            the url to set
+	 */
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

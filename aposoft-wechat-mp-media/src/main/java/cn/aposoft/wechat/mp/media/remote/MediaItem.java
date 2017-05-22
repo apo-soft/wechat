@@ -14,8 +14,9 @@ public class MediaItem implements Serializable {
 	private static final long serialVersionUID = -7365816807190689735L;
 
 	private String media_id;
-
+	private String url;
 	private Long update_time;
+	private String name;
 	private List<NewsItem> news_item;
 
 	/**
@@ -56,10 +57,39 @@ public class MediaItem implements Serializable {
 	}
 
 	/**
-	 * @param news_item the news_item to set
+	 * @param news_item
+	 *            the news_item to set
 	 */
 	public void setNews_item(List<NewsItem> news_item) {
 		this.news_item = news_item;
+	}
+
+	/**
+	 * @return the url
+	 */
+	public String getUrl() {
+		return url;
+	}
+
+	/**
+	 * @param url the url to set
+	 */
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

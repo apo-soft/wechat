@@ -37,6 +37,10 @@ public class MediaClient implements Closeable {
 	// 批量读取素材
 	static final String MEDIA_BATCH_URL = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=";
 
+	//
+	static final String ADD_MATERIAL_URL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=";
+	static final String ADD_MATERIAL_TYPE_URL = "&type=";
+
 	@Override
 	public void close() {
 		HttpClientUtils.closeQuietly(httpClient);
@@ -127,6 +131,9 @@ public class MediaClient implements Closeable {
 	 * @param accessToken
 	 *            授权码
 	 * @return 素材数量
+	 *         <p>
+	 *         {"errcode":45009,"errmsg":"reach max api daily quota limit hint:
+	 *         [JJ8hKA0553vr30!]"}
 	 * @throws RemoteException
 	 */
 	public MeidaCountResp getMediaCount(String accessToken) throws RemoteException {
@@ -138,10 +145,28 @@ public class MediaClient implements Closeable {
 
 	/**
 	 * 读取素材数量
+	 * https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=oxv_xbZv329RF1_eCYCE3PgWiiQhH4ECpfwcWq_JNxwsGQuQn1UyEmuLb9uzwWJfMD3mgOTFV9LEaBu0ZT2t1gCfv36pjX_Zyr5bpoz_cUQ9U3sJ64XyhbOJesqACpuJZXFfAIAFDL
 	 * 
 	 * @param accessToken
 	 *            授权码
 	 * @return 素材数量
+	 *         <p>
+	 * 
+	 *         <pre>
+	 *         {
+					"item":[
+					    {
+					        "media_id":"gbFT6slaM_0w2LBuG_B-WBRmwdhftRGrelZEFW47sZg",
+					        "name":"diamond-404.jpg",
+					        "update_time":1495466553,
+					        "url":"http://mmbiz.qpic.cn/mmbiz_jpg/6gM6Q4IuDVhkUFNQxLm0pAVqSJSyZ5g9puFQCtHq6ngInOrPibVW8RKyrqiaKLB7vLfpicRQ5rKI3Ul3dibL7XshaQ/0?wx_fmt=jpeg"
+					    }
+					],
+					"item_count":1,
+					"total_count":1
+				}
+	 *         </pre>
+	 * 
 	 * @throws RemoteException
 	 */
 	public MeidaListResp getMediaList(String accessToken, MediaListReq req) throws RemoteException {
@@ -150,6 +175,35 @@ public class MediaClient implements Closeable {
 		}
 		return HttpClient.execute(HttpClient.createJsonHttpPost(getMediaListUrl(accessToken), req), MeidaListResp.class,
 				httpClient);
+	}
+
+	/**
+	 * 添加永久素材
+	 * 
+	 * @param accessToken
+	 *            授权码
+	 * @return 素材数量
+	 *         <p>
+	 *         {"created_at":0,"media_id":"gbFT6slaM_0w2LBuG_B-WBRmwdhftRGrelZEFW47sZg","url":"http://mmbiz.qpic.cn/mmbiz_jpg/6gM6Q4IuDVhkUFNQxLm0pAVqSJSyZ5g9puFQCtHq6ngInOrPibVW8RKyrqiaKLB7vLfpicRQ5rKI3Ul3dibL7XshaQ/0?wx_fmt=jpeg"}
+	 * @throws RemoteException
+	 */
+	public MediaResp addMaterial(String accessToken, String type, MediaEntity media) throws RemoteException {
+		if (media == null || media.getEntity() == null || media.getEntity().length == 0) {
+			throw new IllegalArgumentException("media is null or empty.");
+		}
+
+		if (StringUtil.isBlank(accessToken, media, media.getFilename(), media.getContentType())) {
+			throw new IllegalArgumentException("Some argument(s) is null or empty.");
+		}
+		final String requestUrl = getUploadMaterialUrl(accessToken, type);
+		HttpPost httpPost = new HttpPost(requestUrl);
+		httpPost.setEntity(MultipartEntityBuilder.create().addBinaryBody("media", media.getEntity(),
+				ContentType.create(media.getContentType()), media.getFilename()).build());
+		return HttpClient.execute(httpPost, MediaResp.class, httpClient);
+	}
+
+	private String getUploadMaterialUrl(String accessToken, String type) {
+		return ADD_MATERIAL_URL + accessToken + ADD_MATERIAL_TYPE_URL + type;
 	}
 
 	private String getMediaListUrl(String accessToken) {
