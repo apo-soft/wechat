@@ -7,17 +7,18 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * 
  * @author Jann Liu
  *
  */
 public class MediaItem implements Serializable {
 	private static final long serialVersionUID = -7365816807190689735L;
 
-	private String media_id;
+	private String media_id;// news
 	private String url;
-	private Long update_time;
+	private Long update_time;// news
 	private String name;
-	private List<NewsItem> news_item;
+	private NewsContent content;// news
 
 	/**
 	 * @return the media_id
@@ -50,21 +51,6 @@ public class MediaItem implements Serializable {
 	}
 
 	/**
-	 * @return the news_item
-	 */
-	public List<NewsItem> getNews_item() {
-		return news_item;
-	}
-
-	/**
-	 * @param news_item
-	 *            the news_item to set
-	 */
-	public void setNews_item(List<NewsItem> news_item) {
-		this.news_item = news_item;
-	}
-
-	/**
 	 * @return the url
 	 */
 	public String getUrl() {
@@ -72,7 +58,8 @@ public class MediaItem implements Serializable {
 	}
 
 	/**
-	 * @param url the url to set
+	 * @param url
+	 *            the url to set
 	 */
 	public void setUrl(String url) {
 		this.url = url;
@@ -86,10 +73,26 @@ public class MediaItem implements Serializable {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the content
+	 */
+	public NewsContent getContent() {
+		return content;
+	}
+
+	/**
+	 * @param content
+	 *            the content to set
+	 */
+	public void setContent(NewsContent content) {
+		this.content = content;
 	}
 
 }
