@@ -28,34 +28,13 @@
 		<Console name="Console" target="SYSTEM_OUT">
 			<PatternLayout pattern="${PATTERN}" />
 		</Console>
-
-		<!-- 这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
-		<RollingFile name="AlarmMessage" fileName="${LOG_HOME}/alarm.log"
-			filePattern="${LOG_HOME}/alarm_%d{yyyy-MM-dd}_%i.log" bufferedIO="true"
-			bufferSize="8192" immediateFlush="true">
-			<!--设置日志输出的格式 -->
-			<PatternLayout pattern="${PATTERN_ALARM}" />
-			<Policies>
-				<!--设置触发时间策略的时间间隔，一天产生一个新文件 -->
-				<TimeBasedTriggeringPolicy interval="1"
-					modulate="true" />
-				<!--设置每个日志文件的最大大小，单位可以为 B KB MB GB -->
-				<!-- <SizeBasedTriggeringPolicy size="1KB"/> -->
-			</Policies>
-			<!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20000 -->
-			<DefaultRolloverStrategy max="20000" />
-		</RollingFile>
 	</Appenders>
 
 	<!--然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
 	<Loggers>
-		<logger name="alarm" additivity="false" level="INFO">
-			<appender-ref ref="AlarmMessage" />
-		</logger>
-
 		<!--com.gomefinance包下的日志异步输出 includeLocation:包含本地信息；additivity：不继承父类的日志输出 -->
 		<!--建立一个默认的root的logger -->
-		<root level="INFO">
+		<root level="DEBUG">
 			<appender-ref ref="Console" />
 		</root>
 	</Loggers>

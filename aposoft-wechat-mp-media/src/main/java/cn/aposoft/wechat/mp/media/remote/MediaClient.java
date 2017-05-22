@@ -148,8 +148,12 @@ public class MediaClient implements Closeable {
 		if (StringUtil.isBlank(accessToken, req)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getMediaCountUrl(accessToken), req),
-				MeidaListResp.class, httpClient);
+		return HttpClient.execute(HttpClient.createJsonHttpPost(getMediaListUrl(accessToken), req), MeidaListResp.class,
+				httpClient);
+	}
+
+	private String getMediaListUrl(String accessToken) {
+		return MEDIA_BATCH_URL + accessToken;
 	}
 
 	private String getMediaCountUrl(String accessToken) {

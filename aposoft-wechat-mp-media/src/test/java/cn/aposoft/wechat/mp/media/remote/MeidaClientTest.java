@@ -16,6 +16,7 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
+import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.MediaEntity;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.mp.access.AccessToken;
@@ -35,6 +36,9 @@ public class MeidaClientTest {
 
 	@BeforeClass
 	public static void init() throws IOException {
+		if (!HttpClient.isLogEnabled()) {
+			HttpClient.setLogEnabled(true);
+		}
 		accessTokenClient = new AccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient);
