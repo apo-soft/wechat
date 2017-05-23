@@ -33,7 +33,7 @@ public enum MediaType {
 	 */
 	thumb,
 	/**
-	 * 图文
+	 * 图文 仅限永久素材
 	 */
 	news
 }
