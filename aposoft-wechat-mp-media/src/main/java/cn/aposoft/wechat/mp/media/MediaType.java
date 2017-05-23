@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp;
+package cn.aposoft.wechat.mp.media;
 
 /**
  * 临时素材格式

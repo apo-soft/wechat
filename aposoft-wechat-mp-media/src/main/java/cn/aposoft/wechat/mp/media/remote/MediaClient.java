@@ -50,6 +50,9 @@ public class MediaClient implements Closeable {
 	static final String ADD_IMAGE_URL = "https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=";
 	// 添加新闻
 	static final String ADD_NEWS_URL = "https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=";
+	// 添加新闻
+	static final String UPDATE_NEWS_URL = "https://api.weixin.qq.com/cgi-bin/material/update_news?access_token=";
+
 	// 删除素材
 	static final String DELETE_MATERIAL_URL = "https://api.weixin.qq.com/cgi-bin/material/del_material?access_token=";
 
@@ -163,6 +166,8 @@ public class MediaClient implements Closeable {
 	 *            授权码
 	 * @return 素材数量
 	 *         <p>
+	 *         {"errcode":45009,"errmsg":"reach max api daily quota limit hint:
+	 *         [8.A1rA0201vr43!]"}
 	 * 
 	 *         <pre>
 	 *         {
@@ -240,8 +245,8 @@ public class MediaClient implements Closeable {
 		if (StringUtil.isBlank(accessToken, req)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getMediaListUrl(accessToken), req), MaterialListResp.class,
-				httpClient);
+		return HttpClient.execute(HttpClient.createJsonHttpPost(getMediaListUrl(accessToken), req),
+				MaterialListResp.class, httpClient);
 	}
 
 	/**
@@ -289,7 +294,8 @@ public class MediaClient implements Closeable {
 	 *            授权码
 	 * @return 素材数量
 	 *         <p>
-	 * 
+	 *         {"errcode":45009,"errmsg":"reach max api daily quota limit hint:
+	 *         [1SXMpA0952vr50!]"}
 	 *         <p>
 	 *         {"errcode":40007,"errmsg":"invalid media_id hint:
 	 *         [OJiIRA0621e604]"}
@@ -373,7 +379,7 @@ public class MediaClient implements Closeable {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getAddNewsUrl(accessToken),
+		return HttpClient.execute(HttpClient.createJsonHttpPost(getUpdateNewsUrl(accessToken),
 				new JSONObject().fluentPut("articles", new NewsItem[] { news })), MediaResp.class, httpClient);
 	}
 
@@ -382,10 +388,14 @@ public class MediaClient implements Closeable {
 	 * 
 	 * @param accessToken
 	 *            授权码
-	 * @param news
+	 * @param req
 	 * 
 	 *            <pre>
 	 *            	参数					是否必须	说明
+	 *            	media_id 			是		要修改的图文消息的id
+					index				是		要更新的文章在图文消息中的位置（多图文消息时，此字段才有意义），第一篇为0
+					articles:-->		是		更新的图文内容(以下为articles内容)
+					
 					title				是		标题
 					thumb_media_id		是		图文消息的封面图片素材id（必须是永久mediaID）
 					author				是		作者
@@ -397,20 +407,20 @@ public class MediaClient implements Closeable {
 	 * 
 	 * @return 素材ID
 	 *         <p>
-	 *         { "media_id":MEDIA_ID }
+	 *         {"errcode":0,"errmsg":"ok"}
 	 *         <p>
 	 *         {"errcode":40007,"errmsg":"invalid media_id hint:
 	 *         [OJiIRA0621e604]"}
 	 * @throws RemoteException
 	 */
-	public MediaResp updateNews(String accessToken, NewsItem news) throws RemoteException {
+	public MediaResp updateNews(String accessToken, NewsReq req) throws RemoteException {
 
-		if (StringUtil.isBlank(accessToken, news)) {
+		if (StringUtil.isBlank(accessToken, req)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getAddNewsUrl(accessToken),
-				new JSONObject().fluentPut("articles", new NewsItem[] { news })), MediaResp.class, httpClient);
+		return HttpClient.execute(HttpClient.createJsonHttpPost(getUpdateNewsUrl(accessToken), req), MediaResp.class,
+				httpClient);
 	}
 
 	/**
@@ -441,8 +451,8 @@ public class MediaClient implements Closeable {
 		return DELETE_MATERIAL_URL + accessToken;
 	}
 
-	private String getAddNewsUrl(String accessToken) {
-		return ADD_NEWS_URL + accessToken;
+	private String getUpdateNewsUrl(String accessToken) {
+		return UPDATE_NEWS_URL + accessToken;
 	}
 
 	private String getAddImageUrl(String accessToken) {

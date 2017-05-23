@@ -19,10 +19,10 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.MediaEntity;
 import cn.aposoft.util.RemoteException;
-import cn.aposoft.wechat.mp.MediaType;
 import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.mp.media.MediaType;
 import cn.aposoft.wechat.mp.media.news.NewsItem;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 
@@ -130,13 +130,46 @@ public class MeidaClientTest {
 	}
 
 	/**
+	 * 列举新闻资料
+	 * 
+	 * <pre>
+	 * {
+		    "item":[
+		        {
+		            "content":{
+		                "create_time":1495479765,
+		                "news_item":[
+		                    {
+		                        "author":"Jann",
+		                        "content":"测试新闻内容,这是一件重大的测试新闻.",
+		                        "content_source_url":"https://www.aposoft.cn",
+		                        "digest":"测试新闻 摘要",
+		                        "need_open_comment":0,
+		                        "only_fans_can_comment":0,
+		                        "show_cover_pic":1,
+		                        "thumb_media_id":"gbFT6slaM_0w2LBuG_B-WBRmwdhftRGrelZEFW47sZg",
+		                        "thumb_url":"http://mmbiz.qpic.cn/mmbiz_jpg/6gM6Q4IuDVhkUFNQxLm0pAVqSJSyZ5g9puFQCtHq6ngInOrPibVW8RKyrqiaKLB7vLfpicRQ5rKI3Ul3dibL7XshaQ/0?wx_fmt=jpeg",
+		                        "title":"测试新闻",
+		                        "url":"http://mp.weixin.qq.com/s?__biz=MzI5NzQ4NTcxMA==&mid=100000003&idx=1&sn=92f3e9f96fba7a9d2c4a80d11c1f37db&chksm=6cb515e25bc29cf4808dc8e343771e34aa8e2de802d6c8065ffaee38b4856f04013713130a51#rd"
+		                    }
+		                ],
+		                "update_time":1495479765
+		            },
+		            "media_id":"gbFT6slaM_0w2LBuG_B-WMOTmnrnD3YlQ84dieFTLSo",
+		            "update_time":1495479765
+		        }
+		    ],
+		    "item_count":1,
+		    "total_count":1
+		}
+	 * </pre>
 	 * 
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
 	@Test
-	public void testGetNewsMeidaList() throws RemoteException, FileNotFoundException, IOException {
+	public void testGetNewsMaterialList() throws RemoteException, FileNotFoundException, IOException {
 		MediaListReq req = new MediaListReq();
 		req.setCount(100);
 		req.setOffset(0);
@@ -153,7 +186,7 @@ public class MeidaClientTest {
 	 * @throws FileNotFoundException
 	 */
 	@Test
-	public void testGetMeidaList() throws RemoteException, FileNotFoundException, IOException {
+	public void testGetMaterialList() throws RemoteException, FileNotFoundException, IOException {
 		MediaListReq req = new MediaListReq();
 		req.setCount(100);
 		req.setOffset(0);
@@ -241,6 +274,49 @@ public class MeidaClientTest {
 		news.setThumb_media_id("gbFT6slaM_0w2LBuG_B-WBRmwdhftRGrelZEFW47sZg");
 		news.setContent_source_url("https://www.aposoft.cn");
 		MediaResp resp = client.addNews(accessTokenService.getAccessToken().getAccess_token(), news);
+		System.out.println(JSON.toJSONString(resp));
+	}
+
+	/**
+	 * 
+	 * {"media_id":"gbFT6slaM_0w2LBuG_B-WCZ3QPLdOneF-f1Dc7yV8zc"}
+	 * 
+	 * @throws RemoteException
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
+	@Test
+	public void testUpdateNews() throws RemoteException, FileNotFoundException, IOException {
+		NewsReq req = new NewsReq();
+		req.setMedia_id("gbFT6slaM_0w2LBuG_B-WMOTmnrnD3YlQ84dieFTLSo");
+		req.setIndex(0);
+		NewsItem newsItem = new NewsItem();
+		newsItem.setAuthor("Jann");
+		newsItem.setDigest("测试新闻 摘要更新");
+		newsItem.setContent("测试新闻内容,这是一件重大的测试新闻，在2017年5月23日发生了重大更新。");
+		newsItem.setShow_cover_pic(1);
+		newsItem.setTitle("测试新闻（修订）");
+		newsItem.setThumb_media_id("gbFT6slaM_0w2LBuG_B-WBRmwdhftRGrelZEFW47sZg");
+		newsItem.setContent_source_url("https://www.aposoft.cn");
+		req.setArticles(newsItem);
+
+		MediaResp resp = client.updateNews(accessTokenService.getAccessToken().getAccess_token(), req);
+		System.out.println(JSON.toJSONString(resp));
+	}
+
+	/**
+	 * {@code {"created_at":1495420514,"media_id":"w95CmShg2SjGVzKWDT3eA0EZLca1FdkUzG-5nJg3B2mu3QITlTY1VLmFl4q7pK4L","type":"image"}}
+	 * {"created_at":1495429645,"media_id":"KsmAk839SjPBI-yb8jweVB1ypbg0w4M_P1Bxg6OfGLBeW_O5Rcy9OogJvDS2dBDw","type":"image"}
+	 * 
+	 * 
+	 * @throws RemoteException
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
+	@Test
+	public void testGetNews() throws RemoteException, FileNotFoundException, IOException {
+		MaterialResp resp = client.getMaterial(accessTokenService.getAccessToken().getAccess_token(),
+				"gbFT6slaM_0w2LBuG_B-WMOTmnrnD3YlQ84dieFTLSo");
 		System.out.println(JSON.toJSONString(resp));
 	}
 

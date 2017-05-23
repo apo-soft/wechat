@@ -100,19 +100,22 @@ public class HttpClient {
 				if (logEnabled && logger.isDebugEnabled()) {
 					logger.debug("RESPONSE:" + response.getStatusLine());
 				}
-				AposoftHttpEntity resp = new AposoftHttpEntity();
 
 				final String mimeType = response.getFirstHeader("Content-Type") == null ? null
 						: response.getFirstHeader("Content-Type").getValue();
-				resp.setMimeType(mimeType);
-				// 读取JSON
-				if (ContentType.APPLICATION_JSON.getMimeType().equals(mimeType)) {
+
+				AposoftHttpEntity resp = new AposoftHttpEntity();
+				resp.setMimeType(ContentType.parse(mimeType).getMimeType());
+
+				if (!StringUtil.isBlank(mimeType)
+						&& (ContentType.APPLICATION_JSON.getMimeType().equals(resp.getMimeType())
+								|| ContentType.TEXT_PLAIN.getMimeType().equals(resp.getMimeType()))) {
 					resp.setText(EntityUtils.toString(response.getEntity()));
 				} else {
 					// 读取二进制素材
 					HttpEntity entity = response.getEntity();
 					MediaEntity mediaEntity = new MediaEntity();
-					mediaEntity.setContentType(mimeType);
+					mediaEntity.setContentType(resp.getMimeType());
 					mediaEntity.setFilename(getFileName(response));
 					mediaEntity.setLength(StringUtil.isBlank(response.getFirstHeader("Content-Length"),
 							response.getFirstHeader("Content-Length").getValue()) ? null
@@ -123,7 +126,9 @@ public class HttpClient {
 				return resp;
 			}
 			throw new RemoteException("RESP:" + response.getStatusLine());
-		} catch (Exception e) {
+		} catch (
+
+		Exception e) {
 			throw new RemoteException(e.getMessage(), e);
 		}
 	}
@@ -158,24 +163,32 @@ public class HttpClient {
 	}
 
 	public static HttpPost createJsonHttpPost(final String requestUrl, final Object entity) {
+		String jsonStr = JSON.toJSONString(entity);
+		if (logEnabled && logger.isDebugEnabled()) {
+			logger.debug("POST JSON:" + jsonStr);
+		}
 		HttpPost httpPost = new HttpPost(requestUrl);
 		httpPost.setEntity(EntityBuilder.create()//
 				.setContentType(ContentType.APPLICATION_JSON)//
-				.setText(JSON.toJSONString(entity))//
+				.setText(jsonStr)//
 				.build());
 		return httpPost;
 	}
 
 	private static String getFileName(CloseableHttpResponse response) {
-		if (StringUtil.isBlank(response, response.getFirstHeader("Content-disposition"),
-				response.getFirstHeader("Content-disposition").getValue()))
+		if (StringUtil.isNull(response, response.getFirstHeader("Content-disposition"))) {
 			return null;
-		String content = response.getFirstHeader("Content-disposition").getValue();
-
-		int fileNameIndex = content.indexOf(FILENAME_KEY);
-		if (fileNameIndex >= 0) {
-			return content.substring(fileNameIndex + FILENAME_KEY.length() + 1, content.length() - 1);
+		} else if (StringUtil.isBlank(response.getFirstHeader("Content-disposition").getValue())) {
+			return null;
 		}
-		return null;
+		String content = response.getFirstHeader("Content-disposition").getValue();
+		int fileNameIndex = content.indexOf(FILENAME_KEY);
+		// 确保文件名有效
+		if (fileNameIndex >= 0 && fileNameIndex + FILENAME_KEY.length() + 1 < content.length() - 1) {
+			return content.substring(fileNameIndex + FILENAME_KEY.length() + 1, content.length() - 1);
+		} else {
+			return null;
+		}
+
 	}
 }

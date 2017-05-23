@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.mp.media.remote;
 
-import cn.aposoft.wechat.mp.MediaType;
+import cn.aposoft.wechat.mp.media.MediaType;
 
 /**
  * 素材列表请求参数
