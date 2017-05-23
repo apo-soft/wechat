@@ -43,12 +43,17 @@ public class MassMaterialClient extends MediaClient {
 	 *            授权码
 	 * @return 素材数量
 	 *         <p>
+	 * 		{"created_at":1495548585,"thumb_media_id":"iEhKvMtP5yXO8HVayUXqHr4wvGYWXKozjeyPKqV3Ar0kPxW-XUsj_7CP6cwtQ_s7","type":"thumb"}
+	 *         <p>
 	 *         { "url":
 	 *         "http://mmbiz.qpic.cn/mmbiz/gLO17UPS6FS2xsypf378iaNhWacZ1G1UplZYWEYfwvuU6Ont96b1roYs
 	 *         CNFwaRrSaKTPCUdBK9DgEHicsKwWCBRQ/0" }
 	 *         <p>
 	 *         {"errcode":40007,"errmsg":"invalid media_id hint:
 	 *         [OJiIRA0621e604]"}
+	 *         <p>
+	 *         {"errcode":40006,"errmsg":"invalid meida size hint:
+	 *         [rvOA60472e298]"}
 	 * @throws RemoteException
 	 */
 	public MediaResp uploadNewsThumb(String accessToken, MediaEntity media) throws RemoteException {

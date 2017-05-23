@@ -65,6 +65,34 @@ public class MassMessageClient implements Closeable {
 	}
 
 	/**
+	 * 
+	 * @param accessToken
+	 * @param touser
+	 * @param media
+	 * @param configs
+	 * @return {"errcode":0,"errmsg":"send job submission
+	 *         success","msg_id":3147483655,"msg_data_id":2247483663}
+	 * 
+	 *         <pre>
+	 *         	参数		说明
+				type	媒体文件类型，分别有图片（image）、语音（voice）、视频（video）和缩略图（thumb），图文消息为news
+				errcode	错误码
+				errmsg	错误信息
+				msg_id	消息发送任务的ID
+				msg_data_id	消息的数据ID，该字段只有在群发图文消息时，才会出现。
+							可以用于在图文分析数据接口中，获取到对应的图文消息的数据，
+							是图文分析数据接口中的msgid字段中的前半部分，
+							详见图文分析数据接口中的msgid字段的介绍。
+	 *         </pre>
+	 * 
+	 * @throws RemoteException
+	 */
+	public Object sendMpnews(String accessToken, List<String> touser, MediaIdHolder media, Map<String, Object> configs)
+			throws RemoteException {
+		return send(accessToken, touser, MsgType.mpnews, media, configs);
+	}
+
+	/**
 	 * 发送微信新闻
 	 * 
 	 * 
