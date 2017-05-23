@@ -120,6 +120,18 @@ public class UserTagClientTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Test
+	public void testBatchTaggingSelf() throws RemoteException {
+		List<String> userInfoList = new ArrayList<>();
+
+		userInfoList.add(new String("ojqOLxLh0480oz5gqHqLgzRgCLHM"));
+		BatchTaggingReq req = new BatchTaggingReq();
+		req.setOpenid_list(userInfoList);
+		req.setTagid(2);
+		WechatResp resp = userTagClient.batchTagging(accessTokenService.getAccessToken().getAccess_token(), req);
+		System.out.println(JSON.toJSONString(resp));
+	}
+
 	/**
 	 * 
 	 * @throws RemoteException
@@ -146,7 +158,7 @@ public class UserTagClientTest {
 	@Test
 	public void testListUserTags() throws RemoteException {
 		UserTagsIdListResp resp = userTagClient.listUserTags(accessTokenService.getAccessToken().getAccess_token(),
-				"ojqOLxEdSITLJbC1kdDbVpKj5UEw");
+				"ojqOLxLh0480oz5gqHqLgzRgCLHM");
 		System.out.println(JSON.toJSONString(resp));
 	}
 }

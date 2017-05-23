@@ -13,6 +13,10 @@ package cn.aposoft.wechat.mp.message.remote;
 public class MediaIdHolder {
 	private String media_id;
 
+	public MediaIdHolder(final String mediaId) {
+		this.media_id = mediaId;
+	}
+
 	/**
 	 * @return the media_id
 	 */
