@@ -20,11 +20,7 @@
 			<artifactId>aposoft-wechat-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-mp-media</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
 			<artifactId>aposoft-wechat-common</artifactId>

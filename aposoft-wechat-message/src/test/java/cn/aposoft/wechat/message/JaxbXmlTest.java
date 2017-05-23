@@ -1,7 +1,7 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package org.aposoft.wechat.message;
+package cn.aposoft.wechat.message;
 
 import java.io.IOException;
 

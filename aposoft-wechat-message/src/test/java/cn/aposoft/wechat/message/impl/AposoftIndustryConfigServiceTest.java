@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.aposoft.wechat.message.impl;
+package cn.aposoft.wechat.message.impl;
 
 import java.io.IOException;
 

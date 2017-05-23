@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.aposoft.wechat.message.remote;
+package cn.aposoft.wechat.message.remote;
 
 import java.io.IOException;
 import java.util.Date;

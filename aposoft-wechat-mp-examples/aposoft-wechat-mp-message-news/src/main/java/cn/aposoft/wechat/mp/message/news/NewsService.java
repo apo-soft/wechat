@@ -35,7 +35,7 @@ public class NewsService implements MessageService {
 		News news = new News();
 		news.setFromUser(WechatMpConfigFactory.getConfig().getUserId());
 		news.setToUser(toUser);
-		news.setMsgType(MsgType.News.getCode());
+		news.setMsgType(MsgType.news.name());
 		news.setCreateTime(String.valueOf(System.currentTimeMillis()));
 		// 消息信息
 		news.setArticleCount(3);
@@ -81,7 +81,7 @@ public class NewsService implements MessageService {
 	@Override
 	public Message getReplyMessage(Message message) {
 
-		if (MsgType.Text.getCode().equals(message.getMsgType())) {
+		if (MsgType.text.name().equals(message.getMsgType())) {
 			return getReplyMessage(message.getFromUser());
 		}
 		return Success.getInstance();

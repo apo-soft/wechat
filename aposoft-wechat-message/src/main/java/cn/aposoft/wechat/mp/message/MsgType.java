@@ -11,41 +11,40 @@ package cn.aposoft.wechat.mp.message;
  * 
  */
 public enum MsgType {
-    /**
-     * 文本类型
-     */
-    Text("text"),
-    /**
-     * 图片
-     */
-    Image("image"),
-    /**
-     * 语音
-     */
-    Voice("voice"),
-    /**
-     * 视频
-     */
-    Video("video"),
-    /**
-     * 音乐
-     */
-    Music("music"),
-    /**
-     * 图文
-     */
-    News("news"),
-    /**
-     * 事件 event
-     */
-    Event("event");
-    private final String code;
-
-    private MsgType(String code) {
-        this.code = code;
-    }
-
-    public String getCode() {
-        return this.code;
-    }
+	/**
+	 * 文本类型
+	 */
+	text,
+	/**
+	 * 图片
+	 */
+	image,
+	/**
+	 * 语音
+	 */
+	voice,
+	/**
+	 * 视频
+	 */
+	video,
+	/**
+	 * 音乐
+	 */
+	music,
+	/**
+	 * 图文
+	 */
+	news,
+	/**
+	 * 事件 event
+	 */
+	event,
+	/**
+	 * 微信新闻
+	 */
+	mpnews,
+	/**
+	 * 微信卡券
+	 */
+	wxcard;
 }
