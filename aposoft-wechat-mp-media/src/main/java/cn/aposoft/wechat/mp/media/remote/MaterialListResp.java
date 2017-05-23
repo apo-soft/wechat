@@ -5,6 +5,7 @@ package cn.aposoft.wechat.mp.media.remote;
 
 import java.util.List;
 
+import cn.aposoft.wechat.mp.media.news.MaterialItem;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
@@ -40,11 +41,11 @@ import cn.aposoft.wechat.mp.remote.WechatResp;
  * @author Jann Liu
  *
  */
-public class MeidaListResp extends WechatResp {
+public class MaterialListResp extends WechatResp {
 	private static final long serialVersionUID = 3949321367960356856L;
 	private Integer total_count;
 	private Integer item_count;
-	private List<MediaItem> item;
+	private List<MaterialItem> item;
 
 	/**
 	 * @return the total_count
@@ -79,7 +80,7 @@ public class MeidaListResp extends WechatResp {
 	/**
 	 * @return the item
 	 */
-	public List<MediaItem> getItem() {
+	public List<MaterialItem> getItem() {
 		return item;
 	}
 
@@ -87,7 +88,7 @@ public class MeidaListResp extends WechatResp {
 	 * @param item
 	 *            the item to set
 	 */
-	public void setItem(List<MediaItem> item) {
+	public void setItem(List<MaterialItem> item) {
 		this.item = item;
 	}
 

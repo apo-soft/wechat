@@ -19,9 +19,11 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.MediaEntity;
 import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.mp.MediaType;
 import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.mp.media.news.NewsItem;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**

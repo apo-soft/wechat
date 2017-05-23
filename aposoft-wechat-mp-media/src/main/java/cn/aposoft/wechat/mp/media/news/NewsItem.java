@@ -1,10 +1,24 @@
-package cn.aposoft.wechat.mp.media.remote;
+package cn.aposoft.wechat.mp.media.news;
 
 import java.io.Serializable;
 
 /**
  * 新闻素材消息
- * 
+ *<pre>
+ *{
+	 "media_id":MEDIA_ID,
+	 "index":INDEX,
+	 "articles": {
+	      "title": TITLE,
+	      "thumb_media_id": THUMB_MEDIA_ID,
+	      "author": AUTHOR,
+	      "digest": DIGEST,
+	      "show_cover_pic": SHOW_COVER_PIC(0 / 1),
+	      "content": CONTENT,
+	      "content_source_url": CONTENT_SOURCE_URL
+	   }
+	}
+ *</pre>
  * @author Jann Liu
  *
  */
@@ -31,7 +45,7 @@ public class NewsItem implements Serializable {
 	private String thumb_url;
 	// 是否打开评论，0不打开，1打开
 	private Integer need_open_comment;
-	// 	是否粉丝才可评论，0所有人可评论，1粉丝才可评论
+	// 是否粉丝才可评论，0所有人可评论，1粉丝才可评论
 	private Integer only_fans_can_comment;
 
 	/**
@@ -198,5 +212,7 @@ public class NewsItem implements Serializable {
 	public void setOnly_fans_can_comment(Integer only_fans_can_comment) {
 		this.only_fans_can_comment = only_fans_can_comment;
 	}
+
+
 
 }

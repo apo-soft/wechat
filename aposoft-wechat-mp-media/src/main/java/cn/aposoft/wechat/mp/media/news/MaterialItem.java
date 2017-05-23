@@ -1,17 +1,16 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.media.remote;
+package cn.aposoft.wechat.mp.media.news;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 
  * @author Jann Liu
  *
  */
-public class MediaItem implements Serializable {
+public class MaterialItem implements Serializable {
 	private static final long serialVersionUID = -7365816807190689735L;
 
 	private String media_id;// news

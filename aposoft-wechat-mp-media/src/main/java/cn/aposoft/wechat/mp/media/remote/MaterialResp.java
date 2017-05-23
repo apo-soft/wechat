@@ -6,6 +6,7 @@ package cn.aposoft.wechat.mp.media.remote;
 import java.util.List;
 
 import cn.aposoft.util.MediaEntity;
+import cn.aposoft.wechat.mp.media.news.NewsItem;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**

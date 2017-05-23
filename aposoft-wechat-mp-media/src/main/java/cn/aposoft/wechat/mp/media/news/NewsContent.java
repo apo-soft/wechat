@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.media.remote;
+package cn.aposoft.wechat.mp.media.news;
 
 import java.io.Serializable;
 import java.util.List;

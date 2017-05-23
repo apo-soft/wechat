@@ -20,7 +20,7 @@ import cn.aposoft.wechat.mp.remote.WechatResp;
  * @author Jann Liu
  *
  */
-public class MeidaCountResp extends WechatResp {
+public class MaterialCountResp extends WechatResp {
 	private static final long serialVersionUID = -6256494546129879698L;
 	// "voice_count":COUNT,
 	private Integer voice_count;

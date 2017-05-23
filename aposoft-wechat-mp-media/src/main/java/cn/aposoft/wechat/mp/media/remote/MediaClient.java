@@ -18,6 +18,7 @@ import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.util.MediaEntity;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
+import cn.aposoft.wechat.mp.media.news.NewsItem;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
@@ -147,11 +148,11 @@ public class MediaClient implements Closeable {
 	 *         [JJ8hKA0553vr30!]"}
 	 * @throws RemoteException
 	 */
-	public MeidaCountResp getMediaCount(String accessToken) throws RemoteException {
+	public MaterialCountResp getMediaCount(String accessToken) throws RemoteException {
 		if (StringUtil.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.execute(new HttpGet(getMediaCountUrl(accessToken)), MeidaCountResp.class, httpClient);
+		return HttpClient.execute(new HttpGet(getMediaCountUrl(accessToken)), MaterialCountResp.class, httpClient);
 	}
 
 	/**
@@ -235,11 +236,11 @@ public class MediaClient implements Closeable {
 	 * 
 	 * @throws RemoteException
 	 */
-	public MeidaListResp getMediaList(String accessToken, MediaListReq req) throws RemoteException {
+	public MaterialListResp getMediaList(String accessToken, MediaListReq req) throws RemoteException {
 		if (StringUtil.isBlank(accessToken, req)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getMediaListUrl(accessToken), req), MeidaListResp.class,
+		return HttpClient.execute(HttpClient.createJsonHttpPost(getMediaListUrl(accessToken), req), MaterialListResp.class,
 				httpClient);
 	}
 
@@ -377,6 +378,42 @@ public class MediaClient implements Closeable {
 	}
 
 	/**
+	 * 上传图文素材使用图片
+	 * 
+	 * @param accessToken
+	 *            授权码
+	 * @param news
+	 * 
+	 *            <pre>
+	 *            	参数					是否必须	说明
+					title				是		标题
+					thumb_media_id		是		图文消息的封面图片素材id（必须是永久mediaID）
+					author				是		作者
+					digest				是		图文消息的摘要，仅有单图文消息才有摘要，多图文此处为空
+					show_cover_pic		是		是否显示封面，0为false，即不显示，1为true，即显示
+					content				是	 	图文消息的具体内容，支持HTML标签，必须少于2万字符，小于1M，且此处会去除JS,涉及图片url必须来源"上传图文消息内的图片获取URL"接口获取。外部图片url将被过滤。
+					content_source_url	是		图文消息的原文地址，即点击“阅读原文”后的URL
+	 *            </pre>
+	 * 
+	 * @return 素材ID
+	 *         <p>
+	 *         { "media_id":MEDIA_ID }
+	 *         <p>
+	 *         {"errcode":40007,"errmsg":"invalid media_id hint:
+	 *         [OJiIRA0621e604]"}
+	 * @throws RemoteException
+	 */
+	public MediaResp updateNews(String accessToken, NewsItem news) throws RemoteException {
+
+		if (StringUtil.isBlank(accessToken, news)) {
+			throw new IllegalArgumentException("Some argument(s) is null or empty.");
+		}
+
+		return HttpClient.execute(HttpClient.createJsonHttpPost(getAddNewsUrl(accessToken),
+				new JSONObject().fluentPut("articles", new NewsItem[] { news })), MediaResp.class, httpClient);
+	}
+
+	/**
 	 * 
 	 * @param accessToken
 	 *            访问授权码
@@ -384,7 +421,7 @@ public class MediaClient implements Closeable {
 	 *            素材ID
 	 * @return { "errcode":ERRCODE, "errmsg":ERRMSG }
 	 *         <p>
-	 * 		{"errcode":0,"errmsg":"ok"}
+	 *         {"errcode":0,"errmsg":"ok"}
 	 *         <p>
 	 *         {"errcode":44003,"errmsg":"empty news data hint:
 	 *         [cwm9nA0124e421]"}
