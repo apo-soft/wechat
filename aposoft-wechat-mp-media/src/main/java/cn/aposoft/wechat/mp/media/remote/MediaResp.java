@@ -15,6 +15,7 @@ public class MediaResp extends WechatResp {
 	private static final long serialVersionUID = 3588426913939192540L;
 	private String type;
 	private String media_id;
+	private String thumb_media_id;
 	private Long created_at;
 	private String url;
 
@@ -76,6 +77,21 @@ public class MediaResp extends WechatResp {
 	 */
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	/**
+	 * @return the thumb_media_id
+	 */
+	public String getThumb_media_id() {
+		return thumb_media_id;
+	}
+
+	/**
+	 * @param thumb_media_id
+	 *            the thumb_media_id to set
+	 */
+	public void setThumb_media_id(String thumb_media_id) {
+		this.thumb_media_id = thumb_media_id;
 	}
 
 }

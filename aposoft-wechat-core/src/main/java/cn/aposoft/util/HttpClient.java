@@ -178,17 +178,19 @@ public class HttpClient {
 	private static String getFileName(CloseableHttpResponse response) {
 		if (StringUtil.isNull(response, response.getFirstHeader("Content-disposition"))) {
 			return null;
-		} else if (StringUtil.isBlank(response.getFirstHeader("Content-disposition").getValue())) {
-			return null;
-		}
-		String content = response.getFirstHeader("Content-disposition").getValue();
-		int fileNameIndex = content.indexOf(FILENAME_KEY);
-		// 确保文件名有效
-		if (fileNameIndex >= 0 && fileNameIndex + FILENAME_KEY.length() + 1 < content.length() - 1) {
-			return content.substring(fileNameIndex + FILENAME_KEY.length() + 1, content.length() - 1);
 		} else {
-			return null;
-		}
+			String content = response.getFirstHeader("Content-disposition").getValue();
+			if (StringUtil.isBlank(content)) {
+				return null;
+			}
 
+			int fileNameIndex = content.indexOf(FILENAME_KEY);
+			// 确保文件名有效
+			if (fileNameIndex >= 0 && fileNameIndex + FILENAME_KEY.length() + 1 < content.length() - 1) {
+				return content.substring(fileNameIndex + FILENAME_KEY.length() + 1, content.length() - 1);
+			} else {
+				return null;
+			}
+		}
 	}
 }
