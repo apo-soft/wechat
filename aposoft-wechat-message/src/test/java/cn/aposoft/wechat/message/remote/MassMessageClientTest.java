@@ -58,6 +58,7 @@ public class MassMessageClientTest {
 	 * 
 	 * @throws RemoteException
 	 */
+	@Ignore
 	@Test
 	public void testSendNews() throws RemoteException {
 		Filter filter = new Filter();
@@ -148,7 +149,7 @@ public class MassMessageClientTest {
 	 * 
 	 * @throws RemoteException
 	 */
-	// @Ignore
+	@Ignore
 	@Test
 	public void testDeleteMassMessage() throws RemoteException {
 
@@ -177,6 +178,7 @@ public class MassMessageClientTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testPreviewNews() throws RemoteException {
 

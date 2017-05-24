@@ -72,6 +72,7 @@ public class TemplateMessageClientTest {
 	 * 
 	 * @throws RemoteException
 	 */
+	@Ignore
 	@Test
 	public void testgetTemplateList() throws RemoteException {
 		System.out.println(client.getTemplateList(accessTokenService.getAccessToken().getAccess_token()));
@@ -91,8 +92,8 @@ public class TemplateMessageClientTest {
 
 	}
 
-	@Ignore
 	// BE57iEeATYm4O5qGJcszZxsSSHS7ANkwHkTiFakaVu0
+	@Ignore
 	@Test
 	public void testSendTemplateMessage() throws RemoteException {
 		TemplateMessage msg = new TemplateMessage();

@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
@@ -41,6 +42,7 @@ public class MessageManagementClientTest {
 		client.close();
 	}
 
+	@Ignore
 	@Test
 	public void testGetAutoReply() throws RemoteException {
 		System.out.println(

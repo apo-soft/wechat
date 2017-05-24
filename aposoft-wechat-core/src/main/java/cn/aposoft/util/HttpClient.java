@@ -105,8 +105,11 @@ public class HttpClient {
 						: response.getFirstHeader("Content-Type").getValue();
 
 				AposoftHttpEntity resp = new AposoftHttpEntity();
-				resp.setMimeType(ContentType.parse(mimeType).getMimeType());
-
+				if (StringUtil.isBlank(mimeType)) {
+					resp.setMimeType(ContentType.APPLICATION_JSON.getMimeType());
+				} else {
+					resp.setMimeType(ContentType.parse(mimeType).getMimeType());
+				}
 				if (!StringUtil.isBlank(mimeType)
 						&& (ContentType.APPLICATION_JSON.getMimeType().equals(resp.getMimeType())
 								|| ContentType.TEXT_PLAIN.getMimeType().equals(resp.getMimeType()))) {
@@ -126,9 +129,7 @@ public class HttpClient {
 				return resp;
 			}
 			throw new RemoteException("RESP:" + response.getStatusLine());
-		} catch (
-
-		Exception e) {
+		} catch (Exception e) {
 			throw new RemoteException(e.getMessage(), e);
 		}
 	}
