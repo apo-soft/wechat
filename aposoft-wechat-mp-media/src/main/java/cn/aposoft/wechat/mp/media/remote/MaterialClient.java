@@ -183,7 +183,7 @@ public class MaterialClient extends MediaClient {
 		if (StringUtil.isBlank(accessToken, req)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getMediaListUrl(accessToken), req),
+		return HttpClient.execute(HttpClient.jsonPost(getMediaListUrl(accessToken), req),
 				MaterialListResp.class, httpClient);
 	}
 
@@ -243,7 +243,7 @@ public class MaterialClient extends MediaClient {
 		if (StringUtil.isBlank(accessToken, media_id)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		HttpPost post = HttpClient.createJsonHttpPost(getMaterialUrl(accessToken),
+		HttpPost post = HttpClient.jsonPost(getMaterialUrl(accessToken),
 				new JSONObject().fluentPut("media_id", media_id));
 		AposoftHttpEntity entity = HttpClient.executeEntity(post, httpClient);
 		if (ContentType.APPLICATION_JSON.getMimeType().equals(entity.getMimeType())) {
@@ -318,7 +318,7 @@ public class MaterialClient extends MediaClient {
 		}
 
 		return HttpClient.execute(
-				HttpClient.createJsonHttpPost(getAddNewsUrl(accessToken), new JSONObject().fluentPut("articles", news)),
+				HttpClient.jsonPost(getAddNewsUrl(accessToken), new JSONObject().fluentPut("articles", news)),
 				MediaResp.class, httpClient);
 	}
 
@@ -358,7 +358,7 @@ public class MaterialClient extends MediaClient {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getUpdateNewsUrl(accessToken), req), MediaResp.class,
+		return HttpClient.execute(HttpClient.jsonPost(getUpdateNewsUrl(accessToken), req), MediaResp.class,
 				httpClient);
 	}
 
@@ -382,7 +382,7 @@ public class MaterialClient extends MediaClient {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getDeleteMaterialUrl(accessToken),
+		return HttpClient.execute(HttpClient.jsonPost(getDeleteMaterialUrl(accessToken),
 				new JSONObject().fluentPut("media_id", mediaId)), WechatResp.class, httpClient);
 	}
 

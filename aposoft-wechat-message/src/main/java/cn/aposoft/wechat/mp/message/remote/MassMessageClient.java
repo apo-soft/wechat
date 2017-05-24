@@ -232,7 +232,7 @@ public class MassMessageClient implements Closeable {
 		if (StringUtil.isBlank(accessToken, msgId)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getMessageStatusUrl(accessToken),
+		return HttpClient.execute(HttpClient.jsonPost(getMessageStatusUrl(accessToken),
 				new JSONObject().fluentPut("msg_id", msgId)), MessageStatusResp.class, httpClient);
 	}
 
@@ -276,7 +276,7 @@ public class MassMessageClient implements Closeable {
 			jobj.put("article_idx", articleIndex);
 
 		}
-		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getDeleteMassMessageUrl(accessToken), jobj),
+		return HttpClient.executeWechat(HttpClient.jsonPost(getDeleteMassMessageUrl(accessToken), jobj),
 				httpClient);
 	}
 
@@ -307,7 +307,7 @@ public class MassMessageClient implements Closeable {
 				.fluentPut(msgType.name(), media);
 		String joString = JSON.toJSONString(jobj);
 		System.out.println(joString);
-		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getMassPreviewUrl(accessToken), jobj),
+		return HttpClient.executeWechat(HttpClient.jsonPost(getMassPreviewUrl(accessToken), jobj),
 				httpClient);
 	}
 
@@ -338,7 +338,7 @@ public class MassMessageClient implements Closeable {
 				.fluentPut(MsgType.text.name(), new JSONObject().fluentPut("content", content));
 		String joString = JSON.toJSONString(jobj);
 		System.out.println(joString);
-		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getMassPreviewUrl(accessToken), jobj),
+		return HttpClient.executeWechat(HttpClient.jsonPost(getMassPreviewUrl(accessToken), jobj),
 				httpClient);
 	}
 
@@ -369,7 +369,7 @@ public class MassMessageClient implements Closeable {
 				.fluentPut(msgType.name(), media).fluentPutAll(configs);
 		String joString = JSON.toJSONString(jobj);
 		System.out.println(joString);
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getMassSendUrl(accessToken), jobj), MessageResp.class,
+		return HttpClient.execute(HttpClient.jsonPost(getMassSendUrl(accessToken), jobj), MessageResp.class,
 				httpClient);
 	}
 
@@ -380,7 +380,7 @@ public class MassMessageClient implements Closeable {
 				.fluentPut(msgType.name(), media).fluentPutAll(configs);
 		String joString = JSON.toJSONString(jobj);
 		System.out.println(joString);
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getMassOpenidSendUrl(accessToken), jobj),
+		return HttpClient.execute(HttpClient.jsonPost(getMassOpenidSendUrl(accessToken), jobj),
 				MessageResp.class, httpClient);
 	}
 

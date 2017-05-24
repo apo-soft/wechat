@@ -34,7 +34,7 @@ public class CsaMessageClient implements Closeable {
 		if (StringUtil.isBlank(accessToken, msg)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getCsaMessageUrl(accessToken), msg), httpClient);
+		return HttpClient.executeWechat(HttpClient.jsonPost(getCsaMessageUrl(accessToken), msg), httpClient);
 	}
 
 	private String getCsaMessageUrl(String accessToken) {

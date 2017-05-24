@@ -127,7 +127,7 @@ public class MassMaterialClient extends MediaClient {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
-		return HttpClient.execute(HttpClient.createJsonHttpPost(getUploadNewsUrl(accessToken),
+		return HttpClient.execute(HttpClient.jsonPost(getUploadNewsUrl(accessToken),
 				new JSONObject().fluentPut("articles", news)), MediaResp.class, httpClient);
 	}
 }

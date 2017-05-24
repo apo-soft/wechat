@@ -61,7 +61,6 @@ public class MassMessageClientTest {
 	 * 
 	 * @throws RemoteException
 	 */
-	@Ignore
 	@Test
 	public void testSendNews() throws RemoteException {
 		Filter filter = new Filter();

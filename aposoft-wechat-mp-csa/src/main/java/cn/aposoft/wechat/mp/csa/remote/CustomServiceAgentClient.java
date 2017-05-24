@@ -49,7 +49,7 @@ public class CustomServiceAgentClient implements Closeable {
 				account.getPassword())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getAddUrl(accessToken), account), httpClient);
+		return HttpClient.executeWechat(HttpClient.jsonPost(getAddUrl(accessToken), account), httpClient);
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class CustomServiceAgentClient implements Closeable {
 				account.getPassword())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getUpdateUrl(accessToken), account), httpClient);
+		return HttpClient.executeWechat(HttpClient.jsonPost(getUpdateUrl(accessToken), account), httpClient);
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class CustomServiceAgentClient implements Closeable {
 		if (StringUtil.isBlank(accessToken, account, account.getAccount())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getDeleteUrl(accessToken), account), httpClient);
+		return HttpClient.executeWechat(HttpClient.jsonPost(getDeleteUrl(accessToken), account), httpClient);
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class CustomServiceAgentClient implements Closeable {
 		if (StringUtil.isBlank(accessToken, account, account.getAccount())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getDeleteUrl(accessToken), account), httpClient);
+		return HttpClient.executeWechat(HttpClient.jsonPost(getDeleteUrl(accessToken), account), httpClient);
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class CustomServiceAgentClient implements Closeable {
 		if (StringUtil.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
-		return HttpClient.execute(HttpClient.createHttpGet(getListUrl(accessToken)), KfListAccountResp.class,
+		return HttpClient.execute(HttpClient.get(getListUrl(accessToken)), KfListAccountResp.class,
 				httpClient);
 	}
 

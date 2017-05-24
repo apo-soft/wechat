@@ -47,7 +47,7 @@ public class IndustryConfigClient implements Closeable {
 		Map<String, String> idsContent = new HashMap<>();
 		idsContent.put("industry_id1", id1);
 		idsContent.put("industry_id2", id2);
-		return HttpClient.executeWechat(HttpClient.createJsonHttpPost(getConfigIndustryUrl(accessToken), idsContent),
+		return HttpClient.executeWechat(HttpClient.jsonPost(getConfigIndustryUrl(accessToken), idsContent),
 				httpClient);
 	}
 

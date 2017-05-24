@@ -158,11 +158,11 @@ public class HttpClient {
 		return JSON.parseObject(respMsg, clazz);
 	}
 
-	public static HttpGet createHttpGet(final String listUrl) {
+	public static HttpGet get(final String listUrl) {
 		return new HttpGet(listUrl);
 	}
 
-	public static HttpPost createJsonHttpPost(final String requestUrl, final Object entity) {
+	public static HttpPost jsonPost(final String requestUrl, final Object entity) {
 		String jsonStr = JSON.toJSONString(entity);
 		if (logEnabled && logger.isDebugEnabled()) {
 			logger.debug("POST JSON:" + jsonStr);
