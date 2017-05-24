@@ -63,6 +63,35 @@
 			</xml>
 		</normal>
 		<event>
+			<!-- 扫描二维码进入 -->
+			<xml>
+				<ToUserName><![CDATA[gh_0f504b63df22]]></ToUserName>
+				<FromUserName><![CDATA[ojqOLxLh0480oz5gqHqLgzRgCLHM]]></FromUserName>
+				<CreateTime>1495603960</CreateTime>
+				<MsgType><![CDATA[event]]></MsgType>
+				<Event><![CDATA[SCAN]]></Event>
+				<EventKey><![CDATA[0]]></EventKey>
+				<Ticket><![CDATA[gQEY8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyUnpjLUZrZXplYjQxMk5yQmhwMXIAAgSFGiVZAwQsAQAA]]></Ticket>
+			</xml>
+			<xml>
+				<ToUserName><![CDATA[gh_0f504b63df22]]></ToUserName>
+				<FromUserName><![CDATA[ojqOLxLh0480oz5gqHqLgzRgCLHM]]></FromUserName>
+				<CreateTime>1495607904</CreateTime>
+				<MsgType><![CDATA[event]]></MsgType>
+				<Event><![CDATA[SCAN]]></Event>
+				<EventKey><![CDATA[test-003]]></EventKey>
+				<Ticket><![CDATA[gQEN8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAydl84c0ZtZXplYjQxMDAwMHcwN2kAAgQvKiVZAwQAAAAA]]></Ticket>
+			</xml>
+			<!-- 扫描二维码关注 -->
+			<xml>
+				<ToUserName><![CDATA[gh_0f504b63df22]]></ToUserName>
+				<FromUserName><![CDATA[ojqOLxEKiawR-U8y4NAVBKs7ZKVs]]></FromUserName>
+				<CreateTime>1495603640</CreateTime>
+				<MsgType><![CDATA[event]]></MsgType>
+				<Event><![CDATA[subscribe]]></Event>
+				<EventKey><![CDATA[qrscene_0]]></EventKey>
+				<Ticket><![CDATA[gQGu7zwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyT0F0QkZKZXplYjQxMS1xQmhwMWoAAgRSGSVZAwQsAQAA]]></Ticket>
+			</xml>
 			<!-- 地理位置结果 -->
 			<xml>
 				<ToUserName><![CDATA[gh_0f504b63df22]]></ToUserName>
