@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.message.remote;
+package cn.aposoft.wechat.mp.message.remote;
 
 import java.io.Closeable;
 
@@ -27,9 +27,16 @@ public class MessageManagementClient implements Closeable {
 		HttpClientUtils.closeQuietly(httpClient);
 	}
 
+	/**
+	 * 读取自动回复消息配置，当启用服务器调用时，自动禁用消息自动回复
+	 * 
+	 * @param accessToken
+	 *            {@see AccessToken} 访问授权码
+	 * @return {"is_add_friend_reply_open":1,"is_autoreply_open":1}
+	 * @throws RemoteException
+	 */
 	public AutoReplyRuleResp getAutoReplyRule(final String accessToken) throws RemoteException {
-		return HttpClient.execute(HttpClient.get(getAutoReplyRulUrl(accessToken)), AutoReplyRuleResp.class,
-				httpClient);
+		return HttpClient.execute(HttpClient.get(getAutoReplyRulUrl(accessToken)), AutoReplyRuleResp.class, httpClient);
 		//
 	}
 
