@@ -10,7 +10,7 @@ package cn.aposoft.wechat.mp.config;
  * @date 2016年10月12日
  * 
  */
-public interface WechatMpConfig extends RefreshConfig {
+public interface WechatMpConfig {
 	/**
 	 * 用户ID:开发者微信ID <br/>
 	 * gh_0f504b63df22
@@ -39,4 +39,9 @@ public interface WechatMpConfig extends RefreshConfig {
 	 */
 	String getEncodingAESKey();
 
+	/**
+	 * 
+	 * @return 会话过期时间保护
+	 */
+	int getExpiredThreshold();
 }

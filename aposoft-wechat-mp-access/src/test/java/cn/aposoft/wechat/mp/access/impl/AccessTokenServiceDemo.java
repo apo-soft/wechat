@@ -9,7 +9,6 @@ import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.AccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 
 /**
@@ -26,8 +25,9 @@ public class AccessTokenServiceDemo {
 	 */
 	public static void main(String[] args) {
 		AccessTokenClient client = new AposoftMpAccessTokenClient();
-		WechatMpConfig config = WechatMpConfigFactory.getConfig();
-		AccessTokenService accessTokenService = new BasicAccessTokenService(client, config);
+
+		AccessTokenService accessTokenService = new BasicAccessTokenService(client,
+				BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig());
 		for (int i = 0; i < 200; i++) {
 			AccessToken accessToken = accessTokenService.getAccessToken();
 			System.out.println(JSON.toJSONString(accessToken));

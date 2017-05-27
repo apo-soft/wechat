@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.config;
+package cn.aposoft.wechat.mp.access;
 
 /**
  * @author Jann Liu

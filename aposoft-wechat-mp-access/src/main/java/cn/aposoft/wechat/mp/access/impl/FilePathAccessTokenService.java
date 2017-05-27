@@ -15,9 +15,9 @@ import org.apache.commons.lang.StringUtils;
 
 import com.alibaba.fastjson.JSON;
 
+import cn.aposoft.wechat.mp.access.AccessConfig;
 import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 /**
  * 从文件路径读取ACCESS_TOKEN的方法，避免测试时反复调用远程AccessToken，导致调用失败
@@ -32,7 +32,7 @@ public class FilePathAccessTokenService extends BasicAccessTokenService {
 
 	private volatile AccessToken accessToken;
 
-	public FilePathAccessTokenService(String filepath, AccessTokenClient client, WechatMpConfig config)
+	public FilePathAccessTokenService(String filepath, AccessTokenClient client, AccessConfig config)
 			throws IOException {
 		super(client, config);
 		File file = new File(filepath);

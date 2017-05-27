@@ -10,13 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.mp.access.AccessConfig;
+import cn.aposoft.wechat.mp.access.AccessConfigFactory;
 import cn.aposoft.wechat.mp.access.AccessToken;
-import cn.aposoft.wechat.mp.access.AccessTokenConfig;
-import cn.aposoft.wechat.mp.access.AccessTokenConfigFactory;
 import cn.aposoft.wechat.mp.access.AccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenResp;
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 /**
  * AccessToken 默认访问服务
@@ -28,17 +27,17 @@ import cn.aposoft.wechat.mp.config.WechatMpConfig;
 public class BasicAccessTokenService implements AccessTokenService {
 	private static final Logger logger = LoggerFactory.getLogger(BasicAccessTokenService.class);
 
-	private AccessTokenConfig accessTokenConfig;
-	private WechatMpConfig mpConfig;
+	private AccessConfig accessConfig;
 
 	/**
 	 * WARNING:本用例仅用于测试使用，具体实现需要重构此服务
 	 * 
 	 * @param client
-	 *            accessToken 远程访问服务
+	 * @param configFactory
 	 */
-	public BasicAccessTokenService(AccessTokenClient client, WechatMpConfig mpConfig) {
-		this(client, mpConfig, BasicAccessTokenConfigFactory.getInstance(mpConfig));
+	public BasicAccessTokenService(AccessTokenClient client, AccessConfig accessConfig) {
+		this.client = client;
+		this.accessConfig = accessConfig;
 	}
 
 	/**
@@ -47,24 +46,9 @@ public class BasicAccessTokenService implements AccessTokenService {
 	 * @param client
 	 * @param configFactory
 	 */
-	public BasicAccessTokenService(AccessTokenClient client, WechatMpConfig mpConfig,
-			AccessTokenConfig accessTokenConfig) {
+	public BasicAccessTokenService(AccessTokenClient client, AccessConfigFactory configFactory) {
 		this.client = client;
-		this.mpConfig = mpConfig;
-		this.accessTokenConfig = accessTokenConfig;
-	}
-
-	/**
-	 * WARNING:本用例仅用于测试使用，具体实现需要重构此服务
-	 * 
-	 * @param client
-	 * @param configFactory
-	 */
-	public BasicAccessTokenService(AccessTokenClient client, WechatMpConfig mpConfig,
-			AccessTokenConfigFactory configFactory) {
-		this.client = client;
-		this.mpConfig = mpConfig;
-		this.accessTokenConfig = configFactory.getAccessTokenConfig();
+		this.accessConfig = configFactory.getAccessConfig();
 	}
 
 	private volatile Object lockObj = new Object();
@@ -97,7 +81,7 @@ public class BasicAccessTokenService implements AccessTokenService {
 				for (int i = 0; i < 3; i++) {
 					try {
 						Date refreshTime = new Date();
-						AccessTokenResp resp = client.getAccessToken(accessTokenConfig);
+						AccessTokenResp resp = client.getAccessToken(accessConfig);
 						if (resp != null) {
 							if (StringUtils.isNotBlank(resp.getAccess_token()) && resp.getExpires_in() != null) {
 								BasicAccessToken token = new BasicAccessToken();
@@ -124,7 +108,7 @@ public class BasicAccessTokenService implements AccessTokenService {
 	protected boolean isNearlyExpired(AccessToken accessToken) {
 		long curr = System.currentTimeMillis();
 		long refreshTime = accessToken.getRefreshTime().getTime();
-		if (accessToken.getExpires_in() - (curr - refreshTime) / 1000 < mpConfig.getExpiredThreshold()) {
+		if (accessToken.getExpires_in() - (curr - refreshTime) / 1000 < accessConfig.getExpiredThreshold()) {
 			logger.debug("remain time:" + (curr - refreshTime) / 1000);
 			return true;
 		}

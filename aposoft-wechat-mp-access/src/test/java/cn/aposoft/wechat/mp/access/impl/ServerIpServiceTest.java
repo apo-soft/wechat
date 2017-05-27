@@ -36,7 +36,8 @@ public class ServerIpServiceTest {
 		}
 		accessTokenClient = new AposoftMpAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient, WechatMpConfigFactory.getConfig());
+				accessTokenClient,
+				BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig());
 	}
 
 	@AfterClass

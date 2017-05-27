@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
@@ -36,7 +37,7 @@ public class AccountClientTest {
 		}
 		accessTokenClient = new AposoftMpAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient, WechatMpConfigFactory.getConfig());
+				accessTokenClient, BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig());
 		System.out.println(JSON.toJSONString(accessTokenService.getAccessToken()));
 	}
 

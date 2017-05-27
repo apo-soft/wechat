@@ -8,7 +8,7 @@ import java.util.List;
 
 import cn.aposoft.wechat.mp.auth.Oauth2MsgType;
 import cn.aposoft.wechat.mp.auth.Oauth2Scope;
-import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
+import cn.aposoft.wechat.mp.config.WechatMpConfig;
 import cn.aposoft.wechat.mp.message.MessageService;
 import cn.aposoft.wechat.mp.message.MsgType;
 import cn.aposoft.wechat.mp.message.impl.AposoftMessage;
@@ -28,12 +28,18 @@ import cn.aposoft.wechat.mp.message.template.Success;
  */
 public class NewsService implements MessageService {
 
+	private final WechatMpConfig config;
+
+	public NewsService(WechatMpConfig config) {
+		this.config = config;
+	}
+
 	/**
 	 * 根据toUser, 返回默认的联排消息
 	 */
 	public AposoftMessage getReplyMessage(String toUser) {
 		News news = new News();
-		news.setFromUser(WechatMpConfigFactory.getConfig().getUserId());
+		news.setFromUser(config.getUserId());
 		news.setToUser(toUser);
 		news.setMsgType(MsgType.news.name());
 		news.setCreateTime(String.valueOf(System.currentTimeMillis()));

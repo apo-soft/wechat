@@ -62,7 +62,7 @@ public class MessageServlet extends HttpServlet {
 			logger.error("meets error while init crypt", e);
 			throw new Error("aes key initialize error", e);
 		}
-		messageService = new NewsService();
+		messageService = new NewsService(WechatMpConfigFactory.getConfig());
 	}
 
 	/**
