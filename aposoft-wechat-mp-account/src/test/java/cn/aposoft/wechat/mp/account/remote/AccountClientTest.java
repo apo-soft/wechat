@@ -16,7 +16,6 @@ import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 
 /**

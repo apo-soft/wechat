@@ -4,6 +4,7 @@
 package wx;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -111,7 +112,7 @@ public class MessageServlet extends HttpServlet {
 			String plainPostData = null;
 			// 读取传入消息
 			if ("POST".equalsIgnoreCase(request.getMethod())) {
-				String postData = IOUtils.toString(request.getInputStream(), Lexical.UTF8_CHARSET);
+				String postData = IOUtils.toString(request.getInputStream(), StandardCharsets.UTF_8);
 				// 解密
 				plainPostData = decode(messageParams, postData);
 			}
