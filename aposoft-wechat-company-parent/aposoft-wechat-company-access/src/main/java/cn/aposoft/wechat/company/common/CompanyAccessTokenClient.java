@@ -4,6 +4,7 @@
 package cn.aposoft.wechat.company.common;
 
 import java.io.Closeable;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,6 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import cn.aposoft.constant.Lexical;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.util.RemoteException;
@@ -23,7 +23,7 @@ import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenResp;
 
 /**
- * Access Token 客户端
+ * 企业 Access Token 客户端
  * 
  * @author Jann Liu
  * @date 2016年10月13日
@@ -67,7 +67,7 @@ public class CompanyAccessTokenClient implements AccessTokenClient, Closeable {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("corpid", accessTokenReq.getId()));
 		params.add(new BasicNameValuePair("corpsecret", accessTokenReq.getSecret()));
-		String paramsUrl = URLEncodedUtils.format(params, Lexical.UTF8);
+		String paramsUrl = URLEncodedUtils.format(params, StandardCharsets.UTF_8);
 		final String requestUrl = COMPANY_ACCESS_TOKEN_URL + paramsUrl;
 		return requestUrl;
 	}
