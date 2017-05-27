@@ -18,6 +18,8 @@ import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
+import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 import cn.aposoft.wechat.mp.user.tag.UserTag;
 import cn.aposoft.wechat.mp.user.tag.remote.BatchTaggingReq;
@@ -37,9 +39,9 @@ public class UserTagClientTest {
 	@BeforeClass
 	public static void init() throws IOException {
 		userTagClient = new UserTagClient();
-		accessTokenClient = new AccessTokenClient();
+		accessTokenClient = new AposoftMpAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient);
+				accessTokenClient, WechatMpConfigFactory.getConfig());
 		accessToken = accessTokenService.getAccessToken();
 		System.out.println(JSON.toJSONString(accessToken));
 	}

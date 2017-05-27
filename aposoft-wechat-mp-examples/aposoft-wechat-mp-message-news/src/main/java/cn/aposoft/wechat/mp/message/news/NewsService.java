@@ -8,7 +8,7 @@ import java.util.List;
 
 import cn.aposoft.wechat.mp.auth.Oauth2MsgType;
 import cn.aposoft.wechat.mp.auth.Oauth2Scope;
-import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
+import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.message.MessageService;
 import cn.aposoft.wechat.mp.message.MsgType;
 import cn.aposoft.wechat.mp.message.impl.AposoftMessage;

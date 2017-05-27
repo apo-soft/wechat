@@ -15,6 +15,9 @@ import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
+import cn.aposoft.wechat.mp.config.WechatMpConfig;
+import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 
 /**
  * 账户管理测试
@@ -32,9 +35,9 @@ public class AccountClientTest {
 		if (!HttpClient.isLogEnabled()) {
 			HttpClient.setLogEnabled(true);
 		}
-		accessTokenClient = new AccessTokenClient();
+		accessTokenClient = new AposoftMpAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient);
+				accessTokenClient, WechatMpConfigFactory.getConfig());
 		System.out.println(JSON.toJSONString(accessTokenService.getAccessToken()));
 	}
 

@@ -18,6 +18,8 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
+import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.message.MsgType;
 import cn.aposoft.wechat.mp.message.remote.Filter;
 import cn.aposoft.wechat.mp.message.remote.MassMessageClient;
@@ -26,7 +28,7 @@ import cn.aposoft.wechat.mp.message.remote.MessageResp;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
- * 批量发送客户端测试
+ * 鎵归噺鍙戦�佸鎴风娴嬭瘯
  * 
  * @author Jann Liu
  *
@@ -38,9 +40,9 @@ public class MassMessageClientTest {
 
 	@BeforeClass
 	public static void init() throws IOException {
-		accessTokenClient = new AccessTokenClient();
+		accessTokenClient = new AposoftMpAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient);
+				accessTokenClient, WechatMpConfigFactory.getConfig());
 		System.out.println(JSON.toJSONString(accessTokenService.getAccessToken()));
 	}
 
@@ -51,7 +53,7 @@ public class MassMessageClientTest {
 	}
 
 	/**
-	 * TODO 正确性待验证
+	 * TODO 姝ｇ‘鎬у緟楠岃瘉
 	 * <p>
 	 * 2017/5/23 {"errcode":45028,"errmsg":"has no masssend quota hint:
 	 * [rKd_Da0056ge21]"}
@@ -174,7 +176,7 @@ public class MassMessageClientTest {
 	public void testPreviewText() throws RemoteException {
 
 		WechatResp resp = client.preview(accessTokenService.getAccessToken().getAccess_token(),
-				"ojqOLxLh0480oz5gqHqLgzRgCLHM", "今天发布了美女的屏保，请欣赏！");
+				"ojqOLxLh0480oz5gqHqLgzRgCLHM", "浠婂ぉ鍙戝竷浜嗙編濂崇殑灞忎繚锛岃娆ｈ祻锛�");
 		System.out.println(JSON.toJSONString(resp));
 	}
 

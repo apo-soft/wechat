@@ -21,7 +21,7 @@ import cn.aposoft.wechat.mp.auth.WechatUserInfo;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenResp;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AuthResp;
-import cn.aposoft.wechat.mp.config.basic.WechatMpConfigFactory;
+import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 /**
  * 默认的微信授权请求服务类
@@ -46,6 +46,7 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
 	private final ConcurrentMap<String, Object> stateSet = new ConcurrentHashMap<>();
 	// Oauth2 客户端
 	private Oauth2AccessTokenClient client;
+	private WechatMpConfig config;
 
 	/**
 	 * 初始化BasicWechatAuthorizeService
@@ -53,7 +54,7 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
 	 * @param client
 	 *            微信OAuth2 Access Token client
 	 */
-	public BasicWechatAuthorizeService(Oauth2AccessTokenClient client) {
+	public BasicWechatAuthorizeService(Oauth2AccessTokenClient client, WechatMpConfig config) {
 		this.client = client;
 	}
 
@@ -86,7 +87,7 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
 	 */
 	@Override
 	public String getRedirectUrl(String redirectUri, String scope) {
-		String appId = WechatMpConfigFactory.getConfig().getAppId();
+		String appId = config.getAppId();
 		String encodedUrl = URLEncoder.encode(redirectUri);
 		String resonseType = "code";
 		// Random 字符考虑是否缓存,做后续校验
@@ -141,7 +142,7 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
 	public Oauth2Token getOauth2Token(String code) {
 		Oauth2AccessTokenResp oauth2Token = null;
 		try {
-			oauth2Token = client.getOauth2Token(code, WechatMpConfigFactory.getConfig());
+			oauth2Token = client.getOauth2Token(code, config);
 		} catch (RemoteException e) {
 			logger.error("acquire OAuth2 Access Token error.", e);
 			return null;
