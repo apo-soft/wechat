@@ -20,7 +20,7 @@ import cn.aposoft.util.StringUtil;
  *
  */
 public class CompanyMessgeClient implements Closeable {
-	final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
+	static final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
 	//
 	static final String COMPANY_MESSAGE_URL = "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=";
 

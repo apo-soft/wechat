@@ -1,13 +1,15 @@
 /**
  * 
  */
-package cn.aposoft.wechat.company.message;
+package cn.aposoft.wechat.company.message.impl;
 
 import org.apache.commons.lang.StringUtils;
 
 import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.company.message.CompanyMessageService;
+import cn.aposoft.wechat.company.message.RequestConfig;
 import cn.aposoft.wechat.company.message.remote.CompanyMessgeClient;
 import cn.aposoft.wechat.company.message.remote.MessageResp;
 import cn.aposoft.wechat.mp.media.news.NewsContent;
