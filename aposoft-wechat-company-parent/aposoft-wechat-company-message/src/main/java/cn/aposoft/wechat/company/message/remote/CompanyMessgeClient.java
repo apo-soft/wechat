@@ -30,10 +30,12 @@ public class CompanyMessgeClient implements Closeable {
 	}
 
 	/**
+	 * 发送报文
 	 * 
 	 * @param accessToken
 	 * @param msg
-	 * @return
+	 *            报文内容
+	 * @return 发送结果
 	 * @throws RemoteException
 	 */
 	public MessageResp send(final String accessToken, final String msg) throws RemoteException {
