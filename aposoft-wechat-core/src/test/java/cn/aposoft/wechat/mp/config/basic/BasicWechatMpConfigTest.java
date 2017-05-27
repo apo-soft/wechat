@@ -7,26 +7,23 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
+import cn.aposoft.wechat.mp.SignatureConfig;
 
 public class BasicWechatMpConfigTest {
 
-	WechatMpConfig config;
+	SignatureConfig config;
 
 	@Before
 	public void init() {
-		config = mock(WechatMpConfig.class);
-		String userId = "gh_0f504b63df22";
+		config = mock(SignatureConfig.class);
 		String appId = "wx31659662068251dc";
-		String appSecret = "9cf9858af4718fde40d67968b5de3967";
 		String token = "AposoftBugs";
-		int expired_threshold = 300;
 		when(config.getAppId()).thenReturn(appId).thenThrow(new NullPointerException());
 		// when(config.getAppId()).thenThrow(new RuntimeException());
-		when(config.getUserId()).thenReturn(userId);
-		when(config.getAppSecret()).thenReturn(appSecret);
+		// when(config.getUserId()).thenReturn(userId);
+		// when(config.getAppSecret()).thenReturn(appSecret);
 		when(config.getToken()).thenReturn(token);
-		when(config.getExpiredThreshold()).thenReturn(expired_threshold);
+		// when(config.getExpiredThreshold()).thenReturn(expired_threshold);
 	}
 
 	@Test

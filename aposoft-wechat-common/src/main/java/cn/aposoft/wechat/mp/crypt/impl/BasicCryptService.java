@@ -1,21 +1,22 @@
 package cn.aposoft.wechat.mp.crypt.impl;
 
+import cn.aposoft.wechat.mp.SignatureConfig;
 import cn.aposoft.wechat.mp.codec.aes.AesException;
 import cn.aposoft.wechat.mp.codec.aes.WXBizMsgCrypt;
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
 import cn.aposoft.wechat.mp.crypt.CryptService;
 
 public class BasicCryptService implements CryptService {
 
 	private final WXBizMsgCrypt crypt;
 
-	public BasicCryptService(WechatMpConfig config) throws AesException {
+	public BasicCryptService(SignatureConfig config) throws AesException {
 		crypt = new WXBizMsgCrypt(config.getToken(), config.getEncodingAESKey(), config.getAppId());
 	}
 
 	/**
 	 * 将公众平台回复用户的消息加密打包.
 	 * <ol>
+	 * 
 	 * <li>对要发送的消息进行AES-CBC加密</li>
 	 * <li>生成安全签名</li>
 	 * <li>将消息密文和安全签名打包成xml格式</li>

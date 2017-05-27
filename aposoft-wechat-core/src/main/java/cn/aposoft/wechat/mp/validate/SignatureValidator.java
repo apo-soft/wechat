@@ -5,7 +5,7 @@ package cn.aposoft.wechat.mp.validate;
 
 import org.apache.commons.lang.StringUtils;
 
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
+import cn.aposoft.wechat.mp.SignatureConfig;
 
 /**
  * 微信服务器签名有效性验证
@@ -16,9 +16,9 @@ import cn.aposoft.wechat.mp.config.WechatMpConfig;
  */
 public class SignatureValidator {
 
-	WechatMpConfig config;
+	SignatureConfig config;
 
-	public SignatureValidator(WechatMpConfig config) {
+	public SignatureValidator(SignatureConfig config) {
 		this.config = config;
 	}
 

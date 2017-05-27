@@ -3,6 +3,9 @@
  */
 package cn.aposoft.wechat.mp.config;
 
+import cn.aposoft.wechat.mp.SignatureConfig;
+import cn.aposoft.wechat.mp.access.AccessConfig;
+
 /**
  * 微信公众号配置
  * 
@@ -10,7 +13,7 @@ package cn.aposoft.wechat.mp.config;
  * @date 2016年10月12日
  * 
  */
-public interface WechatMpConfig {
+public interface WechatMpConfig extends SignatureConfig, AccessConfig {
 	/**
 	 * 用户ID:开发者微信ID <br/>
 	 * gh_0f504b63df22

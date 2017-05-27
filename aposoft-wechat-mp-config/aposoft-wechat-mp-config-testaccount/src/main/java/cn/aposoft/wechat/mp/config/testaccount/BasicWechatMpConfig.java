@@ -36,4 +36,14 @@ public class BasicWechatMpConfig implements WechatMpConfig {
 		return "rqWzZv5rjyBwIRmociz7978G2O1D8sjxlsypVIU4SmY";
 	}
 
+	@Override
+	public String getId() {
+		return getAppId();
+	}
+
+	@Override
+	public String getSecret() {
+		return getAppSecret();
+	}
+
 }
