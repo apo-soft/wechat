@@ -15,6 +15,8 @@ import java.nio.charset.StandardCharsets;
 public class Lexical {
 	/**
 	 * UTF-8 Character encoding
+	 * 
+	 * @deprecated use {@link StandardCharsets.UTF_8} instead
 	 */
 	public static final Charset UTF8_CHARSET = StandardCharsets.UTF_8;
 	/**
