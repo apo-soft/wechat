@@ -53,7 +53,7 @@ public class MassMessageClientTest {
 	}
 
 	/**
-	 * TODO 姝ｇ‘鎬у緟楠岃瘉
+	 * TODO 功能需要验证
 	 * <p>
 	 * 2017/5/23 {"errcode":45028,"errmsg":"has no masssend quota hint:
 	 * [rKd_Da0056ge21]"}
