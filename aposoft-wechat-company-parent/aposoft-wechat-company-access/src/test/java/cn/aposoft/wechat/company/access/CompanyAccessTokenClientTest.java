@@ -37,7 +37,6 @@ public class CompanyAccessTokenClientTest {
 	public void testGetCompanyAccessToken() throws RemoteException, FileNotFoundException, IOException {
 		try (CompanyAccessTokenClient client = new CompanyAccessTokenClient();) {
 			WechatCompanyConfig companyConfig = getTestCompanyConfig();
-
 			AccessTokenResp accessToken = client.getAccessToken(companyConfig.toAccessTokenConfig());
 			System.out.println(JSON.toJSONString(accessToken));
 		}
@@ -46,7 +45,7 @@ public class CompanyAccessTokenClientTest {
 	//
 	private static WechatCompanyConfig getTestCompanyConfig() throws FileNotFoundException, IOException {
 		WechatCompanyConfig config = JSON.parseObject(
-				IOUtils.toString(new FileInputStream("D:/tmp/gome-ops-key.txt"), StandardCharsets.UTF_8),
+				IOUtils.toString(new FileInputStream("../config/gome-ops-key.txt"), StandardCharsets.UTF_8),
 				WechatCompanyConfig.class);
 		return config;
 	}
