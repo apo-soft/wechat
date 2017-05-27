@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.message.template.reply;
+package cn.aposoft.wechat.mp.message.template;
 
 /**
  * 微信音乐类型

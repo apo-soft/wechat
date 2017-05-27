@@ -8,8 +8,8 @@
 		<artifactId>aposoft-wechat-company-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>aposoft-wechat-company-access</artifactId>
-	<name>aposoft-wechat-company-access</name>
+	<artifactId>aposoft-wechat-company-message</artifactId>
+	<name>aposoft-wechat-company-message</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,8 +17,19 @@
 	<dependencies>
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-common</artifactId>
+			<artifactId>aposoft-wechat-message</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.aposoft.wechat</groupId>
+			<artifactId>aposoft-wechat-mp-media</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.aposoft.wechat</groupId>
+			<artifactId>aposoft-wechat-company-access</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>

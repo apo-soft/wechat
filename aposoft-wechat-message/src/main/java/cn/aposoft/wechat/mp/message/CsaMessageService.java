@@ -7,9 +7,9 @@ import java.io.Closeable;
 import java.util.List;
 
 import cn.aposoft.util.RemoteException;
-import cn.aposoft.wechat.mp.message.template.reply.Article;
-import cn.aposoft.wechat.mp.message.template.reply.Music;
-import cn.aposoft.wechat.mp.message.template.reply.Vedio;
+import cn.aposoft.wechat.mp.message.template.Article;
+import cn.aposoft.wechat.mp.message.template.Music;
+import cn.aposoft.wechat.mp.message.template.Video;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
@@ -132,7 +132,7 @@ public interface CsaMessageService extends Closeable {
 	 * @return 发送结果
 	 * @throws RemoteException
 	 */
-	WechatResp sendVedio(String accessToken, String openId, Vedio vedio) throws RemoteException;
+	WechatResp sendVedio(String accessToken, String openId, Video vedio) throws RemoteException;
 
 	/**
 	 * 
@@ -145,7 +145,7 @@ public interface CsaMessageService extends Closeable {
 	 * @return 发送结果
 	 * @throws RemoteException
 	 */
-	WechatResp sendVedio(String accessToken, String openId, Vedio vedio, String account) throws RemoteException;
+	WechatResp sendVedio(String accessToken, String openId, Video vedio, String account) throws RemoteException;
 
 	/**
 	 * 

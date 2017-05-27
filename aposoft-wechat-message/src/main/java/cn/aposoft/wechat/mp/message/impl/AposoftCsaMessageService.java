@@ -11,9 +11,9 @@ import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
 import cn.aposoft.wechat.mp.message.CsaMessageService;
 import cn.aposoft.wechat.mp.message.remote.CsaMessageClient;
-import cn.aposoft.wechat.mp.message.template.reply.Article;
-import cn.aposoft.wechat.mp.message.template.reply.Music;
-import cn.aposoft.wechat.mp.message.template.reply.Vedio;
+import cn.aposoft.wechat.mp.message.template.Article;
+import cn.aposoft.wechat.mp.message.template.Music;
+import cn.aposoft.wechat.mp.message.template.Video;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
@@ -109,7 +109,7 @@ public class AposoftCsaMessageService implements CsaMessageService {
 	 * String, cn.aposoft.wechat.mp.message.template.reply.Vedio)
 	 */
 	@Override
-	public WechatResp sendVedio(String accessToken, String openId, Vedio vedio, String account) throws RemoteException {
+	public WechatResp sendVedio(String accessToken, String openId, Video vedio, String account) throws RemoteException {
 		JSONObject jobj = new JSONObject();
 		jobj.put("touser", openId);
 		jobj.put("msgtype", "video");
@@ -176,7 +176,7 @@ public class AposoftCsaMessageService implements CsaMessageService {
 		if (!StringUtil.isBlank(account)) {
 			jobj.put("customservice", new JSONObject().fluentPut("kf_account", account));
 		}
-		
+
 		return client.send(accessToken, jobj.toJSONString());
 	}
 
@@ -201,7 +201,7 @@ public class AposoftCsaMessageService implements CsaMessageService {
 	}
 
 	@Override
-	public WechatResp sendVedio(String accessToken, String openId, Vedio vedio) throws RemoteException {
+	public WechatResp sendVedio(String accessToken, String openId, Video vedio) throws RemoteException {
 		return sendVedio(accessToken, openId, vedio, null);
 	}
 

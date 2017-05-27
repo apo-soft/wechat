@@ -46,5 +46,9 @@ public enum MsgType {
 	/**
 	 * 微信卡券
 	 */
-	wxcard;
+	wxcard,
+	/**
+	 * 文件
+	 */
+	file;
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.message.template.reply;
+package cn.aposoft.wechat.mp.message.template;
 
 /**
  * 视频应答消息
@@ -9,7 +9,7 @@ package cn.aposoft.wechat.mp.message.template.reply;
  * @author Jann Liu
  *
  */
-public class Vedio {
+public class Video {
 
 	// "media_id":"MEDIA_ID",
 	private String media_id;

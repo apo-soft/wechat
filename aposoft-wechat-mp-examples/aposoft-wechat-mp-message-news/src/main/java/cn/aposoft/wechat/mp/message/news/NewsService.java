@@ -12,10 +12,10 @@ import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.message.MessageService;
 import cn.aposoft.wechat.mp.message.MsgType;
 import cn.aposoft.wechat.mp.message.impl.AposoftMessage;
+import cn.aposoft.wechat.mp.message.template.Article;
 import cn.aposoft.wechat.mp.message.template.Message;
+import cn.aposoft.wechat.mp.message.template.News;
 import cn.aposoft.wechat.mp.message.template.Success;
-import cn.aposoft.wechat.mp.message.template.reply.Article;
-import cn.aposoft.wechat.mp.message.template.reply.News;
 
 /**
  * NewsService 返回一个固定的消息返回值样例
