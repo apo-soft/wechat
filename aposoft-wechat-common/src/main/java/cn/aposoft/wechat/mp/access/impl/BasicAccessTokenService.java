@@ -106,6 +106,9 @@ public class BasicAccessTokenService implements AccessTokenService {
 
 	// 判定 access token 是否接近过期
 	protected boolean isNearlyExpired(AccessToken accessToken) {
+		if (accessToken.getRefreshTime() == null) {
+			return true;
+		}
 		long curr = System.currentTimeMillis();
 		long refreshTime = accessToken.getRefreshTime().getTime();
 		if (accessToken.getExpires_in() - (curr - refreshTime) / 1000 < accessConfig.getExpiredThreshold()) {

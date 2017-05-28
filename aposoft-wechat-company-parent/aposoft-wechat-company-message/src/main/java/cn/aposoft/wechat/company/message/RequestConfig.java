@@ -22,7 +22,7 @@ public class RequestConfig implements Serializable {
 	// "msgtype": "text", 使用外部msgType，避免出错
 	// private MsgType msgtype;
 	// "agentid": 1,
-	private Integer agentid;
+	private int agentid;
 	// "text": {
 	// "content": "Holiday Request For Pony(http://xxxxx)"
 	// },
@@ -77,7 +77,7 @@ public class RequestConfig implements Serializable {
 	/**
 	 * @return the agentid
 	 */
-	public Integer getAgentid() {
+	public int getAgentid() {
 		return agentid;
 	}
 
@@ -85,7 +85,7 @@ public class RequestConfig implements Serializable {
 	 * @param agentid
 	 *            the agentid to set
 	 */
-	public void setAgentid(Integer agentid) {
+	public void setAgentid(int agentid) {
 		this.agentid = agentid;
 	}
 

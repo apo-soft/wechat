@@ -48,21 +48,25 @@ public class FilePathAccessTokenService extends BasicAccessTokenService {
 	}
 
 	protected void readAccessToken() throws FileNotFoundException, IOException {
-		String accessTokenString = IOUtils.toString(new FileReader(file));
-		if (!StringUtils.isBlank(accessTokenString)) {
-			accessToken = JSON.parseObject(accessTokenString, BasicAccessToken.class);
+		try (FileReader reader = new FileReader(file)) {
+			String accessTokenString = IOUtils.toString(reader);
+			if (!StringUtils.isBlank(accessTokenString)) {
+				accessToken = JSON.parseObject(accessTokenString, BasicAccessToken.class);
+				System.out.println(accessToken);
+			}
 		}
 	}
 
 	@Override
 	public AccessToken getAccessToken() {
+		System.out.println(accessToken == null);
 		if (accessToken == null || isNearlyExpired(accessToken)) {
 			try {
 				readAccessToken();
 			} catch (IOException e1) {
 				// ignore
 			}
-			if (isNearlyExpired(accessToken)) {
+			if (accessToken == null || isNearlyExpired(accessToken)) {
 				accessToken = super.getAccessToken();
 				try {
 					IOUtils.write(JSON.toJSONString(accessToken), new FileOutputStream(file));

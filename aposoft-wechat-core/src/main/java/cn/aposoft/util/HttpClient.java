@@ -164,7 +164,8 @@ public class HttpClient {
 	}
 
 	public static HttpPost jsonPost(final String requestUrl, final Object entity) {
-		String jsonStr = JSON.toJSONString(entity);
+		String jsonStr = entity instanceof String ? (String) entity : JSON.toJSONString(entity);
+
 		if (logEnabled && logger.isDebugEnabled()) {
 			logger.debug("POST JSON:" + jsonStr);
 		}

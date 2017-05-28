@@ -56,6 +56,7 @@ public class AposoftCompanyMessageService implements CompanyMessageService {
 	@Override
 	public MessageResp sendText(String accessToken, RequestConfig config, String content) throws RemoteException {
 		String requestText = createJsonText(MsgType.text, config, new JSONObject().fluentPut("content", content));
+		System.out.println(requestText);
 		return client.send(accessToken, requestText);
 	}
 
