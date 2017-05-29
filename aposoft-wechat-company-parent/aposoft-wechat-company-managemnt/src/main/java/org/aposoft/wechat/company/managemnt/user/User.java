@@ -45,6 +45,11 @@ public class User implements Serializable {
 	private String weixinid;
 	// "avatar_mediaid": "2-G6nrLmr5EC3MNb_-zL1dDdzkd0p7cNliYu9V5w7o8K0",
 	private String avatar_mediaid;
+	// "avatar":
+	// "http://wx.qlogo.cn/mmopen/ajNVdqHZLLA3WJ6DSZUfiakYe37PKnQhBIeOQBO4czqrnZDS79FH5Wm5m4X69TBicnHFlhiafvDwklOpZeXYQQ2icg/0",
+	// 小图 需要把尾数0 替换为 64 
+	// 头像url。注：如果要获取小图将url最后的"/0"改成"/64"即可
+	private String avatar;
 	// "extattr":
 	// {"attrs":[{"name":"爱好","value":"旅游"},{"name":"卡号","value":"1234567234"}]}
 	private Map<String, Attribute[]> extattr;
@@ -197,6 +202,21 @@ public class User implements Serializable {
 	 */
 	public void setExtattr(Map<String, Attribute[]> extattr) {
 		this.extattr = extattr;
+	}
+
+	/**
+	 * @return the avatar
+	 */
+	public String getAvatar() {
+		return avatar;
+	}
+
+	/**
+	 * @param avatar
+	 *            the avatar to set
+	 */
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 
 	public static class Attribute implements Serializable {

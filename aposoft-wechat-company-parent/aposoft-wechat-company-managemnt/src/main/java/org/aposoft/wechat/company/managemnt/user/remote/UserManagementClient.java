@@ -1,12 +1,15 @@
 package org.aposoft.wechat.company.managemnt.user.remote;
 
 import java.io.Closeable;
+import java.util.List;
 
 import org.apache.http.client.utils.HttpClientUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.aposoft.wechat.company.managemnt.user.User;
 import org.aposoft.wechat.company.managemnt.user.UserListResp;
 import org.aposoft.wechat.company.managemnt.user.UserResp;
+
+import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
@@ -23,6 +26,8 @@ public class UserManagementClient implements Closeable {
 	static final String COMPANY_USER_DELETE_URL = "https://qyapi.weixin.qq.com/cgi-bin/user/delete?access_token=";
 	static final String COMPANY_USER_GET_URL = "https://qyapi.weixin.qq.com/cgi-bin/user/get?access_token=";
 	static final String COMPANY_USERID_PARAM_URL = "&userid=";
+
+	static final String COMPANY_USER_DELETE_BATCH_URL = "https://qyapi.weixin.qq.com/cgi-bin/user/batchdelete?access_token=";
 
 	//
 	static final String COMPANY_GET_DEPARTMENT_USER_URL = "https://qyapi.weixin.qq.com/cgi-bin/user/simplelist?access_token=";
@@ -42,8 +47,8 @@ public class UserManagementClient implements Closeable {
 	 * 
 	 * @param accessToken
 	 *            访问授权码
-	 * @param agentid
-	 *            企业应用id
+	 * @param user
+	 *            创建用户信息
 	 * @return 转换结果
 	 * @throws RemoteException
 	 */
@@ -59,12 +64,12 @@ public class UserManagementClient implements Closeable {
 	}
 
 	/**
-	 * 创建用户
+	 * 更新用户
 	 * 
 	 * @param accessToken
 	 *            访问授权码
-	 * @param agentid
-	 *            企业应用id
+	 * @param user
+	 *            更新用户信息
 	 * @return 转换结果
 	 * @throws RemoteException
 	 */
@@ -80,12 +85,12 @@ public class UserManagementClient implements Closeable {
 	}
 
 	/**
-	 * 创建用户
+	 * 删除用户
 	 * 
 	 * @param accessToken
 	 *            访问授权码
-	 * @param agentid
-	 *            企业应用id
+	 * @param userid
+	 *            企业用户id
 	 * @return 转换结果
 	 * @throws RemoteException
 	 */
@@ -98,6 +103,29 @@ public class UserManagementClient implements Closeable {
 
 	private String getUserDeleteUrl(String accessToken, String userid) {
 		return COMPANY_USER_DELETE_URL + accessToken + COMPANY_USERID_PARAM_URL + userid;
+	}
+
+	/**
+	 * 删除用户
+	 * 
+	 * @param accessToken
+	 *            访问授权码
+	 * @param userid
+	 *            企业用户id
+	 * @return 转换结果
+	 * @throws RemoteException
+	 */
+	public WechatResp delete(final String accessToken, final List<String> userid) throws RemoteException {
+		if (StringUtil.isBlank(accessToken, userid)) {
+			throw new IllegalArgumentException("Some argument(s) is null or empty.");
+		}
+		return HttpClient.executeWechat(
+				HttpClient.jsonPost(getUserDeleteUrl(accessToken), new JSONObject().fluentPut("useridlist", userid)),
+				httpClient);
+	}
+
+	private String getUserDeleteUrl(String accessToken) {
+		return COMPANY_USER_DELETE_BATCH_URL + accessToken;
 	}
 
 	/**
@@ -121,6 +149,21 @@ public class UserManagementClient implements Closeable {
 		return COMPANY_USER_GET_URL + accessToken + COMPANY_USERID_PARAM_URL + userid;
 	}
 
+	/**
+	 * 批量读取部门成员简要信息列表
+	 * 
+	 * @param accessToken
+	 *            访问授权码
+	 * @param departmentId
+	 *            部门id
+	 * @param fetchChild
+	 *            是否读取子部门
+	 * @param status
+	 *            状态
+	 * @return 成员列表 [
+	 *         0获取全部成员，1获取已关注成员列表，2获取禁用成员列表，4获取未关注成员列表。status可叠加,未填写则默认为4]
+	 * @throws RemoteException
+	 */
 	public UserListResp get(String accessToken, int departmentId, int fetchChild, int status) throws RemoteException {
 		if (StringUtil.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
@@ -135,6 +178,21 @@ public class UserManagementClient implements Closeable {
 				+ COMPANY_GET_DEPARTMENT_USER_STATUS_PARAM_URL + status;
 	}
 
+	/**
+	 * 批量读取部门成员详细信息列表
+	 * 
+	 * @param accessToken
+	 *            访问授权码
+	 * @param departmentId
+	 *            部门id
+	 * @param fetchChild
+	 *            是否读取子部门
+	 * @param status
+	 *            状态
+	 * @return 成员列表 [
+	 *         0获取全部成员，1获取已关注成员列表，2获取禁用成员列表，4获取未关注成员列表。status可叠加,未填写则默认为4]
+	 * @throws RemoteException
+	 */
 	public UserListResp getDetail(String accessToken, int departmentId, int fetchChild, int status)
 			throws RemoteException {
 		if (StringUtil.isBlank(accessToken)) {

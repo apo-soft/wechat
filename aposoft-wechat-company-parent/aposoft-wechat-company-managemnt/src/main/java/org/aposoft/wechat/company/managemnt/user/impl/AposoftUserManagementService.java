@@ -3,6 +3,8 @@
  */
 package org.aposoft.wechat.company.managemnt.user.impl;
 
+import java.util.List;
+
 import org.aposoft.wechat.company.managemnt.user.User;
 import org.aposoft.wechat.company.managemnt.user.UserListResp;
 import org.aposoft.wechat.company.managemnt.user.UserManagementService;
@@ -11,6 +13,7 @@ import org.aposoft.wechat.company.managemnt.user.remote.UserManagementClient;
 
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.mp.remote.WechatResponse;
 
 /**
  * 用户管理服务
@@ -56,6 +59,11 @@ public class AposoftUserManagementService implements UserManagementService {
 	 */
 	@Override
 	public WechatResp delete(String accessToken, String userid) throws RemoteException {
+		return client.delete(accessToken, userid);
+	}
+
+	@Override
+	public WechatResponse delete(String accessToken, List<String> userid) throws RemoteException {
 		return client.delete(accessToken, userid);
 	}
 
