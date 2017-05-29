@@ -101,6 +101,7 @@ public class MassMaterialClientTest {
 	/**
 	 * 测试群发消息上传缩略图
 	 * {"type":"thumb","thumb_media_id":"UenwhUK8tgy27idDdJdQ5g5r6dLteXnq5kW1g4gly4O1ZDwHbPfK2J1R--u2rvQo","created_at":1495548765}
+	 * {"created_at":1496030621,"thumb_media_id":"ix85FlJSkZFfYbKljsNRSREkhcI3LyYjhH0cNxeKORWB2li_vup-9G9lTs2K4nPf","type":"thumb"}
 	 * 
 	 * @throws RemoteException
 	 * @throws IOException
@@ -133,7 +134,7 @@ public class MassMaterialClientTest {
 	public void testUploadNewsMedia() throws RemoteException, FileNotFoundException, IOException {
 		NewsItem news = new NewsItem();
 		news.setAuthor("Jann");
-		news.setDigest("测试新闻 摘要-2");
+		news.setDigest("今天就我要测试群发，这是重大新闻");
 		news.setContent("测试新闻内容,这是一件重大的测试新闻.2017-5-23 12:50");
 		news.setShow_cover_pic(1);
 		news.setTitle("重磅新闻-2");
@@ -147,28 +148,32 @@ public class MassMaterialClientTest {
 	 * 
 	 * 添加临时图文素材，用于群体回复
 	 * {"created_at":1495549016,"media_id":"iaffeMn3NedzpZXDOSyIdnNg7Vgrbe7vfItVnNRwsGa032HQ0Yg_2LMWFF5TU5G9","type":"news"}
+	 * <p>
+	 * 2017/5/29
+	 * {"created_at":1496030648,"media_id":"qN2VrGbthtk9pCbC5zu1gmVq85MCIDBqRUHxNk3S5FACOJTNzPvJZLUGKuUimxTT","type":"news"}
 	 * 
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
+	@Ignore
 	@Test
 	public void testUploadNewsMedia1() throws RemoteException, FileNotFoundException, IOException {
 		NewsItem news = new NewsItem();
 		news.setAuthor("Jann");
-		news.setDigest("测试美女缩略图，摘要");
+		news.setDigest("测试美女缩略图，摘要1");
 		news.setContent("测试美女缩略图,这是一件重大的测试新闻.2017-5-23 12:50");
 		news.setShow_cover_pic(1);
 		news.setTitle("重磅新闻-Night");
-		news.setThumb_media_id("iEhKvMtP5yXO8HVayUXqHr4wvGYWXKozjeyPKqV3Ar0kPxW-XUsj_7CP6cwtQ_s7");
+		news.setThumb_media_id("ix85FlJSkZFfYbKljsNRSREkhcI3LyYjhH0cNxeKORWB2li_vup-9G9lTs2K4nPf");
 		news.setContent_source_url("https://www.aposoft.cn");
 		NewsItem news2 = new NewsItem();
 		news2.setAuthor("Jann");
-		news2.setDigest("测试美女缩略图2，摘要");
+		news2.setDigest("测试美女缩略图2，摘要2");
 		news2.setContent("测试美女缩略图2,这是一件重大的测试新闻.2017-5-23 12:50");
 		news2.setShow_cover_pic(1);
 		news2.setTitle("重磅新闻-Day");
-		news2.setThumb_media_id("UenwhUK8tgy27idDdJdQ5g5r6dLteXnq5kW1g4gly4O1ZDwHbPfK2J1R--u2rvQo");
+		news2.setThumb_media_id("ix85FlJSkZFfYbKljsNRSREkhcI3LyYjhH0cNxeKORWB2li_vup-9G9lTs2K4nPf");
 		news2.setContent_source_url("https://www.aposoft.cn");
 		MediaResp resp = client.uploadNews(accessTokenService.getAccessToken().getAccess_token(), news, news2);
 		System.out.println(JSON.toJSONString(resp));

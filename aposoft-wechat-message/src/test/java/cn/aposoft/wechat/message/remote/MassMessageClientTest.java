@@ -68,7 +68,7 @@ public class MassMessageClientTest {
 		Filter filter = new Filter();
 		filter.setIs_to_all(false);
 		filter.setTag_id(100);
-		MediaIdHolder media = new MediaIdHolder("iaffeMn3NedzpZXDOSyIdnNg7Vgrbe7vfItVnNRwsGa032HQ0Yg_2LMWFF5TU5G9");
+		MediaIdHolder media = new MediaIdHolder("qN2VrGbthtk9pCbC5zu1gmVq85MCIDBqRUHxNk3S5FACOJTNzPvJZLUGKuUimxTT");
 		Map<String, Object> configs = new HashMap<>();
 		configs.put("send_ignore_reprint", 1);
 		System.out.println(JSON.toJSONString(
@@ -78,6 +78,9 @@ public class MassMessageClientTest {
 	/**
 	 * {"errcode":0,"errmsg":"send job submission
 	 * success","msg_data_id":2247483663,"msgid":3147483655}
+	 * <p>
+	 * {"errcode":0,"errmsg":"send job submission
+	 * success","msg_data_id":2247483671,"msgid":3147483656}
 	 * 
 	 * @throws RemoteException
 	 */
@@ -85,7 +88,7 @@ public class MassMessageClientTest {
 	@Test
 	public void testSendOpenIdMpews() throws RemoteException {
 
-		MediaIdHolder media = new MediaIdHolder("iaffeMn3NedzpZXDOSyIdnNg7Vgrbe7vfItVnNRwsGa032HQ0Yg_2LMWFF5TU5G9");
+		MediaIdHolder media = new MediaIdHolder("qN2VrGbthtk9pCbC5zu1gmVq85MCIDBqRUHxNk3S5FACOJTNzPvJZLUGKuUimxTT");
 		Map<String, Object> configs = new HashMap<>();
 		configs.put("send_ignore_reprint", 1);
 		configs.put("clientmsgid", "100001");
@@ -115,11 +118,13 @@ public class MassMessageClientTest {
 	// {"msg_id":"1000000003","msg_status":"SEND_SUCCESS"}
 	// {"msg_id":"3147483654","msg_status":"SEND_SUCCESS"}
 	// {"msg_id":"3147483655","msg_status":"SEND_SUCCESS"}
-	// @Ignore
+	// <p>
+	// {"msg_id":"3147483656","msg_status":"SEND_SUCCESS"}
+	@Ignore
 	@Test
 	public void testGetMessageStatus() throws RemoteException {
 		System.out.println(JSON.toJSONString(
-				client.getMessageStatus(accessTokenService.getAccessToken().getAccess_token(), "3147483655")));
+				client.getMessageStatus(accessTokenService.getAccessToken().getAccess_token(), "3147483656")));
 	}
 
 	@Ignore
@@ -178,7 +183,7 @@ public class MassMessageClientTest {
 	public void testPreviewText() throws RemoteException {
 
 		WechatResp resp = client.preview(accessTokenService.getAccessToken().getAccess_token(),
-				"ojqOLxLh0480oz5gqHqLgzRgCLHM", "浠婂ぉ鍙戝竷浜嗙編濂崇殑灞忎繚锛岃娆ｈ祻锛�");
+				"ojqOLxLh0480oz5gqHqLgzRgCLHM", "发送公众号测试服务文本");
 		System.out.println(JSON.toJSONString(resp));
 	}
 
@@ -188,7 +193,7 @@ public class MassMessageClientTest {
 
 		WechatResp resp = client.preview(accessTokenService.getAccessToken().getAccess_token(),
 				"ojqOLxLh0480oz5gqHqLgzRgCLHM", MsgType.mpnews,
-				new MediaIdHolder("iaffeMn3NedzpZXDOSyIdnNg7Vgrbe7vfItVnNRwsGa032HQ0Yg_2LMWFF5TU5G9"));
+				new MediaIdHolder("qN2VrGbthtk9pCbC5zu1gmVq85MCIDBqRUHxNk3S5FACOJTNzPvJZLUGKuUimxTT"));
 		System.out.println(JSON.toJSONString(resp));
 	}
 

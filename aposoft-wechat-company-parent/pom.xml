@@ -20,5 +20,6 @@
 	<modules>
 		<module>aposoft-wechat-company-access</module>
     <module>aposoft-wechat-company-message</module>
+    <module>aposoft-wechat-company-auth</module>
   </modules>
 </project>

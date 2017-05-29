@@ -4,10 +4,14 @@
 package cn.aposoft.wechat.mp.access.impl;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -48,18 +52,16 @@ public class FilePathAccessTokenService extends BasicAccessTokenService {
 	}
 
 	protected void readAccessToken() throws FileNotFoundException, IOException {
-		try (FileReader reader = new FileReader(file)) {
+		try (Reader reader = new InputStreamReader(new FileInputStream(file), StandardCharsets.US_ASCII)) {
 			String accessTokenString = IOUtils.toString(reader);
 			if (!StringUtils.isBlank(accessTokenString)) {
 				accessToken = JSON.parseObject(accessTokenString, BasicAccessToken.class);
-				System.out.println(accessToken);
 			}
 		}
 	}
 
 	@Override
 	public AccessToken getAccessToken() {
-		System.out.println(accessToken == null);
 		if (accessToken == null || isNearlyExpired(accessToken)) {
 			try {
 				readAccessToken();
@@ -68,8 +70,8 @@ public class FilePathAccessTokenService extends BasicAccessTokenService {
 			}
 			if (accessToken == null || isNearlyExpired(accessToken)) {
 				accessToken = super.getAccessToken();
-				try {
-					IOUtils.write(JSON.toJSONString(accessToken), new FileOutputStream(file));
+				try (OutputStream output = new FileOutputStream(file)) {
+					IOUtils.write(JSON.toJSONString(accessToken), output, StandardCharsets.US_ASCII);
 				} catch (IOException e) {
 					// ignore
 				}
