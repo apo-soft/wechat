@@ -2,4 +2,5 @@
 /.settings/
 .classpath
 .project
-/config/
+/config/gome-ops-key.txt
+/config/access_token.txt

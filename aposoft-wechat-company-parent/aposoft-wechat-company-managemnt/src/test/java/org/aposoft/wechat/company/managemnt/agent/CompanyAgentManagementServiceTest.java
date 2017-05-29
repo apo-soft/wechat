@@ -1,14 +1,17 @@
 /**
  * 
  */
-package org.aposoft.wechat.company.managemnt;
+package org.aposoft.wechat.company.managemnt.agent;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
-import org.aposoft.wechat.company.managemnt.impl.AposoftCompanyAgentManagementService;
+import org.aposoft.wechat.company.managemnt.agent.AgentListResp;
+import org.aposoft.wechat.company.managemnt.agent.AgentResp;
+import org.aposoft.wechat.company.managemnt.agent.CompanyAgentManagementService;
+import org.aposoft.wechat.company.managemnt.agent.impl.AposoftCompanyAgentManagementService;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -96,7 +99,7 @@ public class CompanyAgentManagementServiceTest {
 	 * 
 	 * @throws RemoteException
 	 */
-	// @Ignore
+	@Ignore
 	@Test
 	public void testGetAgentList() throws RemoteException {
 		AgentListResp resp = service.getAgentList(accessTokenService.getAccessToken().getAccess_token());

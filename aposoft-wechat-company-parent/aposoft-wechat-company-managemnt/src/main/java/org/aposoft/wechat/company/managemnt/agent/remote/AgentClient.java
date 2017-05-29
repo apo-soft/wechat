@@ -1,14 +1,14 @@
 /**
  * 
  */
-package org.aposoft.wechat.company.managemnt.remote;
+package org.aposoft.wechat.company.managemnt.agent.remote;
 
 import java.io.Closeable;
 
 import org.apache.http.client.utils.HttpClientUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.aposoft.wechat.company.managemnt.AgentListResp;
-import org.aposoft.wechat.company.managemnt.AgentResp;
+import org.aposoft.wechat.company.managemnt.agent.AgentListResp;
+import org.aposoft.wechat.company.managemnt.agent.AgentResp;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;

@@ -1,12 +1,12 @@
 /**
  * 
  */
-package org.aposoft.wechat.company.managemnt.impl;
+package org.aposoft.wechat.company.managemnt.agent.impl;
 
-import org.aposoft.wechat.company.managemnt.AgentListResp;
-import org.aposoft.wechat.company.managemnt.AgentResp;
-import org.aposoft.wechat.company.managemnt.CompanyAgentManagementService;
-import org.aposoft.wechat.company.managemnt.remote.AgentClient;
+import org.aposoft.wechat.company.managemnt.agent.AgentListResp;
+import org.aposoft.wechat.company.managemnt.agent.AgentResp;
+import org.aposoft.wechat.company.managemnt.agent.CompanyAgentManagementService;
+import org.aposoft.wechat.company.managemnt.agent.remote.AgentClient;
 
 import cn.aposoft.util.RemoteException;
 

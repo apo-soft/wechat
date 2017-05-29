@@ -1,19 +1,18 @@
 /**
- *   Copyright  :  www.aposoft.cn
+ * 
  */
-package cn.aposoft.wechat.mp.remote;
+package org.aposoft.wechat.company.managemnt.user;
 
-import java.io.Serializable;
+import cn.aposoft.wechat.mp.remote.WechatResponse;
 
 /**
- * 微信用户验证基础响应消息
+ * 用户响应
  * 
  * @author Jann Liu
- * @date 2016年10月14日
- * 
+ *
  */
-public class WechatResp implements WechatResponse, Serializable {
-	private static final long serialVersionUID = -5375917048488103386L;
+public class UserResp extends User implements WechatResponse {
+	private static final long serialVersionUID = -8083162090434469258L;
 	private Integer errcode;
 	private String errmsg;
 
@@ -25,10 +24,12 @@ public class WechatResp implements WechatResponse, Serializable {
 		this.errmsg = errmsg;
 	}
 
+	@Override
 	public Integer getErrcode() {
 		return errcode;
 	}
 
+	@Override
 	public String getErrmsg() {
 		return errmsg;
 	}

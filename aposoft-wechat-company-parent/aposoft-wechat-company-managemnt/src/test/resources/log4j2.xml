@@ -16,7 +16,8 @@
 			| %m(日志信息)%n(换行) -->
 		<!-- <property name="PATTERN">%-5p | %d | om-v1.0 | [%t-%T] (%c{1.}:%L) 
 			| %m%n</property> -->
-		<property name="PATTERN">%-5p | %d | as-v1.0 | [%t-%T] (%c{1.}:%L) | %m%n
+		<property name="PATTERN">%-5p | %d | as-v1.0 | [%t-%T] (%c{1.}:%L) |
+			%m%n
 		</property>
 
 		<property name="PATTERN_ALARM">%m%n</property>
@@ -52,10 +53,13 @@
 		<logger name="alarm" additivity="false" level="INFO">
 			<appender-ref ref="AlarmMessage" />
 		</logger>
+		<logger name="org.apache" additivity="false" level="INFO">
+			<appender-ref ref="Console" />
+		</logger>
 
 		<!--com.gomefinance包下的日志异步输出 includeLocation:包含本地信息；additivity：不继承父类的日志输出 -->
 		<!--建立一个默认的root的logger -->
-		<root level="INFO">
+		<root level="DEBUG">
 			<appender-ref ref="Console" />
 		</root>
 	</Loggers>

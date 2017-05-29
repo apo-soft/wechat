@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.aposoft.wechat.company.managemnt;
+package org.aposoft.wechat.company.managemnt.agent;
 
 import cn.aposoft.wechat.mp.remote.WechatResp;
 

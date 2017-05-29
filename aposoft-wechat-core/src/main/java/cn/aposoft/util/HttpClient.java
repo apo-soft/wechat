@@ -163,6 +163,10 @@ public class HttpClient {
 		return new HttpGet(listUrl);
 	}
 
+	public static HttpPost post(final String listUrl) {
+		return new HttpPost(listUrl);
+	}
+
 	public static HttpPost jsonPost(final String requestUrl, final Object entity) {
 		String jsonStr = entity instanceof String ? (String) entity : JSON.toJSONString(entity);
 
