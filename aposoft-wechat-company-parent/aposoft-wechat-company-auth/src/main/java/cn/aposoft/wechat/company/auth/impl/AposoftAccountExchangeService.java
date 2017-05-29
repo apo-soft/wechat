@@ -39,4 +39,9 @@ public class AposoftAccountExchangeService implements AccountExchangeService {
 		client.close();
 	}
 
+	@Override
+	public AccountExchangeResp convertToUserId(String accessToken, String openid) throws RemoteException {
+		return client.sendOpenid(accessToken, openid);
+	}
+
 }

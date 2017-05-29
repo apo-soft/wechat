@@ -8,6 +8,23 @@ import cn.aposoft.wechat.mp.remote.WechatResp;
 /**
  * 账号转换相应
  * 
+ * <pre>
+ * {
+   "errcode": 0,
+   "errmsg": "ok",
+   "openid": "oDOGms-6yCnGrRovBj2yHij5JL6E",
+   "appid":"wxf874e15f78cc84a7"
+}
+ * </pre>
+ * 
+ * <pre>
+ * {
+   "errcode": 0,
+   "errmsg": "ok",
+   "userid": "zhangsan"
+}
+ * </pre>
+ * 
  * @author Jann Liu
  *
  */
@@ -22,6 +39,7 @@ public class AccountExchangeResp extends WechatResp {
 	// }
 	private String openid;
 	private String appid;
+	private String userid;
 
 	/**
 	 * @return the openid
@@ -51,6 +69,21 @@ public class AccountExchangeResp extends WechatResp {
 	 */
 	public void setAppid(String appid) {
 		this.appid = appid;
+	}
+
+	/**
+	 * @return the userid
+	 */
+	public String getUserid() {
+		return userid;
+	}
+
+	/**
+	 * @param userid
+	 *            the userid to set
+	 */
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 
 }

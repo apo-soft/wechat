@@ -38,6 +38,17 @@ public interface AccountExchangeService extends Closeable {
 	 */
 	AccountExchangeResp convertToOpenId(String accessToken, String userId) throws RemoteException;
 
+	/**
+	 * 
+	 * @param accessToken
+	 *            授权访问码
+	 * @param openid
+	 *            应用ID
+	 * @return 对应的userId
+	 * @throws RemoteException
+	 */
+	AccountExchangeResp convertToUserId(String accessToken, String openid) throws RemoteException;
+
 	@Override
 	public void close();
 }

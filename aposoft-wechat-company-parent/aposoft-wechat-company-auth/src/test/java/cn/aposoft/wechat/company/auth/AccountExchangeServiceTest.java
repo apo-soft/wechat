@@ -73,4 +73,18 @@ public class AccountExchangeServiceTest {
 				"liujian");
 		System.out.println(JSON.toJSONString(resp));
 	}
+
+	/**
+	 * "oCz0RxFBSvXq0-D5_eLRJ7pBLt8c"
+	 * {"errcode":0,"errmsg":"ok","userid":"liujian"}
+	 * 
+	 * @throws RemoteException
+	 */
+	@Ignore
+	@Test
+	public void testExchangeAccountUserId() throws RemoteException {
+		AccountExchangeResp resp = service.convertToUserId(accessTokenService.getAccessToken().getAccess_token(),
+				"oCz0RxFBSvXq0-D5_eLRJ7pBLt8c");
+		System.out.println(JSON.toJSONString(resp));
+	}
 }
