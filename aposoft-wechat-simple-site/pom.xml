@@ -38,7 +38,7 @@
 		</dependency>
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-common</artifactId>
+			<artifactId>aposoft-wechat-access</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
