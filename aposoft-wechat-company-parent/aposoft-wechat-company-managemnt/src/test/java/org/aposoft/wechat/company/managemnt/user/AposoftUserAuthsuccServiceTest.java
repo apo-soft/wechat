@@ -18,7 +18,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
-import cn.aposoft.wechat.company.common.WechatCompanyAccessConfig;
+import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
 import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.remote.WechatResp;
@@ -34,9 +34,9 @@ public class AposoftUserAuthsuccServiceTest {
 
 	@BeforeClass
 	public static void init() throws IOException {
-		WechatCompanyAccessConfig config = JSON.parseObject(
+		WechatCompanyAccountConfig config = JSON.parseObject(
 				IOUtils.toString(new FileInputStream("../config/gome-ops-key.txt"), StandardCharsets.UTF_8),
-				WechatCompanyAccessConfig.class);
+				WechatCompanyAccountConfig.class);
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient, config);
 	}

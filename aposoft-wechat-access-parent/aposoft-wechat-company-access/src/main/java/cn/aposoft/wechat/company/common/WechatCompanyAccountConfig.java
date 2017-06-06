@@ -12,7 +12,7 @@ import cn.aposoft.wechat.mp.access.CompanyAccountConfig;
  * @author Jann Liu
  *
  */
-public class WechatCompanyAccessConfig extends WechatCompanyConfig implements CompanyAccountConfig {
+public class WechatCompanyAccountConfig extends WechatCompanyConfig implements CompanyAccountConfig {
 
 	private static final long serialVersionUID = -5745480805157943359L;
 

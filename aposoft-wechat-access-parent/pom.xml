@@ -8,7 +8,7 @@
 		<artifactId>aposoft-wechat-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>aposoft-wechat-access-token-parent</artifactId>
+	<artifactId>aposoft-wechat-access-parent</artifactId>
 	<packaging>pom</packaging>
 	<distributionManagement>
 		<site>
