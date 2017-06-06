@@ -1,5 +1,6 @@
 package cn.aposoft.wechat.mp.config.testaccount;
 
+import cn.aposoft.wechat.mp.access.AccountType;
 import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 public class BasicWechatMpConfig implements WechatMpConfig {
@@ -44,6 +45,16 @@ public class BasicWechatMpConfig implements WechatMpConfig {
 	@Override
 	public String getSecret() {
 		return getAppSecret();
+	}
+
+	@Override
+	public AccountType getAccountType() {
+		return AccountType.MP;
+	}
+
+	@Override
+	public int getHoldonThreshold() {
+		return 10;
 	}
 
 }

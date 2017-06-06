@@ -22,6 +22,7 @@ import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccessConfig;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.remote.WechatResponse;
 
@@ -54,10 +55,11 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"created","tagid":100}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testCreateTag() throws RemoteException {
+	public void testCreateTag() throws RemoteException, AccessTokenException {
 		BasicTag tag = new BasicTag();
 		tag.setTagid(100);
 		tag.setTagname("simple-test tag");
@@ -72,7 +74,7 @@ public class TagManagementTest {
 	 */
 	@Ignore
 	@Test
-	public void testCreateTag1() throws RemoteException {
+	public void testCreateTag1() throws RemoteException, AccessTokenException {
 		BasicTag tag = new BasicTag();
 		tag.setTagid(1);
 		tag.setTagname("报警平台组");
@@ -85,10 +87,11 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"updated"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testUpdateTag() throws RemoteException {
+	public void testUpdateTag() throws RemoteException, AccessTokenException {
 		BasicTag tag = new BasicTag();
 		tag.setTagid(100);
 		tag.setTagname("美借监控组");
@@ -101,10 +104,11 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"deleted"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testDeleteTag() throws RemoteException {
+	public void testDeleteTag() throws RemoteException, AccessTokenException {
 		WechatResponse resp = service.delete(accessTokenService.getAccessToken().getAccess_token(), "100");
 		System.out.println(JSON.toJSONString(resp));
 	}
@@ -118,10 +122,11 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"ok","taglist":[{"tagid":1,"tagname":"报警平台组"},{"tagid":100,"tagname":"美借监控组"}]}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testListTags() throws RemoteException {
+	public void testListTags() throws RemoteException, AccessTokenException {
 		TagListResp resp = service.list(accessTokenService.getAccessToken().getAccess_token());
 		System.out.println(JSON.toJSONString(resp));
 	}
@@ -130,10 +135,11 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"ok"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testAddTagUser() throws RemoteException {
+	public void testAddTagUser() throws RemoteException, AccessTokenException {
 		WechatResponse resp = service.addTagUser(accessTokenService.getAccessToken().getAccess_token(), 1,
 				Arrays.asList("liujian"), null);
 		System.out.println(JSON.toJSONString(resp));
@@ -143,10 +149,11 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"ok"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testDeleteTagUser() throws RemoteException {
+	public void testDeleteTagUser() throws RemoteException, AccessTokenException {
 		WechatResponse resp = service.deleteTagUser(accessTokenService.getAccessToken().getAccess_token(), 1,
 				Arrays.asList("liujian"), null);
 		System.out.println(JSON.toJSONString(resp));
@@ -158,10 +165,11 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"ok","partylist":[],"userlist":[{"department":[],"name":"刘健","userid":"liujian"}]}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testGetTagUser() throws RemoteException {
+	public void testGetTagUser() throws RemoteException, AccessTokenException {
 		TagUserResp resp = service.getTagUser(accessTokenService.getAccessToken().getAccess_token(), "1");
 		System.out.println(JSON.toJSONString(resp));
 	}

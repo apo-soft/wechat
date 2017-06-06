@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.mp.access.AccessToken;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
@@ -33,7 +34,7 @@ public class AposoftCsaMessageServiceTest {
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
-	public static void init() throws IOException {
+	public static void init() throws IOException, AccessTokenException {
 		messageService = new AposoftCsaMessageService();
 		accessTokenClient = new AposoftMpAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
@@ -50,7 +51,7 @@ public class AposoftCsaMessageServiceTest {
 	}
 
 	@Test
-	public void sendTextMessage() throws RemoteException {
+	public void sendTextMessage() throws RemoteException, AccessTokenException {
 		WechatResp resp = messageService.sendText(accessTokenService.getAccessToken().getAccess_token(),
 				"ojqOLxLh0480oz5gqHqLgzRgCLHM", "测试客服消息.");
 		System.out.println(JSON.toJSONString(resp));

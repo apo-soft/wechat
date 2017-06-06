@@ -3,7 +3,10 @@
  */
 package cn.aposoft.wechat.company.common;
 
+import java.io.Serializable;
+
 import cn.aposoft.wechat.mp.access.AccessTokenConfig;
+import cn.aposoft.wechat.mp.access.AccountType;
 
 /**
  * 企业号配置信息
@@ -11,9 +14,11 @@ import cn.aposoft.wechat.mp.access.AccessTokenConfig;
  * @author Jann Liu
  * @version 1.0
  */
-public class WechatCompanyConfig {
+public class WechatCompanyConfig implements Serializable {
+	private static final long serialVersionUID = 6960974749855213481L;
 	private String corpId;
 	private String corpSecret;
+	private Integer agentId;
 
 	/**
 	 * @return the corpId
@@ -58,6 +63,26 @@ public class WechatCompanyConfig {
 				return corpSecret;
 			}
 
+			@Override
+			public AccountType getAccountType() {
+				return AccountType.CORP;
+			}
+
 		};
+	}
+
+	/**
+	 * @return the agentId
+	 */
+	public Integer getAgentId() {
+		return agentId;
+	}
+
+	/**
+	 * @param agentId
+	 *            the agentId to set
+	 */
+	public void setAgentId(Integer agentId) {
+		this.agentId = agentId;
 	}
 }

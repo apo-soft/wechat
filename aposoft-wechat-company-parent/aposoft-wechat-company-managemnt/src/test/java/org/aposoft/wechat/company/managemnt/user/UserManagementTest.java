@@ -21,6 +21,7 @@ import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccessConfig;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.remote.WechatResponse;
 
@@ -55,10 +56,11 @@ public class UserManagementTest {
 	 * {"errcode":0,"errmsg":"created"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testCreateUser() throws RemoteException {
+	public void testCreateUser() throws RemoteException, AccessTokenException {
 		User user = new User();
 		user.setUserid("liujian_test_2");
 		user.setName("刘健-测试");
@@ -73,10 +75,11 @@ public class UserManagementTest {
 	 * {"errcode":0,"errmsg":"updated"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testUpdateUser() throws RemoteException {
+	public void testUpdateUser() throws RemoteException, AccessTokenException {
 		User user = new User();
 		user.setUserid("liujian_test");
 		user.setName("刘健-测试");
@@ -94,10 +97,11 @@ public class UserManagementTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testGetUserLiuJianTest2() throws RemoteException {
+	public void testGetUserLiuJianTest2() throws RemoteException, AccessTokenException {
 
 		UserResp resp = service.get(accessTokenService.getAccessToken().getAccess_token(), "liujian_test_2");
 		System.out.println(JSON.toJSONString(resp));
@@ -127,10 +131,11 @@ public class UserManagementTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testGetUserLiuJianTest() throws RemoteException {
+	public void testGetUserLiuJianTest() throws RemoteException, AccessTokenException {
 		User user = new User();
 		user.setUserid("liujian_test");
 		user.setName("刘健-测试");
@@ -148,10 +153,11 @@ public class UserManagementTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testDeleteUserLiuJianTest2Batch() throws RemoteException {
+	public void testDeleteUserLiuJianTest2Batch() throws RemoteException, AccessTokenException {
 		WechatResponse resp = service.delete(accessTokenService.getAccessToken().getAccess_token(), "liujian_test");
 		System.out.println(JSON.toJSONString(resp));
 	}
@@ -162,10 +168,11 @@ public class UserManagementTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testDeleteUserLiuJianTest() throws RemoteException {
+	public void testDeleteUserLiuJianTest() throws RemoteException, AccessTokenException {
 
 		WechatResponse resp = service.delete(accessTokenService.getAccessToken().getAccess_token(), "liujian_test");
 		System.out.println(JSON.toJSONString(resp));
@@ -175,10 +182,11 @@ public class UserManagementTest {
 	 * {"errcode":0,"errmsg":"deleted"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testDeleteUserBatchTest() throws RemoteException {
+	public void testDeleteUserBatchTest() throws RemoteException, AccessTokenException {
 
 		WechatResponse resp = service.delete(accessTokenService.getAccessToken().getAccess_token(),
 				Arrays.asList("liujian_test", "liujian_test_2"));
@@ -205,10 +213,11 @@ public class UserManagementTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testGetUser() throws RemoteException {
+	public void testGetUser() throws RemoteException, AccessTokenException {
 		UserResp resp = service.get(accessTokenService.getAccessToken().getAccess_token(), "liujian");
 		System.out.println(JSON.toJSONString(resp));
 	}
@@ -217,10 +226,11 @@ public class UserManagementTest {
 	 * 
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testGetUserInDepartment() throws RemoteException {
+	public void testGetUserInDepartment() throws RemoteException, AccessTokenException {
 		UserListResp resp = service.get(accessTokenService.getAccessToken().getAccess_token(), 2, 1, 0);
 		System.out.println(JSON.toJSONString(resp));
 	}
@@ -233,10 +243,11 @@ public class UserManagementTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testGetUserDetailInDepartment() throws RemoteException {
+	public void testGetUserDetailInDepartment() throws RemoteException, AccessTokenException {
 		UserListResp resp = service.getDetail(accessTokenService.getAccessToken().getAccess_token(), 2, 1, 0);
 		System.out.println(JSON.toJSONString(resp));
 	}

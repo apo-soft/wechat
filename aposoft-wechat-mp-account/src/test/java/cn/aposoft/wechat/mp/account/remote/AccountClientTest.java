@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
@@ -31,7 +32,7 @@ public class AccountClientTest {
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
-	public static void init() throws IOException {
+	public static void init() throws IOException, AccessTokenException {
 		if (!HttpClient.isLogEnabled()) {
 			HttpClient.setLogEnabled(true);
 		}
@@ -53,9 +54,10 @@ public class AccountClientTest {
 	 * 
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Test
-	public void testGetSceneAccountQrcode() throws RemoteException {
+	public void testGetSceneAccountQrcode() throws RemoteException, AccessTokenException {
 		System.out.println(JSON.toJSONString(
 				client.getSceneAccountQrcode(accessTokenService.getAccessToken().getAccess_token(), 2, 300)));
 	}
@@ -64,9 +66,10 @@ public class AccountClientTest {
 	 * {"ticket":"gQFC8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyc2d0cEZsZXplYjQxMDAwMHcwM18AAgTGLyVZAwQAAAAA","url":"http://weixin.qq.com/q/02sgtpFlezeb410000w03_"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Test
-	public void testGetAccountQrcode() throws RemoteException {
+	public void testGetAccountQrcode() throws RemoteException, AccessTokenException {
 		System.out.println(
 				JSON.toJSONString(client.getAccountQrcode(accessTokenService.getAccessToken().getAccess_token(), 3)));
 	}
@@ -76,9 +79,10 @@ public class AccountClientTest {
 	 * "url":"http://weixin.qq.com/q/02v_8sFmezeb410000w07i"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Test
-	public void testGetAccountQrcodeStr() throws RemoteException {
+	public void testGetAccountQrcodeStr() throws RemoteException, AccessTokenException {
 		System.out.println(JSON.toJSONString(
 				client.getAccountQrcodeStr(accessTokenService.getAccessToken().getAccess_token(), "test-003")));
 	}

@@ -20,6 +20,7 @@ import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccessConfig;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.remote.WechatResponse;
 
@@ -56,10 +57,11 @@ public class DepartmentManagementClientTest {
 	 * {"department":[{"id":2,"name":"金控运维","order":200,"parentid":1}],"errcode":0,"errmsg":"ok"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testListDepartment() throws RemoteException {
+	public void testListDepartment() throws RemoteException, AccessTokenException {
 		DepartmentListResp resp = service.list(accessTokenService.getAccessToken().getAccess_token(), 2);
 		System.out.println(JSON.toJSONString(resp));
 	}
@@ -68,10 +70,11 @@ public class DepartmentManagementClientTest {
 	 * {"errcode":0,"errmsg":"created","id":10}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testCreateDepartment() throws RemoteException {
+	public void testCreateDepartment() throws RemoteException, AccessTokenException {
 		Department department = new Department();
 		department.setId(10);
 		department.setParentid(2);
@@ -85,10 +88,11 @@ public class DepartmentManagementClientTest {
 	 * {"errcode":0,"errmsg":"updated"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testUpdateDepartment() throws RemoteException {
+	public void testUpdateDepartment() throws RemoteException, AccessTokenException {
 		Department department = new Department();
 		department.setId(10);
 		department.setParentid(2);
@@ -102,10 +106,11 @@ public class DepartmentManagementClientTest {
 	 * {"errcode":0,"errmsg":"deleted"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
-	public void testdeleteDepartment() throws RemoteException {
+	public void testdeleteDepartment() throws RemoteException, AccessTokenException {
 
 		WechatResponse resp = service.delete(accessTokenService.getAccessToken().getAccess_token(), "10");
 		System.out.println(JSON.toJSONString(resp));

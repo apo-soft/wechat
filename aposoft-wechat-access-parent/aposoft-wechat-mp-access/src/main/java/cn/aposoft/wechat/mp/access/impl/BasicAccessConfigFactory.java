@@ -3,9 +3,10 @@
  */
 package cn.aposoft.wechat.mp.access.impl;
 
-import cn.aposoft.wechat.mp.access.AccessConfig;
+import cn.aposoft.wechat.mp.access.AccountConfig;
 import cn.aposoft.wechat.mp.access.AccessConfigFactory;
 import cn.aposoft.wechat.mp.access.AccessTokenConfig;
+import cn.aposoft.wechat.mp.access.AccountType;
 import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 /**
@@ -21,7 +22,8 @@ public class BasicAccessConfigFactory implements AccessConfigFactory {
 
 	public static AccessConfigFactory getInstance(final WechatMpConfig config) {
 		BasicAccessConfigFactory factory = new BasicAccessConfigFactory();
-		factory.config = new AccessConfig() {
+		factory.config = new AccountConfig() {
+			private static final long serialVersionUID = 2455287796630853368L;
 			private final String id = config.getAppId();
 			private final String secret = config.getAppSecret();
 			private final int expire = config.getExpiredThreshold();
@@ -40,11 +42,22 @@ public class BasicAccessConfigFactory implements AccessConfigFactory {
 			public int getExpiredThreshold() {
 				return expire;
 			}
+
+			@Override
+			public AccountType getAccountType() {
+				return AccountType.MP;
+			}
+
+			@Override
+			public int getHoldonThreshold() {
+				// TODO Auto-generated method stub
+				return 0;
+			}
 		};
 		return factory;
 	}
 
-	private volatile AccessConfig config;
+	private volatile AccountConfig config;
 
 	/**
 	 * 读取AccessTokenConfig
@@ -55,7 +68,7 @@ public class BasicAccessConfigFactory implements AccessConfigFactory {
 	}
 
 	@Override
-	public AccessConfig getAccessConfig() {
+	public AccountConfig getAccessConfig() {
 		return config;
 	}
 

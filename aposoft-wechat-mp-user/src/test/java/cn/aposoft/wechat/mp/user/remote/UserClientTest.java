@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.mp.access.AccessToken;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
@@ -35,7 +36,7 @@ public class UserClientTest {
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
-	public static void init() throws IOException {
+	public static void init() throws IOException, AccessTokenException {
 		userClient = new UserClient();
 		accessTokenClient = new AposoftMpAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
@@ -52,34 +53,34 @@ public class UserClientTest {
 	}
 
 	@Test
-	public void testListUser() throws RemoteException {
+	public void testListUser() throws RemoteException, AccessTokenException {
 		UserResp resp = userClient.getUser(accessTokenService.getAccessToken().getAccess_token());
 		System.out.println(JSON.toJSONString(resp));
 	}
 
 	@Test
-	public void testListUserFromNextOpenId() throws RemoteException {
+	public void testListUserFromNextOpenId() throws RemoteException, AccessTokenException {
 		UserResp resp = userClient.getUser(accessTokenService.getAccessToken().getAccess_token(),
 				"ojqOLxEdSITLJbC1kdDbVpKj5UEw");
 		System.out.println(JSON.toJSONString(resp));
 	}
 
 	@Test
-	public void testListUserFromLastNextOpenId() throws RemoteException {
+	public void testListUserFromLastNextOpenId() throws RemoteException, AccessTokenException {
 		UserResp resp = userClient.getUser(accessTokenService.getAccessToken().getAccess_token(),
 				"ojqOLxHt-0dhb5oAOLMK-zhY9uwQ");
 		System.out.println(JSON.toJSONString(resp));
 	}
 
 	@Test
-	public void testGetUserInfo() throws RemoteException {
+	public void testGetUserInfo() throws RemoteException, AccessTokenException {
 		UserInfoResp resp = userClient.getUserInfo(accessTokenService.getAccessToken().getAccess_token(),
 				"ojqOLxLh0480oz5gqHqLgzRgCLHM");
 		System.out.println(JSON.toJSONString(resp));
 	}
 
 	@Test
-	public void testGetUserInfoList() throws RemoteException {
+	public void testGetUserInfoList() throws RemoteException, AccessTokenException {
 		List<UserInfoReq> userInfoList = new ArrayList<>();
 		userInfoList.add(new UserInfoReq("ojqOLxEdSITLJbC1kdDbVpKj5UEw"));
 		userInfoList.add(new UserInfoReq("ojqOLxHt-0dhb5oAOLMK-zhY9uwQ"));
@@ -91,7 +92,7 @@ public class UserClientTest {
 
 	@Ignore
 	@Test
-	public void testSetUserRemark() throws RemoteException {
+	public void testSetUserRemark() throws RemoteException, AccessTokenException {
 
 		UserInfoListResp resp = userClient.setUserRemark(accessTokenService.getAccessToken().getAccess_token(),
 				new UserRemarkReq("ojqOLxHt-0dhb5oAOLMK-zhY9uwQ", "pangzi"));
@@ -99,20 +100,20 @@ public class UserClientTest {
 	}
 
 	@Test
-	public void testGetUserInfoForRemark() throws RemoteException {
+	public void testGetUserInfoForRemark() throws RemoteException, AccessTokenException {
 		UserInfoResp resp = userClient.getUserInfo(accessTokenService.getAccessToken().getAccess_token(),
 				"ojqOLxHt-0dhb5oAOLMK-zhY9uwQ");
 		System.out.println(JSON.toJSONString(resp));
 	}
 
 	@Test
-	public void testGetUserBlackList() throws RemoteException {
+	public void testGetUserBlackList() throws RemoteException, AccessTokenException {
 		BlackListResp resp = userClient.getUserBlackList(accessTokenService.getAccessToken().getAccess_token(), "");
 		System.out.println(JSON.toJSONString(resp));
 	}
 
 	@Test
-	public void testGetUserBlackListSeq() throws RemoteException {
+	public void testGetUserBlackListSeq() throws RemoteException, AccessTokenException {
 		BlackListResp resp = userClient.getUserBlackList(accessTokenService.getAccessToken().getAccess_token(),
 				"ojqOLxHt-0dhb5oAOLMK-zhY9uwQ");
 		System.out.println(JSON.toJSONString(resp));
@@ -120,7 +121,7 @@ public class UserClientTest {
 
 	@Ignore
 	@Test
-	public void testSetUserBlackList() throws RemoteException {
+	public void testSetUserBlackList() throws RemoteException, AccessTokenException {
 		BatchBlackReq blackReq = new BatchBlackReq();
 		List<String> openid_list = Arrays.asList("ojqOLxHt-0dhb5oAOLMK-zhY9uwQ");
 		blackReq.setOpenid_list(openid_list);
@@ -131,7 +132,7 @@ public class UserClientTest {
 
 	@Ignore
 	@Test
-	public void testRemoveUserBlackList() throws RemoteException {
+	public void testRemoveUserBlackList() throws RemoteException, AccessTokenException {
 		BatchBlackReq blackReq = new BatchBlackReq();
 		List<String> openid_list = Arrays.asList("ojqOLxHt-0dhb5oAOLMK-zhY9uwQ");
 		blackReq.setOpenid_list(openid_list);

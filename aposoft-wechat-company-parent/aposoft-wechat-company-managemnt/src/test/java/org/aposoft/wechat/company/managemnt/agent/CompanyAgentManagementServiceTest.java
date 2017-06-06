@@ -22,6 +22,7 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccessConfig;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 
 /**
@@ -71,10 +72,11 @@ public class CompanyAgentManagementServiceTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
-	public void testGetAgent() throws RemoteException {
+	public void testGetAgent() throws RemoteException, AccessTokenException {
 		AgentResp resp = service.getAgent(accessTokenService.getAccessToken().getAccess_token(), "1");
 		System.out.println(JSON.toJSONString(resp));
 	}
@@ -98,10 +100,11 @@ public class CompanyAgentManagementServiceTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
-	public void testGetAgentList() throws RemoteException {
+	public void testGetAgentList() throws RemoteException, AccessTokenException {
 		AgentListResp resp = service.getAgentList(accessTokenService.getAccessToken().getAccess_token());
 		System.out.println(JSON.toJSONString(resp));
 	}

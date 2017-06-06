@@ -19,6 +19,7 @@ import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccessConfig;
 import cn.aposoft.wechat.company.message.impl.AposoftCompanyMessageService;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 
 /**
@@ -48,7 +49,7 @@ public class CompanyClientTest {
 
 	@Ignore
 	@Test
-	public void testSendText() throws RemoteException {
+	public void testSendText() throws RemoteException, AccessTokenException {
 		RequestConfig config = new RequestConfig();
 		config.setAgentid(1);
 		config.setTouser(new String[] { "liujian" });

@@ -15,6 +15,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.mp.access.AccessToken;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
@@ -38,7 +39,7 @@ public class AposoftCustomServiceAgentServiceTest {
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
-	public static void init() throws IOException {
+	public static void init() throws IOException, AccessTokenException {
 		csaService = new AposoftCustomServiceAgentService();
 		accessTokenClient = new AposoftMpAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
@@ -55,7 +56,7 @@ public class AposoftCustomServiceAgentServiceTest {
 	}
 
 	@Test
-	public void testListKf() throws RemoteException {
+	public void testListKf() throws RemoteException, AccessTokenException {
 
 		List<AgentAccount> list = csaService.getAgentList(accessTokenService.getAccessToken().getAccess_token());
 
@@ -64,7 +65,7 @@ public class AposoftCustomServiceAgentServiceTest {
 
 	@Ignore
 	@Test
-	public void testAddKf() throws RemoteException {
+	public void testAddKf() throws RemoteException, AccessTokenException {
 		AgentAccount account = new AgentAccount();
 		account.setAccount("kf1@pipi668的接口测试号");
 		account.setNickname("客服小美");
@@ -82,7 +83,7 @@ public class AposoftCustomServiceAgentServiceTest {
 
 	@Ignore
 	@Test
-	public void testUpdateKf() throws RemoteException {
+	public void testUpdateKf() throws RemoteException, AccessTokenException {
 		AgentAccount account = new AgentAccount();
 		account.setAccount("kf1@pipi668的接口测试号");
 		account.setNickname("客服尤娜");
@@ -94,7 +95,7 @@ public class AposoftCustomServiceAgentServiceTest {
 
 	@Ignore
 	@Test
-	public void testDeleteKf() throws RemoteException {
+	public void testDeleteKf() throws RemoteException, AccessTokenException {
 		AgentAccount account = new AgentAccount();
 		account.setAccount("kf1@pipi668的接口测试号");
 		account.setNickname("客服尤娜");

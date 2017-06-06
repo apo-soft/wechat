@@ -23,9 +23,6 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContextBuilder;
 
 /**
- *
- * 
- * <br />
  * 
  * @date 2016年8月28日
  * 
@@ -34,31 +31,33 @@ import org.apache.http.ssl.SSLContextBuilder;
  */
 public class HttpClientFactory {
 
-    public static final CloseableHttpClient createDefault() {
-        return HttpClients.custom().setMaxConnPerRoute(200).setMaxConnTotal(200).build();
-    }
+	public static final CloseableHttpClient createDefault() {
+		return HttpClients.custom().setMaxConnPerRoute(200).setMaxConnTotal(200).build();
+	}
 
-    /**
-     * 创建完全信任的安全套接字客户端
-     * 
-     * @return {@link CloseableHttpClient}
-     * @throws KeyStoreException
-     * @throws NoSuchAlgorithmException
-     * @throws KeyManagementException
-     */
-    public static final CloseableHttpClient createSSLFullTrusted() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
-        final SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustStrategy() {
-            @Override
-            public boolean isTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
-                return true;
-            }
-        }).build();
+	/**
+	 * 创建完全信任的安全套接字客户端
+	 * 
+	 * @return {@link CloseableHttpClient}
+	 * @throws KeyStoreException
+	 * @throws NoSuchAlgorithmException
+	 * @throws KeyManagementException
+	 */
+	public static final CloseableHttpClient createSSLFullTrusted()
+			throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+		final SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustStrategy() {
+			@Override
+			public boolean isTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+				return true;
+			}
+		}).build();
 
-        return HttpClients.custom().setSSLContext(sslContext).setMaxConnPerRoute(200).setMaxConnTotal(200)
-                .setConnectionManager(new PoolingHttpClientConnectionManager(
-                        RegistryBuilder.<ConnectionSocketFactory>create().register("http", PlainConnectionSocketFactory.INSTANCE)
-                                .register("https", new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE)).build()))
-                .build();
-    }
+		return HttpClients.custom().setSSLContext(sslContext).setMaxConnPerRoute(200).setMaxConnTotal(200)
+				.setConnectionManager(new PoolingHttpClientConnectionManager(RegistryBuilder
+						.<ConnectionSocketFactory>create().register("http", PlainConnectionSocketFactory.INSTANCE)
+						.register("https", new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE))
+						.build()))
+				.build();
+	}
 
 }

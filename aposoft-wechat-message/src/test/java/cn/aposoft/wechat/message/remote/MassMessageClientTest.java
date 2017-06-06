@@ -16,6 +16,7 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
@@ -40,7 +41,7 @@ public class MassMessageClientTest {
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
-	public static void init() throws IOException {
+	public static void init() throws IOException, AccessTokenException {
 		accessTokenClient = new AposoftMpAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
@@ -61,10 +62,11 @@ public class MassMessageClientTest {
 	 * [rKd_Da0056ge21]"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testSendNews() throws RemoteException {
+	public void testSendNews() throws RemoteException, AccessTokenException {
 		Filter filter = new Filter();
 		filter.setIs_to_all(false);
 		filter.setTag_id(100);
@@ -83,10 +85,11 @@ public class MassMessageClientTest {
 	 * success","msg_data_id":2247483671,"msgid":3147483656}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testSendOpenIdMpews() throws RemoteException {
+	public void testSendOpenIdMpews() throws RemoteException, AccessTokenException {
 
 		MediaIdHolder media = new MediaIdHolder("qN2VrGbthtk9pCbC5zu1gmVq85MCIDBqRUHxNk3S5FACOJTNzPvJZLUGKuUimxTT");
 		Map<String, Object> configs = new HashMap<>();
@@ -100,7 +103,7 @@ public class MassMessageClientTest {
 	// content-test-for all special not exists
 	@Ignore
 	@Test
-	public void testSendText() throws RemoteException {
+	public void testSendText() throws RemoteException, AccessTokenException {
 		Filter filter = new Filter();
 		filter.setIs_to_all(false);
 		filter.setTag_id(100);
@@ -122,14 +125,14 @@ public class MassMessageClientTest {
 	// {"msg_id":"3147483656","msg_status":"SEND_SUCCESS"}
 	@Ignore
 	@Test
-	public void testGetMessageStatus() throws RemoteException {
+	public void testGetMessageStatus() throws RemoteException, AccessTokenException {
 		System.out.println(JSON.toJSONString(
 				client.getMessageStatus(accessTokenService.getAccessToken().getAccess_token(), "3147483656")));
 	}
 
 	@Ignore
 	@Test
-	public void testSendImage() throws RemoteException {
+	public void testSendImage() throws RemoteException, AccessTokenException {
 
 		MediaIdHolder media = new MediaIdHolder("RFxNjzEygtLFVwgNKc_J9WxGtoSWqHrccgLE-5nudyFSVC5R4vMg9UULRukKsn1v");
 		Map<String, Object> configs = new HashMap<>();
@@ -141,7 +144,7 @@ public class MassMessageClientTest {
 
 	@Ignore
 	@Test
-	public void testSendImageWithStatus() throws RemoteException {
+	public void testSendImageWithStatus() throws RemoteException, AccessTokenException {
 
 		MediaIdHolder media = new MediaIdHolder("RFxNjzEygtLFVwgNKc_J9WxGtoSWqHrccgLE-5nudyFSVC5R4vMg9UULRukKsn1v");
 		Map<String, Object> configs = new HashMap<>();
@@ -157,10 +160,11 @@ public class MassMessageClientTest {
 	 * {"errcode":0,"errmsg":"ok"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testDeleteMassMessage() throws RemoteException {
+	public void testDeleteMassMessage() throws RemoteException, AccessTokenException {
 
 		Map<String, Object> configs = new HashMap<>();
 		configs.put("send_ignore_reprint", 1);
@@ -170,7 +174,7 @@ public class MassMessageClientTest {
 
 	@Ignore
 	@Test
-	public void testPreview() throws RemoteException {
+	public void testPreview() throws RemoteException, AccessTokenException {
 
 		WechatResp resp = client.preview(accessTokenService.getAccessToken().getAccess_token(),
 				"ojqOLxLh0480oz5gqHqLgzRgCLHM", MsgType.image,
@@ -180,7 +184,7 @@ public class MassMessageClientTest {
 
 	@Ignore
 	@Test
-	public void testPreviewText() throws RemoteException {
+	public void testPreviewText() throws RemoteException, AccessTokenException {
 
 		WechatResp resp = client.preview(accessTokenService.getAccessToken().getAccess_token(),
 				"ojqOLxLh0480oz5gqHqLgzRgCLHM", "发送公众号测试服务文本");
@@ -189,7 +193,7 @@ public class MassMessageClientTest {
 
 	@Ignore
 	@Test
-	public void testPreviewNews() throws RemoteException {
+	public void testPreviewNews() throws RemoteException, AccessTokenException {
 
 		WechatResp resp = client.preview(accessTokenService.getAccessToken().getAccess_token(),
 				"ojqOLxLh0480oz5gqHqLgzRgCLHM", MsgType.mpnews,

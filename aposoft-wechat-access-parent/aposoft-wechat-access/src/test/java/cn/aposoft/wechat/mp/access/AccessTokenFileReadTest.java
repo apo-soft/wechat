@@ -19,7 +19,7 @@ public class AccessTokenFileReadTest {
 
 	@Test
 	public void readAccessTokenFile() throws FileNotFoundException, IOException {
-		File file = new File("../config/access_token.txt");
+		File file = new File("../../config/access_token.txt");
 		System.out.println("file exists:" + file.exists());
 		if (file.exists()) {
 			System.out.println(IOUtils.toString(new FileReader(file)));

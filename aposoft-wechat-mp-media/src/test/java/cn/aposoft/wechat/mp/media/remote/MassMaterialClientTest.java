@@ -19,6 +19,7 @@ import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.MediaEntity;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.mp.access.AccessToken;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
@@ -38,7 +39,7 @@ public class MassMaterialClientTest {
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
-	public static void init() throws IOException {
+	public static void init() throws IOException, AccessTokenException {
 		if (!HttpClient.isLogEnabled()) {
 			HttpClient.setLogEnabled(true);
 		}
@@ -64,10 +65,11 @@ public class MassMaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testUploadThumb() throws RemoteException, FileNotFoundException, IOException {
+	public void testUploadThumb() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MediaEntity media = new MediaEntity();
 		media.setFilename("diamond-404.jpg");
 		media.setContentType("image/jpg");
@@ -84,10 +86,11 @@ public class MassMaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testUploadThumb1() throws RemoteException, FileNotFoundException, IOException {
+	public void testUploadThumb1() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MediaEntity media = new MediaEntity();
 		media.setFilename("art_temptation (16).jpg");
 		media.setContentType("image/jpg");
@@ -106,10 +109,11 @@ public class MassMaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testUploadThumb2() throws RemoteException, FileNotFoundException, IOException {
+	public void testUploadThumb2() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MediaEntity media = new MediaEntity();
 		media.setFilename("beauty art girl (1).jpg");
 		media.setContentType("image/jpg");
@@ -128,10 +132,11 @@ public class MassMaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testUploadNewsMedia() throws RemoteException, FileNotFoundException, IOException {
+	public void testUploadNewsMedia() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		NewsItem news = new NewsItem();
 		news.setAuthor("Jann");
 		news.setDigest("今天就我要测试群发，这是重大新闻");
@@ -155,10 +160,11 @@ public class MassMaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testUploadNewsMedia1() throws RemoteException, FileNotFoundException, IOException {
+	public void testUploadNewsMedia1() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		NewsItem news = new NewsItem();
 		news.setAuthor("Jann");
 		news.setDigest("测试美女缩略图，摘要1");

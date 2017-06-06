@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.aposoft.wechat.company.managemnt.user.impl.AposoftUserAuthsuccService;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
@@ -18,6 +19,7 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccessConfig;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.remote.WechatResp;
 
@@ -46,13 +48,15 @@ public class AposoftUserAuthsuccServiceTest {
 	}
 
 	/**
+	 * HTTP 404
 	 * {"errcode":50004,"errmsg":"user status invalid"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException
 	 */
-	// @Ignore
+	@Ignore
 	@Test
-	public void testGetAgentList() throws RemoteException {
+	public void testGetAgentList() throws RemoteException, AccessTokenException {
 		WechatResp resp = service.authsucc(accessTokenService.getAccessToken().getAccess_token(), "liujian");
 		System.out.println(JSON.toJSONString(resp));
 	}

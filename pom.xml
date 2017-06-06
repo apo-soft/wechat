@@ -71,8 +71,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>aposoft-wechat-core</module>
-		<module>aposoft-wechat-access-token-parent</module>
-	
+		<module>aposoft-wechat-access-parent</module>
 		<module>aposoft-wechat-message</module>
 		<module>aposoft-wechat-simple-site</module>
 		<module>aposoft-wechat-mp-csa</module>
@@ -82,9 +81,7 @@
 		<module>aposoft-wechat-mp-examples</module>
 		<module>aposoft-wechat-mp-account</module>
 		<module>aposoft-wechat-company-parent</module>
-		<module>aposoft-wechat-mp-access</module>
 		<module>aposoft-wechat-mp-config</module>
-		<module>aposoft-wechat-access-db</module>
 
 	</modules>
 

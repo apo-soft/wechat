@@ -19,8 +19,9 @@ import org.apache.commons.lang.StringUtils;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.wechat.mp.access.AccessConfig;
+import cn.aposoft.wechat.mp.access.AccountConfig;
 import cn.aposoft.wechat.mp.access.AccessToken;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 
 /**
@@ -36,7 +37,7 @@ public class FilePathAccessTokenService extends BasicAccessTokenService {
 
 	private volatile AccessToken accessToken;
 
-	public FilePathAccessTokenService(String filepath, AccessTokenClient client, AccessConfig config)
+	public FilePathAccessTokenService(String filepath, AccessTokenClient client, AccountConfig config)
 			throws IOException {
 		super(client, config);
 		File file = new File(filepath);
@@ -48,10 +49,16 @@ public class FilePathAccessTokenService extends BasicAccessTokenService {
 			FileUtils.touch(file);
 		}
 		this.file = file;
-		readAccessToken();
+		loadCacheAccessToken();
 	}
 
-	protected void readAccessToken() throws FileNotFoundException, IOException {
+	/**
+	 * 加载缓存的Accesstoken
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	protected void loadCacheAccessToken() throws FileNotFoundException, IOException {
 		try (Reader reader = new InputStreamReader(new FileInputStream(file), StandardCharsets.US_ASCII)) {
 			String accessTokenString = IOUtils.toString(reader);
 			if (!StringUtils.isBlank(accessTokenString)) {
@@ -61,10 +68,10 @@ public class FilePathAccessTokenService extends BasicAccessTokenService {
 	}
 
 	@Override
-	public AccessToken getAccessToken() {
+	public AccessToken getAccessToken() throws AccessTokenException {
 		if (accessToken == null || isNearlyExpired(accessToken)) {
 			try {
-				readAccessToken();
+				loadCacheAccessToken();
 			} catch (IOException e1) {
 				// ignore
 			}

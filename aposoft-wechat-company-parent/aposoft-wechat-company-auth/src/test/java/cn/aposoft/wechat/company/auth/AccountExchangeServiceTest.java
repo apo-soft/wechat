@@ -19,6 +19,7 @@ import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.company.auth.impl.AposoftAccountExchangeService;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccessConfig;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 
 /**
@@ -52,10 +53,11 @@ public class AccountExchangeServiceTest {
 	 * {"appid":"wxcde648bcedd955c2","errcode":0,"errmsg":"ok","openid":"owRU_v19INXMUA_rw_jQRBdRbKq8"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
-	public void testExchangeAccount() throws RemoteException {
+	public void testExchangeAccount() throws RemoteException, AccessTokenException {
 		AccountExchangeResp resp = service.convertToOpenId(accessTokenService.getAccessToken().getAccess_token(),
 				"liujian", 1);
 		System.out.println(JSON.toJSONString(resp));
@@ -65,10 +67,11 @@ public class AccountExchangeServiceTest {
 	 * {"errcode":0,"errmsg":"ok","openid":"oCz0RxFBSvXq0-D5_eLRJ7pBLt8c"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testExchangeAccountCorpId() throws RemoteException {
+	public void testExchangeAccountCorpId() throws RemoteException, AccessTokenException {
 		AccountExchangeResp resp = service.convertToOpenId(accessTokenService.getAccessToken().getAccess_token(),
 				"liujian");
 		System.out.println(JSON.toJSONString(resp));
@@ -79,10 +82,11 @@ public class AccountExchangeServiceTest {
 	 * {"errcode":0,"errmsg":"ok","userid":"liujian"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
-	public void testExchangeAccountUserId() throws RemoteException {
+	public void testExchangeAccountUserId() throws RemoteException, AccessTokenException {
 		AccountExchangeResp resp = service.convertToUserId(accessTokenService.getAccessToken().getAccess_token(),
 				"oCz0RxFBSvXq0-D5_eLRJ7pBLt8c");
 		System.out.println(JSON.toJSONString(resp));

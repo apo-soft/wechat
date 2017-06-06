@@ -4,7 +4,7 @@
 package cn.aposoft.wechat.mp.config;
 
 import cn.aposoft.wechat.mp.SignatureConfig;
-import cn.aposoft.wechat.mp.access.AccessConfig;
+import cn.aposoft.wechat.mp.access.AccountConfig;
 
 /**
  * 微信公众号配置
@@ -13,7 +13,7 @@ import cn.aposoft.wechat.mp.access.AccessConfig;
  * @date 2016年10月12日
  * 
  */
-public interface WechatMpConfig extends SignatureConfig, AccessConfig {
+public interface WechatMpConfig extends SignatureConfig, AccountConfig {
 	/**
 	 * 用户ID:开发者微信ID <br/>
 	 * gh_0f504b63df22
@@ -47,4 +47,9 @@ public interface WechatMpConfig extends SignatureConfig, AccessConfig {
 	 * @return 会话过期时间保护
 	 */
 	int getExpiredThreshold();
+
+	/**
+	 * @return 回话过期阻塞时间
+	 */
+	int getHoldonThreshold();
 }

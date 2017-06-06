@@ -6,6 +6,6 @@ package cn.aposoft.wechat.mp.access;
  * @author Jann Liu
  *
  */
-public interface AccessConfig extends AccessTokenConfig, RefreshConfig {
+public interface AccountConfig extends AccessTokenConfig, RefreshConfig {
 
 }

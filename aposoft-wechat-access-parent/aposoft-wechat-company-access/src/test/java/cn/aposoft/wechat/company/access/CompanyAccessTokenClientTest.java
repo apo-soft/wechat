@@ -45,7 +45,7 @@ public class CompanyAccessTokenClientTest {
 	//
 	private static WechatCompanyConfig getTestCompanyConfig() throws FileNotFoundException, IOException {
 		WechatCompanyConfig config = JSON.parseObject(
-				IOUtils.toString(new FileInputStream("../config/gome-ops-key.txt"), StandardCharsets.UTF_8),
+				IOUtils.toString(new FileInputStream("../../config/gome-ops-key.txt"), StandardCharsets.UTF_8),
 				WechatCompanyConfig.class);
 		return config;
 	}

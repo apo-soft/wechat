@@ -13,6 +13,7 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
@@ -32,7 +33,7 @@ public class MessageManagementClientTest {
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
-	public static void init() throws IOException {
+	public static void init() throws IOException, AccessTokenException {
 		accessTokenClient = new AposoftMpAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
@@ -48,7 +49,7 @@ public class MessageManagementClientTest {
 
 	@Ignore
 	@Test
-	public void testGetAutoReply() throws RemoteException {
+	public void testGetAutoReply() throws RemoteException, AccessTokenException {
 		System.out.println(
 				JSON.toJSONString(client.getAutoReplyRule(accessTokenService.getAccessToken().getAccess_token())));
 	}

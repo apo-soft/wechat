@@ -6,6 +6,7 @@ package cn.aposoft.wechat.mp.media.remote;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.AfterClass;
@@ -20,6 +21,7 @@ import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.MediaEntity;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.wechat.mp.access.AccessToken;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
@@ -39,7 +41,7 @@ public class MeidaClientTest {
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
-	public static void init() throws IOException {
+	public static void init() throws IOException, AccessTokenException {
 		if (!HttpClient.isLogEnabled()) {
 			HttpClient.setLogEnabled(true);
 		}
@@ -64,10 +66,11 @@ public class MeidaClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
-	public void testUploadMeida() throws RemoteException, FileNotFoundException, IOException {
+	public void testUploadMeida() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MediaEntity media = new MediaEntity();
 		media.setFilename("diamond-404.jpg");
 		media.setContentType("image/jpg");
@@ -84,16 +87,18 @@ public class MeidaClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException
 	 */
 	@Test
-	public void testGetMeida1() throws RemoteException, FileNotFoundException, IOException {
+	public void testGetMeida1() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
+		try (InputStream input = new FileInputStream("media/diamond-404.jpg")) {
+			byte[] data = IOUtils.toByteArray(input);
 
-		byte[] data = IOUtils.toByteArray(new FileInputStream("media/diamond-404.jpg"));
-
-		MediaEntityResp dataResp = client.getMedia(accessTokenService.getAccessToken().getAccess_token(),
-				"KsmAk839SjPBI-yb8jweVB1ypbg0w4M_P1Bxg6OfGLBeW_O5Rcy9OogJvDS2dBDw");
-		if (dataResp != null && dataResp.getMedia() != null) {
-			Assert.assertTrue(data.length == dataResp.getMedia().getLength());
+			MediaEntityResp dataResp = client.getMedia(accessTokenService.getAccessToken().getAccess_token(),
+					"KsmAk839SjPBI-yb8jweVB1ypbg0w4M_P1Bxg6OfGLBeW_O5Rcy9OogJvDS2dBDw");
+			if (dataResp != null && dataResp.getMedia() != null) {
+				Assert.assertTrue(data.length == dataResp.getMedia().getLength());
+			}
 		}
 	}
 
@@ -102,20 +107,22 @@ public class MeidaClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException
 	 */
 	@Test
-	public void testGetMeida() throws RemoteException, FileNotFoundException, IOException {
+	public void testGetMeida() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
+		try (InputStream input = new FileInputStream("media/diamond-404.jpg")) {
+			byte[] data = IOUtils.toByteArray(input);
 
-		byte[] data = IOUtils.toByteArray(new FileInputStream("media/diamond-404.jpg"));
+			MediaEntityResp dataResp = client.getMedia(accessTokenService.getAccessToken().getAccess_token(),
+					"KsmAk839SjPBI-yb8jweVB1ypbg0w4M_P1Bxg6OfGLBeW_O5Rcy9OogJvDS2dBDw");
 
-		MediaEntityResp dataResp = client.getMedia(accessTokenService.getAccessToken().getAccess_token(),
-				"w95CmShg2SjGVzKWDT3eA0EZLca1FdkUzG-5nJg3B2mu3QITlTY1VLmFl4q7pK4L");
-
-		if (dataResp != null && dataResp.getMedia() != null) {
-			Assert.assertTrue(data.length == dataResp.getMedia().getLength());
-			System.out.println(dataResp.getMedia().getFilename());
-			System.out.println(dataResp.getMedia().getContentType());
-			System.out.println(dataResp.getMedia().getLength());
+			if (dataResp != null && dataResp.getMedia() != null) {
+				Assert.assertEquals(data.length, dataResp.getMedia().getLength().longValue());
+				System.out.println(dataResp.getMedia().getFilename());
+				System.out.println(dataResp.getMedia().getContentType());
+				System.out.println(dataResp.getMedia().getLength());
+			}
 		}
 	}
 

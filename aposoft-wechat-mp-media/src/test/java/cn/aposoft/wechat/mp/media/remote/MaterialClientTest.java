@@ -18,6 +18,7 @@ import cn.aposoft.util.MediaEntity;
 import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
 import cn.aposoft.wechat.mp.access.AccessToken;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
@@ -35,7 +36,7 @@ public class MaterialClientTest {
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
-	public static void init() throws IOException {
+	public static void init() throws IOException, AccessTokenException {
 		if (!HttpClient.isLogEnabled()) {
 			HttpClient.setLogEnabled(true);
 		}
@@ -58,9 +59,10 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Test
-	public void testGetMeidaCount() throws RemoteException, FileNotFoundException, IOException {
+	public void testGetMeidaCount() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 
 		System.out.println(
 				JSON.toJSONString(client.getMediaCount(accessTokenService.getAccessToken().getAccess_token())));
@@ -104,9 +106,10 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Test
-	public void testGetNewsMaterialList() throws RemoteException, FileNotFoundException, IOException {
+	public void testGetNewsMaterialList() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MediaListReq req = new MediaListReq();
 		req.setCount(100);
 		req.setOffset(0);
@@ -121,9 +124,10 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Test
-	public void testGetMaterialList() throws RemoteException, FileNotFoundException, IOException {
+	public void testGetMaterialList() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MediaListReq req = new MediaListReq();
 		req.setCount(100);
 		req.setOffset(0);
@@ -139,10 +143,11 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testAddMeterial() throws RemoteException, FileNotFoundException, IOException {
+	public void testAddMeterial() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MediaEntity media = new MediaEntity();
 		media.setFilename("diamond-404.jpg");
 		media.setContentType("image/jpg");
@@ -159,9 +164,10 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Test
-	public void testGetMeterial() throws RemoteException, FileNotFoundException, IOException {
+	public void testGetMeterial() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MaterialResp resp = client.getMaterial(accessTokenService.getAccessToken().getAccess_token(),
 				"gbFT6slaM_0w2LBuG_B-WBRmwdhftRGrelZEFW47sZg");
 		if (!StringUtil.isBlank(resp) && !StringUtil.isBlank(resp.getMediaEntity())) {
@@ -182,10 +188,11 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testAddImage() throws RemoteException, FileNotFoundException, IOException {
+	public void testAddImage() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MediaEntity media = new MediaEntity();
 		media.setFilename("diamond-404.jpg");
 		media.setContentType("image/jpg");
@@ -203,10 +210,11 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testAddNews() throws RemoteException, FileNotFoundException, IOException {
+	public void testAddNews() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		NewsItem news = new NewsItem();
 		news.setAuthor("Jann");
 		news.setDigest("测试新闻 摘要-1");
@@ -227,10 +235,11 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testUpdateNews() throws RemoteException, FileNotFoundException, IOException {
+	public void testUpdateNews() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		NewsReq req = new NewsReq();
 		req.setMedia_id("gbFT6slaM_0w2LBuG_B-WMOTmnrnD3YlQ84dieFTLSo");
 		req.setIndex(0);
@@ -255,9 +264,10 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Test
-	public void testGetNews() throws RemoteException, FileNotFoundException, IOException {
+	public void testGetNews() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MaterialResp resp = client.getMaterial(accessTokenService.getAccessToken().getAccess_token(),
 				"gbFT6slaM_0w2LBuG_B-WIjnv6Zigyu3GrRdYBdpbIA");
 		if (!StringUtil.isBlank(resp) && !StringUtil.isBlank(resp.getMediaEntity())) {
@@ -277,10 +287,11 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws AccessTokenException 
 	 */
 	@Ignore
 	@Test
-	public void testDeleteMaterial() throws RemoteException, FileNotFoundException, IOException {
+	public void testDeleteMaterial() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		WechatResp resp = client.deleteMaterial(accessTokenService.getAccessToken().getAccess_token(),
 				"gbFT6slaM_0w2LBuG_B-WCZ3QPLdOneF-f1Dc7yV8zc");
 		System.out.println(JSON.toJSONString(resp));

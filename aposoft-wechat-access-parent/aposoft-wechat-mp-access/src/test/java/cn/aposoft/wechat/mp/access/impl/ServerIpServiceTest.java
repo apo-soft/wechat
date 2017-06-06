@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
@@ -35,7 +36,7 @@ public class ServerIpServiceTest {
 			HttpClient.setLogEnabled(true);
 		}
 		accessTokenClient = new AposoftMpAccessTokenClient();
-		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
+		accessTokenService = new FilePathAccessTokenService("../"+FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
 				BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig());
 	}
@@ -52,9 +53,10 @@ public class ServerIpServiceTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException 
 	 */
 	@Test
-	public void testGetIp() throws RemoteException {
+	public void testGetIp() throws RemoteException, AccessTokenException {
 		System.out.println(JSON.toJSONString(service.getIpList(accessTokenService.getAccessToken().getAccess_token())));
 	}
 }

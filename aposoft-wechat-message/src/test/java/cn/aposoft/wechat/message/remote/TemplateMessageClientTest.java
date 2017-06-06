@@ -16,6 +16,7 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
@@ -36,7 +37,7 @@ public class TemplateMessageClientTest {
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
-	public static void init() throws IOException {
+	public static void init() throws IOException, AccessTokenException {
 		accessTokenClient = new AposoftMpAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
@@ -75,10 +76,11 @@ public class TemplateMessageClientTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
-	public void testgetTemplateList() throws RemoteException {
+	public void testgetTemplateList() throws RemoteException, AccessTokenException {
 		System.out.println(client.getTemplateList(accessTokenService.getAccessToken().getAccess_token()));
 	}
 
@@ -86,10 +88,11 @@ public class TemplateMessageClientTest {
 	 * {"errcode":0,"errmsg":"ok"}
 	 * 
 	 * @throws RemoteException
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
-	public void testDeleteTemplate() throws RemoteException {
+	public void testDeleteTemplate() throws RemoteException, AccessTokenException {
 		System.out
 				.println(JSON.toJSONString(client.deleteTemplate(accessTokenService.getAccessToken().getAccess_token(),
 						"GVNDCaelOcnviNrP5NNA9uc4sBMnCC4eRSiDHNotCIM")));
@@ -99,7 +102,7 @@ public class TemplateMessageClientTest {
 	// BE57iEeATYm4O5qGJcszZxsSSHS7ANkwHkTiFakaVu0
 	@Ignore
 	@Test
-	public void testSendTemplateMessage() throws RemoteException {
+	public void testSendTemplateMessage() throws RemoteException, AccessTokenException {
 		TemplateMessage msg = new TemplateMessage();
 		msg.setTouser("ojqOLxLh0480oz5gqHqLgzRgCLHM");
 		msg.setTemplate_id("zw9lgptQReQQpJoofaPucstJSFi7bUmJ_26I1rBAgkk");

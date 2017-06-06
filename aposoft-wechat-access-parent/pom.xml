@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.aposoft.wechat</groupId>
+		<artifactId>aposoft-wechat-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>aposoft-wechat-access-token-parent</artifactId>
+	<packaging>pom</packaging>
+	<distributionManagement>
+		<site>
+			<id>website</id>
+			<url>scp://webhost.company.com/www/website</url>
+		</site>
+	</distributionManagement>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<modules>
+		<module>aposoft-wechat-access</module>
+		<module>aposoft-wechat-mp-access</module>
+		<module>aposoft-wechat-company-access</module>
+		<module>aposoft-wechat-access-db</module>
+	</modules>
+</project>

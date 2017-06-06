@@ -12,5 +12,5 @@ package cn.aposoft.wechat.mp.access;
 public interface AccessConfigFactory {
 	AccessTokenConfig getAccessTokenConfig();
 
-	AccessConfig getAccessConfig();
+	AccountConfig getAccessConfig();
 }
