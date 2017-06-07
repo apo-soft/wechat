@@ -3,10 +3,10 @@
  */
 package cn.aposoft.wechat.mp.access.impl;
 
-import cn.aposoft.wechat.mp.access.AccountConfig;
+import cn.aposoft.wechat.access.AccessTokenConfig;
+import cn.aposoft.wechat.access.AccountConfig;
+import cn.aposoft.wechat.access.AccountType;
 import cn.aposoft.wechat.mp.access.AccessConfigFactory;
-import cn.aposoft.wechat.mp.access.AccessTokenConfig;
-import cn.aposoft.wechat.mp.access.AccountType;
 import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 /**

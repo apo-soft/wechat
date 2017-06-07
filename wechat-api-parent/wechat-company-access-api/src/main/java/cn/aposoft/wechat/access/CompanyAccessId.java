@@ -1,7 +1,9 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.access;
+package cn.aposoft.wechat.access;
+
+import cn.aposoft.wechat.access.AccessId;
 
 /**
  * 企业访问授权ID

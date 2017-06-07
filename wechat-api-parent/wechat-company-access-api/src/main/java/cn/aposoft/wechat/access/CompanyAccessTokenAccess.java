@@ -1,7 +1,10 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.access;
+package cn.aposoft.wechat.access;
+
+import cn.aposoft.wechat.access.AccessToken;
+import cn.aposoft.wechat.access.AccessTokenAccess;
 
 /**
  * 企业访问授权码管理
@@ -9,7 +12,7 @@ package cn.aposoft.wechat.mp.access;
  * @author Jann Liu
  *
  */
-public interface CompanyAccessTokenManagement extends AccessTokenManagement {
+public interface CompanyAccessTokenAccess extends AccessTokenAccess {
 	/**
 	 * 获取企业API访问授权码
 	 * 

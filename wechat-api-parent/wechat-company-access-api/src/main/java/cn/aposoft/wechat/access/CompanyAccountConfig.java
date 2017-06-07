@@ -1,4 +1,4 @@
-package cn.aposoft.wechat.mp.access;
+package cn.aposoft.wechat.access;
 
 /**
  * 企业访问控制配置

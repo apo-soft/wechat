@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp.access.impl;
 import java.io.Serializable;
 import java.util.Date;
 
-import cn.aposoft.wechat.mp.access.AccessToken;
+import cn.aposoft.wechat.access.AccessToken;
 
 /**
  * 简单的AccessToken实现

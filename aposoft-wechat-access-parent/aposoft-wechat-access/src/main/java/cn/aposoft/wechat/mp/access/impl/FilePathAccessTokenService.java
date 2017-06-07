@@ -19,9 +19,9 @@ import org.apache.commons.lang.StringUtils;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.wechat.mp.access.AccountConfig;
-import cn.aposoft.wechat.mp.access.AccessToken;
-import cn.aposoft.wechat.mp.access.AccessTokenException;
+import cn.aposoft.wechat.access.AccessToken;
+import cn.aposoft.wechat.access.AccessTokenException;
+import cn.aposoft.wechat.access.AccountConfig;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 
 /**

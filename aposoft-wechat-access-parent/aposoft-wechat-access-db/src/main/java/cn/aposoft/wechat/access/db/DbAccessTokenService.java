@@ -7,10 +7,10 @@ import java.io.IOException;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.aposoft.wechat.mp.access.AccountConfig;
-import cn.aposoft.wechat.mp.access.AccessToken;
-import cn.aposoft.wechat.mp.access.AccessTokenException;
-import cn.aposoft.wechat.mp.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccessToken;
+import cn.aposoft.wechat.access.AccessTokenException;
+import cn.aposoft.wechat.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccountConfig;
 import cn.aposoft.wechat.mp.access.impl.AbstractAccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 

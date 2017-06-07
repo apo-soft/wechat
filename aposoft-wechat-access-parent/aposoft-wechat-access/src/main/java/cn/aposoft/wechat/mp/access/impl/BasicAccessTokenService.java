@@ -6,8 +6,8 @@ package cn.aposoft.wechat.mp.access.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cn.aposoft.wechat.mp.access.AccountConfig;
-import cn.aposoft.wechat.mp.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccountConfig;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 
 /**

@@ -12,12 +12,12 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cn.aposoft.wechat.mp.access.AccountConfig;
 import cn.aposoft.wechat.RemoteException;
-import cn.aposoft.wechat.mp.access.AccessToken;
-import cn.aposoft.wechat.mp.access.AccessTokenConfig;
-import cn.aposoft.wechat.mp.access.AccessTokenException;
-import cn.aposoft.wechat.mp.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccessToken;
+import cn.aposoft.wechat.access.AccessTokenConfig;
+import cn.aposoft.wechat.access.AccessTokenException;
+import cn.aposoft.wechat.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccountConfig;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenResp;
 

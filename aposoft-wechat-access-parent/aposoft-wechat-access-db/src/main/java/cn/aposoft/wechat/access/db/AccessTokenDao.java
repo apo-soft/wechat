@@ -7,8 +7,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.aposoft.wechat.mp.access.AccessTokenConfig;
-import cn.aposoft.wechat.mp.access.CompanyAccessTokenConfig;
+import cn.aposoft.wechat.access.AccessTokenConfig;
+import cn.aposoft.wechat.access.CompanyAccessTokenConfig;
 
 /**
  * 根据公众号ID,读取AccessToken

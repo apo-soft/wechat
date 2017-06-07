@@ -5,9 +5,9 @@ package cn.aposoft.wechat.mp.access.impl;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.wechat.mp.access.AccessToken;
-import cn.aposoft.wechat.mp.access.AccessTokenException;
-import cn.aposoft.wechat.mp.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccessToken;
+import cn.aposoft.wechat.access.AccessTokenException;
+import cn.aposoft.wechat.access.AccessTokenService;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;

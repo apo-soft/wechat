@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.mp.config;
 
-import cn.aposoft.wechat.mp.access.AccountConfig;
+import cn.aposoft.wechat.access.AccountConfig;
 import cn.aposoft.wechat.signature.SignatureConfig;
 
 /**

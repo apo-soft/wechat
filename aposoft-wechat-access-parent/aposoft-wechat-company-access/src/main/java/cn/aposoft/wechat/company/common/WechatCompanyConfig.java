@@ -5,8 +5,8 @@ package cn.aposoft.wechat.company.common;
 
 import java.io.Serializable;
 
-import cn.aposoft.wechat.mp.access.AccessTokenConfig;
-import cn.aposoft.wechat.mp.access.AccountType;
+import cn.aposoft.wechat.access.AccessTokenConfig;
+import cn.aposoft.wechat.access.AccountType;
 
 /**
  * 企业号配置信息

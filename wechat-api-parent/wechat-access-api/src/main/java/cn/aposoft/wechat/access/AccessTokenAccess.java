@@ -1,15 +1,15 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.access;
+package cn.aposoft.wechat.access;
 
 /**
- * 多AccessToken管理服务
+ * 多公众号,服务号AccessToken管理服务
  * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
-public interface AccessTokenManagement {
+public interface AccessTokenAccess {
 	/**
 	 * 获取公众号,服务号API访问授权码
 	 * 
@@ -18,7 +18,5 @@ public interface AccessTokenManagement {
 	 * @return 访问授权码
 	 */
 	AccessToken getAccessToken(AccessId accessId);
-
-
 
 }

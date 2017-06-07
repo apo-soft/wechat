@@ -16,10 +16,10 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.company.auth.impl.AposoftAccountExchangeService;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
-import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 
 /**

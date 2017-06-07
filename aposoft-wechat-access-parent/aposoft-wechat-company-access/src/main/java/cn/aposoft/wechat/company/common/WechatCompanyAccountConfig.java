@@ -3,8 +3,8 @@
  */
 package cn.aposoft.wechat.company.common;
 
-import cn.aposoft.wechat.mp.access.AccountType;
-import cn.aposoft.wechat.mp.access.CompanyAccountConfig;
+import cn.aposoft.wechat.access.AccountType;
+import cn.aposoft.wechat.access.CompanyAccountConfig;
 
 /**
  * 企业访问控制配置项
