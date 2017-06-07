@@ -10,7 +10,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-import cn.aposoft.wechat.mp.codec.aes.WXBizMsgCrypt;
+import cn.aposoft.wechat.codec.aes.WXBizMsgCrypt;
 
 public class WXBizMsgCryptProgram {
 

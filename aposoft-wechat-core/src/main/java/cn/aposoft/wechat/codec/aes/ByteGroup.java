@@ -1,4 +1,4 @@
-package cn.aposoft.wechat.mp.codec.aes;
+package cn.aposoft.wechat.codec.aes;
 
 import java.util.ArrayList;
 

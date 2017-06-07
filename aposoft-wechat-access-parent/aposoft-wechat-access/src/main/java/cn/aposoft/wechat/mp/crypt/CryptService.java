@@ -1,6 +1,6 @@
 package cn.aposoft.wechat.mp.crypt;
 
-import cn.aposoft.wechat.mp.codec.aes.AesException;
+import cn.aposoft.wechat.codec.aes.AesException;
 
 public interface CryptService {
     /**

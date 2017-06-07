@@ -6,7 +6,7 @@
 
 // ------------------------------------------------------------------------
 
-package cn.aposoft.wechat.mp.codec.aes;
+package cn.aposoft.wechat.codec.aes;
 
 import java.nio.charset.Charset;
 import java.util.Arrays;

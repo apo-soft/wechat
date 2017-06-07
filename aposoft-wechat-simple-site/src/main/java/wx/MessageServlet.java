@@ -22,9 +22,9 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.constant.Lexical;
 import cn.aposoft.util.XmlUtils;
+import cn.aposoft.wechat.codec.EncryptType;
+import cn.aposoft.wechat.codec.aes.AesException;
 import cn.aposoft.wechat.echo.EchoValidator;
-import cn.aposoft.wechat.mp.codec.EncryptType;
-import cn.aposoft.wechat.mp.codec.aes.AesException;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.crypt.CryptService;
 import cn.aposoft.wechat.mp.crypt.impl.BasicCryptService;
@@ -33,7 +33,7 @@ import cn.aposoft.wechat.mp.message.MessageService;
 import cn.aposoft.wechat.mp.message.impl.AposoftIntegratedMessage;
 import cn.aposoft.wechat.mp.message.news.NewsService;
 import cn.aposoft.wechat.mp.message.template.Message;
-import cn.aposoft.wechat.mp.signature.AposoftSignatureEchoValidator;
+import cn.aposoft.wechat.signature.AposoftSignatureEchoValidator;
 
 /**
  * 接收消息的Servlet

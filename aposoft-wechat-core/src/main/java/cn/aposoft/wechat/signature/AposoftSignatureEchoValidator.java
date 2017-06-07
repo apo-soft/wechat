@@ -1,7 +1,7 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.signature;
+package cn.aposoft.wechat.signature;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -36,7 +36,7 @@ public class AposoftSignatureEchoValidator implements SignatureValidator, EchoVa
 	@Override
 	public boolean validate(String signature, String timestamp, String nonce) {
 		// 官方标准的 服务器认证返回码
-		String hashCode = cn.aposoft.wechat.mp.codec.digest.DigestUtils.sha1Hex(nonce, timestamp, config.getToken());
+		String hashCode = cn.aposoft.wechat.codec.digest.DigestUtils.sha1Hex(nonce, timestamp, config.getToken());
 		return signature != null && signature.equals(hashCode);
 	}
 

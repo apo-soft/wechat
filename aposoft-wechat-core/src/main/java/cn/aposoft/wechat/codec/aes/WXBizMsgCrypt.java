@@ -11,7 +11,7 @@
  * 需要导入架包commons-codec-1.9（或commons-codec-1.8等其他版本）
  * 官方下载地址：http://commons.apache.org/proper/commons-codec/download_codec.cgi
  */
-package cn.aposoft.wechat.mp.codec.aes;
+package cn.aposoft.wechat.codec.aes;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -23,7 +23,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 
-import cn.aposoft.wechat.mp.codec.digest.DigestUtils;
+import cn.aposoft.wechat.codec.digest.DigestUtils;
 
 /**
  * 提供接收和推送给公众平台消息的加解密接口(UTF8编码的字符串).

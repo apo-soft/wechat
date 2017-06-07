@@ -2,8 +2,8 @@ package cn.aposoft.wechat.mp;
 
 import org.junit.Test;
 
-import cn.aposoft.wechat.mp.codec.aes.AesException;
-import cn.aposoft.wechat.mp.codec.digest.DigestUtils;
+import cn.aposoft.wechat.codec.aes.AesException;
+import cn.aposoft.wechat.codec.digest.DigestUtils;
 
 public class Sha1Test {
 

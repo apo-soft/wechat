@@ -4,7 +4,7 @@
 package cn.aposoft.wechat.signature;
 
 /**
- * 签名用配置项
+ * 签名配置项
  * 
  * @author Jann Liu
  *
