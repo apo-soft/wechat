@@ -14,14 +14,12 @@ import cn.aposoft.wechat.access.AccountConfig;
  */
 public interface AccessConfigFactory {
 	/**
-	 * 
-	 * @return
+	 * @return AccessToken 读取配置项
 	 */
 	AccessTokenConfig getAccessTokenConfig();
 
 	/**
-	 * 
-	 * @return
+	 * @return 授权码访问控制配置项
 	 */
 	AccountConfig getAccessConfig();
 }
