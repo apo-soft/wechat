@@ -5,6 +5,12 @@ import cn.aposoft.wechat.codec.aes.AesException;
 import cn.aposoft.wechat.codec.aes.WXBizMsgCrypt;
 import cn.aposoft.wechat.signature.SignatureConfig;
 
+/**
+ * 微信公众号,服务号消息加密服务
+ * 
+ * @author Jann Liu
+ * @since 1.0
+ */
 public class BasicCryptService implements CryptService {
 
 	private final WXBizMsgCrypt crypt;
