@@ -8,6 +8,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 /**
+ * 规范化默认的decode字符集的URLDecoder,用于与Wechat进行交互
  * 
  * @see java.net.URLDecoder
  * @author Jann Liu

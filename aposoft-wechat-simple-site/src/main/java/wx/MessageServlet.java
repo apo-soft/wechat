@@ -22,6 +22,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.constant.Lexical;
 import cn.aposoft.util.XmlUtils;
+import cn.aposoft.wechat.echo.EchoValidator;
 import cn.aposoft.wechat.mp.codec.EncryptType;
 import cn.aposoft.wechat.mp.codec.aes.AesException;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
@@ -32,7 +33,7 @@ import cn.aposoft.wechat.mp.message.MessageService;
 import cn.aposoft.wechat.mp.message.impl.AposoftIntegratedMessage;
 import cn.aposoft.wechat.mp.message.news.NewsService;
 import cn.aposoft.wechat.mp.message.template.Message;
-import cn.aposoft.wechat.mp.validate.SignatureValidator;
+import cn.aposoft.wechat.mp.signature.AposoftSignatureEchoValidator;
 
 /**
  * 接收消息的Servlet
@@ -48,14 +49,14 @@ public class MessageServlet extends HttpServlet {
 	private static final org.slf4j.Logger messageLogger = LoggerFactory.getLogger("wx.message");
 
 	private CryptService crypt;
-	private SignatureValidator signature;
+	private EchoValidator signature;
 	private MessageService messageService;
 	boolean forceValidate = false;
 
 	@Override
 	public void init(ServletConfig config) {
 		try {
-			signature = new SignatureValidator(WechatMpConfigFactory.getConfig());
+			signature = new AposoftSignatureEchoValidator(WechatMpConfigFactory.getConfig());
 			crypt = new BasicCryptService(WechatMpConfigFactory.getConfig());
 		} catch (AesException e) {
 			// this must not happen
@@ -94,7 +95,7 @@ public class MessageServlet extends HttpServlet {
 				logger.error("signature is not valid" + JSON.toJSONString(messageParams));
 				return;
 			} else {
-				if (SignatureValidator.isSignatureValid(messageParams)) {
+				if (signature.isSignatureValid(messageParams)) {
 					logger.warn("signature is empty" + JSON.toJSONString(messageParams));
 				}
 				logger.warn("signature is not valid" + JSON.toJSONString(messageParams));
@@ -103,7 +104,7 @@ public class MessageServlet extends HttpServlet {
 
 		try {
 			// 判定是否是服务器验证逻辑
-			if (SignatureValidator.hasEchostr(messageParams)) {
+			if (signature.hasEchostr(messageParams)) {
 				if (isSignatureValid) {
 					response.getWriter().print(messageParams.getEchostr());
 				}

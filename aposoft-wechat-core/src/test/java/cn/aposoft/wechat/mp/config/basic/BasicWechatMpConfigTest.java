@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import cn.aposoft.wechat.SignatureConfig;
+import cn.aposoft.wechat.signature.SignatureConfig;
 
 public class BasicWechatMpConfigTest {
 

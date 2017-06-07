@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat;
+package cn.aposoft.wechat.signature;
 
 /**
  * 签名用配置项

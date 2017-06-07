@@ -30,12 +30,9 @@ public class StringUtil {
 	 */
 	public static boolean isNull(Object... input) {
 		for (Object in : input) {
-			System.out.println(in);
-
 			if (in == null) {
 				return true;
 			} else {
-				System.out.println(in.getClass());
 			}
 		}
 		return false;

@@ -3,8 +3,8 @@
  */
 package cn.aposoft.wechat.mp.config;
 
-import cn.aposoft.wechat.SignatureConfig;
 import cn.aposoft.wechat.mp.access.AccountConfig;
+import cn.aposoft.wechat.signature.SignatureConfig;
 
 /**
  * 微信公众号配置

@@ -1,18 +1,16 @@
 /**
  * 
  */
-package cn.aposoft.util;
+package cn.aposoft.wechat;
 
 import java.io.Serializable;
-
-import cn.aposoft.wechat.MediaEntity;
 
 /**
  * 
  * @author Jann Liu
  *
  */
-public class WechatHttpEntity implements Serializable {
+public class MimeEntity implements Serializable {
 	private static final long serialVersionUID = -8466194355538828019L;
 	/**
 	 * 二进制素材格式返回值

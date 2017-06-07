@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.MediaEntity;
+import cn.aposoft.wechat.MimeEntity;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 
@@ -86,7 +87,7 @@ public class HttpClient {
 	 * @return 响应报文
 	 * @throws Exception
 	 */
-	public static WechatHttpEntity executeEntity(final HttpUriRequest request, final CloseableHttpClient httpClient)
+	public static MimeEntity executeEntity(final HttpUriRequest request, final CloseableHttpClient httpClient)
 			throws RemoteException {
 		if (logEnabled && logger.isInfoEnabled()) {
 			logger.info("REQUEST:" + request);
@@ -106,7 +107,7 @@ public class HttpClient {
 				final String mimeType = response.getFirstHeader("Content-Type") == null ? null
 						: response.getFirstHeader("Content-Type").getValue();
 
-				WechatHttpEntity resp = new WechatHttpEntity();
+				MimeEntity resp = new MimeEntity();
 				if (StringUtil.isBlank(mimeType)) {
 					resp.setMimeType(ContentType.APPLICATION_JSON.getMimeType());
 				} else {
