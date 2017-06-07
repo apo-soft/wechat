@@ -1,7 +1,7 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.access.remote;
+package cn.aposoft.wechat.access.remote;
 
 import java.io.Closeable;
 

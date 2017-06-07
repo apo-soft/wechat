@@ -1,7 +1,7 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.access.impl;
+package cn.aposoft.wechat.access.impl;
 
 import java.io.Serializable;
 import java.util.Date;

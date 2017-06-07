@@ -11,8 +11,8 @@ import cn.aposoft.wechat.access.AccessToken;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.AccessTokenService;
 import cn.aposoft.wechat.access.AccountConfig;
-import cn.aposoft.wechat.mp.access.impl.AbstractAccessTokenService;
-import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.access.impl.AbstractAccessTokenService;
+import cn.aposoft.wechat.access.remote.AccessTokenClient;
 
 /**
  * 使用Database完成accessToken的缓存

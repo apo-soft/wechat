@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.access.impl;
+package cn.aposoft.wechat.access.impl;
 
 import java.io.IOException;
 import java.util.Date;
@@ -18,8 +18,8 @@ import cn.aposoft.wechat.access.AccessTokenConfig;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.AccessTokenService;
 import cn.aposoft.wechat.access.AccountConfig;
-import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.mp.access.remote.AccessTokenResp;
+import cn.aposoft.wechat.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.access.remote.AccessTokenResp;
 
 /**
  * AccessToken管理基类服务

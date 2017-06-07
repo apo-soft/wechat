@@ -17,9 +17,9 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.AccessTokenException;
+import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
+import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
-import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.message.TemplateMessage;

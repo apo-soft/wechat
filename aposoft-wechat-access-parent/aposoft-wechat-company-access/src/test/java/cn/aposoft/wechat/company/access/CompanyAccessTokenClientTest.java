@@ -15,9 +15,9 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.access.remote.AccessTokenResp;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyConfig;
-import cn.aposoft.wechat.mp.access.remote.AccessTokenResp;
 
 /**
  * 测试读取企业号access_token

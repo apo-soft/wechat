@@ -5,7 +5,7 @@ package cn.aposoft.wechat.access.db;
 
 import cn.aposoft.wechat.access.AccessTokenConfig;
 import cn.aposoft.wechat.access.AccountType;
-import cn.aposoft.wechat.mp.access.impl.BasicAccessToken;
+import cn.aposoft.wechat.access.impl.BasicAccessToken;
 
 /**
  * Db访问的AccessToken对象

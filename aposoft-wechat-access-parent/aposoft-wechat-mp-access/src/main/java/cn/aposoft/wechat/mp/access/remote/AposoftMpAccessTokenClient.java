@@ -15,6 +15,8 @@ import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.AccessTokenConfig;
+import cn.aposoft.wechat.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.access.remote.AccessTokenResp;
 
 public class AposoftMpAccessTokenClient implements AccessTokenClient {
 	final CloseableHttpClient httpClient = HttpClientFactory.createDefault();

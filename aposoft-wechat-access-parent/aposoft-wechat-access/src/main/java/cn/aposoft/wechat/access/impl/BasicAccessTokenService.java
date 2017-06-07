@@ -1,14 +1,14 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.access.impl;
+package cn.aposoft.wechat.access.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cn.aposoft.wechat.access.AccessTokenService;
 import cn.aposoft.wechat.access.AccountConfig;
-import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.access.remote.AccessTokenClient;
 
 /**
  * AccessToken 默认访问服务

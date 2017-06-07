@@ -21,9 +21,9 @@ import cn.aposoft.util.HttpClient;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResult;
 import cn.aposoft.wechat.access.AccessTokenException;
+import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
-import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
 
 /**
  * 用户管理功能测试
