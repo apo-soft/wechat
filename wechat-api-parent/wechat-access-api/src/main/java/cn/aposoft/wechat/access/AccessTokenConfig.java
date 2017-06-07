@@ -9,6 +9,6 @@ package cn.aposoft.wechat.access;
  * @author Jann Liu
  * @since 1.0
  */
-public interface AccessTokenConfig extends AccessId, AccessSecret {
+public interface AccessTokenConfig extends AccountId, AccessSecret {
 
 }

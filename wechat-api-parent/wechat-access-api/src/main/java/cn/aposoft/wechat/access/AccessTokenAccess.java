@@ -13,10 +13,10 @@ public interface AccessTokenAccess {
 	/**
 	 * 获取公众号,服务号API访问授权码
 	 * 
-	 * @param accessId
+	 * @param accountId
 	 *            accessToken对应微信公众号,服务号
 	 * @return 访问授权码
 	 */
-	AccessToken getAccessToken(AccessId accessId);
+	AccessToken getAccessToken(AccountId accountId);
 
 }

@@ -11,8 +11,14 @@ import java.io.Serializable;
  * @author Jann Liu
  *
  */
-public interface AccessId extends Serializable {
+public interface AccountId extends Serializable {
+	/**
+	 * @return AccountType {@link AccountType}
+	 */
 	public AccountType getAccountType();
 
+	/**
+	 * @return appId or corpId (according to accountType)
+	 */
 	public String getId();
 }

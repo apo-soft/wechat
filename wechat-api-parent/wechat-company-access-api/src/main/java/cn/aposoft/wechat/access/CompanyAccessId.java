@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.access;
 
-import cn.aposoft.wechat.access.AccessId;
+import cn.aposoft.wechat.access.AccountId;
 
 /**
  * 企业访问授权ID
@@ -11,7 +11,7 @@ import cn.aposoft.wechat.access.AccessId;
  * @author Jann Liu
  *
  */
-public interface CompanyAccessId extends AccessId {
+public interface CompanyAccessId extends AccountId {
 	/**
 	 * @return 企业机构AgentId
 	 * 
