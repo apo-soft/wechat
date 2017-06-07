@@ -14,9 +14,10 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.HttpClient;
-import cn.aposoft.util.MediaEntity;
-import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
+import cn.aposoft.wechat.MediaEntity;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.mp.WechatResp;
 import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
@@ -26,7 +27,6 @@ import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.media.MediaType;
 import cn.aposoft.wechat.mp.media.news.NewsItem;
-import cn.aposoft.wechat.mp.remote.WechatResp;
 
 public class MaterialClientTest {
 

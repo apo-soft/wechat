@@ -5,7 +5,7 @@ package cn.aposoft.wechat.company.auth;
 
 import java.io.Closeable;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
 
 /**
  * 账户转换服务

@@ -12,7 +12,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
 
 /**
  * 微信公众号账号管理

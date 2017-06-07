@@ -5,7 +5,7 @@ package cn.aposoft.wechat.mp.access.remote;
 
 import java.io.Closeable;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.mp.access.AccessTokenConfig;
 
 /**

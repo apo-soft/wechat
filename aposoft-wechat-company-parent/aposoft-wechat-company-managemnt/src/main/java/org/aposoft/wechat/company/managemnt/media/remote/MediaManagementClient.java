@@ -14,12 +14,12 @@ import org.apache.http.impl.client.CloseableHttpClient;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.util.AposoftHttpEntity;
+import cn.aposoft.util.WechatHttpEntity;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.MediaEntity;
-import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
+import cn.aposoft.wechat.MediaEntity;
+import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.mp.media.remote.MediaEntityResp;
 import cn.aposoft.wechat.mp.media.remote.MediaResp;
 
@@ -79,7 +79,7 @@ public class MediaManagementClient implements Closeable {
 		final String requestUrl = getMediaUrl(accessToken, mediaId);
 		HttpGet httpPost = new HttpGet(requestUrl);
 
-		AposoftHttpEntity entity = HttpClient.executeEntity(httpPost, httpClient);
+		WechatHttpEntity entity = HttpClient.executeEntity(httpPost, httpClient);
 		if (ContentType.APPLICATION_JSON.getMimeType().equals(entity.getMimeType())) {
 			return JSON.parseObject(entity.getText(), MediaEntityResp.class);
 		} else {

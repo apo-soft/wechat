@@ -5,8 +5,8 @@ package cn.aposoft.wechat.mp.csa.remote;
 
 import java.util.List;
 
+import cn.aposoft.wechat.mp.WechatResp;
 import cn.aposoft.wechat.mp.csa.AgentAccount;
-import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * 客服列表

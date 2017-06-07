@@ -5,7 +5,7 @@ package cn.aposoft.wechat.mp.message;
 
 import java.io.Closeable;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
 
 /**
  * @author Jann Liu

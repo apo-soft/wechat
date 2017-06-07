@@ -10,9 +10,9 @@ import org.apache.http.impl.client.CloseableHttpClient;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
-import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.mp.WechatResp;
 
 /**
  * 客服消息发送方法

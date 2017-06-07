@@ -17,12 +17,12 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.HttpClient;
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.WechatResult;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
 import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.mp.remote.WechatResponse;
 
 /**
  * 部门管理客户端测试
@@ -112,7 +112,7 @@ public class DepartmentManagementClientTest {
 	@Test
 	public void testdeleteDepartment() throws RemoteException, AccessTokenException {
 
-		WechatResponse resp = service.delete(accessTokenService.getAccessToken().getAccess_token(), "10");
+		WechatResult resp = service.delete(accessTokenService.getAccessToken().getAccess_token(), "10");
 		System.out.println(JSON.toJSONString(resp));
 	}
 }

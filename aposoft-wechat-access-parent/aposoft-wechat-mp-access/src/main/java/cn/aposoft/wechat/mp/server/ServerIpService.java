@@ -6,7 +6,7 @@ package cn.aposoft.wechat.mp.server;
 import java.io.Closeable;
 import java.util.List;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
 
 /**
  * 读取服务器IP列表

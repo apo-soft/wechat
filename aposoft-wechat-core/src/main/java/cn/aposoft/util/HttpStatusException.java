@@ -5,6 +5,8 @@ package cn.aposoft.util;
 
 import org.apache.http.StatusLine;
 
+import cn.aposoft.wechat.RemoteException;
+
 /**
  * HTTP响应状态异常，不为StatusCode!=SC_OK
  * 

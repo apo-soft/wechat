@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.mp.media.remote;
 
-import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.mp.WechatResp;
 
 /**
  * 素材响应对象 {@code {"type":"TYPE","media_id":"MEDIA_ID","created_at":123456789}}

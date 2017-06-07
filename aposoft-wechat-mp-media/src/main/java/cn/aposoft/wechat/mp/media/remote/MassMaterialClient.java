@@ -10,9 +10,9 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
-import cn.aposoft.util.MediaEntity;
-import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
+import cn.aposoft.wechat.MediaEntity;
+import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.mp.media.news.NewsItem;
 
 /**

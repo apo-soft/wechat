@@ -5,7 +5,7 @@ package cn.aposoft.wechat.mp.user.tag.remote;
 
 import java.util.List;
 
-import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.mp.WechatResp;
 import cn.aposoft.wechat.mp.user.tag.UserTag;
 
 /**

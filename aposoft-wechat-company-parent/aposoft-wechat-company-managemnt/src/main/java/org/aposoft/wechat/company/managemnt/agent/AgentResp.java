@@ -5,7 +5,7 @@ package org.aposoft.wechat.company.managemnt.agent;
 
 import java.util.Map;
 
-import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.mp.WechatResp;
 
 /**
  * <pre>

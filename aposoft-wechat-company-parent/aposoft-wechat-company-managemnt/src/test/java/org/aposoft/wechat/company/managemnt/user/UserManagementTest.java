@@ -18,12 +18,12 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.HttpClient;
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.WechatResult;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
 import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.mp.remote.WechatResponse;
 
 /**
  * 用户管理功能测试
@@ -67,7 +67,7 @@ public class UserManagementTest {
 		user.setDepartment(new int[] { 2 });
 		user.setGender("1");
 		user.setEmail("pleasantboy@163.com");
-		WechatResponse resp = service.create(accessTokenService.getAccessToken().getAccess_token(), user);
+		WechatResult resp = service.create(accessTokenService.getAccessToken().getAccess_token(), user);
 		System.out.println(JSON.toJSONString(resp));
 	}
 
@@ -87,7 +87,7 @@ public class UserManagementTest {
 		user.setGender("1");
 		user.setEmail("pleasantboy@qq.com");
 		user.setPosition("开发工程师");
-		WechatResponse resp = service.update(accessTokenService.getAccessToken().getAccess_token(), user);
+		WechatResult resp = service.update(accessTokenService.getAccessToken().getAccess_token(), user);
 		System.out.println(JSON.toJSONString(resp));
 	}
 
@@ -158,7 +158,7 @@ public class UserManagementTest {
 	@Ignore
 	@Test
 	public void testDeleteUserLiuJianTest2Batch() throws RemoteException, AccessTokenException {
-		WechatResponse resp = service.delete(accessTokenService.getAccessToken().getAccess_token(), "liujian_test");
+		WechatResult resp = service.delete(accessTokenService.getAccessToken().getAccess_token(), "liujian_test");
 		System.out.println(JSON.toJSONString(resp));
 	}
 
@@ -174,7 +174,7 @@ public class UserManagementTest {
 	@Test
 	public void testDeleteUserLiuJianTest() throws RemoteException, AccessTokenException {
 
-		WechatResponse resp = service.delete(accessTokenService.getAccessToken().getAccess_token(), "liujian_test");
+		WechatResult resp = service.delete(accessTokenService.getAccessToken().getAccess_token(), "liujian_test");
 		System.out.println(JSON.toJSONString(resp));
 	}
 
@@ -188,7 +188,7 @@ public class UserManagementTest {
 	@Test
 	public void testDeleteUserBatchTest() throws RemoteException, AccessTokenException {
 
-		WechatResponse resp = service.delete(accessTokenService.getAccessToken().getAccess_token(),
+		WechatResult resp = service.delete(accessTokenService.getAccessToken().getAccess_token(),
 				Arrays.asList("liujian_test", "liujian_test_2"));
 		System.out.println(JSON.toJSONString(resp));
 	}

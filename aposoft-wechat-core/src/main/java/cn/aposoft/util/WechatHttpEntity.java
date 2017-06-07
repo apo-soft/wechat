@@ -5,12 +5,14 @@ package cn.aposoft.util;
 
 import java.io.Serializable;
 
+import cn.aposoft.wechat.MediaEntity;
+
 /**
  * 
  * @author Jann Liu
  *
  */
-public class AposoftHttpEntity implements Serializable {
+public class WechatHttpEntity implements Serializable {
 	private static final long serialVersionUID = -8466194355538828019L;
 	/**
 	 * 二进制素材格式返回值

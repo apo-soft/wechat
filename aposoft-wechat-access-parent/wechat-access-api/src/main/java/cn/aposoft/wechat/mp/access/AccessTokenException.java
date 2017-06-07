@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.mp.access;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
 
 /**
  * 读取AccessToken的异常

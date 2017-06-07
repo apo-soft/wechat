@@ -1,9 +1,11 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.remote;
+package cn.aposoft.wechat.mp;
 
 import java.io.Serializable;
+
+import cn.aposoft.wechat.WechatResult;
 
 /**
  * 微信用户验证基础响应消息
@@ -12,7 +14,7 @@ import java.io.Serializable;
  * @date 2016年10月14日
  * 
  */
-public class WechatResp implements WechatResponse, Serializable {
+public class WechatResp implements WechatResult, Serializable {
 	private static final long serialVersionUID = -5375917048488103386L;
 	private Integer errcode;
 	private String errmsg;

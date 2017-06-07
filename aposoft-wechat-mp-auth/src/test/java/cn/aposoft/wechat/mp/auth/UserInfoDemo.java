@@ -5,7 +5,7 @@ package cn.aposoft.wechat.mp.auth;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
 import cn.aposoft.wechat.mp.auth.remote.WechatUserInfoResp;
 

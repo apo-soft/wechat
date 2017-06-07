@@ -5,7 +5,7 @@ package org.aposoft.wechat.company.managemnt.department;
 
 import java.util.List;
 
-import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.mp.WechatResp;
 
 /**
  * 部门查询列表

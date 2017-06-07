@@ -3,7 +3,7 @@
  */
 package org.aposoft.wechat.company.managemnt.user;
 
-import cn.aposoft.wechat.mp.remote.WechatResponse;
+import cn.aposoft.wechat.WechatResult;
 
 /**
  * 用户响应
@@ -11,7 +11,7 @@ import cn.aposoft.wechat.mp.remote.WechatResponse;
  * @author Jann Liu
  *
  */
-public class UserResp extends User implements WechatResponse {
+public class UserResp extends User implements WechatResult {
 	private static final long serialVersionUID = -8083162090434469258L;
 	private Integer errcode;
 	private String errmsg;

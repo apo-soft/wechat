@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.company.message.remote;
 
-import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.mp.WechatResp;
 
 /**
  * 企业消息返回值

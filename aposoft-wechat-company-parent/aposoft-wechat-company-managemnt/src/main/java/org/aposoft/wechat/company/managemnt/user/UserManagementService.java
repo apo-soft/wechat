@@ -6,8 +6,8 @@ package org.aposoft.wechat.company.managemnt.user;
 import java.io.Closeable;
 import java.util.List;
 
-import cn.aposoft.util.RemoteException;
-import cn.aposoft.wechat.mp.remote.WechatResponse;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.WechatResult;
 
 /**
  * 企业号管理成员
@@ -18,13 +18,13 @@ import cn.aposoft.wechat.mp.remote.WechatResponse;
  */
 public interface UserManagementService extends Closeable {
 
-	WechatResponse create(final String accessToken, final User user) throws RemoteException;
+	WechatResult create(final String accessToken, final User user) throws RemoteException;
 
-	WechatResponse update(final String accessToken, final User user) throws RemoteException;
+	WechatResult update(final String accessToken, final User user) throws RemoteException;
 
-	WechatResponse delete(final String accessToken, final String userid) throws RemoteException;
+	WechatResult delete(final String accessToken, final String userid) throws RemoteException;
 
-	WechatResponse delete(final String accessToken, final List<String> userid) throws RemoteException;
+	WechatResult delete(final String accessToken, final List<String> userid) throws RemoteException;
 
 	UserResp get(final String accessToken, final String userid) throws RemoteException;
 

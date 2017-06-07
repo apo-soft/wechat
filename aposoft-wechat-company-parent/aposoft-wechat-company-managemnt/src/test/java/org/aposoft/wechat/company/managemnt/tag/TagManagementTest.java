@@ -19,12 +19,12 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.HttpClient;
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.WechatResult;
 import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
 import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.mp.remote.WechatResponse;
 
 /**
  * @author Jann Liu
@@ -109,7 +109,7 @@ public class TagManagementTest {
 	@Ignore
 	@Test
 	public void testDeleteTag() throws RemoteException, AccessTokenException {
-		WechatResponse resp = service.delete(accessTokenService.getAccessToken().getAccess_token(), "100");
+		WechatResult resp = service.delete(accessTokenService.getAccessToken().getAccess_token(), "100");
 		System.out.println(JSON.toJSONString(resp));
 	}
 
@@ -140,7 +140,7 @@ public class TagManagementTest {
 	@Ignore
 	@Test
 	public void testAddTagUser() throws RemoteException, AccessTokenException {
-		WechatResponse resp = service.addTagUser(accessTokenService.getAccessToken().getAccess_token(), 1,
+		WechatResult resp = service.addTagUser(accessTokenService.getAccessToken().getAccess_token(), 1,
 				Arrays.asList("liujian"), null);
 		System.out.println(JSON.toJSONString(resp));
 	}
@@ -154,7 +154,7 @@ public class TagManagementTest {
 	@Ignore
 	@Test
 	public void testDeleteTagUser() throws RemoteException, AccessTokenException {
-		WechatResponse resp = service.deleteTagUser(accessTokenService.getAccessToken().getAccess_token(), 1,
+		WechatResult resp = service.deleteTagUser(accessTokenService.getAccessToken().getAccess_token(), 1,
 				Arrays.asList("liujian"), null);
 		System.out.println(JSON.toJSONString(resp));
 	}

@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.mp.message.remote;
 
-import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.mp.WechatResp;
 
 /**
  * @author Jann Liu

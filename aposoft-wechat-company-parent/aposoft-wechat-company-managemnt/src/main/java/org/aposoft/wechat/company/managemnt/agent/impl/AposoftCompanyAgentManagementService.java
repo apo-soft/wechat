@@ -8,7 +8,7 @@ import org.aposoft.wechat.company.managemnt.agent.AgentResp;
 import org.aposoft.wechat.company.managemnt.agent.CompanyAgentManagementService;
 import org.aposoft.wechat.company.managemnt.agent.remote.AgentClient;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
 
 /**
  * 企业应用管理服务实现

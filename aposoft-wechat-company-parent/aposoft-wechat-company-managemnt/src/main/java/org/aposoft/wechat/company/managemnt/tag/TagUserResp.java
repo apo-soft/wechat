@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.aposoft.wechat.company.managemnt.user.User;
 
-import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.mp.WechatResp;
 
 /**
  * 根据标签读取成员的返回列表

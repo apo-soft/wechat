@@ -15,7 +15,8 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.mp.WechatResp;
 import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
 import cn.aposoft.wechat.mp.access.impl.FilePathAccessTokenService;
@@ -27,7 +28,6 @@ import cn.aposoft.wechat.mp.message.remote.Filter;
 import cn.aposoft.wechat.mp.message.remote.MassMessageClient;
 import cn.aposoft.wechat.mp.message.remote.MediaIdHolder;
 import cn.aposoft.wechat.mp.message.remote.MessageResp;
-import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * 鎵归噺鍙戦�佸鎴风娴嬭瘯

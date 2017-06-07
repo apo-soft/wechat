@@ -16,8 +16,8 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.HttpClient;
-import cn.aposoft.util.MediaEntity;
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.MediaEntity;
+import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;

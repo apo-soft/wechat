@@ -19,13 +19,6 @@ public interface AccessTokenManagement {
 	 */
 	AccessToken getAccessToken(AccessId accessId);
 
-	/**
-	 * 获取企业API访问授权码
-	 * 
-	 * @param accessId
-	 *            accessToken对应微信企业号应用ID
-	 * @return 访问授权码
-	 */
-	AccessToken getAccessToken(CompanyAccessId companyAccessId);
+
 
 }

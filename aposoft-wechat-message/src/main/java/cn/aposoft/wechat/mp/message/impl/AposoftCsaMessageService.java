@@ -7,14 +7,14 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
 
-import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.mp.WechatResp;
 import cn.aposoft.wechat.mp.message.CsaMessageService;
 import cn.aposoft.wechat.mp.message.remote.CsaMessageClient;
 import cn.aposoft.wechat.mp.message.template.Article;
 import cn.aposoft.wechat.mp.message.template.Music;
 import cn.aposoft.wechat.mp.message.template.Video;
-import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * 客服发送消息的实现

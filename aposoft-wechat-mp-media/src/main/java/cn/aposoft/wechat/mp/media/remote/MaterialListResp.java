@@ -5,8 +5,8 @@ package cn.aposoft.wechat.mp.media.remote;
 
 import java.util.List;
 
+import cn.aposoft.wechat.mp.WechatResp;
 import cn.aposoft.wechat.mp.media.news.MaterialItem;
-import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * 素材列表

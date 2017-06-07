@@ -3,7 +3,7 @@
  */
 package org.aposoft.wechat.company.managemnt.tag;
 
-import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.mp.WechatResp;
 
 /**
  * 标签管理响应报文

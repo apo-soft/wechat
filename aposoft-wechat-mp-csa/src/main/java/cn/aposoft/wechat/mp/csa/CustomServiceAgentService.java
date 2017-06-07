@@ -6,8 +6,8 @@ package cn.aposoft.wechat.mp.csa;
 import java.io.Closeable;
 import java.util.List;
 
-import cn.aposoft.util.RemoteException;
-import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.mp.WechatResp;
 
 /**
  * 

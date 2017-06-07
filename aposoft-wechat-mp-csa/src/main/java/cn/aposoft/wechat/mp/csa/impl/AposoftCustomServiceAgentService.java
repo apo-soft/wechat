@@ -5,12 +5,12 @@ package cn.aposoft.wechat.mp.csa.impl;
 
 import java.util.List;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.mp.WechatResp;
 import cn.aposoft.wechat.mp.csa.AgentAccount;
 import cn.aposoft.wechat.mp.csa.CustomServiceAgentService;
 import cn.aposoft.wechat.mp.csa.remote.CustomServiceAgentClient;
 import cn.aposoft.wechat.mp.csa.remote.KfListAccountResp;
-import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * 

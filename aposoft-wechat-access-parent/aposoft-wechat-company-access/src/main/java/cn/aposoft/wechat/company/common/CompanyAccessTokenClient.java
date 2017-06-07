@@ -17,7 +17,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.mp.access.AccessTokenConfig;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.remote.AccessTokenResp;

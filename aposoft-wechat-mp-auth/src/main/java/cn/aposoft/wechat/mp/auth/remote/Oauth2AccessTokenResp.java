@@ -5,8 +5,8 @@ package cn.aposoft.wechat.mp.auth.remote;
 
 import java.util.Date;
 
+import cn.aposoft.wechat.mp.WechatResp;
 import cn.aposoft.wechat.mp.auth.Oauth2Token;
-import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * 第二步：通过code换取网页授权access_token

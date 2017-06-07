@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.mp.message.impl;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.mp.message.TemplateMessageService;
 import cn.aposoft.wechat.mp.message.remote.TemplateMessageClient;
 

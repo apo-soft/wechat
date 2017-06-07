@@ -13,7 +13,8 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.mp.WechatResp;
 import cn.aposoft.wechat.mp.access.AccessToken;
 import cn.aposoft.wechat.mp.access.AccessTokenException;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
@@ -22,7 +23,6 @@ import cn.aposoft.wechat.mp.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.csa.AgentAccount;
-import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * 客服管理服务测试

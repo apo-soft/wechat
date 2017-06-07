@@ -5,8 +5,8 @@ package cn.aposoft.wechat.mp.auth.remote;
 
 import com.alibaba.fastjson.JSON;
 
+import cn.aposoft.wechat.mp.WechatResp;
 import cn.aposoft.wechat.mp.auth.Oauth2Auth;
-import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * @author Jann Liu

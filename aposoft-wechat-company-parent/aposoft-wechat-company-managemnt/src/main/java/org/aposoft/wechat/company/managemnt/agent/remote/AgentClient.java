@@ -12,8 +12,8 @@ import org.aposoft.wechat.company.managemnt.agent.AgentResp;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
+import cn.aposoft.wechat.RemoteException;
 
 /**
  * 企业应用管理

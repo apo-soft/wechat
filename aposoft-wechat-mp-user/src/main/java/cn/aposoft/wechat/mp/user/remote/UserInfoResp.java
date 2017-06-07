@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.mp.user.remote;
 
-import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.mp.WechatResp;
 
 /**
  * 微信用户基本信息

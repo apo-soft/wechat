@@ -11,13 +11,13 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
-import cn.aposoft.util.AposoftHttpEntity;
+import cn.aposoft.util.WechatHttpEntity;
 import cn.aposoft.util.HttpClient;
-import cn.aposoft.util.MediaEntity;
-import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
+import cn.aposoft.wechat.MediaEntity;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.mp.WechatResp;
 import cn.aposoft.wechat.mp.media.news.NewsItem;
-import cn.aposoft.wechat.mp.remote.WechatResp;
 
 /**
  * @author Jann Liu
@@ -245,7 +245,7 @@ public class MaterialClient extends MediaClient {
 		}
 		HttpPost post = HttpClient.jsonPost(getMaterialUrl(accessToken),
 				new JSONObject().fluentPut("media_id", media_id));
-		AposoftHttpEntity entity = HttpClient.executeEntity(post, httpClient);
+		WechatHttpEntity entity = HttpClient.executeEntity(post, httpClient);
 		if (ContentType.APPLICATION_JSON.getMimeType().equals(entity.getMimeType())) {
 			return JSON.parseObject(entity.getText(), MaterialResp.class);
 		} else {

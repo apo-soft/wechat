@@ -5,7 +5,7 @@ package cn.aposoft.wechat.mp.server.remote;
 
 import java.util.List;
 
-import cn.aposoft.wechat.mp.remote.WechatResp;
+import cn.aposoft.wechat.mp.WechatResp;
 
 /**
  * 服务器IP响应报文

@@ -5,7 +5,7 @@ package cn.aposoft.wechat.company.message;
 
 import java.io.Closeable;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.company.message.remote.MessageResp;
 import cn.aposoft.wechat.mp.media.news.NewsContent;
 import cn.aposoft.wechat.mp.message.remote.MediaIdHolder;

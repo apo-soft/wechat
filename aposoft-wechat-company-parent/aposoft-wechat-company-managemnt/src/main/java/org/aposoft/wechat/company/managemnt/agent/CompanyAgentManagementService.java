@@ -2,7 +2,7 @@ package org.aposoft.wechat.company.managemnt.agent;
 
 import java.io.Closeable;
 
-import cn.aposoft.util.RemoteException;
+import cn.aposoft.wechat.RemoteException;
 
 /**
  * 企业应用管理

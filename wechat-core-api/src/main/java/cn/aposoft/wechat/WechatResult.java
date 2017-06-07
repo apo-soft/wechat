@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.remote;
+package cn.aposoft.wechat;
 
 import java.io.Serializable;
 
@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @date 2016年10月14日
  * 
  */
-public interface WechatResponse extends Serializable {
+public interface WechatResult extends Serializable {
 	/**
 	 * 
 	 * @return 微信返回值错误编码

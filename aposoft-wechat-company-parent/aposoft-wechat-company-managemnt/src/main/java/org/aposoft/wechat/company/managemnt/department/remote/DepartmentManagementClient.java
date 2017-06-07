@@ -13,9 +13,9 @@ import org.aposoft.wechat.company.managemnt.department.DepartmentResp;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.RemoteException;
 import cn.aposoft.util.StringUtil;
-import cn.aposoft.wechat.mp.remote.WechatResponse;
+import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.WechatResult;
 
 /**
  * 部门管理调用客户端
@@ -97,7 +97,7 @@ public class DepartmentManagementClient implements Closeable {
 	 * @return 删除结果
 	 * @throws RemoteException
 	 */
-	public WechatResponse delete(final String accessToken, final String id) throws RemoteException {
+	public WechatResult delete(final String accessToken, final String id) throws RemoteException {
 		if (StringUtil.isBlank(accessToken, id)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
