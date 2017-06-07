@@ -1,6 +1,13 @@
 package cn.aposoft.wechat.signature;
 
 public interface SignatureValidator {
+	/**
+	 * 设置签名验证的配置项
+	 * 
+	 * @param config
+	 *            {@link SignatureConfig}
+	 */
+	void setSignatureConfig(SignatureConfig config);
 
 	/**
 	 * 验证消息真实性
