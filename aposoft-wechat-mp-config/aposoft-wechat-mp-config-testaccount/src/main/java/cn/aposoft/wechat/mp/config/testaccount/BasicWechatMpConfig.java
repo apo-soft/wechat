@@ -4,6 +4,7 @@ import cn.aposoft.wechat.mp.access.AccountType;
 import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 public class BasicWechatMpConfig implements WechatMpConfig {
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public String getUserId() {
