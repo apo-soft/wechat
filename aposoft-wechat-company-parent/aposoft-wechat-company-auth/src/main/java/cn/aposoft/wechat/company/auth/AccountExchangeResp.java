@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.company.auth;
 
-import cn.aposoft.wechat.mp.WechatResp;
+import cn.aposoft.wechat.WechatResp;
 
 /**
  * 账号转换相应

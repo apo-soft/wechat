@@ -9,7 +9,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.StringUtil;
 import cn.aposoft.wechat.RemoteException;
-import cn.aposoft.wechat.mp.WechatResp;
+import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.mp.message.CsaMessageService;
 import cn.aposoft.wechat.mp.message.remote.CsaMessageClient;
 import cn.aposoft.wechat.mp.message.template.Article;

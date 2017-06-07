@@ -6,7 +6,7 @@ package org.aposoft.wechat.company.managemnt.user;
 import java.io.Closeable;
 
 import cn.aposoft.wechat.RemoteException;
-import cn.aposoft.wechat.mp.WechatResp;
+import cn.aposoft.wechat.WechatResp;
 
 /**
  * 用户管理服务

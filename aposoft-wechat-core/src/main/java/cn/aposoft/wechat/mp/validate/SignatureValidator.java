@@ -5,7 +5,7 @@ package cn.aposoft.wechat.mp.validate;
 
 import org.apache.commons.lang.StringUtils;
 
-import cn.aposoft.wechat.mp.SignatureConfig;
+import cn.aposoft.wechat.SignatureConfig;
 
 /**
  * 微信服务器签名有效性验证

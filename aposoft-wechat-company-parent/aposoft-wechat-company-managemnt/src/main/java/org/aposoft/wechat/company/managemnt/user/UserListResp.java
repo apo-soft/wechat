@@ -3,7 +3,7 @@
  */
 package org.aposoft.wechat.company.managemnt.user;
 
-import cn.aposoft.wechat.mp.WechatResp;
+import cn.aposoft.wechat.WechatResp;
 
 /**
  * 用户列表响应

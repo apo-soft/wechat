@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.aposoft.wechat.company.managemnt.tag.impl.BasicTag;
 
-import cn.aposoft.wechat.mp.WechatResp;
+import cn.aposoft.wechat.WechatResp;
 
 /**
  * 标签列表响应

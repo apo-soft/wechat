@@ -5,7 +5,7 @@ package cn.aposoft.wechat.mp.auth.remote;
 
 import java.util.Date;
 
-import cn.aposoft.wechat.mp.WechatResp;
+import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.mp.auth.Oauth2Token;
 
 /**

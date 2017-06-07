@@ -3,7 +3,7 @@
  */
 package org.aposoft.wechat.company.managemnt.agent;
 
-import cn.aposoft.wechat.mp.WechatResp;
+import cn.aposoft.wechat.WechatResp;
 
 /**
  * 读取的企业应用列表

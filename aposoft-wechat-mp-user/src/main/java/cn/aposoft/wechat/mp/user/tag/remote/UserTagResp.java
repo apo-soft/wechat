@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.mp.user.tag.remote;
 
-import cn.aposoft.wechat.mp.WechatResp;
+import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.mp.user.tag.UserTag;
 
 /**

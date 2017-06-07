@@ -22,7 +22,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.MediaEntity;
 import cn.aposoft.wechat.RemoteException;
-import cn.aposoft.wechat.mp.WechatResp;
+import cn.aposoft.wechat.WechatResp;
 
 /**
  * 

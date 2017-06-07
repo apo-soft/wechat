@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.mp.access.remote;
 
-import cn.aposoft.wechat.mp.WechatResp;
+import cn.aposoft.wechat.WechatResp;
 
 /**
  * 

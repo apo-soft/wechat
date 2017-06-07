@@ -7,7 +7,7 @@ import java.io.Closeable;
 import java.util.List;
 
 import cn.aposoft.wechat.RemoteException;
-import cn.aposoft.wechat.mp.WechatResp;
+import cn.aposoft.wechat.WechatResp;
 
 /**
  * 

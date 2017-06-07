@@ -4,7 +4,7 @@
 package cn.aposoft.wechat.mp.media.remote;
 
 import cn.aposoft.wechat.MediaEntity;
-import cn.aposoft.wechat.mp.WechatResp;
+import cn.aposoft.wechat.WechatResp;
 
 /**
  * 素材内容响应对象
