@@ -1,4 +1,4 @@
-package cn.aposoft.wechat.mp.crypt.impl;
+package cn.aposoft.wechat.crypt;
 
 import cn.aposoft.wechat.CryptService;
 import cn.aposoft.wechat.codec.aes.AesException;

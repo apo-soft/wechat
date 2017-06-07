@@ -12,6 +12,11 @@ import cn.aposoft.wechat.access.AccountType;
  * @since 1.0
  */
 public interface UrlConfig {
+
+	public static enum Method {
+		GET, POST
+	}
+
 	/**
 	 * 
 	 * @return 账户类型 {@link AccountType}
@@ -28,7 +33,7 @@ public interface UrlConfig {
 	/**
 	 * @return {@code GET} or {@code POST}
 	 */
-	String getMethod();
+	Method getMethod();
 
 	/**
 	 * 

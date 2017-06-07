@@ -72,7 +72,8 @@ public abstract class AbstractAccessTokenService implements AccessTokenService {
 	}
 
 	/**
-	 *
+	 * 是否临近过期
+	 * 
 	 * @param accessToken
 	 * @return 等同于是否需要异步刷新
 	 */

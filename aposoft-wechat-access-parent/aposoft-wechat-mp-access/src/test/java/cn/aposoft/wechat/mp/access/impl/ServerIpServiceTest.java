@@ -4,6 +4,8 @@
 package cn.aposoft.wechat.mp.access.impl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -14,14 +16,20 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.AccessTokenException;
+import cn.aposoft.wechat.access.AccountType;
+import cn.aposoft.wechat.access.address.AddressConfig;
+import cn.aposoft.wechat.access.address.ParamConfig;
+import cn.aposoft.wechat.access.address.UrlConfig;
+import cn.aposoft.wechat.access.impl.DefaultAccessTokenClient;
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.server.ServerIpService;
 import cn.aposoft.wechat.mp.server.impl.AposoftServerIpService;
 
 /**
+ * 服务器IP测试
+ * 
  * @author Jann Liu
  *
  */
@@ -36,8 +44,56 @@ public class ServerIpServiceTest {
 		if (!HttpClient.isLogEnabled()) {
 			HttpClient.setLogEnabled(true);
 		}
-		accessTokenClient = new AposoftMpAccessTokenClient();
-		accessTokenService = new FilePathAccessTokenService("../"+FilePathAccessTokenService.DEFAULT_FILE_PATH,
+		accessTokenClient = new DefaultAccessTokenClient();
+		AddressConfig addressConfig = new AddressConfig() {
+
+			@Override
+			public UrlConfig getUrlConfig(AccountType accountType) {
+				return new UrlConfig() {
+					@Override
+					public AccountType getAccountType() {
+						return AccountType.MP;
+					}
+
+					@Override
+					public String getBusiness() {
+						return "ACCESS_TOKEN";
+					}
+
+					@Override
+					public Method getMethod() {
+						return Method.GET;
+					}
+
+					@Override
+					public String getUrl() {
+						return "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&";
+					}
+				};
+			}
+
+			@Override
+			public List<ParamConfig> getParamConfig(AccountType accountType) {
+				List<ParamConfig> paramConfig = new ArrayList<>();
+				paramConfig.add(new ParamConfig() {
+
+					@Override
+					public String getCode() {
+						return "access_token_access_id";
+					}
+
+					@Override
+					public String getName() {
+						return "appid";
+					}
+
+				});
+				return paramConfig;
+			}
+
+		};
+		accessTokenClient.setAddressConfig(addressConfig);
+		accessTokenService = new FilePathAccessTokenService("../" + FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
 				BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig());
 	}
@@ -54,7 +110,7 @@ public class ServerIpServiceTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Test
 	public void testGetIp() throws RemoteException, AccessTokenException {
