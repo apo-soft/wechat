@@ -5,15 +5,14 @@ package cn.aposoft.wechat.signature;
 
 import org.apache.commons.lang.StringUtils;
 
-import cn.aposoft.wechat.signature.SignatureConfig;
 import cn.aposoft.wechat.echo.EchoAttributes;
 import cn.aposoft.wechat.echo.EchoValidator;
-import cn.aposoft.wechat.signature.SignatureAttributes;
-import cn.aposoft.wechat.signature.SignatureValidator;
 
 /**
  * 微信服务器签名有效性验证
  * 
+ * @see EchoValidator
+ * @see SignatureValidator
  * @author Jann Liu
  * @date 2016年10月16日
  * 
@@ -77,5 +76,16 @@ public class AposoftSignatureEchoValidator implements SignatureValidator, EchoVa
 		if (echoAttributes == null)
 			return false;
 		return StringUtils.isNotBlank(echoAttributes.getEchostr());
+	}
+
+	/**
+	 * @see SignatureConfig
+	 * @see
+	 */
+	@Override
+	public void setSignatureConfig(SignatureConfig config) {
+		if (config != null) {
+			this.config = config;
+		}
 	}
 }
