@@ -1,6 +1,6 @@
 package cn.aposoft.wechat.codec.aes;
 
-import cn.aposoft.wechat.codec.CodecException;
+import cn.aposoft.wechat.CodecException;
 
 /**
  * used for aec crypt error

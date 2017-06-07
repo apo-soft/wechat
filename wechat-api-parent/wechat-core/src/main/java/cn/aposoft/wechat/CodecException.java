@@ -1,7 +1,7 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.codec;
+package cn.aposoft.wechat;
 
 /**
  * Used as the basic Exception of wechat codec

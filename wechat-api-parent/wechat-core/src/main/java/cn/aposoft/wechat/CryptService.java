@@ -1,18 +1,6 @@
-package cn.aposoft.wechat.mp.crypt.impl;
+package cn.aposoft.wechat;
 
-import cn.aposoft.wechat.CryptService;
-import cn.aposoft.wechat.codec.aes.AesException;
-import cn.aposoft.wechat.codec.aes.WXBizMsgCrypt;
-import cn.aposoft.wechat.signature.SignatureConfig;
-
-public class BasicCryptService implements CryptService {
-
-	private final WXBizMsgCrypt crypt;
-
-	public BasicCryptService(SignatureConfig config) throws AesException {
-		crypt = new WXBizMsgCrypt(config.getToken(), config.getEncodingAESKey(), config.getAppId());
-	}
-
+public interface CryptService {
 	/**
 	 * 将公众平台回复用户的消息加密打包.
 	 * <ol>
@@ -30,12 +18,10 @@ public class BasicCryptService implements CryptService {
 	 * 
 	 * @return 加密后的可以直接回复用户的密文，包括msg_signature, timestamp, nonce,
 	 *         encrypt的xml格式的字符串
-	 * @throws AesException
+	 * @throws CodecException
 	 *             执行失败，请查看该异常的错误码和具体的错误信息
 	 */
-	public String encryptMsg(String replyMsg, String timestamp, String nonce) throws AesException {
-		return crypt.encryptMsg(replyMsg, timestamp, nonce);
-	}
+	public String encryptMsg(String replyMsg, String timestamp, String nonce) throws CodecException;
 
 	/**
 	 * 检验消息的真实性，并且获取解密后的明文.
@@ -55,12 +41,9 @@ public class BasicCryptService implements CryptService {
 	 *            密文，对应POST请求的数据
 	 * 
 	 * @return 解密后的原文
-	 * @throws AesException
+	 * @throws CodecException
 	 *             执行失败，请查看该异常的错误码和具体的错误信息
 	 */
-	@Override
-	public String decryptMsg(String msgSignature, String timestamp, String nonce, String postData) throws AesException {
-		return crypt.decryptMsg(msgSignature, timestamp, nonce, postData);
-	}
-
+	public String decryptMsg(String msgSignature, String timestamp, String nonce, String postData)
+			throws CodecException;
 }

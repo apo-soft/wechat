@@ -22,11 +22,12 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.constant.Lexical;
 import cn.aposoft.util.XmlUtils;
+import cn.aposoft.wechat.CodecException;
+import cn.aposoft.wechat.CryptService;
 import cn.aposoft.wechat.codec.EncryptType;
 import cn.aposoft.wechat.codec.aes.AesException;
 import cn.aposoft.wechat.echo.EchoValidator;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
-import cn.aposoft.wechat.mp.crypt.CryptService;
 import cn.aposoft.wechat.mp.crypt.impl.BasicCryptService;
 import cn.aposoft.wechat.mp.message.MessageRequestParams;
 import cn.aposoft.wechat.mp.message.MessageService;
@@ -147,7 +148,7 @@ public class MessageServlet extends HttpServlet {
 	 *             加密失败抛出此异常
 	 */
 	private String encode(final MessageRequestParams messageParams, final String plainResponseText)
-			throws AesException {
+			throws CodecException {
 		String replyMsg = plainResponseText;
 		messageLogger.info(replyMsg);
 		// 条件加密
@@ -162,7 +163,7 @@ public class MessageServlet extends HttpServlet {
 	}
 
 	// optional decrypt the request text
-	private String decode(MessageRequestParams messageParams, String postData) throws AesException {
+	private String decode(MessageRequestParams messageParams, String postData) throws CodecException {
 		String origin = postData;
 		messageLogger.info(origin);
 		if (EncryptType.AES.getType().equals(messageParams.getEncrypt_type())) {
