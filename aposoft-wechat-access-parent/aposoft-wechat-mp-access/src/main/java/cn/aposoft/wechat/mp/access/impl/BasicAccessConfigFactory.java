@@ -13,7 +13,7 @@ import cn.aposoft.wechat.mp.config.WechatMpConfig;
  * AccessTokenConfigFactory 默认实现
  * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
 public class BasicAccessConfigFactory implements AccessConfigFactory {
 
@@ -50,9 +50,9 @@ public class BasicAccessConfigFactory implements AccessConfigFactory {
 
 			@Override
 			public int getHoldonThreshold() {
-				// TODO Auto-generated method stub
 				return 0;
 			}
+
 		};
 		return factory;
 	}

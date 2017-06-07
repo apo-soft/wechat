@@ -1,7 +1,9 @@
 package cn.aposoft.wechat.mp.access.remote;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
@@ -15,18 +17,28 @@ import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.AccessTokenConfig;
+import cn.aposoft.wechat.access.AccountType;
+import cn.aposoft.wechat.access.UrlConfig;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.access.remote.AccessTokenResp;
 
 public class AposoftMpAccessTokenClient implements AccessTokenClient {
 	final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
-
+	private volatile Map<AccountType, UrlConfig> urlConfig;
 	/**
 	 * 微信ACCESS_TOKEN读取URL
 	 * 
 	 * {@link https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183&token=&lang=zh_CN}
 	 */
 	public static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?";
+
+	/**
+	 * 
+	 */
+	@Override
+	public void setUrlConfig(Map<AccountType, UrlConfig> urlConfig) {
+		this.urlConfig = Collections.unmodifiableMap(urlConfig);
+	}
 
 	/**
 	 * 向微信服务器请求，返回的AccessToken响应结果 客户端不区分微信服务器返回的结果内容是否存在错误,对错误的处理需要在服务层实现
@@ -50,7 +62,7 @@ public class AposoftMpAccessTokenClient implements AccessTokenClient {
 		params.add(new BasicNameValuePair("appid", accessTokenReq.getId()));
 		params.add(new BasicNameValuePair("secret", accessTokenReq.getSecret()));
 		String paramsUrl = URLEncodedUtils.format(params, Lexical.UTF8);
-		final String requestUrl = ACCESS_TOKEN_URL + paramsUrl;
+		final String requestUrl = urlConfig.get(accessTokenReq).getUrl() + paramsUrl;
 		return requestUrl;
 	}
 
