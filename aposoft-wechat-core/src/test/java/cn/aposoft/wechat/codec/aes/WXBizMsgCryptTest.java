@@ -1,7 +1,7 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.codec.aes;
+package cn.aposoft.wechat.codec.aes;
 
 import cn.aposoft.wechat.codec.aes.AesException;
 import cn.aposoft.wechat.codec.aes.WXBizMsgCrypt;

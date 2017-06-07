@@ -1,4 +1,4 @@
-package cn.aposoft.wechat.mp;
+package cn.aposoft.wechat.digest;
 
 import org.junit.Test;
 

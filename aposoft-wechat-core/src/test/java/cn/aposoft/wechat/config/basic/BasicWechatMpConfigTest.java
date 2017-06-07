@@ -1,4 +1,4 @@
-package cn.aposoft.wechat.mp.config.basic;
+package cn.aposoft.wechat.config.basic;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
