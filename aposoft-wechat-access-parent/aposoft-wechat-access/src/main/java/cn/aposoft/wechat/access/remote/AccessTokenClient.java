@@ -4,12 +4,10 @@
 package cn.aposoft.wechat.access.remote;
 
 import java.io.Closeable;
-import java.util.Map;
 
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.AccessTokenConfig;
-import cn.aposoft.wechat.access.AccountType;
-import cn.aposoft.wechat.access.address.UrlConfig;
+import cn.aposoft.wechat.access.address.AddressConfig;
 
 /**
  * Access Token 客户端
@@ -22,9 +20,10 @@ public interface AccessTokenClient extends Closeable {
 	/**
 	 * 设置访问地址的Url信息
 	 * 
-	 * @param urlConfig
+	 * @param addressConfig
+	 *            地址配置信息
 	 */
-	void setUrlConfig(Map<AccountType, UrlConfig> urlConfig);
+	void setAddressConfig(AddressConfig addressConfig);
 
 	/**
 	 * 读取远程AccessToken

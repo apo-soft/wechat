@@ -1,9 +1,7 @@
 package cn.aposoft.wechat.mp.access.remote;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
@@ -17,14 +15,14 @@ import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.AccessTokenConfig;
-import cn.aposoft.wechat.access.AccountType;
+import cn.aposoft.wechat.access.address.AddressConfig;
 import cn.aposoft.wechat.access.address.UrlConfig;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.access.remote.AccessTokenResp;
 
 public class AposoftMpAccessTokenClient implements AccessTokenClient {
 	final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
-	private volatile Map<AccountType, UrlConfig> urlConfig;
+	private volatile AddressConfig addressConfig;
 	/**
 	 * 微信ACCESS_TOKEN读取URL
 	 * 
@@ -36,8 +34,8 @@ public class AposoftMpAccessTokenClient implements AccessTokenClient {
 	 * 
 	 */
 	@Override
-	public void setUrlConfig(Map<AccountType, UrlConfig> urlConfig) {
-		this.urlConfig = Collections.unmodifiableMap(urlConfig);
+	public void setAddressConfig(AddressConfig addressConfig) {
+		this.addressConfig = addressConfig;
 	}
 
 	/**
@@ -57,12 +55,13 @@ public class AposoftMpAccessTokenClient implements AccessTokenClient {
 	// 封装对AccessToken的动态拼接
 	// https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183&token=&lang=zh_CN
 	private String getAccessTokenUrl(AccessTokenConfig accessTokenReq) {
+		UrlConfig urlConfig = addressConfig.getUrlConfig(accessTokenReq.getAccountType());
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("grant_type", "client_credential"));
-		params.add(new BasicNameValuePair("appid", accessTokenReq.getId()));
+		params.add(new BasicNameValuePair(/* TODO */"", accessTokenReq.getId()));
 		params.add(new BasicNameValuePair("secret", accessTokenReq.getSecret()));
 		String paramsUrl = URLEncodedUtils.format(params, Lexical.UTF8);
-		final String requestUrl = urlConfig.get(accessTokenReq).getUrl() + paramsUrl;
+		final String requestUrl = urlConfig.getUrl() + paramsUrl;
 		return requestUrl;
 	}
 

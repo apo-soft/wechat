@@ -19,6 +19,7 @@ import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.AccessTokenConfig;
+import cn.aposoft.wechat.access.address.AddressConfig;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.access.remote.AccessTokenResp;
 
@@ -38,6 +39,13 @@ public class CompanyAccessTokenClient implements AccessTokenClient, Closeable {
 	 * {@link http://qydev.weixin.qq.com/wiki/index.php?title=%E4%B8%BB%E5%8A%A8%E8%B0%83%E7%94%A8}
 	 */
 	public static final String COMPANY_ACCESS_TOKEN_URL = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?";
+
+	private volatile AddressConfig addressConfig;
+
+	@Override
+	public void setAddressConfig(AddressConfig addressConfig) {
+		this.addressConfig = addressConfig;
+	}
 
 	/**
 	 * 向微信服务器请求，返回的AccessToken响应结果 客户端不区分微信服务器返回的结果内容是否存在错误,对错误的处理需要在服务层实现
@@ -66,9 +74,9 @@ public class CompanyAccessTokenClient implements AccessTokenClient, Closeable {
 	private String getAccessTokenUrl(AccessTokenConfig accessTokenReq) {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("corpid", accessTokenReq.getId()));
-		params.add(new BasicNameValuePair("corpsecret", accessTokenReq.getSecret()));
+		params.add(new BasicNameValuePair(/* TODO */"", accessTokenReq.getSecret()));
 		String paramsUrl = URLEncodedUtils.format(params, StandardCharsets.UTF_8);
-		final String requestUrl = COMPANY_ACCESS_TOKEN_URL + paramsUrl;
+		final String requestUrl = addressConfig.getUrlConfig(accessTokenReq.getAccountType()).getUrl() + paramsUrl;
 		return requestUrl;
 	}
 
