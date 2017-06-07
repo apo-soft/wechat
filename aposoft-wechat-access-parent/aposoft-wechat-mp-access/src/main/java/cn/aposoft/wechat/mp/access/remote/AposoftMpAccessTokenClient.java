@@ -18,7 +18,7 @@ import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.AccessTokenConfig;
 import cn.aposoft.wechat.access.AccountType;
-import cn.aposoft.wechat.access.UrlConfig;
+import cn.aposoft.wechat.access.address.UrlConfig;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.access.remote.AccessTokenResp;
 

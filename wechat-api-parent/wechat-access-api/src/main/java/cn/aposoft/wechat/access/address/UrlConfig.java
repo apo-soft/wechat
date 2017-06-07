@@ -1,7 +1,9 @@
 /**
  * 
  */
-package cn.aposoft.wechat.access;
+package cn.aposoft.wechat.access.address;
+
+import cn.aposoft.wechat.access.AccountType;
 
 /**
  * 访问Url配置项
@@ -17,10 +19,16 @@ public interface UrlConfig {
 	AccountType getAccountType();
 
 	/**
+	 * OPTIONAL
 	 * 
 	 * @return 业务编码
 	 */
 	String getBusiness();
+
+	/**
+	 * @return {@code GET} or {@code POST}
+	 */
+	String getMethod();
 
 	/**
 	 * 
