@@ -19,7 +19,7 @@ import cn.aposoft.wechat.signature.SignatureConfig;
  * @date 2016年10月12日
  * @since 1.0
  */
-public interface WechatMpConfig extends AccountTypeAware, Serializable {
+public interface WechatAccountConfig extends AccountTypeAware, Serializable {
 	/**
 	 * 
 	 * @return 账户类型
@@ -30,7 +30,7 @@ public interface WechatMpConfig extends AccountTypeAware, Serializable {
 	 * 用户ID:开发者微信ID <br/>
 	 * gh_0f504b63df22
 	 */
-	String getUserId();
+	String getId();
 
 	/**
 	 * 微信公众号APPID <br/>

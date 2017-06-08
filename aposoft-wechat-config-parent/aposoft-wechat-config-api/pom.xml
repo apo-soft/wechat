@@ -8,7 +8,7 @@
 		<artifactId>aposoft-wechat-config-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>aposoft-wechat-mp-config-api</artifactId>
+	<artifactId>aposoft-wechat-config-api</artifactId>
 	<name>aposoft-wechat-mp-config-api</name>
 	<url>http://maven.apache.org</url>
 	<properties>
