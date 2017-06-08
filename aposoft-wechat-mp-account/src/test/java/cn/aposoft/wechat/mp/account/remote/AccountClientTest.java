@@ -14,10 +14,10 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.AccessTokenException;
+import cn.aposoft.wechat.access.impl.DefaultAccessTokenClient;
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
-import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 
 /**
@@ -36,9 +36,10 @@ public class AccountClientTest {
 		if (!HttpClient.isLogEnabled()) {
 			HttpClient.setLogEnabled(true);
 		}
-		accessTokenClient = new AposoftMpAccessTokenClient();
+		accessTokenClient = new DefaultAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient, BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig());
+				accessTokenClient,
+				BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig());
 		System.out.println(JSON.toJSONString(accessTokenService.getAccessToken()));
 	}
 
@@ -54,7 +55,7 @@ public class AccountClientTest {
 	 * 
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Test
 	public void testGetSceneAccountQrcode() throws RemoteException, AccessTokenException {
@@ -66,7 +67,7 @@ public class AccountClientTest {
 	 * {"ticket":"gQFC8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyc2d0cEZsZXplYjQxMDAwMHcwM18AAgTGLyVZAwQAAAAA","url":"http://weixin.qq.com/q/02sgtpFlezeb410000w03_"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Test
 	public void testGetAccountQrcode() throws RemoteException, AccessTokenException {
@@ -79,7 +80,7 @@ public class AccountClientTest {
 	 * "url":"http://weixin.qq.com/q/02v_8sFmezeb410000w07i"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Test
 	public void testGetAccountQrcodeStr() throws RemoteException, AccessTokenException {

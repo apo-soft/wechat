@@ -31,7 +31,6 @@ import cn.aposoft.wechat.access.remote.AccessTokenResp;
  */
 public class DefaultAccessTokenClient implements AccessTokenClient {
 	//
-
 	final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
 	private volatile AddressConfig addressConfig;
 
@@ -78,7 +77,9 @@ public class DefaultAccessTokenClient implements AccessTokenClient {
 		params.add(new BasicNameValuePair(AddressUtil
 				.getParamConfig("access_token_access_id", accessTokenReq.getAccountType(), addressConfig).getName(),
 				accessTokenReq.getId()));
-		params.add(new BasicNameValuePair("secret", accessTokenReq.getSecret()));
+		params.add(new BasicNameValuePair(AddressUtil
+				.getParamConfig("access_token_access_secret", accessTokenReq.getAccountType(), addressConfig).getName(),
+				accessTokenReq.getSecret()));
 		String paramsUrl = URLEncodedUtils.format(params, StandardCharsets.UTF_8);
 		final String requestUrl = addressConfig.getUrlConfig(accessTokenReq.getAccountType()).getUrl() + paramsUrl;
 		return requestUrl;

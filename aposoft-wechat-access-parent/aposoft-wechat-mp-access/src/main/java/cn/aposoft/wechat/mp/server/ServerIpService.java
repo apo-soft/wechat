@@ -12,7 +12,7 @@ import cn.aposoft.wechat.RemoteException;
  * 读取服务器IP列表
  * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
 public interface ServerIpService extends Closeable {
 	/**

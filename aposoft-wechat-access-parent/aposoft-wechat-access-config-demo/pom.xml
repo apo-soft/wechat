@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>cn.aposoft.wechat</groupId>
-		<artifactId>aposoft-wechat-company-parent</artifactId>
+		<artifactId>aposoft-wechat-access-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>aposoft-wechat-company-auth</artifactId>
-	<name>aposoft-wechat-company-auth</name>
+	<artifactId>aposoft-wechat-access-config-demo</artifactId>
+	<name>aposoft-wechat-access-config-demo</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,25 +17,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-core</artifactId>
+			<artifactId>aposoft-wechat-access</artifactId>
 			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-log4j2</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-company-access</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-access-config-demo</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

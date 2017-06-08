@@ -11,6 +11,7 @@
 	<artifactId>aposoft-wechat-access</artifactId>
 	<name>aposoft-wechat-access</name>
 	<url>http://maven.apache.org</url>
+	<description>Access包实现的是全部业务都需要的AccessToken的访问实现，或是公共的业务技术中间件，包括access_token加密</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -30,12 +31,10 @@
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<description>common包实现的是全部业务都需要，或是公共的业务技术中间件，包括access_token,加密</description>
 </project>

@@ -18,11 +18,11 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.access.AccessToken;
+import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
-import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 
 /**
@@ -38,7 +38,7 @@ public class UserClientTest {
 	@BeforeClass
 	public static void init() throws IOException, AccessTokenException {
 		userClient = new UserClient();
-		accessTokenClient = new AposoftMpAccessTokenClient();
+		accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
 				BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig());
@@ -52,12 +52,14 @@ public class UserClientTest {
 		userClient.close();
 	}
 
+	@Ignore
 	@Test
 	public void testListUser() throws RemoteException, AccessTokenException {
 		UserResp resp = userClient.getUser(accessTokenService.getAccessToken().getAccess_token());
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testListUserFromNextOpenId() throws RemoteException, AccessTokenException {
 		UserResp resp = userClient.getUser(accessTokenService.getAccessToken().getAccess_token(),
@@ -65,6 +67,7 @@ public class UserClientTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testListUserFromLastNextOpenId() throws RemoteException, AccessTokenException {
 		UserResp resp = userClient.getUser(accessTokenService.getAccessToken().getAccess_token(),
@@ -72,6 +75,7 @@ public class UserClientTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testGetUserInfo() throws RemoteException, AccessTokenException {
 		UserInfoResp resp = userClient.getUserInfo(accessTokenService.getAccessToken().getAccess_token(),
@@ -79,6 +83,7 @@ public class UserClientTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testGetUserInfoList() throws RemoteException, AccessTokenException {
 		List<UserInfoReq> userInfoList = new ArrayList<>();
@@ -99,6 +104,7 @@ public class UserClientTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testGetUserInfoForRemark() throws RemoteException, AccessTokenException {
 		UserInfoResp resp = userClient.getUserInfo(accessTokenService.getAccessToken().getAccess_token(),
@@ -106,12 +112,14 @@ public class UserClientTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testGetUserBlackList() throws RemoteException, AccessTokenException {
 		BlackListResp resp = userClient.getUserBlackList(accessTokenService.getAccessToken().getAccess_token(), "");
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testGetUserBlackListSeq() throws RemoteException, AccessTokenException {
 		BlackListResp resp = userClient.getUserBlackList(accessTokenService.getAccessToken().getAccess_token(),

@@ -17,11 +17,11 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.access.AccessToken;
+import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
-import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.user.tag.UserTag;
 import cn.aposoft.wechat.mp.user.tag.remote.BatchTaggingReq;
@@ -41,7 +41,7 @@ public class UserTagClientTest {
 	@BeforeClass
 	public static void init() throws IOException, AccessTokenException {
 		userTagClient = new UserTagClient();
-		accessTokenClient = new AposoftMpAccessTokenClient();
+		accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
 				BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig());
@@ -64,6 +64,7 @@ public class UserTagClientTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testListTags() throws RemoteException, AccessTokenException {
 		WechatResp resp = userTagClient.list(//
@@ -85,7 +86,7 @@ public class UserTagClientTest {
 	 * second time: {"errcode":0,"errmsg":"ok"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -101,7 +102,7 @@ public class UserTagClientTest {
 	 * second time: {"errcode":0,"errmsg":"ok"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -114,6 +115,7 @@ public class UserTagClientTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testBatchTagging() throws RemoteException, AccessTokenException {
 		List<String> userInfoList = new ArrayList<>();
@@ -127,6 +129,7 @@ public class UserTagClientTest {
 		System.out.println(JSON.toJSONString(resp));
 	}
 
+	@Ignore
 	@Test
 	public void testBatchTaggingSelf() throws RemoteException, AccessTokenException {
 		List<String> userInfoList = new ArrayList<>();
@@ -164,6 +167,7 @@ public class UserTagClientTest {
 	 * @throws RemoteException
 	 * @throws AccessTokenException
 	 */
+	@Ignore
 	@Test
 	public void testListUserTags() throws RemoteException, AccessTokenException {
 		UserTagsIdListResp resp = userTagClient.listUserTags(accessTokenService.getAccessToken().getAccess_token(),

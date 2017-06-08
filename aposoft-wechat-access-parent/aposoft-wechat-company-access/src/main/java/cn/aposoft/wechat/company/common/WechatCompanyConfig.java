@@ -52,6 +52,7 @@ public class WechatCompanyConfig implements Serializable {
 
 	public AccessTokenConfig toAccessTokenConfig() {
 		return new AccessTokenConfig() {
+			private static final long serialVersionUID = 4144133303792219335L;
 
 			@Override
 			public String getId() {

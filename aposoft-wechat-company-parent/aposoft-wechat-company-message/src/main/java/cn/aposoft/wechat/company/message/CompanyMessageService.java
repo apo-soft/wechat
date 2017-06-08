@@ -16,7 +16,7 @@ import cn.aposoft.wechat.mp.message.template.Video;
  * 企业消息服务
  * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
 public interface CompanyMessageService extends Closeable {
 	/**

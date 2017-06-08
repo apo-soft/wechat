@@ -17,9 +17,10 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
+import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
 
 /**
@@ -28,7 +29,7 @@ import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
  */
 public class CompanyAgentManagementServiceTest {
 	static final CompanyAgentManagementService service = new AposoftCompanyAgentManagementService();
-	static final CompanyAccessTokenClient accessTokenClient = new CompanyAccessTokenClient();
+	static final AccessTokenClient accessTokenClient = AccessTokenClientFactory.getCompanyAccessTokenClient();
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass

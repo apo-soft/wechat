@@ -9,8 +9,8 @@ import cn.aposoft.wechat.access.AccessToken;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.AccessTokenService;
 import cn.aposoft.wechat.access.impl.BasicAccessTokenService;
+import cn.aposoft.wechat.access.impl.DefaultAccessTokenClient;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 
 /**
@@ -29,8 +29,8 @@ public class AccessTokenServiceDemo {
 	 * @throws AccessTokenException
 	 */
 	public static void main(String[] args) throws AccessTokenException {
-		AccessTokenClient client = new AposoftMpAccessTokenClient();
-
+		AccessTokenClient client = new DefaultAccessTokenClient();
+		
 		try (AccessTokenService accessTokenService = new BasicAccessTokenService(client,
 				BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig());) {
 			for (int i = 0; i < 200; i++) {

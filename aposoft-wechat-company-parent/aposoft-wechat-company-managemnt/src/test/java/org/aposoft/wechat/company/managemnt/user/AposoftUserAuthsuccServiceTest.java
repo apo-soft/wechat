@@ -18,9 +18,10 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
+import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
+import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
 
 /**
@@ -29,7 +30,7 @@ import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
  */
 public class AposoftUserAuthsuccServiceTest {
 	static final AposoftUserAuthsuccService service = new AposoftUserAuthsuccService();
-	static final CompanyAccessTokenClient accessTokenClient = new CompanyAccessTokenClient();
+	static final AccessTokenClient accessTokenClient = AccessTokenClientFactory.getCompanyAccessTokenClient();
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
@@ -48,8 +49,7 @@ public class AposoftUserAuthsuccServiceTest {
 	}
 
 	/**
-	 * HTTP 404
-	 * {"errcode":50004,"errmsg":"user status invalid"}
+	 * HTTP 404 {"errcode":50004,"errmsg":"user status invalid"}
 	 * 
 	 * @throws RemoteException
 	 * @throws AccessTokenException

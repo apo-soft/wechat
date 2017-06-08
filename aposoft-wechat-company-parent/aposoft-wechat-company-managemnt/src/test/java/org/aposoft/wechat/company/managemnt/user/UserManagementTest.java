@@ -20,9 +20,10 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResult;
+import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
+import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
 
 /**
@@ -33,7 +34,7 @@ import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
  */
 public class UserManagementTest {
 	static final UserManagementService service = new AposoftUserManagementService();
-	static final CompanyAccessTokenClient accessTokenClient = new CompanyAccessTokenClient();
+	static final AccessTokenClient accessTokenClient = AccessTokenClientFactory.getCompanyAccessTokenClient();
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
@@ -56,7 +57,7 @@ public class UserManagementTest {
 	 * {"errcode":0,"errmsg":"created"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -75,7 +76,7 @@ public class UserManagementTest {
 	 * {"errcode":0,"errmsg":"updated"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -97,7 +98,7 @@ public class UserManagementTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -131,7 +132,7 @@ public class UserManagementTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -153,7 +154,7 @@ public class UserManagementTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -168,7 +169,7 @@ public class UserManagementTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -182,7 +183,7 @@ public class UserManagementTest {
 	 * {"errcode":0,"errmsg":"deleted"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -213,7 +214,7 @@ public class UserManagementTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -226,7 +227,7 @@ public class UserManagementTest {
 	 * 
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -243,7 +244,7 @@ public class UserManagementTest {
 	 * </pre>
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test

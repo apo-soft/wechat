@@ -21,9 +21,10 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResult;
+import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
+import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
 
 /**
@@ -32,7 +33,8 @@ import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
  */
 public class TagManagementTest {
 	static final TagManagementClient service = new TagManagementClient();
-	static final CompanyAccessTokenClient accessTokenClient = new CompanyAccessTokenClient();
+	static final AccessTokenClient accessTokenClient = AccessTokenClientFactory.getCompanyAccessTokenClient();
+
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass
@@ -55,7 +57,7 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"created","tagid":100}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -87,7 +89,7 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"updated"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -104,7 +106,7 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"deleted"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -122,7 +124,7 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"ok","taglist":[{"tagid":1,"tagname":"报警平台组"},{"tagid":100,"tagname":"美借监控组"}]}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -135,7 +137,7 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"ok"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -149,7 +151,7 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"ok"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -165,7 +167,7 @@ public class TagManagementTest {
 	 * {"errcode":0,"errmsg":"ok","partylist":[],"userlist":[{"department":[],"name":"刘健","userid":"liujian"}]}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test

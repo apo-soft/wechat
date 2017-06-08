@@ -17,11 +17,11 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
+import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
-import cn.aposoft.wechat.mp.access.remote.AposoftMpAccessTokenClient;
 import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.message.MsgType;
 import cn.aposoft.wechat.mp.message.remote.Filter;
@@ -42,7 +42,7 @@ public class MassMessageClientTest {
 
 	@BeforeClass
 	public static void init() throws IOException, AccessTokenException {
-		accessTokenClient = new AposoftMpAccessTokenClient();
+		accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
 				BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig());
@@ -62,7 +62,7 @@ public class MassMessageClientTest {
 	 * [rKd_Da0056ge21]"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -85,7 +85,7 @@ public class MassMessageClientTest {
 	 * success","msg_data_id":2247483671,"msgid":3147483656}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -160,7 +160,7 @@ public class MassMessageClientTest {
 	 * {"errcode":0,"errmsg":"ok"}
 	 * 
 	 * @throws RemoteException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test

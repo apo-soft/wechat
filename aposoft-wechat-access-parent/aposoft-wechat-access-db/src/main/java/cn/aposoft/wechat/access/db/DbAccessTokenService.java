@@ -18,7 +18,7 @@ import cn.aposoft.wechat.access.remote.AccessTokenClient;
  * 使用Database完成accessToken的缓存
  * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
 public class DbAccessTokenService extends AbstractAccessTokenService implements AccessTokenService {
 
