@@ -21,5 +21,6 @@
 		<module>wechat-access-api</module>
 		<module>wechat-core</module>
     <module>wechat-company-access-api</module>
+    <module>wechat-config-api</module>
   </modules>
 </project>

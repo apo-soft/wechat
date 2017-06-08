@@ -60,7 +60,7 @@ public class AddressConfigFactory {
 
 					@Override
 					public String getName() {
-						return "corpid";
+						return "appid";
 					}
 
 				});
