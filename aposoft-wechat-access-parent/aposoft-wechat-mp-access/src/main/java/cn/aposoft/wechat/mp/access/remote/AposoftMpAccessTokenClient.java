@@ -1,8 +1,8 @@
 package cn.aposoft.wechat.mp.access.remote;
 
 import cn.aposoft.wechat.access.address.AddressConfig;
-import cn.aposoft.wechat.access.impl.DefaultAccessTokenClient;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.access.remote.DefaultAccessTokenClient;
 
 /**
  * 原始的AccessToken 微信公众号客户端

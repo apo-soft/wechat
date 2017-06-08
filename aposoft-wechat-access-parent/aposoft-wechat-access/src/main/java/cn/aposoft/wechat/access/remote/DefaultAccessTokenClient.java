@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.access.impl;
+package cn.aposoft.wechat.access.remote;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -20,8 +20,6 @@ import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.AccessTokenConfig;
 import cn.aposoft.wechat.access.address.AddressConfig;
 import cn.aposoft.wechat.access.address.AddressUtil;
-import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.access.remote.AccessTokenResp;
 
 /**
  * 默认微信服务访问授权码请求客户端

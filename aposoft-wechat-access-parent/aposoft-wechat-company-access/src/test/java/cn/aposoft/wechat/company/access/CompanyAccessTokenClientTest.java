@@ -25,6 +25,7 @@ import cn.aposoft.wechat.company.common.WechatCompanyConfig;
  * @author Jann Liu
  *
  */
+@SuppressWarnings("deprecation")
 public class CompanyAccessTokenClientTest {
 	/**
 	 * 

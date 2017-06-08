@@ -20,9 +20,9 @@ import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.AccessTokenConfig;
 import cn.aposoft.wechat.access.address.AddressConfig;
-import cn.aposoft.wechat.access.impl.DefaultAccessTokenClient;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.access.remote.AccessTokenResp;
+import cn.aposoft.wechat.access.remote.DefaultAccessTokenClient;
 
 /**
  * 企业 Access Token 客户端
