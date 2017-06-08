@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.config;
+package cn.aposoft.constant;
 
 /**
  * 微信支持语言枚举
