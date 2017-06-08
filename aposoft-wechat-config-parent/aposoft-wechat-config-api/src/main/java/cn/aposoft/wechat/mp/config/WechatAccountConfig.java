@@ -30,7 +30,7 @@ public interface WechatAccountConfig extends AccountTypeAware, Serializable {
 	 * 用户ID:开发者微信ID <br/>
 	 * gh_0f504b63df22
 	 */
-	String getId();
+	String getUserId();
 
 	/**
 	 * 微信公众号APPID <br/>
