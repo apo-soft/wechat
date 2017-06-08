@@ -2,7 +2,7 @@ package cn.aposoft.wechat.mp.user.remote;
 
 import java.io.Serializable;
 
-import cn.aposoft.wechat.mp.config.WechatLang;
+import cn.aposoft.constant.WechatLang;
 
 /**
  * 用户信息请求

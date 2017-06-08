@@ -3,7 +3,13 @@
  */
 package cn.aposoft.wechat.mp.config;
 
+import java.io.Serializable;
+
+import cn.aposoft.wechat.access.AccessTokenConfig;
 import cn.aposoft.wechat.access.AccountConfig;
+import cn.aposoft.wechat.access.AccountType;
+import cn.aposoft.wechat.access.AccountTypeAware;
+import cn.aposoft.wechat.access.RefreshConfig;
 import cn.aposoft.wechat.signature.SignatureConfig;
 
 /**
@@ -11,9 +17,15 @@ import cn.aposoft.wechat.signature.SignatureConfig;
  * 
  * @author Jann Liu
  * @date 2016年10月12日
- * 
+ * @since 1.0
  */
-public interface WechatMpConfig extends SignatureConfig, AccountConfig {
+public interface WechatMpConfig extends AccountTypeAware, Serializable {
+	/**
+	 * 
+	 * @return 账户类型
+	 */
+	AccountType getAccountType();
+
 	/**
 	 * 用户ID:开发者微信ID <br/>
 	 * gh_0f504b63df22
@@ -52,4 +64,12 @@ public interface WechatMpConfig extends SignatureConfig, AccountConfig {
 	 * @return 回话过期阻塞时间
 	 */
 	int getHoldonThreshold();
+
+	AccountConfig toAccountConfig();
+
+	AccessTokenConfig toAccessTokenConfig();
+
+	SignatureConfig toSignatureConfig();
+
+	RefreshConfig toRefreshConfig();
 }

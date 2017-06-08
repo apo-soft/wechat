@@ -41,7 +41,7 @@ import cn.aposoft.wechat.signature.AposoftSignatureEchoValidator;
  * 
  * @author Jann Liu
  * @date 2016年10月14日
- * 
+ * @since 1.0
  */
 @SuppressWarnings("serial")
 @WebServlet("/")
@@ -57,8 +57,8 @@ public class MessageServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) {
 		try {
-			signature = new AposoftSignatureEchoValidator(WechatMpConfigFactory.getConfig());
-			crypt = new BasicCryptService(WechatMpConfigFactory.getConfig());
+			signature = new AposoftSignatureEchoValidator(WechatMpConfigFactory.getConfig().toSignatureConfig());
+			crypt = new BasicCryptService(WechatMpConfigFactory.getConfig().toSignatureConfig());
 		} catch (AesException e) {
 			// this must not happen
 			logger.error("meets error while init crypt", e);
