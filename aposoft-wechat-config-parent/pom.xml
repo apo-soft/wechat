@@ -19,4 +19,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	<modules>
+		<module>aposoft-wechat-mp-config-testaccount</module>
+	</modules>
 </project>

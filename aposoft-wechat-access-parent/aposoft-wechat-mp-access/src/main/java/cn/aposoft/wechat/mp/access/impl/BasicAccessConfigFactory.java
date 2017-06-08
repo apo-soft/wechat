@@ -7,7 +7,7 @@ import cn.aposoft.wechat.access.AccessConfigFactory;
 import cn.aposoft.wechat.access.AccessTokenConfig;
 import cn.aposoft.wechat.access.AccountConfig;
 import cn.aposoft.wechat.access.AccountType;
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
+import cn.aposoft.wechat.config.WechatAccountConfig;
 
 /**
  * AccessTokenConfigFactory 默认实现
@@ -20,12 +20,12 @@ public class BasicAccessConfigFactory implements AccessConfigFactory {
 	public BasicAccessConfigFactory() {
 	}
 
-	public static AccessConfigFactory getInstance(final WechatMpConfig config) {
+	public static AccessConfigFactory getInstance(final WechatAccountConfig config) {
 		BasicAccessConfigFactory factory = new BasicAccessConfigFactory();
 		factory.config = new AccountConfig() {
 			private static final long serialVersionUID = 2455287796630853368L;
-			private final String id = config.getAppId();
-			private final String secret = config.getAppSecret();
+			private final String id = config.getId();
+			private final String secret = config.getSecret();
 			private final int expire = config.getExpiredThreshold();
 
 			@Override
@@ -50,7 +50,7 @@ public class BasicAccessConfigFactory implements AccessConfigFactory {
 
 			@Override
 			public int getHoldonThreshold() {
-				return 0;
+				return 10;
 			}
 
 		};

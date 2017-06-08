@@ -18,7 +18,7 @@ import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.access.remote.DefaultAccessTokenClient;
 import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
-import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
+import cn.aposoft.wechat.mp.config.testaccount.WechatAccountConfigFactory;
 
 /**
  * 账户管理测试
@@ -39,7 +39,7 @@ public class AccountClientTest {
 		accessTokenClient = new DefaultAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
-				BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig());
+				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig());
 		System.out.println(JSON.toJSONString(accessTokenService.getAccessToken()));
 	}
 

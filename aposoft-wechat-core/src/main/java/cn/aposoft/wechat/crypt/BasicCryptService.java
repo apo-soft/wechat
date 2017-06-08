@@ -16,7 +16,7 @@ public class BasicCryptService implements CryptService {
 	private final WXBizMsgCrypt crypt;
 
 	public BasicCryptService(SignatureConfig config) throws AesException {
-		crypt = new WXBizMsgCrypt(config.getToken(), config.getEncodingAESKey(), config.getAppId());
+		crypt = new WXBizMsgCrypt(config.getToken(), config.getEncodingAESKey(), config.getId());
 	}
 
 	/**

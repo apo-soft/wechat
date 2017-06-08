@@ -3,9 +3,9 @@
  */
 package cn.aposoft.wechat.mp.auth.impl;
 
+import cn.aposoft.wechat.config.WechatAccountConfig;
 import cn.aposoft.wechat.mp.auth.WechatAuthorizeService;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 /**
  * @author Jann Liu
@@ -21,7 +21,7 @@ public class WechatAuthorizeServiceFactory {
 		return init;
 	}
 
-	public static void setClient(Oauth2AccessTokenClient client, WechatMpConfig config) {
+	public static void setClient(Oauth2AccessTokenClient client, WechatAccountConfig config) {
 		service = new BasicWechatAuthorizeService(client, config);
 		init = true;
 	}

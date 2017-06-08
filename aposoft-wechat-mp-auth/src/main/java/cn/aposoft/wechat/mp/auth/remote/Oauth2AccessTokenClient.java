@@ -16,7 +16,7 @@ import cn.aposoft.constant.WechatLang;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.wechat.RemoteException;
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
+import cn.aposoft.wechat.config.WechatAccountConfig;
 
 public class Oauth2AccessTokenClient implements Closeable {
 	/**
@@ -60,7 +60,7 @@ public class Oauth2AccessTokenClient implements Closeable {
 
 	final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
 
-	public Oauth2AccessTokenResp getOauth2Token(String code, WechatMpConfig config) throws RemoteException {
+	public Oauth2AccessTokenResp getOauth2Token(String code, WechatAccountConfig config) throws RemoteException {
 		return HttpClient.execute(new HttpGet(getAccessTokenUrl(code, config)), Oauth2AccessTokenResp.class,
 				httpClient);
 	}
@@ -71,7 +71,7 @@ public class Oauth2AccessTokenClient implements Closeable {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public Oauth2AccessTokenResp refreshAccessToken(String refreshToken, WechatMpConfig config) throws RemoteException {
+	public Oauth2AccessTokenResp refreshAccessToken(String refreshToken, WechatAccountConfig config) throws RemoteException {
 		return HttpClient.execute(new HttpGet(getRefreshAccessTokenUrl(refreshToken, config)),
 				Oauth2AccessTokenResp.class, httpClient);
 
@@ -149,10 +149,10 @@ public class Oauth2AccessTokenClient implements Closeable {
 		return requestUrl;
 	}
 
-	private String getAccessTokenUrl(String code, WechatMpConfig config) {
+	private String getAccessTokenUrl(String code, WechatAccountConfig config) {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("appid", config.getAppId()));
-		params.add(new BasicNameValuePair("secret", config.getAppSecret()));
+		params.add(new BasicNameValuePair("appid", config.getId()));
+		params.add(new BasicNameValuePair("secret", config.getSecret()));
 		params.add(new BasicNameValuePair("code", code));
 		params.add(new BasicNameValuePair("grant_type", "authorization_code"));
 
@@ -161,9 +161,9 @@ public class Oauth2AccessTokenClient implements Closeable {
 		return requestUrl;
 	}
 
-	private String getRefreshAccessTokenUrl(String refreshToken, WechatMpConfig config) {
+	private String getRefreshAccessTokenUrl(String refreshToken, WechatAccountConfig config) {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("appid", config.getAppId()));
+		params.add(new BasicNameValuePair("appid", config.getId()));
 		params.add(new BasicNameValuePair("grant_type", "refresh_token"));
 		params.add(new BasicNameValuePair("refresh_token", refreshToken));
 

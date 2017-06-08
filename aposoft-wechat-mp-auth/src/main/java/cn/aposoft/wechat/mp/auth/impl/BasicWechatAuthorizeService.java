@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.URLEncoder;
 import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.config.WechatAccountConfig;
 import cn.aposoft.wechat.mp.auth.Oauth2Auth;
 import cn.aposoft.wechat.mp.auth.Oauth2Token;
 import cn.aposoft.wechat.mp.auth.WechatAuthorizeService;
@@ -21,7 +22,6 @@ import cn.aposoft.wechat.mp.auth.WechatUserInfo;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenResp;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AuthResp;
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
 
 /**
  * 默认的微信授权请求服务类
@@ -46,7 +46,7 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
 	private final ConcurrentMap<String, Object> stateSet = new ConcurrentHashMap<>();
 	// Oauth2 客户端
 	private Oauth2AccessTokenClient client;
-	private WechatMpConfig config;
+	private WechatAccountConfig config;
 
 	/**
 	 * 初始化BasicWechatAuthorizeService
@@ -54,7 +54,7 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
 	 * @param client
 	 *            微信OAuth2 Access Token client
 	 */
-	public BasicWechatAuthorizeService(Oauth2AccessTokenClient client, WechatMpConfig config) {
+	public BasicWechatAuthorizeService(Oauth2AccessTokenClient client, WechatAccountConfig config) {
 		this.client = client;
 	}
 
@@ -87,7 +87,7 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
 	 */
 	@Override
 	public String getRedirectUrl(String redirectUri, String scope) {
-		String appId = config.getAppId();
+		String appId = config.getId();
 		String encodedUrl = URLEncoder.encode(redirectUri);
 		String resonseType = "code";
 		// Random 字符考虑是否缓存,做后续校验

@@ -18,7 +18,7 @@ public class BasicWechatMpConfigTest {
 		config = mock(SignatureConfig.class);
 		String appId = "wx31659662068251dc";
 		String token = "AposoftBugs";
-		when(config.getAppId()).thenReturn(appId).thenThrow(new NullPointerException());
+		when(config.getId()).thenReturn(appId).thenThrow(new NullPointerException());
 		// when(config.getAppId()).thenThrow(new RuntimeException());
 		// when(config.getUserId()).thenReturn(userId);
 		// when(config.getAppSecret()).thenReturn(appSecret);
@@ -29,7 +29,7 @@ public class BasicWechatMpConfigTest {
 	@Test
 	public void testGetAppId() {
 		// expect true
-		Assert.assertEquals("wx31659662068251dc", config.getAppId());
+		Assert.assertEquals("wx31659662068251dc", config.getId());
 		// expect NullPointerException
 		// Assert.assertEquals("wx31659662068251dc", config.getAppId());
 	}

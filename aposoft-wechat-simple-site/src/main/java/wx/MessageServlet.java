@@ -28,7 +28,7 @@ import cn.aposoft.wechat.codec.EncryptType;
 import cn.aposoft.wechat.codec.aes.AesException;
 import cn.aposoft.wechat.crypt.BasicCryptService;
 import cn.aposoft.wechat.echo.EchoValidator;
-import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
+import cn.aposoft.wechat.mp.config.testaccount.WechatAccountConfigFactory;
 import cn.aposoft.wechat.mp.message.MessageRequestParams;
 import cn.aposoft.wechat.mp.message.MessageService;
 import cn.aposoft.wechat.mp.message.impl.AposoftIntegratedMessage;
@@ -57,14 +57,14 @@ public class MessageServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) {
 		try {
-			signature = new AposoftSignatureEchoValidator(WechatMpConfigFactory.getConfig().toSignatureConfig());
-			crypt = new BasicCryptService(WechatMpConfigFactory.getConfig().toSignatureConfig());
+			signature = new AposoftSignatureEchoValidator(WechatAccountConfigFactory.getConfig().toSignatureConfig());
+			crypt = new BasicCryptService(WechatAccountConfigFactory.getConfig().toSignatureConfig());
 		} catch (AesException e) {
 			// this must not happen
 			logger.error("meets error while init crypt", e);
 			throw new Error("aes key initialize error", e);
 		}
-		messageService = new NewsService(WechatMpConfigFactory.getConfig());
+		messageService = new NewsService(WechatAccountConfigFactory.getConfig());
 	}
 
 	/**

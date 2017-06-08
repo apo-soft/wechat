@@ -14,7 +14,7 @@ public interface SignatureConfig {
 	 * 
 	 * @return 公众号ID,服务号ID
 	 */
-	String getAppId();
+	String getId();
 
 	/**
 	 * 

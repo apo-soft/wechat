@@ -4,7 +4,7 @@ import cn.aposoft.wechat.access.AccessTokenConfig;
 import cn.aposoft.wechat.access.AccountConfig;
 import cn.aposoft.wechat.access.AccountType;
 import cn.aposoft.wechat.access.RefreshConfig;
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
+import cn.aposoft.wechat.config.WechatAccountConfig;
 import cn.aposoft.wechat.signature.SignatureConfig;
 
 /**
@@ -14,7 +14,7 @@ import cn.aposoft.wechat.signature.SignatureConfig;
  * @author Jann Liu
  * @since 1.0
  */
-public class BasicWechatMpConfig implements WechatMpConfig {
+public class BasicWechatMpConfig implements WechatAccountConfig {
 	private static final long serialVersionUID = 1L;
 	/**
 	 * 账户类型
@@ -60,12 +60,12 @@ public class BasicWechatMpConfig implements WechatMpConfig {
 	}
 
 	@Override
-	public String getAppId() {
+	public String getId() {
 		return appId;
 	}
 
 	@Override
-	public String getAppSecret() {
+	public String getSecret() {
 		return appSecret;
 	}
 
@@ -103,12 +103,12 @@ public class BasicWechatMpConfig implements WechatMpConfig {
 
 			@Override
 			public String getId() {
-				return getAppId();
+				return BasicWechatMpConfig.this.getId();
 			}
 
 			@Override
 			public String getSecret() {
-				return getAppSecret();
+				return BasicWechatMpConfig.this.getSecret();
 			}
 
 			@Override
@@ -128,8 +128,8 @@ public class BasicWechatMpConfig implements WechatMpConfig {
 	public SignatureConfig toSignatureConfig() {
 		return new SignatureConfig() {
 			@Override
-			public String getAppId() {
-				return BasicWechatMpConfig.this.getAppId();
+			public String getId() {
+				return BasicWechatMpConfig.this.getId();
 			}
 
 			@Override

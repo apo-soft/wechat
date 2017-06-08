@@ -6,9 +6,9 @@ package cn.aposoft.wechat.mp.message.news;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.aposoft.wechat.config.WechatAccountConfig;
 import cn.aposoft.wechat.mp.auth.Oauth2MsgType;
 import cn.aposoft.wechat.mp.auth.Oauth2Scope;
-import cn.aposoft.wechat.mp.config.WechatMpConfig;
 import cn.aposoft.wechat.mp.message.MessageService;
 import cn.aposoft.wechat.mp.message.MsgType;
 import cn.aposoft.wechat.mp.message.impl.AposoftMessage;
@@ -28,9 +28,9 @@ import cn.aposoft.wechat.mp.message.template.Success;
  */
 public class NewsService implements MessageService {
 
-	private final WechatMpConfig config;
+	private final WechatAccountConfig config;
 
-	public NewsService(WechatMpConfig config) {
+	public NewsService(WechatAccountConfig config) {
 		this.config = config;
 	}
 

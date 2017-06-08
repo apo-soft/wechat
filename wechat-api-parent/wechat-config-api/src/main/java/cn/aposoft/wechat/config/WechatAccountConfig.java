@@ -1,7 +1,7 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.config;
+package cn.aposoft.wechat.config;
 
 import java.io.Serializable;
 
@@ -33,16 +33,17 @@ public interface WechatAccountConfig extends AccountTypeAware, Serializable {
 	String getUserId();
 
 	/**
-	 * 微信公众号APPID <br/>
-	 * wx31659662068251dc
+	 * 微信公众号APPID wx31659662068251dc<br/>
+	 * corpId
+	 * 
 	 */
-	String getAppId();
+	String getId();
 
 	/**
 	 * 微信AppSecret <br/>
 	 * 9cf9858af4718fde40d67968b5de3967
 	 */
-	String getAppSecret();
+	String getSecret();
 
 	/**
 	 * Token 自定义的 Token AposoftBugs

@@ -21,7 +21,7 @@ import cn.aposoft.wechat.mp.auth.WechatAuthorizeService;
 import cn.aposoft.wechat.mp.auth.WechatUserInfo;
 import cn.aposoft.wechat.mp.auth.impl.WechatAuthorizeServiceFactory;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
-import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
+import cn.aposoft.wechat.mp.config.testaccount.WechatAccountConfigFactory;
 
 /**
  * 获取用户OPENID和授权AccessToken的Servlet
@@ -40,7 +40,7 @@ public class Oauth2AccessTokenServlet extends HttpServlet {
 	public void init(ServletConfig config) {
 		if (!WechatAuthorizeServiceFactory.isInit()) {
 			WechatAuthorizeServiceFactory.setClient(Oauth2AccessTokenClient.getInstance(),
-					WechatMpConfigFactory.getConfig());
+					WechatAccountConfigFactory.getConfig());
 		}
 		service = WechatAuthorizeServiceFactory.getService();
 	}

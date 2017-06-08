@@ -8,7 +8,7 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenResp;
-import cn.aposoft.wechat.mp.config.testaccount.WechatMpConfigFactory;
+import cn.aposoft.wechat.mp.config.testaccount.WechatAccountConfigFactory;
 
 /**
  * @author Jann Liu
@@ -26,7 +26,7 @@ public class UserAccessTokenDemo {
             // 刷新ACCESS_TOKEN
             Oauth2AccessTokenResp resp = client.refreshAccessToken(
                     "B86yR4V-Vqdf2HuexQES6YyDLOWGICDRb_4mcaLvCKpNBl2dJkjsx2ceulL_LU8QRcj_kpfD_yenwj0srZVulQpfVULZIxZPermnSNxmyzY",
-                    WechatMpConfigFactory.getConfig());
+                    WechatAccountConfigFactory.getConfig());
             System.out.println(JSON.toJSONString(resp));
         }
     }
