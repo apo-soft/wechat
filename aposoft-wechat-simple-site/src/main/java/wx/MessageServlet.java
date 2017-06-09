@@ -22,8 +22,8 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.constant.Lexical;
 import cn.aposoft.util.XmlUtils;
-import cn.aposoft.wechat.CodecException;
-import cn.aposoft.wechat.CryptService;
+import cn.aposoft.wechat.codec.CodecException;
+import cn.aposoft.wechat.codec.CryptService;
 import cn.aposoft.wechat.codec.EncryptType;
 import cn.aposoft.wechat.codec.aes.AesException;
 import cn.aposoft.wechat.crypt.BasicCryptService;
@@ -57,8 +57,8 @@ public class MessageServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) {
 		try {
-			signature = new AposoftSignatureEchoValidator(WechatAccountConfigFactory.getConfig().toSignatureConfig());
-			crypt = new BasicCryptService(WechatAccountConfigFactory.getConfig().toSignatureConfig());
+			signature = new AposoftSignatureEchoValidator(WechatAccountConfigFactory.getConfig());
+			crypt = new BasicCryptService(WechatAccountConfigFactory.getConfig());
 		} catch (AesException e) {
 			// this must not happen
 			logger.error("meets error while init crypt", e);
@@ -96,7 +96,7 @@ public class MessageServlet extends HttpServlet {
 				logger.error("signature is not valid" + JSON.toJSONString(messageParams));
 				return;
 			} else {
-				if (signature.isSignatureValid(messageParams)) {
+				if (signature.validate(messageParams)) {
 					logger.warn("signature is empty" + JSON.toJSONString(messageParams));
 				}
 				logger.warn("signature is not valid" + JSON.toJSONString(messageParams));

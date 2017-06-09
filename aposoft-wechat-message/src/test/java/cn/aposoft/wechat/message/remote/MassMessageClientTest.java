@@ -45,7 +45,8 @@ public class MassMessageClientTest {
 		accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
-				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig());
+				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig(),
+				WechatAccountConfigFactory.getRefreshConfig());
 		System.out.println(JSON.toJSONString(accessTokenService.getAccessToken()));
 	}
 
@@ -56,7 +57,8 @@ public class MassMessageClientTest {
 	}
 
 	/**
-	 * TODO 功能需要验证 2017/6/8 {"errcode":45028,"errmsg":"has no masssend quota hint: [x.zOnA0057ge21]"}
+	 * TODO 功能需要验证 2017/6/8 {"errcode":45028,"errmsg":"has no masssend quota
+	 * hint: [x.zOnA0057ge21]"}
 	 * <p>
 	 * 2017/5/23 {"errcode":45028,"errmsg":"has no masssend quota hint:
 	 * [rKd_Da0056ge21]"}

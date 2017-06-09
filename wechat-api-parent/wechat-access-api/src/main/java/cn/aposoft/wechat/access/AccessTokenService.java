@@ -13,8 +13,6 @@ import java.io.Closeable;
  */
 public interface AccessTokenService extends Closeable {
 
-	AccessTokenConfig getConfig();
-
 	/**
 	 * 读取默认的AccessToken
 	 * 

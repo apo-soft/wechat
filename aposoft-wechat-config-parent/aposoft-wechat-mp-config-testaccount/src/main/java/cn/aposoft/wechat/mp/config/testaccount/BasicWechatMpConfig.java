@@ -1,11 +1,7 @@
 package cn.aposoft.wechat.mp.config.testaccount;
 
-import cn.aposoft.wechat.access.AccessTokenConfig;
-import cn.aposoft.wechat.access.AccountConfig;
-import cn.aposoft.wechat.access.AccountType;
-import cn.aposoft.wechat.access.RefreshConfig;
-import cn.aposoft.wechat.config.WechatAccountConfig;
-import cn.aposoft.wechat.signature.SignatureConfig;
+import cn.aposoft.wechat.AccountType;
+import cn.aposoft.wechat.config.MpAccountConfig;
 
 /**
  * 简单的Wechat 配置项管理结构
@@ -14,7 +10,7 @@ import cn.aposoft.wechat.signature.SignatureConfig;
  * @author Jann Liu
  * @since 1.0
  */
-public class BasicWechatMpConfig implements WechatAccountConfig {
+public class BasicWechatMpConfig implements MpAccountConfig {
 	private static final long serialVersionUID = 1L;
 	/**
 	 * 账户类型
@@ -32,19 +28,21 @@ public class BasicWechatMpConfig implements WechatAccountConfig {
 	private String token = "AposoftBugs";
 
 	/**
-	 * 过期刷新阈值,表示距离过期剩余秒数
-	 * <p>
-	 * Token 超时时间，500秒
-	 */
-	private int expiredThreshold = 500;
-	/**
 	 * AES加密KEY
 	 */
 	private String encodingAESKey = "rqWzZv5rjyBwIRmociz7978G2O1D8sjxlsypVIU4SmY";
+
+	/**
+	 * 读取用户ID
+	 */
+	@Override
+	public String getUserId() {
+		return userId;
+	}
+
 	/**
 	 * 当距离过期时间只剩10秒时,请求accessToken将Holdon
 	 */
-	private int holdonThreshold = 10;
 
 	/**
 	 * 
@@ -52,11 +50,6 @@ public class BasicWechatMpConfig implements WechatAccountConfig {
 	 */
 	public AccountType getAccountType() {
 		return accountType;
-	}
-
-	@Override
-	public String getUserId() {
-		return userId;
 	}
 
 	@Override
@@ -74,85 +67,10 @@ public class BasicWechatMpConfig implements WechatAccountConfig {
 		return token;
 	}
 
-	@Override
-	public int getExpiredThreshold() {
-		// Token 超时时间，500秒
-		return expiredThreshold;
-	}
-
 	// not used for test account
 	@Override
 	public String getEncodingAESKey() {
 		return encodingAESKey;
-	}
-
-	@Override
-	public int getHoldonThreshold() {
-		return holdonThreshold;
-	}
-
-	@Override
-	public AccountConfig toAccountConfig() {
-		return new AccountConfig() {
-			private static final long serialVersionUID = 1152935627588703972L;
-
-			@Override
-			public AccountType getAccountType() {
-				return AccountType.MP;
-			}
-
-			@Override
-			public String getId() {
-				return BasicWechatMpConfig.this.getId();
-			}
-
-			@Override
-			public String getSecret() {
-				return BasicWechatMpConfig.this.getSecret();
-			}
-
-			@Override
-			public int getExpiredThreshold() {
-				return BasicWechatMpConfig.this.getExpiredThreshold();
-			}
-
-			@Override
-			public int getHoldonThreshold() {
-				return BasicWechatMpConfig.this.getHoldonThreshold();
-			}
-
-		};
-	}
-
-	@Override
-	public SignatureConfig toSignatureConfig() {
-		return new SignatureConfig() {
-			@Override
-			public String getId() {
-				return BasicWechatMpConfig.this.getId();
-			}
-
-			@Override
-			public String getToken() {
-				return BasicWechatMpConfig.this.getToken();
-			}
-
-			@Override
-			public String getEncodingAESKey() {
-				return BasicWechatMpConfig.this.getEncodingAESKey();
-			}
-
-		};
-	}
-
-	@Override
-	public AccessTokenConfig toAccessTokenConfig() {
-		return toAccountConfig();
-	}
-
-	@Override
-	public RefreshConfig toRefreshConfig() {
-		return toAccountConfig();
 	}
 
 }

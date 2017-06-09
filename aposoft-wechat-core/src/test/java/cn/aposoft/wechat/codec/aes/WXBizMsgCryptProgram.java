@@ -1,4 +1,4 @@
-package cn.aposoft.wechat.mp.access;
+package cn.aposoft.wechat.codec.aes;
 
 import java.io.StringReader;
 

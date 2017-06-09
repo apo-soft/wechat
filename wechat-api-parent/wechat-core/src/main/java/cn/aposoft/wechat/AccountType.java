@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.access;
+package cn.aposoft.wechat;
 
 /**
  * 账号类型,个人账号(公众号,服务号),企业账号

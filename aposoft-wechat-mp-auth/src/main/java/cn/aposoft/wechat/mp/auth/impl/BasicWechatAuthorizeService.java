@@ -14,7 +14,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.URLEncoder;
 import cn.aposoft.wechat.RemoteException;
-import cn.aposoft.wechat.config.WechatAccountConfig;
+import cn.aposoft.wechat.config.MpAccountConfig;
 import cn.aposoft.wechat.mp.auth.Oauth2Auth;
 import cn.aposoft.wechat.mp.auth.Oauth2Token;
 import cn.aposoft.wechat.mp.auth.WechatAuthorizeService;
@@ -46,7 +46,7 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
 	private final ConcurrentMap<String, Object> stateSet = new ConcurrentHashMap<>();
 	// Oauth2 客户端
 	private Oauth2AccessTokenClient client;
-	private WechatAccountConfig config;
+	private MpAccountConfig config;
 
 	/**
 	 * 初始化BasicWechatAuthorizeService
@@ -54,7 +54,7 @@ public class BasicWechatAuthorizeService implements WechatAuthorizeService {
 	 * @param client
 	 *            微信OAuth2 Access Token client
 	 */
-	public BasicWechatAuthorizeService(Oauth2AccessTokenClient client, WechatAccountConfig config) {
+	public BasicWechatAuthorizeService(Oauth2AccessTokenClient client, MpAccountConfig config) {
 		this.client = client;
 	}
 

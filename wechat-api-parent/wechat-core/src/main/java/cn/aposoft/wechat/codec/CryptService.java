@@ -1,4 +1,4 @@
-package cn.aposoft.wechat;
+package cn.aposoft.wechat.codec;
 
 public interface CryptService {
 	/**

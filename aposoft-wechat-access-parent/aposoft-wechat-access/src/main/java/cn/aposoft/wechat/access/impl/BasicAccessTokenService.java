@@ -7,8 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cn.aposoft.wechat.access.AccessTokenService;
-import cn.aposoft.wechat.access.AccountConfig;
+import cn.aposoft.wechat.access.RefreshConfig;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.config.AccountConfig;
 
 /**
  * AccessToken 默认访问服务
@@ -25,7 +26,7 @@ public class BasicAccessTokenService extends AbstractAccessTokenService implemen
 	 * @param client
 	 * @param configFactory
 	 */
-	public BasicAccessTokenService(AccessTokenClient client, AccountConfig accessConfig) {
-		super(client, accessConfig);
+	public BasicAccessTokenService(AccessTokenClient client, AccountConfig accessConfig, RefreshConfig refreshConfig) {
+		super(client, accessConfig, refreshConfig);
 	}
 }

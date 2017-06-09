@@ -3,9 +3,9 @@
  */
 package cn.aposoft.wechat.access.db;
 
-import cn.aposoft.wechat.access.AccessTokenConfig;
-import cn.aposoft.wechat.access.AccountType;
+import cn.aposoft.wechat.AccountType;
 import cn.aposoft.wechat.access.impl.BasicAccessToken;
+import cn.aposoft.wechat.config.AccountConfig;
 
 /**
  * Db访问的AccessToken对象
@@ -13,7 +13,7 @@ import cn.aposoft.wechat.access.impl.BasicAccessToken;
  * @author Jann Liu
  *
  */
-public class DbAccessToken extends BasicAccessToken implements AccessTokenConfig {
+public class DbAccessToken extends BasicAccessToken implements AccountConfig {
 	private static final long serialVersionUID = 6589711703134602935L;
 
 	private AccountType accountType;

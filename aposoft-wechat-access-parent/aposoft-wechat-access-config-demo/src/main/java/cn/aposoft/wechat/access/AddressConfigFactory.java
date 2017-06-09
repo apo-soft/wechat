@@ -6,6 +6,7 @@ package cn.aposoft.wechat.access;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.aposoft.wechat.AccountType;
 import cn.aposoft.wechat.access.address.AddressConfig;
 import cn.aposoft.wechat.access.address.ParamConfig;
 import cn.aposoft.wechat.access.address.UrlConfig;

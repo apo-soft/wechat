@@ -3,13 +3,15 @@
  */
 package cn.aposoft.wechat.signature;
 
+import cn.aposoft.wechat.AccountId;
+
 /**
  * 签名配置项
  * 
  * @author Jann Liu
  * @since 1.0
  */
-public interface SignatureConfig {
+public interface SignatureConfig extends AccountId {
 	/**
 	 * 
 	 * @return 公众号ID,服务号ID

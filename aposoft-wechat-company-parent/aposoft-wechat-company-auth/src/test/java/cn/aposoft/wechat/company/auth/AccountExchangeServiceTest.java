@@ -21,7 +21,8 @@ import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.company.auth.impl.AposoftAccountExchangeService;
-import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
+import cn.aposoft.wechat.config.CompanyAccountConfig;
+import cn.aposoft.wechat.mp.config.testaccount.WechatAccountConfigFactory;
 
 /**
  * 账号转换接口测试
@@ -37,11 +38,11 @@ public class AccountExchangeServiceTest {
 
 	@BeforeClass
 	public static void init() throws IOException {
-		WechatCompanyAccountConfig config = JSON.parseObject(
+		CompanyAccountConfig config = JSON.parseObject(
 				IOUtils.toString(new FileInputStream("../config/gome-ops-key.txt"), StandardCharsets.UTF_8),
-				WechatCompanyAccountConfig.class);
+				CompanyAccountConfig.class);
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient, config);
+				accessTokenClient, config, WechatAccountConfigFactory.getRefreshConfig());
 	}
 
 	@AfterClass

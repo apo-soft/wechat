@@ -10,9 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.aposoft.wechat.access.AccessToken;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.AccessTokenService;
-import cn.aposoft.wechat.access.AccountConfig;
+import cn.aposoft.wechat.access.RefreshConfig;
 import cn.aposoft.wechat.access.impl.AbstractAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
+import cn.aposoft.wechat.config.AccountConfig;
 
 /**
  * 使用Database完成accessToken的缓存
@@ -25,9 +26,9 @@ public class DbAccessTokenService extends AbstractAccessTokenService implements 
 	// DB访问对象
 	private AccessTokenDao accessTokenDao;
 
-	public DbAccessTokenService(AccessTokenClient client, AccountConfig config, AccessTokenDao accessTokenDao)
-			throws IOException {
-		super(client, config);
+	public DbAccessTokenService(AccessTokenClient client, AccountConfig config, RefreshConfig refreshConfig,
+			AccessTokenDao accessTokenDao) throws IOException {
+		super(client, config, refreshConfig);
 	}
 
 	/**
@@ -44,10 +45,6 @@ public class DbAccessTokenService extends AbstractAccessTokenService implements 
 			// unlockDb
 		}
 		return get();
-	}
-
-	private synchronized AccessToken loadFromDb() throws AccessTokenException {
-		return accessTokenDao.getAccessToken(getConfig());
 	}
 
 	/**

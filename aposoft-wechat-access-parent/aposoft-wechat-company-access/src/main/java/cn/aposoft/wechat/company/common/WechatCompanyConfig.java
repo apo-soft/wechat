@@ -5,71 +5,54 @@ package cn.aposoft.wechat.company.common;
 
 import java.io.Serializable;
 
-import cn.aposoft.wechat.access.AccessTokenConfig;
-import cn.aposoft.wechat.access.AccountType;
+import cn.aposoft.wechat.AccountType;
+import cn.aposoft.wechat.config.CompanyAccountConfig;
 
 /**
  * 企业号配置信息
  * 
  * @author Jann Liu
- * @version 1.0
+ * @since 1.0
  */
-public class WechatCompanyConfig implements Serializable {
+public class WechatCompanyConfig implements CompanyAccountConfig, Serializable {
 	private static final long serialVersionUID = 6960974749855213481L;
-	private String corpId;
-	private String corpSecret;
+	private String id;
+	private String secret;
 	private Integer agentId;
+
+	@Override
+	public AccountType getAccountType() {
+		return AccountType.CORP;
+	}
 
 	/**
 	 * @return the corpId
 	 */
-	public String getCorpId() {
-		return corpId;
+	public String getId() {
+		return id;
 	}
 
 	/**
 	 * @param corpId
 	 *            the corpId to set
 	 */
-	public void setCorpId(String corpId) {
-		this.corpId = corpId;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	/**
-	 * @return the corpSecret
+	 * @return the Secret
 	 */
-	public String getCorpSecret() {
-		return corpSecret;
+	public String getSecret() {
+		return secret;
 	}
 
 	/**
-	 * @param corpSecret
-	 *            the corpSecret to set
+	 * @param secret
+	 *            the secret to set
 	 */
-	public void setCorpSecret(String corpSecret) {
-		this.corpSecret = corpSecret;
-	}
-
-	public AccessTokenConfig toAccessTokenConfig() {
-		return new AccessTokenConfig() {
-			private static final long serialVersionUID = 4144133303792219335L;
-
-			@Override
-			public String getId() {
-				return corpId;
-			}
-
-			@Override
-			public String getSecret() {
-				return corpSecret;
-			}
-
-			@Override
-			public AccountType getAccountType() {
-				return AccountType.CORP;
-			}
-
-		};
+	public void setSecret(String secret) {
+		this.secret = secret;
 	}
 
 	/**
@@ -86,4 +69,5 @@ public class WechatCompanyConfig implements Serializable {
 	public void setAgentId(Integer agentId) {
 		this.agentId = agentId;
 	}
+
 }

@@ -5,7 +5,7 @@ package cn.aposoft.wechat.access.address;
 
 import java.util.List;
 
-import cn.aposoft.wechat.access.AccountType;
+import cn.aposoft.wechat.AccountType;
 
 /**
  * 地址配置信息

@@ -43,7 +43,8 @@ public class MaterialClientTest {
 		accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
-				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig());
+				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig(),
+				WechatAccountConfigFactory.getRefreshConfig());
 		accessToken = accessTokenService.getAccessToken();
 		System.out.println(JSON.toJSONString(accessToken));
 	}
@@ -59,7 +60,7 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Test
 	public void testGetMeidaCount() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
@@ -106,10 +107,11 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Test
-	public void testGetNewsMaterialList() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
+	public void testGetNewsMaterialList()
+			throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MediaListReq req = new MediaListReq();
 		req.setCount(100);
 		req.setOffset(0);
@@ -124,7 +126,7 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Test
 	public void testGetMaterialList() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
@@ -143,7 +145,7 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -164,7 +166,7 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Test
 	public void testGetMeterial() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
@@ -188,7 +190,7 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -210,7 +212,7 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -235,7 +237,7 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test
@@ -264,7 +266,7 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Test
 	public void testGetNews() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
@@ -287,7 +289,7 @@ public class MaterialClientTest {
 	 * @throws RemoteException
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws AccessTokenException 
+	 * @throws AccessTokenException
 	 */
 	@Ignore
 	@Test

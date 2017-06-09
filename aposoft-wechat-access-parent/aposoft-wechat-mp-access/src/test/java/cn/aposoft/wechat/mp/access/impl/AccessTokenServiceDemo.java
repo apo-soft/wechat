@@ -30,9 +30,10 @@ public class AccessTokenServiceDemo {
 	 */
 	public static void main(String[] args) throws AccessTokenException {
 		AccessTokenClient client = new DefaultAccessTokenClient();
-		
+
 		try (AccessTokenService accessTokenService = new BasicAccessTokenService(client,
-				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig());) {
+				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig(),
+				WechatAccountConfigFactory.getRefreshConfig());) {
 			for (int i = 0; i < 200; i++) {
 				AccessToken accessToken = accessTokenService.getAccessToken();
 				System.out.println(JSON.toJSONString(accessToken));

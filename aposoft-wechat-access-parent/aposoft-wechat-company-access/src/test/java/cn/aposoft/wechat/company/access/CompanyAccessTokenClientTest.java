@@ -15,8 +15,9 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.access.remote.AccessTokenResp;
-import cn.aposoft.wechat.company.common.CompanyAccessTokenClient;
+import cn.aposoft.wechat.access.remote.DefaultAccessTokenClient;
 import cn.aposoft.wechat.company.common.WechatCompanyConfig;
 
 /**
@@ -25,7 +26,6 @@ import cn.aposoft.wechat.company.common.WechatCompanyConfig;
  * @author Jann Liu
  *
  */
-@SuppressWarnings("deprecation")
 public class CompanyAccessTokenClientTest {
 	/**
 	 * 
@@ -36,9 +36,9 @@ public class CompanyAccessTokenClientTest {
 	@Ignore
 	@Test
 	public void testGetCompanyAccessToken() throws RemoteException, FileNotFoundException, IOException {
-		try (CompanyAccessTokenClient client = new CompanyAccessTokenClient();) {
+		try (AccessTokenClient client = new DefaultAccessTokenClient();) {
 			WechatCompanyConfig companyConfig = getTestCompanyConfig();
-			AccessTokenResp accessToken = client.getAccessToken(companyConfig.toAccessTokenConfig());
+			AccessTokenResp accessToken = client.getAccessToken(companyConfig);
 			System.out.println(JSON.toJSONString(accessToken));
 		}
 	}

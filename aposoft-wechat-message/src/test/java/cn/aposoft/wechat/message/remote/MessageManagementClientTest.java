@@ -37,7 +37,8 @@ public class MessageManagementClientTest {
 		accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
-				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig());
+				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig(),
+				WechatAccountConfigFactory.getRefreshConfig());
 		System.out.println(JSON.toJSONString(accessTokenService.getAccessToken()));
 	}
 

@@ -6,8 +6,8 @@ package cn.aposoft.wechat.access.remote;
 import java.io.Closeable;
 
 import cn.aposoft.wechat.RemoteException;
-import cn.aposoft.wechat.access.AccessTokenConfig;
 import cn.aposoft.wechat.access.address.AddressConfig;
+import cn.aposoft.wechat.config.AccountConfig;
 
 /**
  * Access Token 客户端
@@ -33,7 +33,7 @@ public interface AccessTokenClient extends Closeable {
 	 * @return {"access_token":"d_uqUS_Abt-TcKDpuZj-FLkWOe54nrvZbBKuJwXN2d9Qk67OMQHuwZ9MAFRN2plB","expires_in":7200}
 	 * @throws RemoteException
 	 */
-	AccessTokenResp getAccessToken(AccessTokenConfig config) throws RemoteException;
+	AccessTokenResp getAccessToken(AccountConfig config) throws RemoteException;
 
 	@Override
 	public void close();

@@ -1,6 +1,6 @@
 package cn.aposoft.wechat.crypt;
 
-import cn.aposoft.wechat.CryptService;
+import cn.aposoft.wechat.codec.CryptService;
 import cn.aposoft.wechat.codec.aes.AesException;
 import cn.aposoft.wechat.codec.aes.WXBizMsgCrypt;
 import cn.aposoft.wechat.signature.SignatureConfig;

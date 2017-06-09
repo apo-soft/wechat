@@ -14,12 +14,12 @@ import org.slf4j.LoggerFactory;
 
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.AccessToken;
-import cn.aposoft.wechat.access.AccessTokenConfig;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.AccessTokenService;
-import cn.aposoft.wechat.access.AccountConfig;
+import cn.aposoft.wechat.access.RefreshConfig;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.access.remote.AccessTokenResp;
+import cn.aposoft.wechat.config.AccountConfig;
 
 /**
  * AccessToken管理基类服务
@@ -30,7 +30,8 @@ import cn.aposoft.wechat.access.remote.AccessTokenResp;
 public abstract class AbstractAccessTokenService implements AccessTokenService {
 	private static final Logger logger = LoggerFactory.getLogger(AbstractAccessTokenService.class);
 	private final AccessTokenClient client;
-	private final AccountConfig accessConfig;
+	private final AccountConfig accoutConfig;
+	private final RefreshConfig refreshConfig;
 	protected volatile AccessToken accessToken;
 	private int retryTimes = 3;
 	/**
@@ -40,14 +41,10 @@ public abstract class AbstractAccessTokenService implements AccessTokenService {
 
 	final ExecutorService executor = Executors.newSingleThreadExecutor();
 
-	public AbstractAccessTokenService(AccessTokenClient client, AccountConfig config) {
+	public AbstractAccessTokenService(AccessTokenClient client, AccountConfig config, RefreshConfig refreshConfig) {
 		this.client = client;
-		this.accessConfig = config;
-	}
-
-	@Override
-	public AccessTokenConfig getConfig() {
-		return accessConfig;
+		this.accoutConfig = config;
+		this.refreshConfig = refreshConfig;
 	}
 
 	/**
@@ -83,7 +80,7 @@ public abstract class AbstractAccessTokenService implements AccessTokenService {
 		}
 		long curr = System.currentTimeMillis();
 		long refreshTime = accessToken.getRefreshTime().getTime();
-		if (accessToken.getExpires_in() - (curr - refreshTime) / 1000 < accessConfig.getExpiredThreshold()) {
+		if (accessToken.getExpires_in() - (curr - refreshTime) / 1000 < refreshConfig.getExpiredThreshold()) {
 			if (logger.isDebugEnabled()) {
 				logger.debug("remain time:" + (curr - refreshTime) / 1000 + "s.");
 			}
@@ -102,18 +99,17 @@ public abstract class AbstractAccessTokenService implements AccessTokenService {
 			return true;
 		}
 		long refreshTime = accessToken.getRefreshTime().getTime();
-		return (accessToken.getExpires_in() - (curr - refreshTime) / 1000 < accessConfig.getHoldonThreshold());
+		return (accessToken.getExpires_in() - (curr - refreshTime) / 1000 < refreshConfig.getHoldonThreshold());
 	}
 
 	/**
-	 * 
 	 * @return 是否需要调用异步刷新
 	 */
 	protected boolean requireAsyncRefresh() {
 		long curr = System.currentTimeMillis();
 		long refreshTime = accessToken.getRefreshTime().getTime();
 		return accessToken == null
-				|| accessToken.getExpires_in() - (curr - refreshTime) / 1000 < accessConfig.getExpiredThreshold();
+				|| accessToken.getExpires_in() - (curr - refreshTime) / 1000 < refreshConfig.getExpiredThreshold();
 	}
 
 	/**
@@ -178,7 +174,7 @@ public abstract class AbstractAccessTokenService implements AccessTokenService {
 		for (int i = 0; i < retryTimes; i++) {
 			try {
 				Date refreshTime = new Date();
-				AccessTokenResp resp = client.getAccessToken(accessConfig);
+				AccessTokenResp resp = client.getAccessToken(accoutConfig);
 				if (resp != null) {
 					if (StringUtils.isNotBlank(resp.getAccess_token()) && resp.getExpires_in() != null) {
 						BasicAccessToken token = new BasicAccessToken();
@@ -212,12 +208,10 @@ public abstract class AbstractAccessTokenService implements AccessTokenService {
 	}
 
 	class RefreshWorker implements Runnable {
-
 		@Override
 		public void run() {
 			requireAsyncRefresh();
 		}
-
 	}
 
 }

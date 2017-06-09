@@ -3,6 +3,8 @@
  */
 package cn.aposoft.wechat.access;
 
+import cn.aposoft.wechat.AccountId;
+
 /**
  * 多公众号,服务号AccessToken管理服务
  * 

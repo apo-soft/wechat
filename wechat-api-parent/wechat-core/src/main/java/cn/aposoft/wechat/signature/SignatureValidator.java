@@ -1,5 +1,11 @@
 package cn.aposoft.wechat.signature;
 
+/**
+ * 签名验证功能
+ * 
+ * @author Jann Liu
+ * @since 1.0
+ */
 public interface SignatureValidator {
 	/**
 	 * 设置签名验证的配置项
@@ -34,14 +40,5 @@ public interface SignatureValidator {
 	 * @return 验证结果
 	 */
 	boolean validate(SignatureAttributes signatureAttributes);
-
-	/**
-	 * 签名有效性验证方法
-	 * 
-	 * @param signatureAttributes
-	 * @return 签名有效性验证判断结果 true/false
-	 * 
-	 */
-	boolean isSignatureValid(SignatureAttributes signatureAttributes);
 
 }

@@ -17,6 +17,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
+			<artifactId>wechat-company-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.aposoft.wechat</groupId>
 			<artifactId>wechat-access-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>

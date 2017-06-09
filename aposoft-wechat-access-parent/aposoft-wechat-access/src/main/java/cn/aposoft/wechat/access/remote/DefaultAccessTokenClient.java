@@ -17,9 +17,9 @@ import org.apache.http.message.BasicNameValuePair;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
 import cn.aposoft.wechat.RemoteException;
-import cn.aposoft.wechat.access.AccessTokenConfig;
 import cn.aposoft.wechat.access.address.AddressConfig;
 import cn.aposoft.wechat.access.address.AddressUtil;
+import cn.aposoft.wechat.config.AccountConfig;
 
 /**
  * 默认微信服务访问授权码请求客户端
@@ -62,7 +62,7 @@ public class DefaultAccessTokenClient implements AccessTokenClient {
 	 * aposoft.wechat.access.AccessTokenConfig)
 	 */
 	@Override
-	public AccessTokenResp getAccessToken(AccessTokenConfig accessTokenReq) throws RemoteException {
+	public AccessTokenResp getAccessToken(AccountConfig accessTokenReq) throws RemoteException {
 		final String requestUrl = getAccessTokenUrl(accessTokenReq);
 		HttpGet httpGet = new HttpGet(requestUrl);
 		return HttpClient.execute(httpGet, AccessTokenResp.class, httpClient);
@@ -70,7 +70,7 @@ public class DefaultAccessTokenClient implements AccessTokenClient {
 
 	// 封装对AccessToken的动态拼接
 	// https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=id&corpsecret=secrect
-	private String getAccessTokenUrl(AccessTokenConfig accessTokenReq) {
+	private String getAccessTokenUrl(AccountConfig accessTokenReq) {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair(AddressUtil
 				.getParamConfig("access_token_access_id", accessTokenReq.getAccountType(), addressConfig).getName(),

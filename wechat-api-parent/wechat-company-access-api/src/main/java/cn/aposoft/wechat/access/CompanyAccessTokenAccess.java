@@ -3,14 +3,13 @@
  */
 package cn.aposoft.wechat.access;
 
-import cn.aposoft.wechat.access.AccessToken;
-import cn.aposoft.wechat.access.AccessTokenAccess;
+import cn.aposoft.wechat.CompanyAccountId;
 
 /**
  * 企业访问授权码管理
  * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
 public interface CompanyAccessTokenAccess extends AccessTokenAccess {
 	/**
@@ -20,5 +19,5 @@ public interface CompanyAccessTokenAccess extends AccessTokenAccess {
 	 *            accessToken对应微信企业号应用ID
 	 * @return 访问授权码
 	 */
-	AccessToken getAccessToken(CompanyAccessId companyAccessId);
+	AccessToken getAccessToken(CompanyAccountId accountId);
 }
