@@ -1,7 +1,7 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.mp.config.testaccount;
+package cn.aposoft.wechat.config;
 
 import cn.aposoft.wechat.access.RefreshConfig;
 import cn.aposoft.wechat.config.MpAccountConfig;
@@ -25,7 +25,7 @@ public class WechatAccountConfigFactory {
 
 	/**
 	 * 
-	 * @return
+	 * @return 刷新Token的配置
 	 */
 	public static RefreshConfig getRefreshConfig() {
 		return new RefreshConfig() {

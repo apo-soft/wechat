@@ -4,6 +4,8 @@
 package cn.aposoft.wechat.access;
 
 /**
+ * Token刷新控制配置
+ * 
  * @author Jann Liu
  *
  */

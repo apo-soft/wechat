@@ -18,7 +18,7 @@ import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.access.remote.AccessTokenResp;
 import cn.aposoft.wechat.access.remote.DefaultAccessTokenClient;
-import cn.aposoft.wechat.company.common.WechatCompanyConfig;
+import cn.aposoft.wechat.config.WechatCompanyConfig;
 
 /**
  * 测试读取企业号access_token

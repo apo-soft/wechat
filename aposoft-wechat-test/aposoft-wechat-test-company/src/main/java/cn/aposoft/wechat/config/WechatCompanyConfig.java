@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.company.common;
+package cn.aposoft.wechat.config;
 
 import java.io.Serializable;
 

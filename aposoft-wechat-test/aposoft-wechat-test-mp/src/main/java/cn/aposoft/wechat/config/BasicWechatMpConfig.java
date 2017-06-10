@@ -1,4 +1,4 @@
-package cn.aposoft.wechat.mp.config.testaccount;
+package cn.aposoft.wechat.config;
 
 import cn.aposoft.wechat.AccountType;
 import cn.aposoft.wechat.config.MpAccountConfig;
