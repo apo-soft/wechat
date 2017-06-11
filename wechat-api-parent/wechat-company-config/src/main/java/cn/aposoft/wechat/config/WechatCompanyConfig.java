@@ -6,7 +6,8 @@ package cn.aposoft.wechat.config;
 import java.io.Serializable;
 
 import cn.aposoft.wechat.AccountType;
-import cn.aposoft.wechat.config.CompanyAccountConfig;
+import cn.aposoft.wechat.AccountTypeAware;
+import cn.aposoft.wechat.signature.SignatureConfig;
 
 /**
  * 企业号配置信息
@@ -14,7 +15,7 @@ import cn.aposoft.wechat.config.CompanyAccountConfig;
  * @author Jann Liu
  * @since 1.0
  */
-public class WechatCompanyConfig implements CompanyAccountConfig, Serializable {
+public class WechatCompanyConfig implements AccountTypeAware, SignatureConfig, CompanyAccountConfig, Serializable {
 	private static final long serialVersionUID = 6960974749855213481L;
 	private String id;
 	private String secret;
@@ -68,6 +69,16 @@ public class WechatCompanyConfig implements CompanyAccountConfig, Serializable {
 	 */
 	public void setAgentId(Integer agentId) {
 		this.agentId = agentId;
+	}
+
+	@Override
+	public String getToken() {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String getEncodingAESKey() {
+		throw new UnsupportedOperationException();
 	}
 
 }

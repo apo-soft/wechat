@@ -1,7 +1,7 @@
 package cn.aposoft.wechat.config;
 
 import cn.aposoft.wechat.AccountType;
-import cn.aposoft.wechat.config.MpAccountConfig;
+import cn.aposoft.wechat.config.WechatMpConfig;
 
 /**
  * 简单的Wechat 配置项管理结构
@@ -10,7 +10,7 @@ import cn.aposoft.wechat.config.MpAccountConfig;
  * @author Jann Liu
  * @since 1.0
  */
-public class BasicWechatMpConfig implements MpAccountConfig {
+public class BasicWechatMpConfig implements WechatMpConfig {
 	private static final long serialVersionUID = 1L;
 	/**
 	 * 账户类型

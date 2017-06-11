@@ -6,7 +6,7 @@ package cn.aposoft.wechat.config;
 import cn.aposoft.wechat.AccountType;
 import cn.aposoft.wechat.access.AccessConfigFactory;
 import cn.aposoft.wechat.config.AccountConfig;
-import cn.aposoft.wechat.config.MpAccountConfig;
+import cn.aposoft.wechat.config.WechatMpConfig;
 
 /**
  * AccessTokenConfigFactory 默认实现
@@ -21,7 +21,7 @@ public class BasicAccessConfigFactory implements AccessConfigFactory {
 	public BasicAccessConfigFactory() {
 	}
 
-	public static AccessConfigFactory getInstance(final MpAccountConfig config) {
+	public static AccessConfigFactory getInstance(final WechatMpConfig config) {
 		BasicAccessConfigFactory factory = new BasicAccessConfigFactory();
 		factory.config = new AccountConfig() {
 			private static final long serialVersionUID = 2455287796630853368L;

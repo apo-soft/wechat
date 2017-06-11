@@ -15,7 +15,7 @@ import cn.aposoft.wechat.signature.SignatureConfig;
  * @date 2016年10月12日
  * @since 1.0
  */
-public interface MpAccountConfig extends AccountTypeAware, SignatureConfig, AccountConfig, Serializable {
+public interface WechatMpConfig extends AccountTypeAware, SignatureConfig, AccountConfig, Serializable {
 	/**
 	 * 
 	 * @return 微信公众号的userId,企业号无此项

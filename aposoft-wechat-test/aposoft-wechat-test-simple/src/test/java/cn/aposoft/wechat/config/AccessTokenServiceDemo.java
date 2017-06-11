@@ -31,7 +31,7 @@ public class AccessTokenServiceDemo {
 		AccessTokenClient client = new DefaultAccessTokenClient();
 
 		try (AccessTokenService accessTokenService = new BasicAccessTokenService(client,
-				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig(),
+				BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig(),
 				RefreshConfigFactory.getRefreshConfig());) {
 			for (int i = 0; i < 200; i++) {
 				AccessToken accessToken = accessTokenService.getAccessToken();

@@ -23,7 +23,7 @@
 		</dependency>
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-mp-config-testaccount</artifactId>
+			<artifactId>aposoft-wechat-test-simple</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

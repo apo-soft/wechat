@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.LoggerFactory;
 
+import cn.aposoft.wechat.config.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.auth.WechatAuthorizeService;
 import cn.aposoft.wechat.mp.auth.impl.WechatAuthorizeServiceFactory;
 import cn.aposoft.wechat.mp.auth.remote.Oauth2AccessTokenClient;
-import cn.aposoft.wechat.mp.config.testaccount.WechatAccountConfigFactory;
 
 /**
  * 获取用户授权的Servlet /oauth2/authorize
@@ -37,7 +37,7 @@ public class Oauth2AuthorizeServlet extends HttpServlet {
 	public void init(ServletConfig config) {
 		if (!WechatAuthorizeServiceFactory.isInit()) {
 			WechatAuthorizeServiceFactory.setClient(Oauth2AccessTokenClient.getInstance(),
-					WechatAccountConfigFactory.getConfig());
+					WechatMpConfigFactory.getConfig());
 		}
 		service = WechatAuthorizeServiceFactory.getService();
 	}
