@@ -15,7 +15,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.config.BasicAccessConfigFactory;
+import cn.aposoft.wechat.config.BasicAccountConfigFactory;
 import cn.aposoft.wechat.config.RefreshConfigFactory;
 import cn.aposoft.wechat.config.WechatMpConfigFactory;
 import cn.aposoft.wechat.config.WechatCompanyConfig;
@@ -36,7 +36,7 @@ public class AccessTokenServiceFactory {
 		}
 		AccessTokenClient accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
 		return new FilePathAccessTokenService("../" + FilePathAccessTokenService.DEFAULT_FILE_PATH, accessTokenClient,
-				BasicAccessConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig(),
+				BasicAccountConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig(),
 				RefreshConfigFactory.getRefreshConfig());
 	}
 

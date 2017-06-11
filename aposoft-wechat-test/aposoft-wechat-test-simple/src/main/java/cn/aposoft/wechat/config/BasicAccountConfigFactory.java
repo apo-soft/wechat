@@ -4,7 +4,7 @@
 package cn.aposoft.wechat.config;
 
 import cn.aposoft.wechat.AccountType;
-import cn.aposoft.wechat.access.AccessConfigFactory;
+import cn.aposoft.wechat.access.AccountConfigFactory;
 import cn.aposoft.wechat.config.AccountConfig;
 import cn.aposoft.wechat.config.WechatMpConfig;
 
@@ -14,15 +14,15 @@ import cn.aposoft.wechat.config.WechatMpConfig;
  * @author Jann Liu
  * @since 1.0
  */
-public class BasicAccessConfigFactory implements AccessConfigFactory {
+public class BasicAccountConfigFactory implements AccountConfigFactory {
 
 	private volatile AccountConfig config;
 
-	public BasicAccessConfigFactory() {
+	public BasicAccountConfigFactory() {
 	}
 
-	public static AccessConfigFactory getInstance(final WechatMpConfig config) {
-		BasicAccessConfigFactory factory = new BasicAccessConfigFactory();
+	public static AccountConfigFactory getInstance(final WechatMpConfig config) {
+		BasicAccountConfigFactory factory = new BasicAccountConfigFactory();
 		factory.config = new AccountConfig() {
 			private static final long serialVersionUID = 2455287796630853368L;
 			private final String id = config.getId();

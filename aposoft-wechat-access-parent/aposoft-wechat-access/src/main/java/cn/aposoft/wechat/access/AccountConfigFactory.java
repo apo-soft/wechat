@@ -11,7 +11,7 @@ import cn.aposoft.wechat.config.AccountConfig;
  * @author Jann Liu
  * @since 1.0
  */
-public interface AccessConfigFactory {
+public interface AccountConfigFactory {
 
 	/**
 	 * @return 授权码访问控制配置项
