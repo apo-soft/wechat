@@ -23,7 +23,7 @@ import com.alibaba.fastjson.JSONObject;
 import cn.aposoft.constant.WechatLang;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 
@@ -78,7 +78,7 @@ public class UserClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public UserResp getUser(String accessToken, String nextOpenId) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("access_token is empty.");
 		}
 		String url = getListUserUrl(accessToken, nextOpenId);
@@ -116,7 +116,7 @@ public class UserClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public UserInfoResp getUserInfo(String accessToken, String openId, String lang) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, openId, lang)) {
+		if (AposoftAssert.isBlank(accessToken, openId, lang)) {
 			throw new IllegalArgumentException("access_token is empty.");
 		}
 		if (WechatLang.valueOf(lang) == null) {
@@ -143,7 +143,7 @@ public class UserClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public UserInfoListResp getUserInfoList(String accessToken, List<UserInfoReq> useInfoList) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, useInfoList)) {
+		if (AposoftAssert.isBlank(accessToken, useInfoList)) {
 			throw new IllegalArgumentException("access_token is empty.");
 		}
 
@@ -171,7 +171,7 @@ public class UserClient implements Closeable {
 	 */
 	public UserInfoListResp setUserRemark(final String accessToken, final UserRemarkReq userRemarkReq)
 			throws RemoteException {
-		if (StringUtil.isBlank(accessToken, userRemarkReq)) {
+		if (AposoftAssert.isBlank(accessToken, userRemarkReq)) {
 			throw new IllegalArgumentException("access_token is empty.");
 		}
 		final String url = getSetUserRemarkUrl(accessToken);
@@ -199,7 +199,7 @@ public class UserClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public BlackListResp getUserBlackList(final String accessToken, final String beginOpenId) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("access_token is empty.");
 		}
 
@@ -239,7 +239,7 @@ public class UserClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp setUserBlack(final String accessToken, final BatchBlackReq userBlackReq) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, userBlackReq)) {
+		if (AposoftAssert.isBlank(accessToken, userBlackReq)) {
 			throw new IllegalArgumentException("access_token or userBlacklistReq  is empty.");
 		}
 		final String url = getSetUserBlackUrl(accessToken);
@@ -281,7 +281,7 @@ public class UserClient implements Closeable {
 	 */
 	public WechatResp removeUserFromBlacklist(final String accessToken, final BatchBlackReq userBlackReq)
 			throws RemoteException {
-		if (StringUtil.isBlank(accessToken, userBlackReq)) {
+		if (AposoftAssert.isBlank(accessToken, userBlackReq)) {
 			throw new IllegalArgumentException("access_token or userBlacklistReq  is empty.");
 		}
 		final String url = getRemoveUserBlackUrl(accessToken);
@@ -332,7 +332,7 @@ public class UserClient implements Closeable {
 
 	private String getListUserUrl(String accessToken, String nextOpenId) {
 		return LIST_USER_URL + accessToken
-				+ (StringUtil.isBlank(nextOpenId) ? "" : LIST_USER_URL_NEXT_OPENID + nextOpenId);
+				+ (AposoftAssert.isBlank(nextOpenId) ? "" : LIST_USER_URL_NEXT_OPENID + nextOpenId);
 	}
 
 	@Override

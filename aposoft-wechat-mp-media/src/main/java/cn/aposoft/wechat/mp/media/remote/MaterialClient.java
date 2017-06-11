@@ -12,7 +12,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.meidia.MediaEntity;
@@ -90,7 +90,7 @@ public class MaterialClient extends MediaClient {
 	 * @throws RemoteException
 	 */
 	public MaterialCountResp getMediaCount(String accessToken) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.execute(new HttpGet(getMediaCountUrl(accessToken)), MaterialCountResp.class, httpClient);
@@ -180,7 +180,7 @@ public class MaterialClient extends MediaClient {
 	 * @throws RemoteException
 	 */
 	public MaterialListResp getMediaList(String accessToken, MediaListReq req) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, req)) {
+		if (AposoftAssert.isBlank(accessToken, req)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.execute(HttpClient.jsonPost(getMediaListUrl(accessToken), req),
@@ -215,7 +215,7 @@ public class MaterialClient extends MediaClient {
 			throw new IllegalArgumentException("media is null or empty.");
 		}
 
-		if (StringUtil.isBlank(accessToken, media, media.getFilename(), media.getContentType())) {
+		if (AposoftAssert.isBlank(accessToken, media, media.getFilename(), media.getContentType())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		final String requestUrl = getAddMaterialUrl(accessToken, type);
@@ -240,7 +240,7 @@ public class MaterialClient extends MediaClient {
 	 * @throws RemoteException
 	 */
 	public MaterialResp getMaterial(String accessToken, String media_id) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, media_id)) {
+		if (AposoftAssert.isBlank(accessToken, media_id)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		HttpPost post = HttpClient.jsonPost(getMaterialUrl(accessToken),
@@ -275,7 +275,7 @@ public class MaterialClient extends MediaClient {
 			throw new IllegalArgumentException("media is null or empty.");
 		}
 
-		if (StringUtil.isBlank(accessToken, media, media.getFilename(), media.getContentType())) {
+		if (AposoftAssert.isBlank(accessToken, media, media.getFilename(), media.getContentType())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		final String requestUrl = getAddImageUrl(accessToken);
@@ -313,7 +313,7 @@ public class MaterialClient extends MediaClient {
 	 */
 	public MediaResp addNews(String accessToken, NewsItem... news) throws RemoteException {
 
-		if (StringUtil.isBlank(accessToken, news)) {
+		if (AposoftAssert.isBlank(accessToken, news)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -354,7 +354,7 @@ public class MaterialClient extends MediaClient {
 	 */
 	public MediaResp updateNews(String accessToken, NewsReq req) throws RemoteException {
 
-		if (StringUtil.isBlank(accessToken, req)) {
+		if (AposoftAssert.isBlank(accessToken, req)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -378,7 +378,7 @@ public class MaterialClient extends MediaClient {
 	 */
 	public WechatResp deleteMaterial(String accessToken, String mediaId) throws RemoteException {
 
-		if (StringUtil.isBlank(accessToken, mediaId)) {
+		if (AposoftAssert.isBlank(accessToken, mediaId)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 

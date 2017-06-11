@@ -17,7 +17,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResult;
 
@@ -60,7 +60,7 @@ public class TagManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public TagResp create(final String accessToken, final Tag tag) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, tag)) {
+		if (AposoftAssert.isBlank(accessToken, tag)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -82,7 +82,7 @@ public class TagManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public TagResp update(final String accessToken, final Tag tag) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, tag)) {
+		if (AposoftAssert.isBlank(accessToken, tag)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -104,7 +104,7 @@ public class TagManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResult delete(final String accessToken, final String tagid) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, tagid)) {
+		if (AposoftAssert.isBlank(accessToken, tagid)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -125,7 +125,7 @@ public class TagManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public TagListResp list(final String accessToken) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -148,7 +148,7 @@ public class TagManagementClient implements Closeable {
 	 */
 	public WechatResult addTagUser(final String accessToken, final Integer tagid, final List<String> user,
 			final List<String> party) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, tagid)) {
+		if (AposoftAssert.isBlank(accessToken, tagid)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -173,7 +173,7 @@ public class TagManagementClient implements Closeable {
 	 */
 	public WechatResult deleteTagUser(final String accessToken, final Integer tagid, final List<String> user,
 			final List<String> party) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, tagid)) {
+		if (AposoftAssert.isBlank(accessToken, tagid)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -197,7 +197,7 @@ public class TagManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public TagUserResp getTagUser(final String accessToken, final String tagid) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, tagid)) {
+		if (AposoftAssert.isBlank(accessToken, tagid)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 

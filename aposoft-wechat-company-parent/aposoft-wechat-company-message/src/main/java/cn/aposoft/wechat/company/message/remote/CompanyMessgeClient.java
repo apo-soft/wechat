@@ -10,7 +10,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 
 /**
@@ -39,7 +39,7 @@ public class CompanyMessgeClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public MessageResp send(final String accessToken, final String msg) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, msg)) {
+		if (AposoftAssert.isBlank(accessToken, msg)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.execute(HttpClient.jsonPost(getCompanyMessageUrl(accessToken), msg), MessageResp.class,

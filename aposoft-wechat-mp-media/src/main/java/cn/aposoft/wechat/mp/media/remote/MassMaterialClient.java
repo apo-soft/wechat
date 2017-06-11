@@ -10,7 +10,7 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.meidia.MediaEntity;
 import cn.aposoft.wechat.mp.media.news.NewsItem;
@@ -61,7 +61,7 @@ public class MassMaterialClient extends MediaClient {
 			throw new IllegalArgumentException("media is null or empty.");
 		}
 
-		if (StringUtil.isBlank(accessToken, media, media.getFilename(), media.getContentType())) {
+		if (AposoftAssert.isBlank(accessToken, media, media.getFilename(), media.getContentType())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		final String requestUrl = getUploadNewsThumbUrl(accessToken);
@@ -123,7 +123,7 @@ public class MassMaterialClient extends MediaClient {
 	 * @throws RemoteException
 	 */
 	public MediaResp uploadNews(String accessToken, NewsItem... news) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, news)) {
+		if (AposoftAssert.isBlank(accessToken, news)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 

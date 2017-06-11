@@ -10,7 +10,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 
@@ -44,7 +44,7 @@ public class UserAuthsuccClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp send(final String accessToken, final String userid) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, userid)) {
+		if (AposoftAssert.isBlank(accessToken, userid)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 

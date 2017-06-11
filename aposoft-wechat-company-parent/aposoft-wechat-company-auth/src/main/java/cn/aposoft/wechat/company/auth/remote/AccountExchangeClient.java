@@ -12,7 +12,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.company.auth.AccountExchangeResp;
 
@@ -45,7 +45,7 @@ public class AccountExchangeClient implements Closeable {
 	 */
 	public AccountExchangeResp send(final String accessToken, final String userId, final int agentid)
 			throws RemoteException {
-		if (StringUtil.isBlank(accessToken, userId)) {
+		if (AposoftAssert.isBlank(accessToken, userId)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -65,7 +65,7 @@ public class AccountExchangeClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public AccountExchangeResp send(final String accessToken, final String userId) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, userId)) {
+		if (AposoftAssert.isBlank(accessToken, userId)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -76,7 +76,7 @@ public class AccountExchangeClient implements Closeable {
 	}
 
 	public AccountExchangeResp sendOpenid(String accessToken, String openid) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, openid)) {
+		if (AposoftAssert.isBlank(accessToken, openid)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 

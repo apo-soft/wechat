@@ -19,7 +19,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.mp.message.TemplateMessage;
@@ -59,7 +59,7 @@ public class TemplateMessageClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public String getTemplateList(final String accessToken) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return execute(createHttpGet(getTemplateListUrl(accessToken)), String.class);
@@ -74,7 +74,7 @@ public class TemplateMessageClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public TemplateResp addTemplate(final String accessToken, final String template_id_short) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return execute(createJsonHttpPost(getAddTemplateUrl(accessToken),
@@ -90,7 +90,7 @@ public class TemplateMessageClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp deleteTemplate(final String accessToken, final String template_id) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return execute(createJsonHttpPost(getDeleteTemplateUrl(accessToken),
@@ -110,7 +110,7 @@ public class TemplateMessageClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public MessageResp sendTemplateMessage(final String accessToken, final TemplateMessage msg) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, msg)) {
+		if (AposoftAssert.isBlank(accessToken, msg)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return execute(createJsonHttpPost(getSendTemplateMessageUrl(accessToken), msg), MessageResp.class);

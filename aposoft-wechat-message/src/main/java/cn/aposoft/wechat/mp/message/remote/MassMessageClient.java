@@ -16,7 +16,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.mp.message.MsgType;
@@ -229,7 +229,7 @@ public class MassMessageClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public MessageStatusResp getMessageStatus(final String accessToken, final String msgId) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, msgId)) {
+		if (AposoftAssert.isBlank(accessToken, msgId)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.execute(HttpClient.jsonPost(getMessageStatusUrl(accessToken),
@@ -268,7 +268,7 @@ public class MassMessageClient implements Closeable {
 	 */
 	public WechatResp deleteMassMessage(final String accessToken, final String msgId, Integer articleIndex)
 			throws RemoteException {
-		if (StringUtil.isBlank(accessToken, msgId)) {
+		if (AposoftAssert.isBlank(accessToken, msgId)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		JSONObject jobj = new JSONObject().fluentPut("msg_id", msgId);
@@ -300,7 +300,7 @@ public class MassMessageClient implements Closeable {
 	 */
 	public WechatResp preview(final String accessToken, final String touser, final MsgType msgType,
 			final MediaIdHolder media) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, touser, msgType, media)) {
+		if (AposoftAssert.isBlank(accessToken, touser, msgType, media)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		JSONObject jobj = new JSONObject().fluentPut("touser", touser).fluentPut("msgtype", msgType.name())
@@ -331,7 +331,7 @@ public class MassMessageClient implements Closeable {
 	 */
 	public WechatResp preview(final String accessToken, final String touser, final String content)
 			throws RemoteException {
-		if (StringUtil.isBlank(accessToken, touser, content)) {
+		if (AposoftAssert.isBlank(accessToken, touser, content)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		JSONObject jobj = new JSONObject().fluentPut("touser", touser).fluentPut("msgtype", MsgType.text.name())

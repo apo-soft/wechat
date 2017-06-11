@@ -13,7 +13,7 @@ import org.aposoft.wechat.company.managemnt.department.DepartmentResp;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResult;
 
@@ -52,7 +52,7 @@ public class DepartmentManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public DepartmentResp create(final String accessToken, final Department department) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, department)) {
+		if (AposoftAssert.isBlank(accessToken, department)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -75,7 +75,7 @@ public class DepartmentManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public DepartmentResp update(final String accessToken, final Department department) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, department)) {
+		if (AposoftAssert.isBlank(accessToken, department)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -98,7 +98,7 @@ public class DepartmentManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResult delete(final String accessToken, final String id) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, id)) {
+		if (AposoftAssert.isBlank(accessToken, id)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -119,7 +119,7 @@ public class DepartmentManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public DepartmentListResp list(final String accessToken, final Integer id) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 

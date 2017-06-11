@@ -12,7 +12,7 @@ import org.aposoft.wechat.company.managemnt.agent.AgentResp;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 
 /**
@@ -45,7 +45,7 @@ public class AgentClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public AgentResp send(final String accessToken, final String agentid) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, agentid)) {
+		if (AposoftAssert.isBlank(accessToken, agentid)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 
@@ -53,7 +53,7 @@ public class AgentClient implements Closeable {
 	}
 
 	public AgentListResp send(final String accessToken) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 

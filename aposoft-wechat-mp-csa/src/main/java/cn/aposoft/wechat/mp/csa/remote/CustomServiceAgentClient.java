@@ -10,7 +10,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.mp.csa.AgentAccount;
@@ -45,7 +45,7 @@ public class CustomServiceAgentClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp add(final String accessToken, final AgentAccount account) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, account, account.getAccount(), account.getNickname(),
+		if (AposoftAssert.isBlank(accessToken, account, account.getAccount(), account.getNickname(),
 				account.getPassword())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
@@ -63,7 +63,7 @@ public class CustomServiceAgentClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp update(final String accessToken, final AgentAccount account) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, account, account.getAccount(), account.getNickname(),
+		if (AposoftAssert.isBlank(accessToken, account, account.getAccount(), account.getNickname(),
 				account.getPassword())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
@@ -81,7 +81,7 @@ public class CustomServiceAgentClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp delete(final String accessToken, final AgentAccount account) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, account, account.getAccount())) {
+		if (AposoftAssert.isBlank(accessToken, account, account.getAccount())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.executeWechat(HttpClient.jsonPost(getDeleteUrl(accessToken), account), httpClient);
@@ -101,7 +101,7 @@ public class CustomServiceAgentClient implements Closeable {
 	 */
 	public WechatResp uploadHeadImg(final String accessToken, final AgentAccount account, byte[] image)
 			throws RemoteException {
-		if (StringUtil.isBlank(accessToken, account, account.getAccount())) {
+		if (AposoftAssert.isBlank(accessToken, account, account.getAccount())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.executeWechat(HttpClient.jsonPost(getDeleteUrl(accessToken), account), httpClient);
@@ -118,7 +118,7 @@ public class CustomServiceAgentClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public KfListAccountResp list(final String accessToken) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.execute(HttpClient.get(getListUrl(accessToken)), KfListAccountResp.class,

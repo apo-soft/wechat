@@ -1,7 +1,7 @@
 package cn.aposoft.util;
 
-public class StringUtil {
-	private StringUtil() {
+public class AposoftAssert {
+	private AposoftAssert() {
 
 	}
 

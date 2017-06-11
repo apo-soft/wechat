@@ -13,7 +13,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 
@@ -41,7 +41,7 @@ public class IndustryConfigClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp setIndustryConfig(String accessToken, String id1, String id2) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, id1, id2)) {
+		if (AposoftAssert.isBlank(accessToken, id1, id2)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		Map<String, String> idsContent = new HashMap<>();
@@ -57,7 +57,7 @@ public class IndustryConfigClient implements Closeable {
 	 * 
 	 */
 	public String getIndustry(String accessToken) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.execute(new HttpGet(getQueryConfigIndustryUrl(accessToken)), httpClient);

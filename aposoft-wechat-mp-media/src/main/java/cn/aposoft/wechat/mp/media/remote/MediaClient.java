@@ -16,7 +16,7 @@ import cn.aposoft.wechat.meidia.MediaEntity;
 import cn.aposoft.wechat.meidia.MimeEntity;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 
 /**
  * 素材管理客户端
@@ -86,7 +86,7 @@ public class MediaClient implements Closeable {
 			throw new IllegalArgumentException("media is null or empty.");
 		}
 
-		if (StringUtil.isBlank(accessToken, media, media.getFilename(), media.getContentType())) {
+		if (AposoftAssert.isBlank(accessToken, media, media.getFilename(), media.getContentType())) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		final String requestUrl = getUploadMediaUrl(accessToken, type);
@@ -109,7 +109,7 @@ public class MediaClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public MediaEntityResp getMedia(String accessToken, String mediaId) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, mediaId)) {
+		if (AposoftAssert.isBlank(accessToken, mediaId)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		final String requestUrl = getMediaUrl(accessToken, mediaId);

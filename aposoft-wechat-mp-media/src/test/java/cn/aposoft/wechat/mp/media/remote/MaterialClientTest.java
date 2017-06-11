@@ -14,7 +14,7 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.HttpClient;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.access.AccessTokenException;
@@ -160,7 +160,7 @@ public class MaterialClientTest {
 	public void testGetMeterial() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MaterialResp resp = client.getMaterial(accessTokenService.getAccessToken().getAccess_token(),
 				"gbFT6slaM_0w2LBuG_B-WBRmwdhftRGrelZEFW47sZg");
-		if (!StringUtil.isBlank(resp) && !StringUtil.isBlank(resp.getMediaEntity())) {
+		if (!AposoftAssert.isBlank(resp) && !AposoftAssert.isBlank(resp.getMediaEntity())) {
 			System.out.println(resp.getMediaEntity().getFilename());
 			System.out.println(resp.getMediaEntity().getContentType());
 			System.out.println(resp.getMediaEntity().getLength());
@@ -260,7 +260,7 @@ public class MaterialClientTest {
 	public void testGetNews() throws RemoteException, FileNotFoundException, IOException, AccessTokenException {
 		MaterialResp resp = client.getMaterial(accessTokenService.getAccessToken().getAccess_token(),
 				"gbFT6slaM_0w2LBuG_B-WIjnv6Zigyu3GrRdYBdpbIA");
-		if (!StringUtil.isBlank(resp) && !StringUtil.isBlank(resp.getMediaEntity())) {
+		if (!AposoftAssert.isBlank(resp) && !AposoftAssert.isBlank(resp.getMediaEntity())) {
 			System.out.println(resp.getMediaEntity().getFilename());
 			System.out.println(resp.getMediaEntity().getContentType());
 			System.out.println(resp.getMediaEntity().getLength());

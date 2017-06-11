@@ -18,7 +18,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.mp.user.tag.UserTag;
@@ -61,7 +61,7 @@ public class UserTagClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public UserTagResp create(final String accessToken, final String name) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, name)) {
+		if (AposoftAssert.isBlank(accessToken, name)) {
 			throw new IllegalArgumentException("access_token is empty.");
 		}
 		final String url = getTagCreateUrl(accessToken);
@@ -94,7 +94,7 @@ public class UserTagClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public UserTagListResp list(final String accessToken) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("access_token is empty.");
 		}
 		final String url = getTagListUrl(accessToken);
@@ -126,7 +126,7 @@ public class UserTagClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp update(final String accessToken, final UserTag tag) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, tag, tag.getName())) {
+		if (AposoftAssert.isBlank(accessToken, tag, tag.getName())) {
 			throw new IllegalArgumentException("access_token or tag is not legal.");
 		}
 		final String url = getTagUpdateUrl(accessToken);
@@ -162,7 +162,7 @@ public class UserTagClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp delete(final String accessToken, final int id) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("access_token is empty.");
 		}
 		final String url = getTagDeleteUrl(accessToken);
@@ -200,7 +200,7 @@ public class UserTagClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp batchTagging(final String accessToken, final BatchTaggingReq taggingReq) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, taggingReq)) {
+		if (AposoftAssert.isBlank(accessToken, taggingReq)) {
 			throw new IllegalArgumentException("access_token or taggingReq is empty.");
 		}
 		final String url = getBatchTaggingUrl(accessToken);
@@ -236,7 +236,7 @@ public class UserTagClient implements Closeable {
 	 */
 	public WechatResp batchRemoveTags(final String accessToken, final BatchTaggingReq taggingReq)
 			throws RemoteException {
-		if (StringUtil.isBlank(accessToken, taggingReq)) {
+		if (AposoftAssert.isBlank(accessToken, taggingReq)) {
 			throw new IllegalArgumentException("access_token or taggingReq is empty.");
 		}
 		final String url = getBatchRemoveTagsUrl(accessToken);
@@ -269,7 +269,7 @@ public class UserTagClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public UserTagsIdListResp listUserTags(final String accessToken, final String openId) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("access_token is empty.");
 		}
 		final String url = getUserTagListUrl(accessToken);

@@ -13,7 +13,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.StringUtil;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 
@@ -53,7 +53,7 @@ public class UserManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp create(final String accessToken, final User user) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, user)) {
+		if (AposoftAssert.isBlank(accessToken, user)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.executeWechat(HttpClient.jsonPost(getUserCreateUrl(accessToken), user), httpClient);
@@ -74,7 +74,7 @@ public class UserManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp update(final String accessToken, final User user) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, user)) {
+		if (AposoftAssert.isBlank(accessToken, user)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.executeWechat(HttpClient.jsonPost(getUserUpdateUrl(accessToken), user), httpClient);
@@ -95,7 +95,7 @@ public class UserManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp delete(final String accessToken, final String userid) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, userid)) {
+		if (AposoftAssert.isBlank(accessToken, userid)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.executeWechat(HttpClient.get(getUserDeleteUrl(accessToken, userid)), httpClient);
@@ -116,7 +116,7 @@ public class UserManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public WechatResp delete(final String accessToken, final List<String> userid) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, userid)) {
+		if (AposoftAssert.isBlank(accessToken, userid)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.executeWechat(
@@ -139,7 +139,7 @@ public class UserManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public UserResp get(final String accessToken, final String userid) throws RemoteException {
-		if (StringUtil.isBlank(accessToken, userid)) {
+		if (AposoftAssert.isBlank(accessToken, userid)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.execute(HttpClient.get(getUserUrl(accessToken, userid)), UserResp.class, httpClient);
@@ -165,7 +165,7 @@ public class UserManagementClient implements Closeable {
 	 * @throws RemoteException
 	 */
 	public UserListResp get(String accessToken, int departmentId, int fetchChild, int status) throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.execute(HttpClient.get(getUserUrl(accessToken, departmentId, fetchChild, status)),
@@ -195,7 +195,7 @@ public class UserManagementClient implements Closeable {
 	 */
 	public UserListResp getDetail(String accessToken, int departmentId, int fetchChild, int status)
 			throws RemoteException {
-		if (StringUtil.isBlank(accessToken)) {
+		if (AposoftAssert.isBlank(accessToken)) {
 			throw new IllegalArgumentException("Some argument(s) is null or empty.");
 		}
 		return HttpClient.execute(HttpClient.get(getUserDetailUrl(accessToken, departmentId, fetchChild, status)),

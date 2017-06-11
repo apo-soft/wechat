@@ -108,12 +108,12 @@ public class HttpClient {
 						: response.getFirstHeader("Content-Type").getValue();
 
 				MimeEntity resp = new MimeEntity();
-				if (StringUtil.isBlank(mimeType)) {
+				if (AposoftAssert.isBlank(mimeType)) {
 					resp.setMimeType(ContentType.APPLICATION_JSON.getMimeType());
 				} else {
 					resp.setMimeType(ContentType.parse(mimeType).getMimeType());
 				}
-				if (!StringUtil.isBlank(mimeType)
+				if (!AposoftAssert.isBlank(mimeType)
 						&& (ContentType.APPLICATION_JSON.getMimeType().equals(resp.getMimeType())
 								|| ContentType.TEXT_PLAIN.getMimeType().equals(resp.getMimeType()))) {
 					resp.setText(EntityUtils.toString(response.getEntity()));
@@ -123,7 +123,7 @@ public class HttpClient {
 					MediaEntity mediaEntity = new MediaEntity();
 					mediaEntity.setContentType(resp.getMimeType());
 					mediaEntity.setFilename(getFileName(response));
-					mediaEntity.setLength(StringUtil.isBlank(response.getFirstHeader("Content-Length"),
+					mediaEntity.setLength(AposoftAssert.isBlank(response.getFirstHeader("Content-Length"),
 							response.getFirstHeader("Content-Length").getValue()) ? null
 									: Long.valueOf(response.getFirstHeader("Content-Length").getValue()));
 					mediaEntity.setEntity(EntityUtils.toByteArray(entity));
@@ -185,11 +185,11 @@ public class HttpClient {
 	}
 
 	private static String getFileName(CloseableHttpResponse response) {
-		if (StringUtil.isNull(response, response.getFirstHeader("Content-disposition"))) {
+		if (AposoftAssert.isNull(response, response.getFirstHeader("Content-disposition"))) {
 			return null;
 		} else {
 			String content = response.getFirstHeader("Content-disposition").getValue();
-			if (StringUtil.isBlank(content)) {
+			if (AposoftAssert.isBlank(content)) {
 				return null;
 			}
 
