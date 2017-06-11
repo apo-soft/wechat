@@ -24,6 +24,6 @@
 		<module>wechat-company-access</module>
 		<module>wechat-config</module>
 		<module>wechat-company-core</module>
-		<module>wechat-company-config-api</module>
+		<module>wechat-company-config</module>
 	</modules>
 </project>

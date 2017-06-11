@@ -8,8 +8,8 @@
 		<artifactId>wechat-api-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>wechat-company-config-api</artifactId>
-	<name>wechat-company-config-api</name>
+	<artifactId>wechat-company-config</artifactId>
+	<name>wechat-company-config</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
