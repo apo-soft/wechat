@@ -8,8 +8,8 @@
 		<artifactId>aposoft-wechat-test</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>aposoft-wechat-test-simple</artifactId>
-	<name>aposoft-wechat-test-mp</name>
+	<artifactId>aposoft-wechat-test-address</artifactId>
+	<name>aposoft-wechat-test-address</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,21 +18,6 @@
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
 			<artifactId>wechat-config</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>wechat-company-config</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-test-address</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-access</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

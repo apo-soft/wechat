@@ -14,7 +14,7 @@ import cn.aposoft.wechat.config.AccountConfig;
  * 
  * @author Jann Liu
  * @date 2016年10月13日
- * 
+ * @since 1.0
  */
 public interface AccessTokenClient extends Closeable {
 	/**
