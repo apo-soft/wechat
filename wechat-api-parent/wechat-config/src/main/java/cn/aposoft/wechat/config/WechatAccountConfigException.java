@@ -1,4 +1,4 @@
-package cn.aposoft.wechat.access;
+package cn.aposoft.wechat.config;
 
 public class WechatAccountConfigException extends Exception {
 	/**
