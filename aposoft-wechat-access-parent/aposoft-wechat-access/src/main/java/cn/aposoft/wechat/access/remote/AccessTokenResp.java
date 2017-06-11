@@ -13,8 +13,7 @@ import cn.aposoft.wechat.WechatResult;
  * 参数集合声明：
  * 
  * <pre>
- * <a href=
- 	"https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183&token=&lang=zh_CN"> 获取access_token </a>
+ * <a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183&token=&lang=zh_CN"> 获取access_token </a>
  * </pre>
  * 
  * <pre>
