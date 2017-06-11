@@ -7,6 +7,8 @@ import cn.aposoft.wechat.CompanyAccountId;
 
 /**
  * 企业访问授权码管理
+ * <p>
+ * 为保持最大兼容性,企业授权码管理服务的实现将同时保留对一般授权码的管理实现
  * 
  * @author Jann Liu
  * @since 1.0
