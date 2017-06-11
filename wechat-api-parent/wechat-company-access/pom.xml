@@ -8,8 +8,8 @@
 		<artifactId>wechat-api-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>wechat-company-access-api</artifactId>
-	<name>wechat-company-access-api</name>
+	<artifactId>wechat-company-access</artifactId>
+	<name>wechat-company-access</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,7 +22,7 @@
 		</dependency>
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>wechat-access-api</artifactId>
+			<artifactId>wechat-access</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
 			<version>${project.version}</version>
-			<artifactId>wechat-company-access-api</artifactId>
+			<artifactId>wechat-company-access</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis.generator</groupId>

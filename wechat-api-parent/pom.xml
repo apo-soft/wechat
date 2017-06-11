@@ -19,9 +19,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<modules>
-		<module>wechat-access-api</module>
+		<module>wechat-access</module>
 		<module>wechat-core</module>
-		<module>wechat-company-access-api</module>
+		<module>wechat-company-access</module>
 		<module>wechat-config-api</module>
 		<module>wechat-company-core</module>
 		<module>wechat-company-config-api</module>
