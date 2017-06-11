@@ -12,7 +12,12 @@ import cn.aposoft.wechat.AccountType;
  * @since 1.0
  */
 public interface UrlConfig {
-
+	/**
+	 * 请求方式定义
+	 * 
+	 * @author Jann Liu
+	 * @since 1.0
+	 */
 	public static enum Method {
 		GET, POST
 	}
