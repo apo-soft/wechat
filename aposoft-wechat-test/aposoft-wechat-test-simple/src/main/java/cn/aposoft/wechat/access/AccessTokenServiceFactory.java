@@ -40,6 +40,10 @@ public class AccessTokenServiceFactory {
 				RefreshConfigFactory.getRefreshConfig());
 	}
 
+	public static AccessTokenService getCompanyAccessTokenService() throws FileNotFoundException, IOException {
+		return getCompanyAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH, "../config/gome-ops-key.txt");
+	}
+
 	public static AccessTokenService getCompanyAccessTokenService(String filePath, String configPath)
 			throws FileNotFoundException, IOException {
 		if (StringUtils.isBlank(configPath)) {

@@ -3,11 +3,8 @@
  */
 package org.aposoft.wechat.company.managemnt.user;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
-import org.apache.commons.io.IOUtils;
 import org.aposoft.wechat.company.managemnt.user.impl.AposoftUserAuthsuccService;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -16,13 +13,12 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
+import cn.aposoft.util.HttpClient;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
-import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
-import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.company.common.WechatCompanyConfig;
+import cn.aposoft.wechat.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccessTokenServiceFactory;
 
 /**
  * @author Jann Liu
@@ -30,22 +26,18 @@ import cn.aposoft.wechat.company.common.WechatCompanyConfig;
  */
 public class AposoftUserAuthsuccServiceTest {
 	static final AposoftUserAuthsuccService service = new AposoftUserAuthsuccService();
-	static final AccessTokenClient accessTokenClient = AccessTokenClientFactory.getCompanyAccessTokenClient();
-	static FilePathAccessTokenService accessTokenService;
+	static AccessTokenService accessTokenService;
 
 	@BeforeClass
 	public static void init() throws IOException {
-		WechatCompanyConfig config = JSON.parseObject(
-				IOUtils.toString(new FileInputStream("../config/gome-ops-key.txt"), StandardCharsets.UTF_8),
-				WechatCompanyConfig.class);
-		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient, config, null);
+		HttpClient.setLogEnabled(true);
+		accessTokenService = AccessTokenServiceFactory.getCompanyAccessTokenService();
 	}
 
 	@AfterClass
 	public static void dispose() {
 		service.close();
-		accessTokenClient.close();
+		accessTokenService.close();
 	}
 
 	/**
