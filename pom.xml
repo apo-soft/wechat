@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>cn.aposoft.wechat</groupId>
@@ -35,6 +36,21 @@
 		<dbcp.version>1.4</dbcp.version>
 		<org.springframework.boot.version>1.5.3.RELEASE</org.springframework.boot.version>
 	</properties>
+	<modules>
+		<module>aposoft-wechat-core</module>
+		<module>aposoft-wechat-access-parent</module>
+		<module>aposoft-wechat-message</module>
+		<module>aposoft-wechat-simple-site</module>
+		<module>aposoft-wechat-mp-csa</module>
+		<module>aposoft-wechat-mp-user</module>
+		<module>aposoft-wechat-mp-media</module>
+		<module>aposoft-wechat-mp-auth</module>
+		<module>aposoft-wechat-mp-examples</module>
+		<module>aposoft-wechat-mp-account</module>
+		<module>aposoft-wechat-company-parent</module>
+		<module>wechat-api-parent</module>
+		<module>aposoft-wechat-test</module>
+	</modules>
 
 	<build>
 		<plugins>
@@ -68,22 +84,7 @@
 		</pluginManagement>
 	</build>
 	<packaging>pom</packaging>
-	<modules>
-		<module>aposoft-wechat-core</module>
-		<module>aposoft-wechat-access-parent</module>
-		<module>aposoft-wechat-message</module>
-		<module>aposoft-wechat-simple-site</module>
-		<module>aposoft-wechat-mp-csa</module>
-		<module>aposoft-wechat-mp-user</module>
-		<module>aposoft-wechat-mp-media</module>
-		<module>aposoft-wechat-mp-auth</module>
-		<module>aposoft-wechat-mp-examples</module>
-		<module>aposoft-wechat-mp-account</module>
-		<module>aposoft-wechat-company-parent</module>
-		<module>wechat-api-parent</module>
-		<module>aposoft-wechat-config-parent</module>
-    <module>aposoft-wechat-test</module>
-  </modules>
+
 
 
 	<dependencyManagement>

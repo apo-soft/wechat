@@ -15,43 +15,31 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.StringUtil;
-import cn.aposoft.wechat.MediaEntity;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
-import cn.aposoft.wechat.access.AccessToken;
-import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
-import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
-import cn.aposoft.wechat.mp.config.testaccount.WechatAccountConfigFactory;
+import cn.aposoft.wechat.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccessTokenServiceFactory;
+import cn.aposoft.wechat.meidia.MediaEntity;
 import cn.aposoft.wechat.mp.media.MediaType;
 import cn.aposoft.wechat.mp.media.news.NewsItem;
 
 public class MaterialClientTest {
 
 	static MaterialClient client = new MaterialClient();
-	static AccessToken accessToken;
-	static AccessTokenClient accessTokenClient;
-	static FilePathAccessTokenService accessTokenService;
+	static AccessTokenService accessTokenService;
 
 	@BeforeClass
 	public static void init() throws IOException, AccessTokenException {
 		if (!HttpClient.isLogEnabled()) {
 			HttpClient.setLogEnabled(true);
 		}
-		accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
-		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient,
-				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig(),
-				WechatAccountConfigFactory.getRefreshConfig());
-		accessToken = accessTokenService.getAccessToken();
-		System.out.println(JSON.toJSONString(accessToken));
+		accessTokenService = AccessTokenServiceFactory.getAccessTokenService();
 	}
 
 	@AfterClass
 	public static void dispose() {
-		accessTokenClient.close();
+		accessTokenService.close();
 		client.close();
 	}
 

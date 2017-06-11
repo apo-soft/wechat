@@ -13,10 +13,10 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.StringUtil;
-import cn.aposoft.wechat.MediaEntity;
-import cn.aposoft.wechat.MimeEntity;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
+import cn.aposoft.wechat.meidia.MediaEntity;
+import cn.aposoft.wechat.meidia.MimeEntity;
 import cn.aposoft.wechat.mp.media.news.NewsItem;
 
 /**

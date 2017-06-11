@@ -17,13 +17,9 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
-import cn.aposoft.wechat.access.AccessToken;
-import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
-import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
-import cn.aposoft.wechat.mp.config.testaccount.WechatAccountConfigFactory;
+import cn.aposoft.wechat.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccessTokenServiceFactory;
 
 /**
  * @author Jann Liu
@@ -31,25 +27,17 @@ import cn.aposoft.wechat.mp.config.testaccount.WechatAccountConfigFactory;
  */
 public class UserClientTest {
 	static UserClient userClient;
-	static AccessToken accessToken;
-	static AccessTokenClient accessTokenClient;
-	static FilePathAccessTokenService accessTokenService;
+	static AccessTokenService accessTokenService;
 
 	@BeforeClass
 	public static void init() throws IOException, AccessTokenException {
 		userClient = new UserClient();
-		accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
-		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient,
-				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig(),
-				WechatAccountConfigFactory.getRefreshConfig());
-		accessToken = accessTokenService.getAccessToken();
-		System.out.println(JSON.toJSONString(accessToken));
+		accessTokenService = AccessTokenServiceFactory.getAccessTokenService();
 	}
 
 	@AfterClass
 	public static void dispose() {
-		accessTokenClient.close();
+		accessTokenService.close();
 		userClient.close();
 	}
 

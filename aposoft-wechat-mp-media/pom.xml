@@ -25,22 +25,9 @@
 			<artifactId>aposoft-wechat-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-mp-access</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-mp-config-testaccount</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-access-config-demo</artifactId>
+			<artifactId>aposoft-wechat-test-simple</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>

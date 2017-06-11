@@ -3,8 +3,8 @@
  */
 package cn.aposoft.wechat.mp.media.remote;
 
-import cn.aposoft.wechat.MediaEntity;
 import cn.aposoft.wechat.WechatResp;
+import cn.aposoft.wechat.meidia.MediaEntity;
 
 /**
  * 素材内容响应对象

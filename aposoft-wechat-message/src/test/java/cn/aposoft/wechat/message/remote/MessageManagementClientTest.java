@@ -17,8 +17,9 @@ import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.mp.access.impl.BasicAccessConfigFactory;
-import cn.aposoft.wechat.mp.config.testaccount.WechatAccountConfigFactory;
+import cn.aposoft.wechat.config.BasicAccessConfigFactory;
+import cn.aposoft.wechat.config.RefreshConfigFactory;
+import cn.aposoft.wechat.config.WechatAccountConfigFactory;
 import cn.aposoft.wechat.mp.message.remote.MessageManagementClient;
 
 /**
@@ -38,7 +39,7 @@ public class MessageManagementClientTest {
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
 				accessTokenClient,
 				BasicAccessConfigFactory.getInstance(WechatAccountConfigFactory.getConfig()).getAccessConfig(),
-				WechatAccountConfigFactory.getRefreshConfig());
+				RefreshConfigFactory.getRefreshConfig());
 		System.out.println(JSON.toJSONString(accessTokenService.getAccessToken()));
 	}
 

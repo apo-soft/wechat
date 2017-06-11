@@ -20,7 +20,7 @@ import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.company.common.WechatCompanyAccountConfig;
+import cn.aposoft.wechat.company.common.WechatCompanyConfig;
 import cn.aposoft.wechat.company.message.impl.AposoftCompanyMessageService;
 
 /**
@@ -37,11 +37,11 @@ public class CompanyClientTest {
 
 	@BeforeClass
 	public static void init() throws IOException {
-		WechatCompanyAccountConfig config = JSON.parseObject(
+		WechatCompanyConfig config = JSON.parseObject(
 				IOUtils.toString(new FileInputStream("../config/gome-ops-key.txt"), StandardCharsets.UTF_8),
-				WechatCompanyAccountConfig.class);
+				WechatCompanyConfig.class);
 		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient, config);
+				accessTokenClient, config, null);
 	}
 
 	@AfterClass

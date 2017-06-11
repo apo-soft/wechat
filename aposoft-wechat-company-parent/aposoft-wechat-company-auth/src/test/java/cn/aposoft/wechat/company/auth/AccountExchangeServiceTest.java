@@ -22,7 +22,7 @@ import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.company.auth.impl.AposoftAccountExchangeService;
 import cn.aposoft.wechat.config.CompanyAccountConfig;
-import cn.aposoft.wechat.mp.config.testaccount.WechatAccountConfigFactory;
+import cn.aposoft.wechat.config.WechatAccountConfigFactory;
 
 /**
  * 账号转换接口测试
@@ -33,7 +33,7 @@ import cn.aposoft.wechat.mp.config.testaccount.WechatAccountConfigFactory;
 public class AccountExchangeServiceTest {
 
 	static final AccountExchangeService service = new AposoftAccountExchangeService();
-	static final AccessTokenClient accessTokenClient = AccessTokenClientFactory.getCompanyAccessTokenClient();
+	static final AccessTokenClient accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
 	static FilePathAccessTokenService accessTokenService;
 
 	@BeforeClass

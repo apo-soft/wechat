@@ -19,7 +19,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<modules>
-		<module>aposoft-wechat-test-mp</module>
-		<module>aposoft-wechat-test-company</module>
+		<module>aposoft-wechat-test-simple</module>
 	</modules>
 </project>
