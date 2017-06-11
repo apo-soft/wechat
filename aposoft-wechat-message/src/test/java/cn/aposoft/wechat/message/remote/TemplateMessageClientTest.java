@@ -16,40 +16,32 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.RemoteException;
-import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
-import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.config.BasicAccountConfigFactory;
-import cn.aposoft.wechat.config.RefreshConfigFactory;
-import cn.aposoft.wechat.config.WechatMpConfigFactory;
+import cn.aposoft.wechat.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccessTokenServiceFactory;
 import cn.aposoft.wechat.mp.message.TemplateMessage;
 import cn.aposoft.wechat.mp.message.TemplateMessage.TemplateParam;
 import cn.aposoft.wechat.mp.message.remote.MessageResp;
 import cn.aposoft.wechat.mp.message.remote.TemplateMessageClient;
 
 /**
+ * 模板消息客户端测试
+ * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
 public class TemplateMessageClientTest {
 	static TemplateMessageClient client = new TemplateMessageClient();
-	static AccessTokenClient accessTokenClient;
-	static FilePathAccessTokenService accessTokenService;
+	static AccessTokenService accessTokenService;
 
 	@BeforeClass
 	public static void init() throws IOException, AccessTokenException {
-		accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
-		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient,
-				BasicAccountConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig(),
-				RefreshConfigFactory.getRefreshConfig());
-		System.out.println(JSON.toJSONString(accessTokenService.getAccessToken()));
+		accessTokenService = AccessTokenServiceFactory.getAccessTokenService();
 	}
 
 	@AfterClass
 	public static void dispose() {
-		accessTokenClient.close();
+		accessTokenService.close();
 		client.close();
 	}
 

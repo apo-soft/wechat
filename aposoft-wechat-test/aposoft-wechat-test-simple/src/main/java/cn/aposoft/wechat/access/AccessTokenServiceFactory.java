@@ -13,12 +13,11 @@ import org.apache.commons.lang.StringUtils;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.config.BasicAccountConfigFactory;
 import cn.aposoft.wechat.config.RefreshConfigFactory;
-import cn.aposoft.wechat.config.WechatMpConfigFactory;
 import cn.aposoft.wechat.config.WechatCompanyConfig;
+import cn.aposoft.wechat.config.WechatMpConfigFactory;
 
 /**
  * @author Jann Liu

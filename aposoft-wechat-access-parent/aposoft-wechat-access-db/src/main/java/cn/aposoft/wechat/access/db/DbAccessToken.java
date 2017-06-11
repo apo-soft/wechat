@@ -4,7 +4,7 @@
 package cn.aposoft.wechat.access.db;
 
 import cn.aposoft.wechat.AccountType;
-import cn.aposoft.wechat.access.impl.BasicAccessToken;
+import cn.aposoft.wechat.access.BasicAccessToken;
 import cn.aposoft.wechat.config.AccountConfig;
 
 /**

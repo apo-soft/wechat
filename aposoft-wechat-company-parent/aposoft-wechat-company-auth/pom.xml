@@ -25,21 +25,10 @@
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-company-access</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-test-mp</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-access-config-demo</artifactId>
+			<artifactId>aposoft-wechat-test-simple</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>

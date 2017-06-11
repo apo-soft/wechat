@@ -18,11 +18,9 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResult;
-import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.AccessTokenService;
 import cn.aposoft.wechat.access.AccessTokenServiceFactory;
-import cn.aposoft.wechat.access.remote.AccessTokenClient;
 
 /**
  * @author Jann Liu
@@ -30,7 +28,6 @@ import cn.aposoft.wechat.access.remote.AccessTokenClient;
  */
 public class TagManagementTest {
 	static final TagManagementClient service = new TagManagementClient();
-	static final AccessTokenClient accessTokenClient = AccessTokenClientFactory.getCompanyAccessTokenClient();
 
 	static AccessTokenService accessTokenService;
 

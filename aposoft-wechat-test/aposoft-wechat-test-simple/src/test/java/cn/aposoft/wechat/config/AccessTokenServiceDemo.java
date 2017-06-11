@@ -8,7 +8,7 @@ import com.alibaba.fastjson.JSON;
 import cn.aposoft.wechat.access.AccessToken;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.AccessTokenService;
-import cn.aposoft.wechat.access.impl.BasicAccessTokenService;
+import cn.aposoft.wechat.access.BasicAccessTokenService;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.access.remote.DefaultAccessTokenClient;
 

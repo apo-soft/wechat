@@ -9,17 +9,10 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.alibaba.fastjson.JSON;
-
 import cn.aposoft.wechat.RemoteException;
-import cn.aposoft.wechat.access.AccessToken;
-import cn.aposoft.wechat.access.AccessTokenClientFactory;
 import cn.aposoft.wechat.access.AccessTokenException;
-import cn.aposoft.wechat.access.impl.FilePathAccessTokenService;
-import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.config.BasicAccountConfigFactory;
-import cn.aposoft.wechat.config.RefreshConfigFactory;
-import cn.aposoft.wechat.config.WechatMpConfigFactory;
+import cn.aposoft.wechat.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccessTokenServiceFactory;
 import cn.aposoft.wechat.mp.message.remote.IndustryConfigClient;
 
 /**
@@ -28,37 +21,29 @@ import cn.aposoft.wechat.mp.message.remote.IndustryConfigClient;
  */
 public class AposoftIndustryConfigServiceTest {
 	static IndustryConfigClient client;
-	static AccessToken accessToken;
-	static AccessTokenClient accessTokenClient;
-	static FilePathAccessTokenService accessTokenService;
+	static AccessTokenService accessTokenService;
 
 	@BeforeClass
 	public static void init() throws IOException, AccessTokenException {
 		client = new IndustryConfigClient();
-		accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
-		accessTokenService = new FilePathAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH,
-				accessTokenClient,
-				BasicAccountConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig(),
-				RefreshConfigFactory.getRefreshConfig());
-		accessToken = accessTokenService.getAccessToken();
-		System.out.println(JSON.toJSONString(accessToken));
+		accessTokenService = AccessTokenServiceFactory.getAccessTokenService();
 	}
 
 	@AfterClass
 	public static void dispose() {
 		client.close();
-		accessTokenClient.close();
+		accessTokenService.close();
 
 	}
 
 	@Test
 	public void testSetIndustry() throws RemoteException {
-		client.setIndustryConfig(accessToken.getAccess_token(), "8", "2");
+		client.setIndustryConfig(accessTokenService.getAccessToken().getAccess_token(), "8", "2");
 	}
 
 	@Test
 	public void testgetIndustry() throws RemoteException {
-		System.out.println(client.getIndustry(accessToken.getAccess_token()));
+		System.out.println(client.getIndustry(accessTokenService.getAccessToken().getAccess_token()));
 	}
 
 }

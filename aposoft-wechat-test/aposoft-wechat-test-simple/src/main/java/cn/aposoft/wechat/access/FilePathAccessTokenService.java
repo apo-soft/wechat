@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.access.impl;
+package cn.aposoft.wechat.access;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,9 +19,6 @@ import org.apache.commons.lang.StringUtils;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.wechat.access.AccessToken;
-import cn.aposoft.wechat.access.AccessTokenException;
-import cn.aposoft.wechat.access.RefreshConfig;
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.config.AccountConfig;
 

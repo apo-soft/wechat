@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.access.impl;
+package cn.aposoft.wechat.access;
 
 import java.io.IOException;
 import java.util.Date;
