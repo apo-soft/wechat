@@ -5,7 +5,6 @@ package cn.aposoft.wechat.access;
 
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.access.remote.DefaultAccessTokenClient;
-import cn.aposoft.wechat.test.AddressConfigFactory;
 
 /**
  * 授权码客户端工厂

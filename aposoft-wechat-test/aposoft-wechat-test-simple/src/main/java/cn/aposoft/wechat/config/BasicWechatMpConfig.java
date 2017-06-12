@@ -23,8 +23,8 @@ public class BasicWechatMpConfig implements WechatMpConfig {
 	/**
 	 * 公众号
 	 */
-	private String appId = "wx31659662068251dc";
-	private String appSecret = "9cf9858af4718fde40d67968b5de3967";
+	private String id = "wx31659662068251dc";
+	private String secret = "9cf9858af4718fde40d67968b5de3967";
 	private String token = "AposoftBugs";
 
 	/**
@@ -54,12 +54,12 @@ public class BasicWechatMpConfig implements WechatMpConfig {
 
 	@Override
 	public String getId() {
-		return appId;
+		return id;
 	}
 
 	@Override
 	public String getSecret() {
-		return appSecret;
+		return secret;
 	}
 
 	@Override

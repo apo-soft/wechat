@@ -5,12 +5,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>cn.aposoft.wechat</groupId>
-		<artifactId>aposoft-wechat-parent</artifactId>
+		<artifactId>aposoft-wechat-mp-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>aposoft-wechat-mp-user</artifactId>
-	<name>aposoft-wechat-mp-user</name>
-	<url>http://maven.apache.org</url>
+	<artifactId>aposoft-wechat-mp-csa</artifactId>
+	<name>aposoft-wechat-mp-csa</name>
+	<description>微信客服人员管理单元</description>
+	<url>http://www.aposoft.cn/</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -18,12 +19,6 @@
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
 			<artifactId>aposoft-wechat-core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>wechat-config</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
@@ -44,4 +39,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 </project>

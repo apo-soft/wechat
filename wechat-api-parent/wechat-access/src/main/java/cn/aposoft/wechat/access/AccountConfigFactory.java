@@ -16,5 +16,5 @@ public interface AccountConfigFactory {
 	/**
 	 * @return 授权码访问控制配置项
 	 */
-	AccountConfig getAccessConfig();
+	AccountConfig getAccountConfig();
 }

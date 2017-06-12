@@ -5,13 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>cn.aposoft.wechat</groupId>
-		<artifactId>aposoft-wechat-parent</artifactId>
+		<artifactId>aposoft-wechat-mp-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>aposoft-wechat-mp-csa</artifactId>
-	<name>aposoft-wechat-mp-csa</name>
-	<description>微信客服人员管理单元</description>
-	<url>http://www.aposoft.cn/</url>
+	<artifactId>aposoft-wechat-message</artifactId>
+	<name>aposoft-wechat-message</name>
+	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -21,10 +20,10 @@
 			<artifactId>aposoft-wechat-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-log4j2</artifactId>
+			<groupId>cn.aposoft.wechat</groupId>
+			<artifactId>wechat-config</artifactId>
+			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -34,10 +33,15 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 </project>

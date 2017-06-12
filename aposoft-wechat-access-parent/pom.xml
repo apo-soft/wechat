@@ -20,7 +20,6 @@
 	</properties>
 	<modules>
 		<module>aposoft-wechat-access</module>
-		<module>aposoft-wechat-mp-server</module>
 		<module>aposoft-wechat-access-db</module>
 	</modules>
 </project>

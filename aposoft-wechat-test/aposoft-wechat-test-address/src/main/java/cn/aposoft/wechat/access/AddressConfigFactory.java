@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.test;
+package cn.aposoft.wechat.access;
 
 import java.util.ArrayList;
 import java.util.List;

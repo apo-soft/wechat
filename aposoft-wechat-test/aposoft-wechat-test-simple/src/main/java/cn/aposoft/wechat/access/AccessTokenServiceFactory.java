@@ -6,6 +6,7 @@ package cn.aposoft.wechat.access;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
@@ -14,10 +15,8 @@ import org.apache.commons.lang.StringUtils;
 import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.config.BasicAccountConfigFactory;
 import cn.aposoft.wechat.config.RefreshConfigFactory;
 import cn.aposoft.wechat.config.WechatCompanyConfig;
-import cn.aposoft.wechat.config.WechatMpConfigFactory;
 
 /**
  * @author Jann Liu
@@ -35,8 +34,7 @@ public class AccessTokenServiceFactory {
 		}
 		AccessTokenClient accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
 		return new FilePathAccessTokenService("../" + FilePathAccessTokenService.DEFAULT_FILE_PATH, accessTokenClient,
-				BasicAccountConfigFactory.getInstance(WechatMpConfigFactory.getConfig()).getAccessConfig(),
-				RefreshConfigFactory.getRefreshConfig());
+				DemoAccountConfigFactory.factory().getAccountConfig(), RefreshConfigFactory.getRefreshConfig());
 	}
 
 	public static AccessTokenService getCompanyAccessTokenService() throws FileNotFoundException, IOException {
@@ -52,10 +50,13 @@ public class AccessTokenServiceFactory {
 			filePath = FilePathAccessTokenService.DEFAULT_FILE_PATH;
 		}
 		AccessTokenClient accessTokenClient = AccessTokenClientFactory.getCompanyAccessTokenClient();
-		WechatCompanyConfig config = JSON.parseObject(
-				IOUtils.toString(new FileInputStream(configPath), StandardCharsets.UTF_8), WechatCompanyConfig.class);
-		AccessTokenService accessTokenService = new FilePathAccessTokenService(filePath, accessTokenClient, config,
-				RefreshConfigFactory.getRefreshConfig());
-		return accessTokenService;
+		try (InputStream input = new FileInputStream(configPath)) {
+			WechatCompanyConfig config = JSON.parseObject(IOUtils.toString(input, StandardCharsets.UTF_8),
+					WechatCompanyConfig.class);
+			AccessTokenService accessTokenService = new FilePathAccessTokenService(filePath, accessTokenClient, config,
+					RefreshConfigFactory.getRefreshConfig());
+			return accessTokenService;
+		}
+
 	}
 }
