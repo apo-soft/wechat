@@ -3,8 +3,7 @@
  */
 package org.aposoft.wechat.company.managemnt.user;
 
-import java.io.Closeable;
-
+import cn.aposoft.io.QuietCloseable;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 
@@ -14,7 +13,7 @@ import cn.aposoft.wechat.WechatResp;
  * @author Jann Liu
  *
  */
-public interface UserAuthsuccService extends Closeable {
+public interface UserAuthsuccService extends QuietCloseable {
 	/**
 	 * 确认企业用户关注成功
 	 * 

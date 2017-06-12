@@ -3,15 +3,14 @@
  */
 package cn.aposoft.wechat.mp.message;
 
-import java.io.Closeable;
-
+import cn.aposoft.io.QuietCloseable;
 import cn.aposoft.wechat.RemoteException;
 
 /**
  * @author Jann Liu
  *
  */
-public interface IndustryConfigService extends Closeable {
+public interface IndustryConfigService extends QuietCloseable {
 
 	/**
 	 * 设置行业ID

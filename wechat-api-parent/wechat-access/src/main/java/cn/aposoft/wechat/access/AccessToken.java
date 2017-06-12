@@ -18,24 +18,23 @@ import java.util.Date;
  */
 public interface AccessToken {
 	/**
-	 * Token 实际值,微信返回
+	 * Access_token 实际值,微信返回
 	 * 
-	 * @return 微信提供的Accesstoken 有效值字符串
+	 * @return 微信提供的Access_token 有效值字符串
 	 */
 	public String getAccess_token();
 
 	/**
-	 * 微信提供的超时时间 秒
+	 * 微信提供的超时时间*秒
 	 * 
 	 * @return 超时时间
 	 */
 	public int getExpires_in();
 
 	/**
-	 * 刷新token时间，服务器本地计时
+	 * 刷新token时间,服务器本地计时
 	 * 
 	 * @return 服务器本地计时刷新时间
 	 */
 	public Date getRefreshTime();
-
 }

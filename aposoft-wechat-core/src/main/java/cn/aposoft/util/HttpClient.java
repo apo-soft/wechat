@@ -26,9 +26,10 @@ import cn.aposoft.wechat.meidia.MediaEntity;
 import cn.aposoft.wechat.meidia.MimeEntity;
 
 /**
+ * 客户端工具
  * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
 public class HttpClient {
 	private final static Logger logger = LoggerFactory.getLogger(HttpClient.class);
@@ -42,6 +43,36 @@ public class HttpClient {
 
 	public static boolean setLogEnabled(boolean logEnabled) {
 		return HttpClient.logEnabled = logEnabled;
+	}
+
+	/**
+	 * 
+	 * @param url
+	 *            get地址
+	 * @param clazz
+	 *            反射对象
+	 * @param httpClient
+	 * @return instance of type(T)
+	 * @throws RemoteException
+	 */
+	public static <T> T get(final String url, final Class<T> clazz, final CloseableHttpClient httpClient)
+			throws RemoteException {
+		return execute(get(url), clazz, httpClient);
+	}
+
+	/**
+	 * 
+	 * @param url
+	 *            post地址
+	 * @param clazz
+	 *            反射对象
+	 * @param httpClient
+	 * @return instance of type(T)
+	 * @throws RemoteException
+	 */
+	public static <T> T post(final String url, final Object entity, final Class<T> clazz,
+			final CloseableHttpClient httpClient) throws RemoteException {
+		return execute(jsonPost(url, entity), clazz, httpClient);
 	}
 
 	/**

@@ -3,9 +3,9 @@
  */
 package org.aposoft.wechat.company.managemnt.user;
 
-import java.io.Closeable;
 import java.util.List;
 
+import cn.aposoft.io.QuietCloseable;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResult;
 
@@ -16,7 +16,7 @@ import cn.aposoft.wechat.WechatResult;
  * @author Jann Liu
  *
  */
-public interface UserManagementService extends Closeable {
+public interface UserManagementService extends QuietCloseable {
 
 	WechatResult create(final String accessToken, final User user) throws RemoteException;
 

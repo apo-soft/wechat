@@ -3,9 +3,9 @@
  */
 package cn.aposoft.wechat.mp.message;
 
-import java.io.Closeable;
 import java.util.List;
 
+import cn.aposoft.io.QuietCloseable;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.mp.message.template.Article;
@@ -18,7 +18,7 @@ import cn.aposoft.wechat.mp.message.template.Video;
  * @author Jann Liu
  *
  */
-public interface CsaMessageService extends Closeable {
+public interface CsaMessageService extends QuietCloseable {
 
 	/**
 	 * 发送卡券信息

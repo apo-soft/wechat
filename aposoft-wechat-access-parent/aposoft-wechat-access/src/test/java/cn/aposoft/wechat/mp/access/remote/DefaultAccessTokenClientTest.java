@@ -5,6 +5,8 @@ package cn.aposoft.wechat.mp.access.remote;
 
 import java.io.IOException;
 
+import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import cn.aposoft.wechat.RemoteException;
@@ -15,7 +17,6 @@ import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.access.remote.AccessTokenResp;
 import cn.aposoft.wechat.access.remote.DefaultAccessTokenClient;
 import cn.aposoft.wechat.config.AccountConfig;
-import org.junit.Assert;
 
 /**
  * 默认AccessTokenClient 访问测试类
@@ -24,7 +25,7 @@ import org.junit.Assert;
  * @since 1.0
  */
 public class DefaultAccessTokenClientTest {
-
+	@Ignore
 	@Test
 	public void testGetMpAccessToken() throws RemoteException, IOException {
 		AddressConfig mpconfig = AddressConfigFactory.getMpAddressConfig();

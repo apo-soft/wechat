@@ -3,16 +3,16 @@
  */
 package org.aposoft.wechat.company.managemnt.agent.remote;
 
-import java.io.Closeable;
 
 import org.apache.http.client.utils.HttpClientUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.aposoft.wechat.company.managemnt.agent.AgentListResp;
 import org.aposoft.wechat.company.managemnt.agent.AgentResp;
 
+import cn.aposoft.io.QuietCloseable;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 
 /**
@@ -21,7 +21,7 @@ import cn.aposoft.wechat.RemoteException;
  * @author Jann Liu
  *
  */
-public class AgentClient implements Closeable {
+public class AgentClient implements QuietCloseable {
 	static final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
 
 	static final String COMPANY_AGENT_LIST_URL = "https://qyapi.weixin.qq.com/cgi-bin/agent/list?access_token=";

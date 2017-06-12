@@ -12,7 +12,7 @@ import cn.aposoft.wechat.company.auth.remote.AccountExchangeClient;
  * 账号转换服务
  * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
 public class AposoftAccountExchangeService implements AccountExchangeService {
 	final AccountExchangeClient client = new AccountExchangeClient();

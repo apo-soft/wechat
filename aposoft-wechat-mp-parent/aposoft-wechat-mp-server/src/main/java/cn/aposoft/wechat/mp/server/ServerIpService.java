@@ -3,9 +3,9 @@
  */
 package cn.aposoft.wechat.mp.server;
 
-import java.io.Closeable;
 import java.util.List;
 
+import cn.aposoft.io.QuietCloseable;
 import cn.aposoft.wechat.RemoteException;
 
 /**
@@ -14,7 +14,7 @@ import cn.aposoft.wechat.RemoteException;
  * @author Jann Liu
  * @since 1.0
  */
-public interface ServerIpService extends Closeable {
+public interface ServerIpService extends QuietCloseable {
 	/**
 	 * 读取服务器IP列表
 	 * 
@@ -25,6 +25,4 @@ public interface ServerIpService extends Closeable {
 	 */
 	List<String> getIpList(final String accessToken) throws RemoteException;
 
-	@Override
-	void close();
 }

@@ -3,8 +3,7 @@
  */
 package cn.aposoft.wechat.access.remote;
 
-import java.io.Closeable;
-
+import cn.aposoft.io.QuietCloseable;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.access.address.AddressConfig;
 import cn.aposoft.wechat.config.AccountConfig;
@@ -16,7 +15,7 @@ import cn.aposoft.wechat.config.AccountConfig;
  * @date 2016年10月13日
  * @since 1.0
  */
-public interface AccessTokenClient extends Closeable {
+public interface AccessTokenClient extends QuietCloseable {
 	/**
 	 * 设置访问地址的Url信息
 	 * 
@@ -34,7 +33,9 @@ public interface AccessTokenClient extends Closeable {
 	 * @throws RemoteException
 	 */
 	AccessTokenResp getAccessToken(AccountConfig config) throws RemoteException;
-
+	/**
+	 * 释放资源
+	 */
 	@Override
 	public void close();
 }

@@ -3,16 +3,15 @@
  */
 package cn.aposoft.wechat.company.auth.remote;
 
-import java.io.Closeable;
-
 import org.apache.http.client.utils.HttpClientUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 
 import com.alibaba.fastjson.JSONObject;
 
+import cn.aposoft.io.QuietCloseable;
+import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.company.auth.AccountExchangeResp;
 
@@ -20,7 +19,7 @@ import cn.aposoft.wechat.company.auth.AccountExchangeResp;
  * @author Jann Liu
  *
  */
-public class AccountExchangeClient implements Closeable {
+public class AccountExchangeClient implements QuietCloseable {
 	static final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
 	//
 	static final String COMPANY_USERID_EXCHANGE_URL = "https://qyapi.weixin.qq.com/cgi-bin/user/convert_to_openid?access_token=";

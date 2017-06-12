@@ -3,8 +3,7 @@
  */
 package cn.aposoft.wechat.company.message;
 
-import java.io.Closeable;
-
+import cn.aposoft.io.QuietCloseable;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.company.message.remote.MessageResp;
 import cn.aposoft.wechat.mp.media.news.NewsContent;
@@ -18,7 +17,7 @@ import cn.aposoft.wechat.mp.message.template.Video;
  * @author Jann Liu
  * @since 1.0
  */
-public interface CompanyMessageService extends Closeable {
+public interface CompanyMessageService extends QuietCloseable {
 	/**
 	 * 发送文本
 	 * 
@@ -74,7 +73,4 @@ public interface CompanyMessageService extends Closeable {
 	 * @throws RemoteException
 	 */
 	public MessageResp sendMpnews(String accessToken, RequestConfig config, NewsContent mpnews) throws RemoteException;
-
-	@Override
-	public void close();
 }

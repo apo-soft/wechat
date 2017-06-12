@@ -3,8 +3,7 @@
  */
 package cn.aposoft.wechat.company.auth;
 
-import java.io.Closeable;
-
+import cn.aposoft.io.QuietCloseable;
 import cn.aposoft.wechat.RemoteException;
 
 /**
@@ -13,7 +12,7 @@ import cn.aposoft.wechat.RemoteException;
  * @author Jann Liu
  *
  */
-public interface AccountExchangeService extends Closeable {
+public interface AccountExchangeService extends QuietCloseable {
 	/**
 	 * 
 	 * @param accessToken

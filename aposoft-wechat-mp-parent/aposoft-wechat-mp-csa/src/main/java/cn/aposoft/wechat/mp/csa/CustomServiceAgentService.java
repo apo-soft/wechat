@@ -3,9 +3,9 @@
  */
 package cn.aposoft.wechat.mp.csa;
 
-import java.io.Closeable;
 import java.util.List;
 
+import cn.aposoft.io.QuietCloseable;
 import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 
@@ -16,7 +16,7 @@ import cn.aposoft.wechat.WechatResp;
  * @author liuya
  *
  */
-public interface CustomServiceAgentService extends Closeable {
+public interface CustomServiceAgentService extends QuietCloseable {
 	/**
 	 * 新增客服
 	 * 

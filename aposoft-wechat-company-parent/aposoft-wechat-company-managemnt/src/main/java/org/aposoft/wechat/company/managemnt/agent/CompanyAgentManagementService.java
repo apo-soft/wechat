@@ -1,7 +1,6 @@
 package org.aposoft.wechat.company.managemnt.agent;
 
-import java.io.Closeable;
-
+import cn.aposoft.io.QuietCloseable;
 import cn.aposoft.wechat.RemoteException;
 
 /**
@@ -10,7 +9,7 @@ import cn.aposoft.wechat.RemoteException;
  * @author Jann Liu
  *
  */
-public interface CompanyAgentManagementService extends Closeable {
+public interface CompanyAgentManagementService extends QuietCloseable {
 
 	AgentResp getAgent(final String accessToken, final String agentid) throws RemoteException;
 
