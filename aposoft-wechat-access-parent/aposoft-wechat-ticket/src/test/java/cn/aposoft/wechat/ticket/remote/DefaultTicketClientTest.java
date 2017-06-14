@@ -1,18 +1,21 @@
 /**
  * 
  */
-package cn.aposoft.wechat.mp.ticket.remote;
+package cn.aposoft.wechat.ticket.remote;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import org.junit.Ignore;
+import java.io.IOException;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccessTokenServiceFactory;
 import cn.aposoft.wechat.ticket.Ticket.Type;
-import cn.aposoft.wechat.ticket.remote.DefaultTicketClient;
-import cn.aposoft.wechat.ticket.remote.TicketResp;
 
 /**
  * 默认Ticket客户端
@@ -21,6 +24,19 @@ import cn.aposoft.wechat.ticket.remote.TicketResp;
  * @since 1.0
  */
 public class DefaultTicketClientTest {
+
+	static AccessTokenService accessTokenService;
+
+	@BeforeClass
+	public static void init() throws IOException {
+		accessTokenService = AccessTokenServiceFactory.getAccessTokenService();
+	}
+
+	@AfterClass
+	public static void dispose() {
+		accessTokenService.close();
+	}
+
 	/**
 	 * <pre>
 	 * {
@@ -42,13 +58,12 @@ public class DefaultTicketClientTest {
 	 * 
 	 * @throws RemoteException
 	 */
-	@Ignore
+	// @Ignore
 	@Test
 	public void testGetTicket() throws RemoteException {
 		try (DefaultTicketClient client = new DefaultTicketClient();) {
-			TicketResp ticket = client.getTicket(
-					"LPvhG4gw1RctDesgQ86iphMkHqw_jQmy6fsFE4PSHcguYmky0LteA6T5GenYR4ZxmCzoosoKikxIYlNN6QVx_ZZ33WO8hIRGJ6fITGTdII9vlTPyqsOO1yn-b02h-gLYHRLhABAMWQ",
-					Type.jsapi);
+
+			TicketResp ticket = client.getTicket(accessTokenService.getAccessToken().getAccess_token(), Type.jsapi);
 			assertNotNull(ticket);
 			assertEquals(7200, ticket.getExpires_in());
 		}

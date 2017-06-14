@@ -6,6 +6,8 @@
 # 配置文件 #
 /config/access_token.txt
 /config/mp_account.txt
+/config/gome-ops-key.txt
+/config/company_access_token.txt
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

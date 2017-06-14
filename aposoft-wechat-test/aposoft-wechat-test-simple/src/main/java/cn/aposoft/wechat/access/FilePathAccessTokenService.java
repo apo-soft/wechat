@@ -30,7 +30,6 @@ import cn.aposoft.wechat.config.AccountConfig;
  */
 public class FilePathAccessTokenService extends BasicAccessTokenService {
 
-	public static final String DEFAULT_FILE_PATH = "../config/access_token.txt";
 	private final File file;
 
 	private volatile AccessToken accessToken;

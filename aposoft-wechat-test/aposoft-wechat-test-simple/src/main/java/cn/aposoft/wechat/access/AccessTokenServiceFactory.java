@@ -23,31 +23,33 @@ import cn.aposoft.wechat.config.WechatCompanyConfig;
  *
  */
 public class AccessTokenServiceFactory {
-
+	static final String DEFAULT_FILE_PATH = "../../config/access_token.txt";
+	static final String DEFAULT_COMPANY_CONFIG_PATH = "../../config/gome-ops-key.txt";
+	static final String DEFAULT_COMPANY_FILE_PATH = "../../config/company_access_token.txt";
 	public static AccessTokenService getAccessTokenService() throws IOException {
 		return getAccessTokenService(null);
 	}
 
 	public static AccessTokenService getAccessTokenService(String filePath) throws IOException {
 		if (StringUtils.isBlank(filePath)) {
-			filePath = FilePathAccessTokenService.DEFAULT_FILE_PATH;
+			filePath = DEFAULT_FILE_PATH;
 		}
 		AccessTokenClient accessTokenClient = AccessTokenClientFactory.getAccessTokenClient();
-		return new FilePathAccessTokenService("../" + FilePathAccessTokenService.DEFAULT_FILE_PATH, accessTokenClient,
+		return new FilePathAccessTokenService(DEFAULT_FILE_PATH, accessTokenClient,
 				DemoAccountConfigFactory.factory().getAccountConfig(), RefreshConfigFactory.getRefreshConfig());
 	}
 
 	public static AccessTokenService getCompanyAccessTokenService() throws FileNotFoundException, IOException {
-		return getCompanyAccessTokenService(FilePathAccessTokenService.DEFAULT_FILE_PATH, "../config/gome-ops-key.txt");
+		return getCompanyAccessTokenService(DEFAULT_COMPANY_FILE_PATH, DEFAULT_COMPANY_CONFIG_PATH);
 	}
 
 	public static AccessTokenService getCompanyAccessTokenService(String filePath, String configPath)
 			throws FileNotFoundException, IOException {
 		if (StringUtils.isBlank(configPath)) {
-			configPath = "../config/gome-ops-key.txt";
+			configPath = DEFAULT_COMPANY_CONFIG_PATH;
 		}
 		if (StringUtils.isBlank(filePath)) {
-			filePath = FilePathAccessTokenService.DEFAULT_FILE_PATH;
+			filePath = DEFAULT_COMPANY_FILE_PATH;
 		}
 		AccessTokenClient accessTokenClient = AccessTokenClientFactory.getCompanyAccessTokenClient();
 		try (InputStream input = new FileInputStream(configPath)) {
