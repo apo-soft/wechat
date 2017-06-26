@@ -6,6 +6,7 @@ package cn.aposoft.wechat.config;
 import java.io.Serializable;
 
 import cn.aposoft.wechat.AccountTypeAware;
+import cn.aposoft.wechat.access.AccessSecret;
 import cn.aposoft.wechat.signature.SignatureConfig;
 
 /**
@@ -14,6 +15,7 @@ import cn.aposoft.wechat.signature.SignatureConfig;
  * @author Jann Liu
  * @since 1.0
  */
-public interface WechatCompanyConfig extends AccountTypeAware, SignatureConfig, CompanyAccountConfig, Serializable {
+public interface WechatCompanyConfig
+		extends AccountTypeAware, SignatureConfig, CompanyAccountConfig, AccessSecret, Serializable {
 
 }

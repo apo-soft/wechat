@@ -14,13 +14,69 @@ import cn.aposoft.wechat.AccountType;
 public class AposoftWechatDbConfig implements WechatRepoConfig {
 	private static final long serialVersionUID = -2035651445386663585L;
 
-	private String userId;
-	private AccountType accountType;
 	private String id;
-	private String token;
-	private String encodingAESKey;
-	private String secret;
+	private AccountType accountType;
 	private Integer agentId;
+	private String secret;
+	private String encodingAESKey;
+	private String userId;
+	private String token;
+
+	/**
+	 * @param userId
+	 *            the userId to set
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	/**
+	 * @param accountType
+	 *            the accountType to set
+	 */
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
+	}
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param token
+	 *            the token to set
+	 */
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	/**
+	 * @param encodingAESKey
+	 *            the encodingAESKey to set
+	 */
+	public void setEncodingAESKey(String encodingAESKey) {
+		this.encodingAESKey = encodingAESKey;
+	}
+
+	/**
+	 * @param secret
+	 *            the secret to set
+	 */
+	public void setSecret(String secret) {
+		this.secret = secret;
+	}
+
+	/**
+	 * @param agentId
+	 *            the agentId to set
+	 */
+	public void setAgentId(Integer agentId) {
+		this.agentId = agentId;
+	}
 
 	/*
 	 * (non-Javadoc)

@@ -12,5 +12,5 @@ package cn.aposoft.wechat.config;
  * @since 1.0
  */
 public interface WechatRepoConfig extends WechatMpConfig, WechatCompanyConfig {
-
+	
 }

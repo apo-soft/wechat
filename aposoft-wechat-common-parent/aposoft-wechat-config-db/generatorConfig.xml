@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- generatorConfiguration 激活mybatis generator -->
+<generatorConfiguration>
+  <context id="context1">
+    <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/wechat_dev?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;failOverReadOnly=false" 
+    driverClass="com.mysql.jdbc.Driver" 
+    userId="wechat_test"
+    password="wechat_test"  />
+    <javaModelGenerator targetPackage="cn.aposoft.wechat.config.repo" targetProject="aposoft-wechat-config-db" />
+    <sqlMapGenerator targetPackage="cn.aposoft.wechat.config.repo" targetProject="aposoft-wechat-config-db" />
+    <javaClientGenerator targetPackage="mybatis" targetProject="aposoft-wechat-config-db" type="XMLMAPPER" />
+    <table schema="wechat_dev" tableName="account_config">
+     <!--  <columnOverride column="???" property="???" /> -->
+    </table>
+  </context>
+</generatorConfiguration>
