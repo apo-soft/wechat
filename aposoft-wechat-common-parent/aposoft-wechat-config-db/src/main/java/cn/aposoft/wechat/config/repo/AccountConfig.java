@@ -3,9 +3,10 @@ package cn.aposoft.wechat.config.repo;
 import java.util.Date;
 
 import cn.aposoft.wechat.AccountType;
+import cn.aposoft.wechat.config.WechatCompanyConfig;
 import cn.aposoft.wechat.config.WechatMpConfig;
 
-public class AccountConfig implements WechatMpConfig {
+public class AccountConfig implements WechatMpConfig, WechatCompanyConfig {
 	private static final long serialVersionUID = -926784705809538822L;
 
 	/**
