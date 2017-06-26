@@ -14,13 +14,25 @@ import cn.aposoft.wechat.config.repo.AccountConfigMapper;
 import cn.aposoft.wechat.config.repo.AccountConfigMapperTest;
 
 /**
+ * 微信通用配置信息读取,存储服务
  * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
 public class AposoftWechatConfigService implements WechatCompanyConfigService, WechatMpConfigService {
 	final static Logger logger = LoggerFactory.getLogger(AccountConfigMapperTest.class);
 	private AccountConfigMapper accountConfigMapper;
+
+	public void setAccountConfigMapper(AccountConfigMapper accountConfigMapper) {
+		this.accountConfigMapper = accountConfigMapper;
+	}
+
+	public AposoftWechatConfigService() {
+	}
+
+	public AposoftWechatConfigService(AccountConfigMapper accountConfigMapper) {
+		this.accountConfigMapper = accountConfigMapper;
+	}
 
 	@Override
 	public WechatMpConfig getWechatMpConfig(String id) {
@@ -43,8 +55,15 @@ public class AposoftWechatConfigService implements WechatCompanyConfigService, W
 	}
 
 	@Override
-	public WechatCompanyConfig getWechatMpConfig(String id, Integer agentId) {
-		// TODO Auto-generated method stub
+	public WechatCompanyConfig getWechatMpConfig(final String id, final Integer agentId) {
+		AccountConfigExample example = new AccountConfigExample();
+		example.createCriteria().andAccountTypeEqualTo(AccountType.CORP.name()).andIdEqualTo(id)
+				.andAgentIdEqualTo(agentId);
+
+		List<cn.aposoft.wechat.config.repo.AccountConfig> records = accountConfigMapper.selectByExample(example);
+		if (records != null && !records.isEmpty()) {
+			return records.get(0);
+		}
 		return null;
 	}
 
@@ -55,5 +74,4 @@ public class AposoftWechatConfigService implements WechatCompanyConfigService, W
 			logger.debug("Inserts or Updates: {}", recordCount);
 		}
 	}
-
 }

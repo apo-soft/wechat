@@ -13,7 +13,6 @@ public interface AccountConfigMapper {
 	 * 
 	 * @param record
 	 *            新增,当遇到相同KEY时,更新原有记录
-	 * @return 影响记录行数
 	 */
 	int setMp(WechatMpConfig record);
 
@@ -22,7 +21,6 @@ public interface AccountConfigMapper {
 	 * 
 	 * @param record
 	 *            新增,当遇到相同KEY时,更新原有记录
-	 * @return 影响记录行数
 	 */
 	int setCorp(WechatCompanyConfig record);
 
