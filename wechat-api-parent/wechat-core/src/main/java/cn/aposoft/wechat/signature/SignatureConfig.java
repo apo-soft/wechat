@@ -12,11 +12,6 @@ import cn.aposoft.wechat.AccountId;
  * @since 1.0
  */
 public interface SignatureConfig extends AccountId {
-	/**
-	 * 
-	 * @return 公众号ID,服务号ID
-	 */
-	String getId();
 
 	/**
 	 * 

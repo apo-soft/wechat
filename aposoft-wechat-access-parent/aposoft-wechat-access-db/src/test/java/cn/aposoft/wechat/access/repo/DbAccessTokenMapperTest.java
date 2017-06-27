@@ -52,7 +52,7 @@ public class DbAccessTokenMapperTest {
 		session.commit();
 	}
 
-	@Ignore
+//	@Ignore
 	@Test
 	public void testSelectOneBlog() {
 		selectWithSession(session);
@@ -79,7 +79,7 @@ public class DbAccessTokenMapperTest {
 
 	}
 
-//	@Ignore
+	@Ignore
 	@Test
 	public void setMpAccessToken() {
 		DbAccessTokenMapper mapper = session.getMapper(DbAccessTokenMapper.class);
