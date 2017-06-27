@@ -286,7 +286,7 @@
 		#{accountType,jdbcType=VARCHAR},
 		#{secret,jdbcType=VARCHAR},#{encodingAESKey,jdbcType=VARCHAR},
 		#{token,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR})
-		<trim prefix="  ON DUPLICATE KEY UPDATE  " suffix=""
+		<trim prefix=" ON DUPLICATE KEY UPDATE " suffix=""
 			suffixOverrides=",">
 			<if test="userId != null">
 				user_id = #{userId,jdbcType=VARCHAR},

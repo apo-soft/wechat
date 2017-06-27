@@ -60,7 +60,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.1.0</version>
 				<!-- 针对Servlet 3.x关闭对web.xml文件的检测 -->
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>

@@ -20,7 +20,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="mybatis/DbAccessConfigMapper.xml" />
 		<mapper resource="mybatis/DbAccessTokenMapper.xml" />
 	</mappers>
 </configuration>
