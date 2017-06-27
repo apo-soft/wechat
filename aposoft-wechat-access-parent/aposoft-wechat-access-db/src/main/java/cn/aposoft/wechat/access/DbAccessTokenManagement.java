@@ -35,7 +35,7 @@ public class DbAccessTokenManagement implements CompanyAccessTokenManagement {
 
 	@Override
 	public void setAccessToken(MpAccessTokenStore token) {
-		
+
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class DbAccessTokenManagement implements CompanyAccessTokenManagement {
 	public AccessToken getAccessToken(AccountId accountId) {
 		if (accountId == null) {
 			return null;
-		} else if (accountId instanceof CompanyAccountId) {
+		} else if ((accountId instanceof CompanyAccountId) && ((CompanyAccountId) accountId).getAgentId() != null) {
 			return getAccessToken((CompanyAccountId) accountId);
 		} else {
 			DbAccessTokenExample example = new DbAccessTokenExample();
@@ -84,7 +84,7 @@ public class DbAccessTokenManagement implements CompanyAccessTokenManagement {
 	 */
 	@Override
 	public void setAccessToken(CompanyAccessTokenStore token) {
-		
+
 	}
 
 	/**
