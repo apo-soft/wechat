@@ -25,7 +25,7 @@ import cn.aposoft.wechat.WechatResult;
  * 
  * @author Jann Liu
  * @date 2016年10月13日
- * 
+ * @since 1.0
  */
 public class AccessTokenResp extends WechatResp implements WechatResult	 {
 	private static final long serialVersionUID = 726644249402378769L;
