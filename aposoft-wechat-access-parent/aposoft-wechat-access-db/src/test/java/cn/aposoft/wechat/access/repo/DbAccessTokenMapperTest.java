@@ -79,7 +79,7 @@ public class DbAccessTokenMapperTest {
 
 	}
 
-	@Ignore
+//	@Ignore
 	@Test
 	public void setMpAccessToken() {
 		DbAccessTokenMapper mapper = session.getMapper(DbAccessTokenMapper.class);
