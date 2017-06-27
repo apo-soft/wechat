@@ -286,9 +286,8 @@
 		#{accountType,jdbcType=VARCHAR},
 		#{secret,jdbcType=VARCHAR},#{encodingAESKey,jdbcType=VARCHAR},
 		#{token,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR})
-		ON DUPLICATE KEY
-		UPDATE
-		<trim prefix=" " suffix="" suffixOverrides=",">
+		<trim prefix="  ON DUPLICATE KEY UPDATE  " suffix=""
+			suffixOverrides=",">
 			<if test="userId != null">
 				user_id = #{userId,jdbcType=VARCHAR},
 			</if>
@@ -312,8 +311,8 @@
 		#{accountType,jdbcType=VARCHAR},#{agentId,jdbcType=INTEGER},
 		#{secret,jdbcType=VARCHAR},#{encodingAESKey,jdbcType=VARCHAR},
 		#{token,jdbcType=VARCHAR})
-		ON DUPLICATE KEY UPDATE
-		<trim prefix=" " suffix="" suffixOverrides=",">
+		<trim prefix=" ON DUPLICATE KEY UPDATE " suffix=""
+			suffixOverrides=",">
 			<if test="secret != null">
 				secret = #{secret,jdbcType=VARCHAR},
 			</if>

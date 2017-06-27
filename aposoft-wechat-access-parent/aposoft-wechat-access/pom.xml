@@ -23,6 +23,11 @@
 		</dependency>
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
+			<artifactId>wechat-company-access</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.aposoft.wechat</groupId>
 			<artifactId>aposoft-wechat-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>

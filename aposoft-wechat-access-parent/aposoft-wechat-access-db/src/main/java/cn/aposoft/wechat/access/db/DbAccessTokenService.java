@@ -26,6 +26,7 @@ public class DbAccessTokenService extends AbstractAccessTokenService implements 
 	// DB访问对象
 	private AccessTokenDao accessTokenDao;
 
+	
 	public DbAccessTokenService(AccessTokenClient client, AccountConfig config, RefreshConfig refreshConfig,
 			AccessTokenDao accessTokenDao) throws IOException {
 		super(client, config, refreshConfig);
