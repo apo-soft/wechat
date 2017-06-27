@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.access.db;
+package cn.aposoft.wechat.access;
 
 import cn.aposoft.wechat.AccountId;
 import cn.aposoft.wechat.CompanyAccountId;

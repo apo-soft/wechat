@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-  <context id="context1">
-    <jdbcConnection connectionURL="???" driverClass="???" password="???" userId="???" />
-    <javaModelGenerator targetPackage="???" targetProject="???" />
-    <sqlMapGenerator targetPackage="???" targetProject="???" />
-    <javaClientGenerator targetPackage="???" targetProject="???" type="XMLMAPPER" />
-    <table schema="???" tableName="???">
-      <columnOverride column="???" property="???" />
-    </table>
-  </context>
+	<context id="context1">
+		<jdbcConnection
+			connectionURL="jdbc:mysql://localhost:3306/wechat_dev?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;failOverReadOnly=false"
+			driverClass="com.mysql.jdbc.Driver" userId="wechat_test" password="wechat_test" />
+		<javaModelGenerator targetPackage="cn.aposoft.wechat.access.repo"
+			targetProject="aposoft-wechat-access-db" />
+		<sqlMapGenerator targetPackage="cn.aposoft.wechat.access.repo"
+			targetProject="aposoft-wechat-access-db" />
+		<javaClientGenerator targetPackage="cn.aposoft.wechat.access.repo"
+			targetProject="aposoft-wechat-access-db" type="XMLMAPPER" />
+		<table schema="wechat_dev" tableName="access_token" domainObjectName="DbAccessToken" >
+			<columnOverride column="access_token" property="access_token" />
+			<columnOverride column="expires_in" property="expires_in" />
+		</table>
+	</context>
 </generatorConfiguration>
