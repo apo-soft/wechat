@@ -52,7 +52,7 @@ public class DbAccessTokenMapperTest {
 		session.commit();
 	}
 
-//	@Ignore
+	// @Ignore
 	@Test
 	public void testSelectOneBlog() {
 		selectWithSession(session);
@@ -96,7 +96,7 @@ public class DbAccessTokenMapperTest {
 
 	@Ignore
 	@Test
-	public void setCorpAccessToken() {
+	public void setCompanyAccessToken() {
 		DbAccessTokenMapper mapper = session.getMapper(DbAccessTokenMapper.class);
 		DbAccessToken record = new DbAccessToken();
 		record.setAccountType(AccountType.CORP);

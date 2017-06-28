@@ -5,9 +5,13 @@ package cn.aposoft.wechat.access;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cn.aposoft.wechat.AccountId;
 import cn.aposoft.wechat.AccountType;
 import cn.aposoft.wechat.CompanyAccountId;
+import cn.aposoft.wechat.PersistentErrorException;
 import cn.aposoft.wechat.access.repo.DbAccessToken;
 import cn.aposoft.wechat.access.repo.DbAccessTokenExample;
 import cn.aposoft.wechat.access.repo.DbAccessTokenMapper;
@@ -19,12 +23,8 @@ import cn.aposoft.wechat.access.repo.DbAccessTokenMapper;
  * @since 1.0
  */
 public class DbAccessTokenManagement implements CompanyAccessTokenManagement {
-
+	final static Logger logger = LoggerFactory.getLogger(DbAccessTokenManagement.class);
 	private DbAccessTokenMapper dbAccessTokenMapper;
-
-	private static AccessToken wrap(AccessToken accessToken) {
-		return new AccessTokenWrapper(accessToken);
-	}
 
 	public DbAccessTokenManagement() {
 	}
@@ -33,9 +33,24 @@ public class DbAccessTokenManagement implements CompanyAccessTokenManagement {
 		this.dbAccessTokenMapper = dbAccessTokenMapper;
 	}
 
+	private static AccessToken wrap(AccessToken accessToken) {
+		return new AccessTokenWrapper(accessToken);
+	}
+
+	private static void checkCount(int count) {
+		if (count <= 0) {
+			logger.error("failed to store access token to database.");
+			throw new PersistentErrorException("failed to store access token to database.");
+		}
+	}
+
+	/**
+	 * 设置AccessToken,公众号行为
+	 */
 	@Override
 	public void setAccessToken(MpAccessTokenStore token) {
-
+		int count = this.dbAccessTokenMapper.setMpAccessToken(token);
+		checkCount(count);
 	}
 
 	/**
@@ -80,11 +95,12 @@ public class DbAccessTokenManagement implements CompanyAccessTokenManagement {
 	}
 
 	/**
-	 * 
+	 * 设置企业的Token缓存信息
 	 */
 	@Override
 	public void setAccessToken(CompanyAccessTokenStore token) {
-
+		int count = this.dbAccessTokenMapper.setCompanyAccessToken(token);
+		checkCount(count);
 	}
 
 	/**

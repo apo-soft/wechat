@@ -21,5 +21,6 @@
 		<module>aposoft-wechat-access</module>
 		<module>aposoft-wechat-access-db</module>
     <module>aposoft-wechat-ticket</module>
+    <module>aposoft-wechat-access-simple</module>
   </modules>
 </project>

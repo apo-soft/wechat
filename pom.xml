@@ -34,7 +34,7 @@
 		<slf4j.version>1.7.25</slf4j.version>
 		<tomcat.version>7.0.78</tomcat.version>
 		<dbcp.version>1.4</dbcp.version>
-		<org.springframework.boot.version>1.5.3.RELEASE</org.springframework.boot.version>
+		<org.springframework.boot.version>1.5.4.RELEASE</org.springframework.boot.version>
 	</properties>
 	<modules>
 		<module>aposoft-wechat-access-parent</module>
@@ -74,12 +74,15 @@
 					<artifactId>jetty-maven-plugin</artifactId>
 					<version>8.1.16.v20140903</version>
 				</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${org.springframework.boot.version}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
 	<packaging>pom</packaging>
-
-
 
 	<dependencyManagement>
 		<dependencies>
@@ -345,10 +348,17 @@
 				<artifactId>spring-boot-starter-log4j2</artifactId>
 				<version>${org.springframework.boot.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter</artifactId>
+				<version>${org.springframework.boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${org.springframework.boot.version}</version>
+			</dependency>
 			<!-- JavaEE Servlet Dependencies -->
-
-
-
 
 			<dependency>
 				<groupId>javax.servlet.jsp.jstl</groupId>
