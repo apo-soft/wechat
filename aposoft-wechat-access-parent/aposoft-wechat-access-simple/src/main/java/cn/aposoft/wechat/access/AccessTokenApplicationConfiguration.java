@@ -4,12 +4,13 @@
 package cn.aposoft.wechat.access;
 
 import org.mybatis.spring.annotation.MapperScan;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import cn.aposoft.wechat.BasicCompanyAccountId;
 import cn.aposoft.wechat.access.repo.DbAccessTokenMapper;
 
 /**
@@ -18,19 +19,22 @@ import cn.aposoft.wechat.access.repo.DbAccessTokenMapper;
  * @author Jann Liu
  * @since 1.0
  */
-//@ImportResource("classpath:spring/access-token-spring-config.xml")
+// @ImportResource("classpath:spring/access-token-spring-config.xml")
 @Configuration
+@EnableConfigurationProperties
 @EnableTransactionManagement
 @MapperScan(basePackages = "cn.aposoft.wechat.**.repo")
 public class AccessTokenApplicationConfiguration {
-	private static final Logger logger = LoggerFactory.getLogger(AccessTokenApplicationConfiguration.class);
 
 	@Bean
-	public CompanyAccessTokenManagement accessTokenManagement(DbAccessTokenMapper dbAccessTokenMapper) {
-		if (logger.isDebugEnabled()) {
-			logger.debug(dbAccessTokenMapper == null ? "dbAccessTokenMapper null" : "dbAccessTokenMapper not null");
-		}
+	public DbAccessTokenManagement accessTokenManagement(DbAccessTokenMapper dbAccessTokenMapper) {
 		return new DbAccessTokenManagement(dbAccessTokenMapper);
+	}
+
+	@Bean
+	@ConfigurationProperties(prefix = "aposoft.wechat.companyAccountId")
+	public BasicCompanyAccountId accountId() {
+		return new BasicCompanyAccountId();
 	}
 
 }

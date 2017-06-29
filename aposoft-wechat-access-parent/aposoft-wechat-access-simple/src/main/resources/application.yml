@@ -1,8 +1,13 @@
+# aposoft defined properties
+aposoft: 
+  wechat: 
+    companyAccountId: 
+      id: wxa11112
+      agentId: 2
 # server infomation
 server:
   port: 8080
   contextPath: /wx
-
 # datasource
 spring:
   datasource:
@@ -26,12 +31,13 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 200
+# mybatis spring boot starter
 mybatis: 
   mapperLocations: classpath*:mybatis/*Mapper.xml
   executorType: REUSE
-#  typeAliasesPackage: tk.mapper.model
-
+#   mybatis.executorType：设置执行模式（SIMPLE, REUSE, BATCH），默认为SIMPLE
+#   typeAliasesPackage: tk.mapper.model
 #   mybatis.config：mybatis-config.xml配置文件的路径
 #   mybatis.typeHandlersPackage：扫描typeHandlers的包
 #   mybatis.checkConfigLocation：检查配置文件是否存在
-#   mybatis.executorType：设置执行模式（SIMPLE, REUSE, BATCH），默认为SIMPLE
+
