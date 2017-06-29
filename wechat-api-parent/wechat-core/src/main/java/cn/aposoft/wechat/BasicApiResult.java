@@ -1,37 +1,39 @@
 /**
  * 
  */
-package cn.aposoft.wechat.access;
+package cn.aposoft.wechat;
 
 /**
+ * 基础对外访问结果封装对象
+ * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
 public class BasicApiResult<T> implements ApiResult<T> {
 	private static final long serialVersionUID = -1138006667336726348L;
-	private String code;
-	private String message;
+	private int code;
+	private String msg;
 	private T data;
 
-	public BasicApiResult(String code, String message) {
+	public BasicApiResult(int code, String msg) {
 		this.code = code;
-		this.message = message;
+		this.msg = msg;
 	}
 
-	public BasicApiResult(String code, String message, T data) {
+	public BasicApiResult(int code, String msg, T data) {
 		this.code = code;
-		this.message = message;
+		this.msg = msg;
 		this.data = data;
 	}
 
 	@Override
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
 	@Override
-	public String getMessage() {
-		return message;
+	public String getMsg() {
+		return msg;
 	}
 
 	@Override

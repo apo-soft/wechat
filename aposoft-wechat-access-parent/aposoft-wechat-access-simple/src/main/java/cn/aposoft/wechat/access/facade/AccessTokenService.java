@@ -5,6 +5,7 @@ package cn.aposoft.wechat.access.facade;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,8 +28,16 @@ public class AccessTokenService {
 	@Autowired
 	private DbAccessTokenManagement accessTokenManagement;
 
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_COMMITTED)
 	public AccessToken getAccessToken() {
-		return accessTokenManagement.getAccessToken(accountId);
+		AccessToken accessToken = accessTokenManagement.getAccessToken(accountId);
+		accessToken = checkExpires(accessToken);
+		return accessToken;
+	}
+
+	// 判断访问码是否过期
+	private AccessToken checkExpires(AccessToken accessToken) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

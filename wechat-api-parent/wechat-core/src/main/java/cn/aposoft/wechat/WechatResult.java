@@ -6,7 +6,7 @@ package cn.aposoft.wechat;
 import java.io.Serializable;
 
 /**
- * 微信用户验证基础响应消息
+ * 微信用户验证基础响应消息,用于与微信的通信
  * 
  * @author Jann Liu
  * @date 2016年10月14日

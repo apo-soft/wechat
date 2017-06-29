@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import cn.aposoft.wechat.ApiResult;
+import cn.aposoft.wechat.ApiUtil;
 import cn.aposoft.wechat.access.AccessToken;
-import cn.aposoft.wechat.access.ApiResult;
-import cn.aposoft.wechat.access.ApiUtil;
 
 /**
+ * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
 @RestController
 public class AccessTokenController {
@@ -27,7 +28,8 @@ public class AccessTokenController {
 
 	@RequestMapping(value = "/access/token", method = RequestMethod.GET)
 	public ApiResult<AccessToken> getAccessToken() {
-		logger.info("Begin access default  access-token.");
+		if (logger.isDebugEnabled())
+			logger.debug("Begin access default access-token.");
 		try {
 			AccessToken token = accessTokenService.getAccessToken();
 			if (token != null) {
