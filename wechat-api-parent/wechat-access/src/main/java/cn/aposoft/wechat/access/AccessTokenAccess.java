@@ -19,6 +19,14 @@ public interface AccessTokenAccess {
 	 *            accessToken对应微信公众号,服务号
 	 * @return 访问授权码
 	 */
-	AccessToken getAccessToken(AccountId accountId);
+	AccessToken getAccessToken(final AccountId accountId);
 
+	/**
+	 * 获取公众号,服务号API访问授权码
+	 * 
+	 * @param accountId
+	 *            accessToken对应微信公众号,服务号
+	 * @return 访问授权码
+	 */
+	AccessToken getAccessToken(final AccountId accountId,final boolean forUpdate);
 }

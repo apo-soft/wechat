@@ -54,16 +54,24 @@ public class DbAccessTokenManagement implements CompanyAccessTokenManagement {
 	}
 
 	/**
-	 * 综合处理一般性MpAccountId 和CompanyAccountId
+	 * 综合处理一般性MpAccountId 和 CompanyAccountId
 	 */
 	@Override
-	public AccessToken getAccessToken(AccountId accountId) {
+	public AccessToken getAccessToken(final AccountId accountId) {
+		return getAccessToken(accountId, false);
+	}
+
+	/**
+	 * 综合处理一般性MpAccountId 和 CompanyAccountId
+	 */
+	@Override
+	public AccessToken getAccessToken(AccountId accountId, boolean forUpdate) {
 		if (accountId == null) {
 			return null;
 		} else if ((accountId instanceof CompanyAccountId) && ((CompanyAccountId) accountId).getAgentId() != null) {
 			return getAccessToken((CompanyAccountId) accountId);
 		} else {
-			DbAccessTokenExample example = new DbAccessTokenExample();
+			DbAccessTokenExample example = new DbAccessTokenExample().setForUpdate(forUpdate);
 			example.createCriteria().andAccountTypeEqualTo(AccountType.MP.name()).andIdEqualTo(accountId.getId());
 			List<DbAccessToken> accessTokens = dbAccessTokenMapper.selectByExample(example);
 			if (accessTokens != null && !accessTokens.isEmpty()) {
@@ -78,11 +86,19 @@ public class DbAccessTokenManagement implements CompanyAccessTokenManagement {
 	 * 读取 AccessToken
 	 */
 	@Override
-	public AccessToken getAccessToken(CompanyAccountId accountId) {
+	public AccessToken getAccessToken(final CompanyAccountId accountId) {
+		return getAccessToken(accountId, false);
+	}
+
+	/**
+	 * 读取 AccessToken
+	 */
+	@Override
+	public AccessToken getAccessToken(final CompanyAccountId accountId, final boolean forUpdate) {
 		if (accountId == null) {
 			return null;
 		} else {
-			DbAccessTokenExample example = new DbAccessTokenExample();
+			DbAccessTokenExample example = new DbAccessTokenExample().setForUpdate(forUpdate);
 			example.createCriteria().andAccountTypeEqualTo(AccountType.CORP.name()).andIdEqualTo(accountId.getId())
 					.andAgentIdEqualTo(accountId.getAgentId());
 			List<DbAccessToken> accessTokens = dbAccessTokenMapper.selectByExample(example);

@@ -14,5 +14,6 @@ public interface CompanyAccessTokenManagement extends AccessTokenManagement, Com
 	 * @param token
 	 *            企业号应用Token
 	 */
-	void setAccessToken(CompanyAccessTokenStore token);
+	void setAccessToken(final CompanyAccessTokenStore token);
+
 }
