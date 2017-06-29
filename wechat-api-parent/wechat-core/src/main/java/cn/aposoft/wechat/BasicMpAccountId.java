@@ -4,6 +4,7 @@
 package cn.aposoft.wechat;
 
 /**
+ * 简单的公众号id实现
  * @author Jann Liu
  * @since 1.0
  */
