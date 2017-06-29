@@ -45,12 +45,6 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-access</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
