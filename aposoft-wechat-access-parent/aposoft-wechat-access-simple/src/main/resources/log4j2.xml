@@ -16,8 +16,7 @@
 			| %m(日志信息)%n(换行) -->
 		<!-- <property name="PATTERN">%-5p | %d | om-v1.0 | [%t-%T] (%c{1.}:%L) 
 			| %m%n</property> -->
-		<property name="PATTERN">%-5p | %d | as-v1.0 | [%t-%T] (%c{1.}:%L) | %m%n
-		</property>
+		<property name="PATTERN">%-5p %d [%t-%T] %c{1.}:%L %m%n</property>
 
 		<property name="PATTERN_ALARM">%m%n</property>
 	</properties>
@@ -37,7 +36,8 @@
 			<PatternLayout pattern="${PATTERN_ALARM}" />
 			<Policies>
 				<!--设置触发时间策略的时间间隔，一天产生一个新文件 -->
-				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
 				<!--设置每个日志文件的最大大小，单位可以为 B KB MB GB -->
 				<!-- <SizeBasedTriggeringPolicy size="1KB"/> -->
 			</Policies>
@@ -50,12 +50,14 @@
 	<Loggers>
 		<!-- <logger name="alarm" additivity="false" level="INFO"> <appender-ref 
 			ref="AlarmMessage" /> </logger> -->
-			<logger name="org.apache.ibatis" level="DEBUG">
-			</logger>
-			<!--com.gomefinance包下的日志异步输出 includeLocation:包含本地信息；additivity：不继承父类的日志输出 -->
-			<!--建立一个默认的root的logger -->
-			<root level="INFO">
-				<appender-ref ref="Console" />
-			</root>
-		</Loggers>
+		<logger name="org.apache.ibatis" level="INFO">
+		</logger>
+		<logger name="cn.aposoft.wechat" level="DEBUG">
+		</logger>
+		<!--com.gomefinance包下的日志异步输出 includeLocation:包含本地信息；additivity：不继承父类的日志输出 -->
+		<!--建立一个默认的root的logger -->
+		<root level="INFO">
+			<appender-ref ref="Console" />
+		</root>
+	</Loggers>
 </Configuration>  
