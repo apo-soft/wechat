@@ -9,11 +9,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.aposoft.wechat.company.managemnt.agent.AgentListResp;
 import org.aposoft.wechat.company.managemnt.agent.AgentResp;
 
-import cn.aposoft.io.QuietCloseable;
+import cn.aposoft.framework.io.QuietCloseable;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.util.AposoftAssert;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.wechat.RemoteException;
 
 /**
  * 企业应用管理

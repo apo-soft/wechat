@@ -3,8 +3,8 @@
  */
 package cn.aposoft.wechat.company.message;
 
-import cn.aposoft.io.QuietCloseable;
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.QuietCloseable;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.wechat.company.message.remote.MessageResp;
 import cn.aposoft.wechat.mp.media.news.NewsContent;
 import cn.aposoft.wechat.mp.message.remote.MediaIdHolder;

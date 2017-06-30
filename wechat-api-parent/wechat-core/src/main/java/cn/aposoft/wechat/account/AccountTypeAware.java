@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat;
+package cn.aposoft.wechat.account;
 
 /**
  * 账户类型读取接口

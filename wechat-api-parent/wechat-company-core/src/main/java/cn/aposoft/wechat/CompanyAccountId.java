@@ -3,6 +3,8 @@
  */
 package cn.aposoft.wechat;
 
+import cn.aposoft.wechat.account.AccountId;
+
 /**
  * 企业访问授权ID
  * 

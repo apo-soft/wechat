@@ -13,13 +13,13 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.access.AccessToken;
+import cn.aposoft.wechat.access.AccessTokenClient;
 import cn.aposoft.wechat.access.AccessTokenException;
 import cn.aposoft.wechat.access.AccessTokenService;
 import cn.aposoft.wechat.access.AccessTokenServiceFactory;
-import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.mp.csa.AgentAccount;
 
 /**

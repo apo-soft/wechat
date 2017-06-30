@@ -1,10 +1,10 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.access.remote;
+package cn.aposoft.wechat.access;
 
-import cn.aposoft.io.QuietCloseable;
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.QuietCloseable;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.wechat.access.address.AddressConfig;
 import cn.aposoft.wechat.config.AccountConfig;
 

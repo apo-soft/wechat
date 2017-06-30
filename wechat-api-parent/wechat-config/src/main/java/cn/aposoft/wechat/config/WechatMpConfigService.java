@@ -20,6 +20,8 @@ public interface WechatMpConfigService {
 	 */
 	WechatMpConfig getWechatMpConfig(String id);
 
+
+
 	/**
 	 * 
 	 * @param config

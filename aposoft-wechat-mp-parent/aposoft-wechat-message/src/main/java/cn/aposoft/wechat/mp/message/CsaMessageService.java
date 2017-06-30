@@ -5,8 +5,8 @@ package cn.aposoft.wechat.mp.message;
 
 import java.util.List;
 
-import cn.aposoft.io.QuietCloseable;
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.QuietCloseable;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.mp.message.template.Article;
 import cn.aposoft.wechat.mp.message.template.Music;

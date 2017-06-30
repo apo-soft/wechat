@@ -5,7 +5,7 @@ package cn.aposoft.wechat.mp.csa.impl;
 
 import java.util.List;
 
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.mp.csa.AgentAccount;
 import cn.aposoft.wechat.mp.csa.CustomServiceAgentService;

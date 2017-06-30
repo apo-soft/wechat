@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.aposoft.wechat.ApiResult;
-import cn.aposoft.wechat.ApiUtil;
+import cn.aposoft.framework.api.ApiResult;
+import cn.aposoft.framework.api.ApiUtil;
 import cn.aposoft.wechat.access.AccessToken;
-import cn.aposoft.wechat.access.AccessTokenService;
+import cn.aposoft.wechat.access.AccessTokenException;
+import cn.aposoft.wechat.access.DefaultCachedAccessTokenService;
+import cn.aposoft.wechat.account.AccountId;
 
 /**
  * 
@@ -25,20 +27,23 @@ public class AccessTokenController {
 	private static final Logger logger = LoggerFactory.getLogger(AccessTokenController.class);
 
 	@Autowired
-	private AccessTokenService accessTokenService;
+	private DefaultCachedAccessTokenService defaultCachedAccessTokenService;
+
+	@Autowired
+	private AccountId accountId;
 
 	@RequestMapping(value = "/access/token", method = RequestMethod.GET)
 	public ApiResult<AccessToken> getAccessToken() {
 		if (logger.isDebugEnabled())
 			logger.debug("Begin access default access-token.");
 		try {
-			AccessToken token = accessTokenService.getAccessToken();
+			AccessToken token = defaultCachedAccessTokenService.getAccessToken(accountId);
 			if (token != null) {
 				return ApiUtil.success(token);
 			} else {
 				logger.error("Get default  access-token  failed, there isn't any access-token by default.");
 			}
-		} catch (RuntimeException e) {
+		} catch (RuntimeException | AccessTokenException e) {
 			logger.error("Get default  access-token  failed with exception.", e);
 		}
 		return ApiUtil.fail();

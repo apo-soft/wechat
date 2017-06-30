@@ -44,6 +44,7 @@
 		<tomcat.version>7.0.78</tomcat.version>
 		<dbcp.version>1.4</dbcp.version>
 		<org.springframework.boot.version>1.5.4.RELEASE</org.springframework.boot.version>
+		<aposoft.framework.version>1.0</aposoft.framework.version>
 	</properties>
 	<modules>
 		<module>aposoft-wechat-access-parent</module>
@@ -95,6 +96,11 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>cn.aposoft</groupId>
+				<artifactId>aposoft-framework-api</artifactId>
+				<version>${aposoft.framework.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>${spring.group}</groupId>
 				<artifactId>spring-framework-bom</artifactId>
@@ -317,7 +323,7 @@
 				<groupId>javax.inject</groupId>
 				<artifactId>javax.inject</artifactId>
 				<version>${javax.inject.version}</version>
-			</dependency>		
+			</dependency>
 			<!-- spring security -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>

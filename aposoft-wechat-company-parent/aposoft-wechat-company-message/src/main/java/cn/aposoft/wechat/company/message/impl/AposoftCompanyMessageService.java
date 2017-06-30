@@ -7,7 +7,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.alibaba.fastjson.JSONObject;
 
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.wechat.company.message.CompanyMessageService;
 import cn.aposoft.wechat.company.message.RequestConfig;
 import cn.aposoft.wechat.company.message.remote.CompanyMessgeClient;

@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.signature;
 
-import cn.aposoft.wechat.AccountId;
+import cn.aposoft.wechat.account.AccountId;
 
 /**
  * 签名配置项

@@ -19,8 +19,8 @@ import org.apache.commons.lang.StringUtils;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.wechat.access.remote.AccessTokenClient;
 import cn.aposoft.wechat.config.AccountConfig;
+import cn.aposoft.wechat.config.RefreshConfig;
 
 /**
  * 从文件路径读取ACCESS_TOKEN的方法，避免测试时反复调用远程AccessToken，导致调用失败

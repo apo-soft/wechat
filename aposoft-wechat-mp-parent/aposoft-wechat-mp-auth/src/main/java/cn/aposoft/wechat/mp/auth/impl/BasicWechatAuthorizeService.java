@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.util.URLEncoder;
-import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.config.WechatMpConfig;
 import cn.aposoft.wechat.mp.auth.Oauth2Auth;
 import cn.aposoft.wechat.mp.auth.Oauth2Token;

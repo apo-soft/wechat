@@ -2,14 +2,13 @@ package cn.aposoft.wechat.config.repo;
 
 import java.util.Date;
 
-import cn.aposoft.wechat.AccountType;
-import cn.aposoft.wechat.config.WechatCompanyConfig;
-import cn.aposoft.wechat.config.WechatMpConfig;
+import cn.aposoft.wechat.account.AccountType;
+import cn.aposoft.wechat.config.WechatConfig;
 
 /**
  * 账户配置信息:mybatis:DB
  */
-public class AccountConfig implements WechatMpConfig, WechatCompanyConfig {
+public class AccountConfig implements WechatConfig {
 	private static final long serialVersionUID = -926784705809538822L;
 
 	/**

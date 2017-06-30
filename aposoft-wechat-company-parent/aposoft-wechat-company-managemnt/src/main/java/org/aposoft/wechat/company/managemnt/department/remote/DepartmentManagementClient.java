@@ -13,8 +13,8 @@ import org.aposoft.wechat.company.managemnt.department.DepartmentResp;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.util.AposoftAssert;
-import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResult;
 
 /**

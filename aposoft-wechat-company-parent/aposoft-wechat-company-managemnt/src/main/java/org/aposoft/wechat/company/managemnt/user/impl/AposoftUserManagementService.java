@@ -11,7 +11,7 @@ import org.aposoft.wechat.company.managemnt.user.UserManagementService;
 import org.aposoft.wechat.company.managemnt.user.UserResp;
 import org.aposoft.wechat.company.managemnt.user.remote.UserManagementClient;
 
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.WechatResult;
 

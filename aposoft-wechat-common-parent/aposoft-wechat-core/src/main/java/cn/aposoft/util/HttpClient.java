@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.meidia.MediaEntity;
 import cn.aposoft.wechat.meidia.MimeEntity;

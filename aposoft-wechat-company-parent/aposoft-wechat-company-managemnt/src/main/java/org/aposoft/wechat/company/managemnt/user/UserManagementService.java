@@ -5,8 +5,8 @@ package org.aposoft.wechat.company.managemnt.user;
 
 import java.util.List;
 
-import cn.aposoft.io.QuietCloseable;
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.QuietCloseable;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.wechat.WechatResult;
 
 /**

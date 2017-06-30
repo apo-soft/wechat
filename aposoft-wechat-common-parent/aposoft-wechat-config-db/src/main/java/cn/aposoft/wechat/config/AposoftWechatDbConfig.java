@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.config;
 
-import cn.aposoft.wechat.AccountType;
+import cn.aposoft.wechat.account.AccountType;
 
 /**
  * Db形式的Config存储
@@ -11,7 +11,7 @@ import cn.aposoft.wechat.AccountType;
  * @author Jann Liu
  * @since 1.0
  */
-public class AposoftWechatDbConfig implements WechatRepoConfig {
+public class AposoftWechatDbConfig implements WechatConfig {
 	private static final long serialVersionUID = -2035651445386663585L;
 
 	private String id;

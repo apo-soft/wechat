@@ -5,8 +5,8 @@ package cn.aposoft.wechat.mp.server;
 
 import java.util.List;
 
-import cn.aposoft.io.QuietCloseable;
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.QuietCloseable;
+import cn.aposoft.framework.io.RemoteException;
 
 /**
  * 读取服务器IP列表

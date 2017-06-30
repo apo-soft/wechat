@@ -13,8 +13,8 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.util.AposoftAssert;
-import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 
 public class UserManagementClient implements Closeable {

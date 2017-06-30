@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.access.address;
 
-import cn.aposoft.wechat.AccountType;
+import cn.aposoft.wechat.account.AccountType;
 
 /**
  * 地址工具

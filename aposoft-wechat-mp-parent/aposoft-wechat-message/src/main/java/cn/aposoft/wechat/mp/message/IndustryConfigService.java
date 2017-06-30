@@ -3,8 +3,8 @@
  */
 package cn.aposoft.wechat.mp.message;
 
-import cn.aposoft.io.QuietCloseable;
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.QuietCloseable;
+import cn.aposoft.framework.io.RemoteException;
 
 /**
  * @author Jann Liu

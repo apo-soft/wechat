@@ -1,7 +1,9 @@
 /**
  *   Copyright  :  www.aposoft.cn
  */
-package cn.aposoft.wechat.access.remote;
+package cn.aposoft.wechat.access;
+
+import java.util.Date;
 
 import cn.aposoft.wechat.WechatResp;
 import cn.aposoft.wechat.WechatResult;
@@ -13,7 +15,8 @@ import cn.aposoft.wechat.WechatResult;
  * 参数集合声明：
  * 
  * <pre>
- * <a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183&token=&lang=zh_CN"> 获取access_token </a>
+ * <a href=
+"https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183&token=&lang=zh_CN"> 获取access_token </a>
  * </pre>
  * 
  * <pre>
@@ -27,7 +30,7 @@ import cn.aposoft.wechat.WechatResult;
  * @date 2016年10月13日
  * @since 1.0
  */
-public class AccessTokenResp extends WechatResp implements WechatResult	 {
+public class AccessTokenResp extends WechatResp implements WechatResult {
 	private static final long serialVersionUID = 726644249402378769L;
 	private String access_token;
 	private Integer expires_in;
@@ -48,4 +51,24 @@ public class AccessTokenResp extends WechatResp implements WechatResult	 {
 		this.expires_in = expires_in;
 	}
 
+	/**
+	 * 
+	 * @return 转换为AccessToken
+	 */
+	public AccessToken toToken() {
+		BasicAccessToken token = new BasicAccessToken();
+		token.setAccess_token(this.access_token);
+		token.setExpires_in(this.expires_in);
+		token.setRefreshTime(new Date());
+		return token;
+	}
+
+	@Override
+	public String toString() {
+		if (getErrcode() == null) {
+			return access_token;
+		} else {
+			return super.toString();
+		}
+	}
 }

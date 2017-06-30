@@ -3,6 +3,8 @@
  */
 package cn.aposoft.wechat;
 
+import cn.aposoft.wechat.account.AccountType;
+
 /**
  * 简单的CompanyAccountId
  * 
@@ -49,4 +51,30 @@ public class BasicCompanyAccountId implements CompanyAccountId {
 		this.agentId = agentId;
 	}
 
+	@Override
+	public String toString() {
+		return accountType + "[" + id + ":" + agentId + "]";
+	}
+
+	// CompanyAccountId 三要素相等
+	@Override
+	public boolean equals(Object other) {
+		if (other == null) {
+			return false;
+		}
+		if (!(other instanceof CompanyAccountId)) {
+			return false;
+		}
+		// 类型 id，agentId相等
+		if (equals(AccountType.CORP, ((CompanyAccountId) other).getAccountType())
+				&& equals(this.id, ((CompanyAccountId) other).getId())
+				&& equals(this.agentId, ((CompanyAccountId) other).getAgentId())) {
+			return true;
+		}
+		return false;
+	}
+
+	private static <T extends Comparable<T>> boolean equals(T v1, T v2) {
+		return (v1 == null && v2 == null) || (v1 != null && v1.compareTo(v2) == 0);
+	}
 }

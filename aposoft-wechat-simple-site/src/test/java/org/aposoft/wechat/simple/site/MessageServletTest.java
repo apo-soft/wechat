@@ -15,9 +15,9 @@ import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.wechat.RemoteException;
 
 /**
  * @author Jann Liu

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.constant.Lexical;
+import cn.aposoft.framework.constant.Lexical;
 import cn.aposoft.wechat.config.WechatMpConfigFactory;
 import cn.aposoft.wechat.mp.auth.Oauth2Auth;
 import cn.aposoft.wechat.mp.auth.Oauth2Token;

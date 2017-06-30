@@ -16,8 +16,8 @@ import com.alibaba.fastjson.JSON;
 
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.util.AposoftAssert;
-import cn.aposoft.wechat.RemoteException;
 import cn.aposoft.wechat.meidia.MediaEntity;
 import cn.aposoft.wechat.meidia.MimeEntity;
 import cn.aposoft.wechat.mp.media.remote.MediaEntityResp;

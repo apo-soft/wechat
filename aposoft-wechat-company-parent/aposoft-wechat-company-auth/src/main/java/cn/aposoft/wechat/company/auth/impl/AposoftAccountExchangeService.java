@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.company.auth.impl;
 
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.wechat.company.auth.AccountExchangeResp;
 import cn.aposoft.wechat.company.auth.AccountExchangeService;
 import cn.aposoft.wechat.company.auth.remote.AccountExchangeClient;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.access.remote;
+package cn.aposoft.wechat.access;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -14,9 +14,11 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.access.AccessTokenClient;
+import cn.aposoft.wechat.access.AccessTokenResp;
 import cn.aposoft.wechat.access.address.AddressConfig;
 import cn.aposoft.wechat.access.address.AddressUtil;
 import cn.aposoft.wechat.config.AccountConfig;

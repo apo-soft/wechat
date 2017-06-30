@@ -1,7 +1,7 @@
 package org.aposoft.wechat.company.managemnt.agent;
 
-import cn.aposoft.io.QuietCloseable;
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.QuietCloseable;
+import cn.aposoft.framework.io.RemoteException;
 
 /**
  * 企业应用管理

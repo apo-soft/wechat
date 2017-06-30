@@ -8,9 +8,9 @@ import java.io.Closeable;
 import org.apache.http.client.utils.HttpClientUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.wechat.RemoteException;
 
 /**
  * 消息管理客户端

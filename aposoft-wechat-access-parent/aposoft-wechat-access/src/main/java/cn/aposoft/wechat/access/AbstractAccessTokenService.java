@@ -4,7 +4,6 @@
 package cn.aposoft.wechat.access;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -12,14 +11,9 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cn.aposoft.wechat.RemoteException;
-import cn.aposoft.wechat.access.AccessToken;
-import cn.aposoft.wechat.access.AccessTokenException;
-import cn.aposoft.wechat.access.AccessTokenService;
-import cn.aposoft.wechat.access.RefreshConfig;
-import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.access.remote.AccessTokenResp;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.wechat.config.AccountConfig;
+import cn.aposoft.wechat.config.RefreshConfig;
 
 /**
  * AccessToken管理基类服务
@@ -33,7 +27,6 @@ public abstract class AbstractAccessTokenService implements AccessTokenService {
 	private final AccountConfig accoutConfig;
 	private final RefreshConfig refreshConfig;
 	protected volatile AccessToken accessToken;
-	private int retryTimes = 3;
 	/**
 	 * 缓存从DB的刷新时间 ms 默认5000
 	 */
@@ -80,7 +73,7 @@ public abstract class AbstractAccessTokenService implements AccessTokenService {
 		}
 		long curr = System.currentTimeMillis();
 		long refreshTime = accessToken.getRefreshTime().getTime();
-		if (accessToken.getExpires_in() - (curr - refreshTime) / 1000 < refreshConfig.getExpiredThreshold()) {
+		if (accessToken.getExpires_in() - (curr - refreshTime) / 1000 < refreshConfig.getAsyncRefreshThreshold()) {
 			if (logger.isDebugEnabled()) {
 				logger.debug("remain time:" + (curr - refreshTime) / 1000 + "s.");
 			}
@@ -109,7 +102,7 @@ public abstract class AbstractAccessTokenService implements AccessTokenService {
 		long curr = System.currentTimeMillis();
 		long refreshTime = accessToken.getRefreshTime().getTime();
 		return accessToken == null
-				|| accessToken.getExpires_in() - (curr - refreshTime) / 1000 < refreshConfig.getExpiredThreshold();
+				|| accessToken.getExpires_in() - (curr - refreshTime) / 1000 < refreshConfig.getAsyncRefreshThreshold();
 	}
 
 	/**
@@ -171,17 +164,12 @@ public abstract class AbstractAccessTokenService implements AccessTokenService {
 		AccessToken accessToken = null;
 		// 正确读取TOKEN则返回,否则重试3次
 		RemoteException ex = null;
-		for (int i = 0; i < retryTimes; i++) {
+		for (int i = 0; i < refreshConfig.getRetryTimes(); i++) {
 			try {
-				Date refreshTime = new Date();
 				AccessTokenResp resp = client.getAccessToken(accoutConfig);
 				if (resp != null) {
 					if (StringUtils.isNotBlank(resp.getAccess_token()) && resp.getExpires_in() != null) {
-						BasicAccessToken token = new BasicAccessToken();
-						token.setAccess_token(resp.getAccess_token());
-						token.setExpires_in(resp.getExpires_in());
-						token.setRefreshTime(refreshTime);
-						accessToken = token;
+						accessToken = resp.toToken();
 						break;
 					} else {
 						logger.error("wechat access_token, the response is error. code:" + resp.getErrcode()

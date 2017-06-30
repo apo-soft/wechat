@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.access;
 
-import cn.aposoft.wechat.AccountId;
+import cn.aposoft.wechat.account.AccountId;
 
 /**
  * 公众号访问授权码存储

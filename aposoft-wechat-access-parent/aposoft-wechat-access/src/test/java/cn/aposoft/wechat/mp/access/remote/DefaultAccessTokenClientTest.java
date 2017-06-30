@@ -9,13 +9,13 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.RemoteException;
+import cn.aposoft.wechat.access.AccessTokenClient;
+import cn.aposoft.wechat.access.AccessTokenResp;
 import cn.aposoft.wechat.access.AddressConfigFactory;
+import cn.aposoft.wechat.access.DefaultAccessTokenClient;
 import cn.aposoft.wechat.access.DemoAccountConfigFactory;
 import cn.aposoft.wechat.access.address.AddressConfig;
-import cn.aposoft.wechat.access.remote.AccessTokenClient;
-import cn.aposoft.wechat.access.remote.AccessTokenResp;
-import cn.aposoft.wechat.access.remote.DefaultAccessTokenClient;
 import cn.aposoft.wechat.config.AccountConfig;
 
 /**

@@ -5,7 +5,7 @@ package cn.aposoft.wechat.config;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.wechat.AccountType;
+import cn.aposoft.wechat.account.AccountType;
 
 /**
  * @author Jann Liu

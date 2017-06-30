@@ -11,11 +11,11 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import cn.aposoft.constant.Lexical;
-import cn.aposoft.constant.WechatLang;
+import cn.aposoft.framework.constant.Lexical;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.util.HttpClient;
 import cn.aposoft.util.HttpClientFactory;
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.wechat.WechatLang;
 import cn.aposoft.wechat.config.WechatMpConfig;
 
 public class Oauth2AccessTokenClient implements Closeable {

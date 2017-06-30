@@ -3,7 +3,7 @@
  */
 package cn.aposoft.wechat.config;
 
-import cn.aposoft.wechat.AccountType;
+import cn.aposoft.wechat.account.AccountType;
 
 /**
  * 简单的AccountConfig实现

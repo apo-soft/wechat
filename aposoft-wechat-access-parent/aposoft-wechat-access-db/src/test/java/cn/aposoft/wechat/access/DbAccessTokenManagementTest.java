@@ -21,11 +21,11 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.wechat.AccountId;
-import cn.aposoft.wechat.AccountType;
 import cn.aposoft.wechat.CompanyAccountId;
 import cn.aposoft.wechat.access.repo.DbAccessToken;
 import cn.aposoft.wechat.access.repo.DbAccessTokenMapper;
+import cn.aposoft.wechat.account.AccountId;
+import cn.aposoft.wechat.account.AccountType;
 
 /**
  * AccessToken管理对象,测试类

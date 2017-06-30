@@ -6,7 +6,7 @@ package org.aposoft.wechat.company.managemnt.user.impl;
 import org.aposoft.wechat.company.managemnt.user.UserAuthsuccService;
 import org.aposoft.wechat.company.managemnt.user.remote.UserAuthsuccClient;
 
-import cn.aposoft.wechat.RemoteException;
+import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.wechat.WechatResp;
 
 /**

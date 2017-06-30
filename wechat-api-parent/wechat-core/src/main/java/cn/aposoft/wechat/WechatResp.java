@@ -5,8 +5,6 @@ package cn.aposoft.wechat;
 
 import java.io.Serializable;
 
-import cn.aposoft.wechat.WechatResult;
-
 /**
  * 微信用户验证基础响应消息
  * 
@@ -33,5 +31,14 @@ public class WechatResp implements WechatResult, Serializable {
 
 	public String getErrmsg() {
 		return errmsg;
+	}
+
+	@Override
+	public String toString() {
+		if (errcode == null) {
+			return "";
+		} else {
+			return "[" + errcode + "]" + errmsg;
+		}
 	}
 }

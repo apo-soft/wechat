@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 
-import cn.aposoft.constant.Lexical;
+import cn.aposoft.framework.constant.Lexical;
 import cn.aposoft.util.XmlUtils;
 import cn.aposoft.wechat.codec.CodecException;
 import cn.aposoft.wechat.codec.CryptService;

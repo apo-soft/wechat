@@ -8,13 +8,13 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cn.aposoft.wechat.AccountId;
-import cn.aposoft.wechat.AccountType;
+import cn.aposoft.framework.data.PersistentErrorException;
 import cn.aposoft.wechat.CompanyAccountId;
-import cn.aposoft.wechat.PersistentErrorException;
 import cn.aposoft.wechat.access.repo.DbAccessToken;
 import cn.aposoft.wechat.access.repo.DbAccessTokenExample;
 import cn.aposoft.wechat.access.repo.DbAccessTokenMapper;
+import cn.aposoft.wechat.account.AccountId;
+import cn.aposoft.wechat.account.AccountType;
 
 /**
  * 使用Database完成accessToken的缓存

@@ -11,6 +11,6 @@ package cn.aposoft.wechat.config;
  * @author Jann Liu
  * @since 1.0
  */
-public interface WechatRepoConfig extends WechatMpConfig, WechatCompanyConfig {
+public interface WechatConfig extends WechatMpConfig, WechatCompanyConfig {
 	
 }

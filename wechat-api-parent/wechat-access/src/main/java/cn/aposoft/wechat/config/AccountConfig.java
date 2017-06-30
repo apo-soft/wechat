@@ -1,7 +1,7 @@
 package cn.aposoft.wechat.config;
 
-import cn.aposoft.wechat.AccountId;
 import cn.aposoft.wechat.access.AccessSecret;
+import cn.aposoft.wechat.account.AccountId;
 
 /**
  * AccessToken访问配置项

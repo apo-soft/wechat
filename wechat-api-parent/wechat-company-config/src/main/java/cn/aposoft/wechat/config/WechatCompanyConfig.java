@@ -5,8 +5,8 @@ package cn.aposoft.wechat.config;
 
 import java.io.Serializable;
 
-import cn.aposoft.wechat.AccountTypeAware;
 import cn.aposoft.wechat.access.AccessSecret;
+import cn.aposoft.wechat.account.AccountTypeAware;
 import cn.aposoft.wechat.signature.SignatureConfig;
 
 /**

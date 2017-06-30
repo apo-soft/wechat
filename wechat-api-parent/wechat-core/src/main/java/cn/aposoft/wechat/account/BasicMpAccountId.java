@@ -1,10 +1,11 @@
 /**
  * 
  */
-package cn.aposoft.wechat;
+package cn.aposoft.wechat.account;
 
 /**
  * 简单的公众号id实现
+ * 
  * @author Jann Liu
  * @since 1.0
  */
@@ -31,4 +32,9 @@ public class BasicMpAccountId implements AccountId {
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		return AccountType.MP + "[" + id + "]" + "";
+
+	}
 }
