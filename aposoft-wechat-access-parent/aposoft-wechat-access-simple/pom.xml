@@ -44,6 +44,11 @@
 		</dependency>
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
+			<artifactId>aposoft-wechat-access</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.aposoft.wechat</groupId>
 			<artifactId>aposoft-wechat-access-db</artifactId>
 			<version>${project.version}</version>
 		</dependency>

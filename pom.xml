@@ -10,7 +10,15 @@
 	<name>aposoft-wechat-parent</name>
 	<url>http://maven.apache.org/</url>
 	<inceptionYear>2001</inceptionYear>
-
+	<repositories>
+		<repository>
+			<id>io.spring.repo.maven.release</id>
+			<url>http://repo.spring.io/release/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 	<distributionManagement>
 		<site>
 			<id>website</id>
@@ -21,6 +29,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
+		<mysql.version>5.1.42</mysql.version>
 		<spring.group>org.springframework</spring.group>
 		<spring.version>4.3.9.RELEASE</spring.version>
 		<spring.security.version>4.2.2.RELEASE</spring.security.version>
@@ -87,9 +96,16 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>${spring.group}</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${spring.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
-				<version>5.1.42</version>
+				<version>${mysql.version}</version>
 			</dependency>
 			<!-- Compile -->
 			<dependency>
@@ -301,47 +317,7 @@
 				<groupId>javax.inject</groupId>
 				<artifactId>javax.inject</artifactId>
 				<version>${javax.inject.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${spring.group}</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${spring.group}</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${spring.group}</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${spring.group}</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
+			</dependency>		
 			<!-- spring security -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>

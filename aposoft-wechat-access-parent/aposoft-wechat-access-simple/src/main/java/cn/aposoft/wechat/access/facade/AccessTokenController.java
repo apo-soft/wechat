@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cn.aposoft.wechat.ApiResult;
 import cn.aposoft.wechat.ApiUtil;
 import cn.aposoft.wechat.access.AccessToken;
+import cn.aposoft.wechat.access.AccessTokenService;
 
 /**
  * 
