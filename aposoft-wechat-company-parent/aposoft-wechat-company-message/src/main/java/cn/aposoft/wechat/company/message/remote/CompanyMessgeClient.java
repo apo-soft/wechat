@@ -3,15 +3,14 @@
  */
 package cn.aposoft.wechat.company.message.remote;
 
-import java.io.Closeable;
-
 import org.apache.http.client.utils.HttpClientUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 
-import cn.aposoft.util.HttpClient;
-import cn.aposoft.util.HttpClientFactory;
+import cn.aposoft.framework.io.QuietCloseable;
 import cn.aposoft.framework.io.RemoteException;
 import cn.aposoft.util.AposoftAssert;
+import cn.aposoft.util.HttpClient;
+import cn.aposoft.util.HttpClientFactory;
 
 /**
  * 企业消息
@@ -19,7 +18,7 @@ import cn.aposoft.util.AposoftAssert;
  * @author Jann Liu
  *
  */
-public class CompanyMessgeClient implements Closeable {
+public class CompanyMessgeClient implements QuietCloseable {
 	static final CloseableHttpClient httpClient = HttpClientFactory.createDefault();
 	//
 	static final String COMPANY_MESSAGE_URL = "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=";

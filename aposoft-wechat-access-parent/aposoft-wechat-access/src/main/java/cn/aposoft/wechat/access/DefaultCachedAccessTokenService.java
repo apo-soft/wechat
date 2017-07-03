@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.alibaba.fastjson.JSON;
+
 import cn.aposoft.framework.concurrent.AsyncRefreshService;
 import cn.aposoft.framework.concurrent.SelfRefreshWorker;
 import cn.aposoft.framework.io.RemoteException;
@@ -160,8 +162,7 @@ public class DefaultCachedAccessTokenService implements SelfRefreshWorker, Cache
 	private AccessToken ensure(final AccessToken accessToken, final AccountId accountId, final boolean forUpdate)
 			throws AccessTokenException {
 		// token 对象有效性
-		if (accessToken == null || StringUtils.isBlank(accessToken.getAccess_token()) || requireHoldon(accessToken)
-				|| (forUpdate && !isSafe(accessToken))) {
+		if (requireHoldon(accessToken) || (forUpdate && !isSafe(accessToken))) {
 			AccessToken newAccessToken = getNewToken(accountId);
 			return newAccessToken;
 		}
@@ -264,14 +265,23 @@ public class DefaultCachedAccessTokenService implements SelfRefreshWorker, Cache
 		return token;
 	}
 
+	// 当access_token不合法时,都需要强制阻塞更新
 	private boolean requireHoldon(AccessToken accessToken) {
-		return false;
+		boolean requireHoldon = accessToken == null || accessToken.getRefreshTime() == null
+				|| accessToken.getExpires_in() <= 0 || StringUtils.isBlank(accessToken.getAccess_token())
+				// 以下为自定义配置临界条件:Token刷新时间
+				|| ((System.currentTimeMillis() - accessToken.getRefreshTime().getTime()) > (accessToken.getExpires_in()
+						- refreshConfig.getHoldonThreshold()) * 1000);
+		if (requireHoldon) {
+			logger.warn("access-token is expired." + JSON.toJSONString(accessToken));
+		}
+		return requireHoldon;
 	}
 
 	// (当前时间 - 开始时间) ms < (过期时长 -安全阈值)s*1000
 	private boolean isSafe(AccessToken accessToken) {
-		return (accessToken != null && accessToken.getRefreshTime() != null) && accessToken.getExpires_in() > 0
-		// 时间在缓存安全阈值范围内
+		return (accessToken != null && accessToken.getRefreshTime() != null && accessToken.getExpires_in() > 0)
+				// 时间在缓存安全阈值范围内
 				&& (System.currentTimeMillis() - accessToken.getRefreshTime().getTime()) < (accessToken.getExpires_in()
 						- refreshConfig.getAsyncRefreshThreshold()) * 1000;
 	}

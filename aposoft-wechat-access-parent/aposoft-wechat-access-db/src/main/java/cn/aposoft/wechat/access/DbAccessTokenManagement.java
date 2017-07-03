@@ -69,7 +69,7 @@ public class DbAccessTokenManagement implements CompanyAccessTokenManagement {
 		if (accountId == null) {
 			return null;
 		} else if ((accountId instanceof CompanyAccountId) && ((CompanyAccountId) accountId).getAgentId() != null) {
-			return getAccessToken((CompanyAccountId) accountId);
+			return getAccessToken((CompanyAccountId) accountId, forUpdate);
 		} else {
 			DbAccessTokenExample example = new DbAccessTokenExample().setForUpdate(forUpdate);
 			example.createCriteria().andAccountTypeEqualTo(AccountType.MP.name()).andIdEqualTo(accountId.getId());
