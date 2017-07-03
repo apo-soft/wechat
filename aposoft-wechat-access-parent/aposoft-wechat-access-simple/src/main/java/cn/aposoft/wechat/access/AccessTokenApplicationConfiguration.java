@@ -11,7 +11,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import cn.aposoft.wechat.BasicCompanyAccountId;
+import cn.aposoft.wechat.access.address.AddressConfig;
+import cn.aposoft.wechat.access.address.SimpleAccessTokenAddressConfig;
 import cn.aposoft.wechat.access.repo.DbAccessTokenMapper;
+import cn.aposoft.wechat.config.AposoftWechatConfigService;
+import cn.aposoft.wechat.config.BasicRefreshConfig;
+import cn.aposoft.wechat.config.repo.AccountConfigMapper;
 
 /**
  * 应用配置信息
@@ -32,9 +37,32 @@ public class AccessTokenApplicationConfiguration {
 	}
 
 	@Bean
+	AposoftWechatConfigService aposoftWechatConfigService(AccountConfigMapper accountConfigMapper) {
+		AposoftWechatConfigService service = new AposoftWechatConfigService();
+		service.setAccountConfigMapper(accountConfigMapper);
+		return service;
+	}
+
+	@Bean
 	@ConfigurationProperties(prefix = "aposoft.wechat.companyAccountId")
 	public BasicCompanyAccountId accountId() {
 		return new BasicCompanyAccountId();
+	}
+
+	@Bean
+	@ConfigurationProperties(prefix = "aposoft.wechat.refreshConfig")
+	public BasicRefreshConfig refreshConfig() {
+		return new BasicRefreshConfig();
+	}
+
+	@Bean
+	public SimpleAccessTokenAddressConfig accessTokenAddressConfig() {
+		return new SimpleAccessTokenAddressConfig();
+	}
+
+	@Bean(destroyMethod = "close")
+	public DefaultAccessTokenClient accessTokenClient(AddressConfig accessTokenAddressConfig) {
+		return new DefaultAccessTokenClient(accessTokenAddressConfig);
 	}
 
 }

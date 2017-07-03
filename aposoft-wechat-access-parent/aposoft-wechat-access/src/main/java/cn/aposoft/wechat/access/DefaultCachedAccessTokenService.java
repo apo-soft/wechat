@@ -77,11 +77,9 @@ public class DefaultCachedAccessTokenService implements SelfRefreshWorker, Cache
 				// refresh cache
 				AccessToken token = getNewToken((AccountId) context);
 				if (token == null) {
-					// TODO fire alarm
 					logger.error("failed to asynchronously refresh access-token,the resp is null.");
 				}
 			} catch (AccessTokenException e) {
-				// TODO fire alarm
 				logger.error("failed to asynchronously refresh access-token,meets some exception", e);
 			}
 		}
@@ -121,6 +119,9 @@ public class DefaultCachedAccessTokenService implements SelfRefreshWorker, Cache
 	@Override
 	public AccessToken getAccessToken(AccountId accountId, boolean forUpdate) throws AccessTokenException {
 		try {
+			if (accessTokenManagement == null) {
+				logger.error("accessTokenManagement is empty");
+			}
 			AccessToken accessToken = accessTokenManagement.getAccessToken(accountId);
 			accessToken = ensure(accessToken, accountId, forUpdate);
 			return accessToken;
@@ -181,6 +182,7 @@ public class DefaultCachedAccessTokenService implements SelfRefreshWorker, Cache
 	private AccessToken getNewToken(final AccountId accountId) throws AccessTokenException {
 		// 1. 锁定数据库，避免远程访问争用
 		AccessToken newCachedToken = accessTokenManagement.getAccessToken(accountId, true);
+
 		// 其他会话已经完成数据更新
 		if (isSafe(newCachedToken)) {
 			return newCachedToken;
@@ -241,7 +243,7 @@ public class DefaultCachedAccessTokenService implements SelfRefreshWorker, Cache
 		do {
 			try {
 				AccessTokenResp tokenResp = accessTokenClient.getAccessToken(config);
-				if (tokenResp.getErrcode() == null) {
+				if (tokenResp.getErrcode() == 0 || tokenResp.getErrcode() == null) {
 					token = tokenResp.toToken();
 					break;
 				} else {
@@ -254,7 +256,8 @@ public class DefaultCachedAccessTokenService implements SelfRefreshWorker, Cache
 					logger.error("request wechat remote access token error", e);
 				}
 			}
-		} while (count < refreshConfig.getRetryTimes());
+
+		} while (count++ < refreshConfig.getRetryTimes());
 		if (token == null) {
 			throw new AccessTokenException("call wechat server meets error,please view previous logs.");
 		}
@@ -267,7 +270,9 @@ public class DefaultCachedAccessTokenService implements SelfRefreshWorker, Cache
 
 	// (当前时间 - 开始时间) ms < (过期时长 -安全阈值)s*1000
 	private boolean isSafe(AccessToken accessToken) {
-		return (System.currentTimeMillis() - accessToken.getRefreshTime().getTime()) < (accessToken.getExpires_in()
-				- refreshConfig.getAsyncRefreshThreshold()) * 1000;
+		return (accessToken != null && accessToken.getRefreshTime() != null) && accessToken.getExpires_in() > 0
+		// 时间在缓存安全阈值范围内
+				&& (System.currentTimeMillis() - accessToken.getRefreshTime().getTime()) < (accessToken.getExpires_in()
+						- refreshConfig.getAsyncRefreshThreshold()) * 1000;
 	}
 }

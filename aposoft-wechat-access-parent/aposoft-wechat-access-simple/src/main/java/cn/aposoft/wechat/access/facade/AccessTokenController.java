@@ -14,7 +14,7 @@ import cn.aposoft.framework.api.ApiResult;
 import cn.aposoft.framework.api.ApiUtil;
 import cn.aposoft.wechat.access.AccessToken;
 import cn.aposoft.wechat.access.AccessTokenException;
-import cn.aposoft.wechat.access.DefaultCachedAccessTokenService;
+import cn.aposoft.wechat.access.CachedAccessTokenService;
 import cn.aposoft.wechat.account.AccountId;
 
 /**
@@ -27,7 +27,7 @@ public class AccessTokenController {
 	private static final Logger logger = LoggerFactory.getLogger(AccessTokenController.class);
 
 	@Autowired
-	private DefaultCachedAccessTokenService defaultCachedAccessTokenService;
+	private CachedAccessTokenService defaultCachedAccessTokenService;
 
 	@Autowired
 	private AccountId accountId;
