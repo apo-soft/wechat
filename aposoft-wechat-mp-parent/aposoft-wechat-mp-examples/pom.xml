@@ -5,8 +5,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>cn.aposoft.wechat</groupId>
-		<artifactId>aposoft-wechat-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<artifactId>aposoft-wechat-mp-parent</artifactId>
+		<version>0.1</version>
 	</parent>
 	<artifactId>aposoft-wechat-mp-examples</artifactId>
 	<packaging>pom</packaging>

@@ -5,7 +5,7 @@
 
 	<groupId>cn.aposoft.wechat</groupId>
 	<artifactId>aposoft-wechat-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1</version>
 
 	<name>aposoft-wechat-parent</name>
 	<packaging>pom</packaging>
@@ -19,19 +19,45 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>aposoft-public</id>
+			<name>Aposoft Public Repository</name>
+			<url>${nexus.public.root}</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
+	<!-- 发布版：远程发布仓库地址配置 -->
 	<distributionManagement>
 		<site>
-			<id>website</id>
-			<url>scp:https://www.aposoft.cn/nexus/</url>
+			<id>Aposoft</id>
+			<url>scp://www.aposoft.cn/</url>
 		</site>
+		<repository>
+			<id>aposoft-releases</id>
+			<name>Project Release Repository</name>
+			<url>${nexus.releases.root}</url>
+		</repository>
+		<snapshotRepository>
+			<id>aposoft-snapshots</id>
+			<name>Project Snapshot Repository</name>
+			<url>${nexus.snapshots.root}</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
 		<skip_maven_deploy>false</skip_maven_deploy>
+		<!-- 每个项目需要自己去定义 -->
+		<nexus.host>http://www.aposoft.cn/nexus/content/</nexus.host>
+		<nexus.public.root>${nexus.host}/groups/public/</nexus.public.root>
+		<nexus.root>http://www.aposoft.cn/nexus/content/repositories</nexus.root>
+		<nexus.releases.root>${nexus.root}/releases/</nexus.releases.root>
+		<nexus.snapshots.root>${nexus.root}/snapshots/</nexus.snapshots.root>
 		
+
 		<mysql.version>5.1.42</mysql.version>
 		<spring.group>org.springframework</spring.group>
 		<spring.version>4.3.9.RELEASE</spring.version>
@@ -82,6 +108,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
 				<configuration>
 					<skip>${skip_maven_deploy}</skip>
 				</configuration>

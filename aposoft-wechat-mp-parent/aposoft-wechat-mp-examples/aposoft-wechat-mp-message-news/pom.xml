@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>cn.aposoft.wechat</groupId>
 		<artifactId>aposoft-wechat-mp-examples</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.1</version>
 	</parent>
 	<artifactId>aposoft-wechat-mp-message-news</artifactId>
 	<name>aposoft-wechat-mp-message-news</name>
@@ -31,7 +31,7 @@
 		</dependency>
 		<dependency>
 			<groupId>cn.aposoft.wechat</groupId>
-			<artifactId>aposoft-wechat-mp-config-testaccount</artifactId>
+			<artifactId>aposoft-wechat-test-simple</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
