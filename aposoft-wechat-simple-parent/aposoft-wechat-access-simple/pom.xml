@@ -13,12 +13,32 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<start-class>cn.aposoft.wechat.access.AccessTokenApplication</start-class>
 	</properties>
 	<build>
 		<plugins>
+			<!-- 不继承自spring-boot-starter-parent的项目,需要添加以下内容 -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>${start-class}</mainClass>
+					<layout>ZIP</layout>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>springloaded</artifactId>
+						<version>1.2.7.RELEASE</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

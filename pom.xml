@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>cn.aposoft.wechat</groupId>
@@ -7,6 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<name>aposoft-wechat-parent</name>
+	<packaging>pom</packaging>
 	<url>http://maven.apache.org/</url>
 	<inceptionYear>2001</inceptionYear>
 	<repositories>
@@ -28,6 +30,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
+		<skip_maven_deploy>false</skip_maven_deploy>
+		
 		<mysql.version>5.1.42</mysql.version>
 		<spring.group>org.springframework</spring.group>
 		<spring.version>4.3.9.RELEASE</spring.version>
@@ -43,7 +47,7 @@
 		<tomcat.version>7.0.78</tomcat.version>
 		<dbcp.version>1.4</dbcp.version>
 		<org.springframework.boot.version>1.5.4.RELEASE</org.springframework.boot.version>
-		<aposoft.framework.version>1.0</aposoft.framework.version>
+		<aposoft.framework.version>1.1</aposoft.framework.version>
 	</properties>
 	<modules>
 		<module>aposoft-wechat-access-parent</module>
@@ -52,8 +56,8 @@
 		<module>aposoft-wechat-test</module>
 		<module>aposoft-wechat-mp-parent</module>
 		<module>aposoft-wechat-common-parent</module>
-    	<module>aposoft-wechat-simple-parent</module>
-  </modules>
+		<module>aposoft-wechat-simple-parent</module>
+	</modules>
 
 	<build>
 		<plugins>
@@ -75,6 +79,13 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>${skip_maven_deploy}</skip>
+				</configuration>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -91,7 +102,7 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<packaging>pom</packaging>
+	
 
 	<dependencyManagement>
 		<dependencies>

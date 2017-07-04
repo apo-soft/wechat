@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>cn.aposoft.wechat</groupId>
@@ -16,10 +17,13 @@
 	</distributionManagement>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Skip artifact deployment,deploy plugin is set at root project aposoft-wechat-parent -->
+		<skip_maven_deploy>true</skip_maven_deploy>
+
 	</properties>
 	<modules>
 		<module>aposoft-wechat-access-simple</module>
 		<module>aposoft-wechat-simple-site</module>
-    <module>aposoft-wechat-manage-simple</module>
-  </modules>
+		<module>aposoft-wechat-manage-simple</module>
+	</modules>
 </project>

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.aposoft.wechat.access.facade;
+package cn.aposoft.wechat.access;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -22,7 +22,7 @@ import cn.aposoft.wechat.mp.message.template.Video;
  * 企业消息发送服务实现
  * 
  * @author Jann Liu
- *
+ * @since 1.0
  */
 public class AposoftCompanyMessageService implements CompanyMessageService {
 	final CompanyMessgeClient client = new CompanyMessgeClient();
