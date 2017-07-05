@@ -53,17 +53,18 @@ public class MassMessageClientTest {
 	 * <p>
 	 * 2017/5/23 {"errcode":45028,"errmsg":"has no masssend quota hint:
 	 * [rKd_Da0056ge21]"}
-	 * 
+	 * 2017/7/4
+	 * {"errcode":45028,"errmsg":"has no masssend quota hint: [BH6ysA0343ge21]"}
 	 * @throws RemoteException
 	 * @throws AccessTokenException
 	 */
-	@Ignore
+//	@Ignore
 	@Test
 	public void testSendNews() throws RemoteException, AccessTokenException {
 		Filter filter = new Filter();
 		filter.setIs_to_all(false);
 		filter.setTag_id(100);
-		MediaIdHolder media = new MediaIdHolder("tFGFFKYObPDMN89ePA09nfX1gJf8Tosq-7YTab5bD6vYe3Poq1e_pQQW0T-MRV8B");
+		MediaIdHolder media = new MediaIdHolder("ytupwLlPngh5XdmfFQ_eAslFs6ZDF8KifwWKog2eQU2VXAyMGg5uEF-Ticv5hi_4");
 		Map<String, Object> configs = new HashMap<>();
 		configs.put("send_ignore_reprint", 1);
 		System.out.println(JSON.toJSONString(
@@ -192,10 +193,10 @@ public class MassMessageClientTest {
 	 * @throws RemoteException
 	 * @throws AccessTokenException
 	 */
-	@Ignore
+//	@Ignore
 	@Test
 	public void testPreviewNews() throws RemoteException, AccessTokenException {
-		MediaIdHolder media = new MediaIdHolder("tFGFFKYObPDMN89ePA09nfX1gJf8Tosq-7YTab5bD6vYe3Poq1e_pQQW0T-MRV8B");
+		MediaIdHolder media = new MediaIdHolder("ytupwLlPngh5XdmfFQ_eAslFs6ZDF8KifwWKog2eQU2VXAyMGg5uEF-Ticv5hi_4");
 		WechatResp resp = client.preview(accessTokenService.getAccessToken().getAccess_token(),
 				"ojqOLxLh0480oz5gqHqLgzRgCLHM", MsgType.mpnews, media);
 		System.out.println(JSON.toJSONString(resp));
