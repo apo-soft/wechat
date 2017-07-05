@@ -84,6 +84,8 @@ public class DefaultCachedAccessTokenService implements SelfRefreshWorker, Cache
 			} catch (AccessTokenException e) {
 				logger.error("failed to asynchronously refresh access-token,meets some exception", e);
 			}
+		} else {
+			logger.error("context is not valid, expect an accountId.");
 		}
 	}
 
