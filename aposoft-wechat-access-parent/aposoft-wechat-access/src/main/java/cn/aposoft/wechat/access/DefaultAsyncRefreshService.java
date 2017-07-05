@@ -11,6 +11,7 @@ import javax.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import cn.aposoft.framework.concurrent.AsyncRefreshService;
@@ -63,6 +64,11 @@ public class DefaultAsyncRefreshService implements AsyncRefreshService, QuietClo
 	@Override
 	public void close() {
 		executor.shutdown();
+	}
+
+	@Scheduled(fixedRate = 1000 * 60 * 5)
+	void confirm() {
+
 	}
 
 	// 异步执行任务
